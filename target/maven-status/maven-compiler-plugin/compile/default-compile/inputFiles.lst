@@ -1,0 +1,11 @@
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/repository/ClientRepository.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/controller/ClientController.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/service/ClientService.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/security/CheckEmail.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/entity/Clients.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/dto/ClientRegisterDto.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/security/PasswordEncoder.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/FbProjectApplication.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/dto/ClientDto.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/security/securityConfig/SecurityConfig.java
+/Users/sergejivanov/Downloads/fb_project/src/main/java/com/example/fb_project/mapper/ClientMapperDto.java
