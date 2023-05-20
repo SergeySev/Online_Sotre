@@ -1,1 +1,4 @@
 /Users/sergejivanov/Downloads/fb_project/src/test/java/com/example/fb_project/FbProjectApplicationTests.java
+/Users/sergejivanov/Downloads/fb_project/src/test/java/com/example/fb_project/service/ClientServiceTest.java
+/Users/sergejivanov/Downloads/fb_project/src/test/java/com/example/fb_project/controller/ClientControllerTest.java
+/Users/sergejivanov/Downloads/fb_project/src/test/java/com/example/fb_project/createEntity/CreateClientDto.java

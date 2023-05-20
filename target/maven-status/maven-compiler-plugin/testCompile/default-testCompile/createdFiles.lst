@@ -1,1 +1,4 @@
+com/example/fb_project/controller/ClientControllerTest.class
+com/example/fb_project/service/ClientServiceTest.class
 com/example/fb_project/FbProjectApplicationTests.class
+com/example/fb_project/createEntity/CreateClientDto.class
