@@ -1,10 +1,18 @@
 package com.example.fb_project.repository;
 
-import com.example.fb_project.entity.Product;
+import com.example.fb_project.entity.ProductImage;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
-public interface ProductRepository extends MongoRepository<Product, ObjectId> {
+@RepositoryRestResource(exported = false)
+public interface ProductImageRepository extends MongoRepository<ProductImage, ObjectId> {
+    Optional<ProductImage> findByProductIdAndIsMain(ObjectId id, boolean b);
+
+    List<ProductImage> findAllByProductId(ObjectId id);
 }

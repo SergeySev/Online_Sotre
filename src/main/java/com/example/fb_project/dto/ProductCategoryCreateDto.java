@@ -7,7 +7,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductCategoryDto {
-    private String id;
+public class ProductCategoryCreateDto {
     private String title;
+    private String mainCategory;
 }
