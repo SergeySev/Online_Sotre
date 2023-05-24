@@ -1,0 +1,59 @@
+.main_header {
+  background-color: #000;
+  color: #fff;
+}
+
+.main_header_inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 88px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.burger {
+  display: flex;
+  gap: 15px;
+  padding: 14px 16px;
+  border: 1px solid #F05A00;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.burger:hover {
+  background-color: #F05A00;
+}
+
+.main_menu_item {
+  cursor: pointer;
+  transition: all .3s;
+  text-decoration: none;
+  color: #fff;
+}
+
+.main_menu_item:hover {
+  color: #F05A00;
+}
+
+.search {
+  height: 50px;
+  width: 310px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding-left: 60px;
+}
+
+.input_wrapper {
+  position: relative;
+}
+
+.search_icon {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  width: 24px;
+  height: 24px;
+}
