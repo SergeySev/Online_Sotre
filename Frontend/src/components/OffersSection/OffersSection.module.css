@@ -1,0 +1,28 @@
+.offers_section {
+  background-color: var(--black);
+  padding: 22px;
+}
+
+.offers_section_inner {
+  display: flex;
+  gap: 60px;
+}
+
+.offers_title {
+  color: var(--coal);
+  font-size: 20px;
+  font-family: 'Prosto One';
+  font-weight: 400;
+}
+
+.offers_title_active {
+  color: var(--white);
+}
+
+.tab_inner {
+  background-color: var(--coal);
+}
+
+.slider_inner {
+  padding: 56px 0 108px;
+}

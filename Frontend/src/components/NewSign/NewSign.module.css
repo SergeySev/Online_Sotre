@@ -1,0 +1,8 @@
+.new_sign {
+  background-color: #180A3E;
+  font-family: 'Raleway';
+  font-size: 14px;
+  color: var(--white);
+  padding: 4px 6px;
+  text-transform: uppercase;
+}

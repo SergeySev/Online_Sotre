@@ -1,0 +1,25 @@
+.banner {
+  background-color: #3B3B3B;
+  padding: 20px 0;
+}
+
+.banner_inner {
+  display: flex;
+  gap: 20px;
+}
+
+.banner_inner img {
+  display: block;
+
+}
+
+.banner_right {
+  display: flex;
+  gap: 20px;
+}
+
+.small_images {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
