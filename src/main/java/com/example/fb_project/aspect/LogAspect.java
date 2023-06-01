@@ -11,10 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 @Aspect
 @Component
@@ -39,22 +35,25 @@ public class LogAspect {
         assert attributes != null;
         HttpServletRequest request = attributes.getRequest();
 
-        // Получение информации о методе
         String declaringTypeName = jp.getSignature().getDeclaringTypeName();
         String methodName = jp.getSignature().getName();
 
-        // Получение аргументов метода
         Object[] args = jp.getArgs();
 
         StringBuilder logMessage = new StringBuilder();
-        logMessage.append("NEW REQUEST:\n");
+        logMessage.append("""
+
+                =============================================
+
+
+                NEW REQUEST:
+                """);
         logMessage.append("IP: ").append(request.getRemoteAddr()).append("\n");
         logMessage.append("URL: ").append(request.getRequestURL().toString()).append("\n");
         logMessage.append("HTTP_METHOD: ").append(request.getMethod()).append("\n");
         logMessage.append("CONTROLLER_METHOD: ").append(declaringTypeName).append(".").append(methodName).append("\n");
 
 
-        // Добавление значений аргументов в сообщение логирования
         for (int i = 0; i < args.length; i++) {
             logMessage.append("ARGUMENT ").append(i).append(": ").append(args[i]).append("\n");
         }
@@ -74,12 +73,22 @@ public class LogAspect {
     public void recordSuccessfulExecution(JoinPoint joinPoint, Object returningValue) {
         String info;
         if (returningValue != null) {
-            info = String.format("\nMethod %s, from Class %s, successfully called with return value: %s\n",
+            info = String.format("""
+
+                            Method %s, from Class %s, successfully called with return value: %s
+
+
+                            =============================================""",
                     joinPoint.getSignature().getName(),
                     joinPoint.getSourceLocation().getWithinType().getName(),
                     returningValue);
         } else {
-            info = String.format("\nMethod %s, from Class %s, successfully called\n",
+            info = String.format("""
+
+                            Method %s, from Class %s, successfully called
+
+
+                            =============================================""",
                     joinPoint.getSignature().getName(),
                     joinPoint.getSourceLocation().getWithinType().getName());
         }
@@ -95,7 +104,12 @@ public class LogAspect {
      */
     @AfterThrowing(value = "methodExecuting()", throwing = "exception")
     public void recordFailedExecution(JoinPoint joinPoint, Exception exception) {
-        String error = String.format("\nMethod %s, from Class %s, throw an error: %s\n",
+        String error = String.format("""
+
+                        Method %s, from Class %s, throw an error: %s
+
+
+                        =============================================""",
                 joinPoint.getSignature().getName(),
                 joinPoint.getClass().getName(),
                 exception);

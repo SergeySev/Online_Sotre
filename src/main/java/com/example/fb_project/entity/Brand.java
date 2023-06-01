@@ -31,14 +31,13 @@ public class Brand {
 
     private String description;
 
-    @DBRef(lazy = true)
-    @ToString.Exclude
-    private BrandImage brandImage;
+    private String brandImageLink;
 
-    public Brand(String title, String description) {
+    public Brand(String title, String description, String imageLink) {
         this.title = title;
         this.description = description;
         this.products = new ArrayList<>();
+        this.brandImageLink = imageLink;
     }
 
     @Override

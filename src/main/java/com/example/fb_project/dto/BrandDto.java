@@ -7,7 +7,13 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class BrandCreateDto {
+public class BrandDto {
+
+    private String id;
+
     private String title;
+
     private String description;
+
+    private String brandImageLink;
 }
