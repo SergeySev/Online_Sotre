@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './OffersSection.module.css';
 import { offers_menu } from '../../data/data';
 import ProductItem from '../ProductItem/ProductItem';
 import Slider from 'react-slick';
-import { novelties_list } from '../../data/data';
+// import { novelties_list } from '../../data/data';
 import './slick_styles.css'
 
 export default function OffersSection() {
@@ -15,6 +15,15 @@ export default function OffersSection() {
     slidesToShow: 4,
     slidesToScroll: 1
   }
+
+  const [novelties, setNovelties] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:8080/api/v1/product/novelties?page=0&size=6')
+      .then(res => res.json())
+      .then(data => setNovelties(data.content))
+  }, [])
+  const novelties_list = novelties ? novelties : []
+  console.log(novelties_list);
 
   return (
     <>
@@ -30,7 +39,7 @@ export default function OffersSection() {
         <div className='container'>
           <div className={s.slider_inner}>
             <Slider {...settings}>
-              {novelties_list.map(elem => <ProductItem {...elem} key={elem.id} />)}
+              {novelties_list.map(elem => <ProductItem product={elem} key={elem.id} />)}
             </Slider>
           </div>
         </div>

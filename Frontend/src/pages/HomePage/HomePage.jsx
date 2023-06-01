@@ -13,8 +13,7 @@ export default function HomePage() {
   useEffect(() => {
     dispatch(fetch_main_categories())
     dispatch(get_brands())
-  }
-    , [])
+  }, [])
 
 
   return (
