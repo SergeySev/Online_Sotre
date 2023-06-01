@@ -6,33 +6,35 @@ import NewSign from '../NewSign/NewSign'
 import { novelties_list } from '../../data/data'
 import AddToCartBtn from '../AddToCartBtn/AddToCartBtn'
 
-export default function ProductItem({ tag, title, price, discount_price, in_stock, image }) {
+export default function ProductItem({ product }) {
+  // { tag, title, price, discount_price, in_stock, image }
+  console.log(product);
 
   return (
     <div className={s.product_item}>
       <div className={s.top_signs}>
-        <div className={s.tag}><NewSign tag={tag} /></div>
+        <div className={s.tag}><NewSign tag={'NEW'} /></div>
         <div className={s.add_to}>
           <img src={bars} alt='bars' className={s.bars} />
           <img src={heart} alt='heart' />
         </div>
       </div>
-      <img src={require('../OffersSection/assets/news/' + image)} alt='product_image' className={s.product_img} />
+      <img src={product.mainImageLink} alt='product_image' className={s.product_img} />
       <div className={s.color_bars}>
         <div className={s.bar_item}></div>
         <div className={s.bar_item_active}></div>
         <div className={s.bar_item}></div>
         <div className={s.bar_item}></div>
       </div>
-      <p className={s.product_title}>{title}</p>
+      <p className={s.product_title}>{product.title}</p>
       <div className={s.properties}>
         <div className={s.price_box}>
-          <p className={s.discount_price}>{discount_price} $</p>
-          <p className={s.price}>{price} $</p>
+          <p className={s.discount_price}>{product.discountPrice === '0.00' ? product.price : product.discountPrice} $</p>
+          <p className={s.price}>{product.price} $</p>
         </div>
         <div className={s.stock}>
-          {in_stock && <img src={require('./assets/check.png')} className={s.stock_img} alt='stock_img' />}
-          <p className={s.in_stock}>{in_stock ? 'in stock' : 'not in stock'}</p>
+          {product.inStock && <img src={require('./assets/check.png')} className={s.stock_img} alt='stock_img' />}
+          <p className={s.in_stock}>{product.inStock ? 'in stock' : 'not in stock'}</p>
         </div>
       </div>
       <AddToCartBtn />
