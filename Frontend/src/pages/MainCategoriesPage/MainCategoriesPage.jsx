@@ -21,9 +21,6 @@ export default function MainCategoriesPage() {
 
   useEffect(() => dispatch(fetch_main_categories()), [])
 
-  const clickHandler = () => {
-
-  }
 
   return (
     <div className={s.catalog_section}>

@@ -10,5 +10,11 @@ RUN apk add --no-cache python3 py3-pip
 RUN pip3 install requests
 RUN pip3 install requests_toolbelt
 
-CMD exec java -jar app.jar & sleep 30 && python3 /app/python/add_data.py & tail -f /dev/null
+RUN apk add --no-cache nodejs npm
+
+COPY Frontend /app/
+
+RUN npm install
+
+CMD npm start & exec java -jar app.jar & sleep 10 && python3 /app/python/add_data.py & tail -f /dev/null
 

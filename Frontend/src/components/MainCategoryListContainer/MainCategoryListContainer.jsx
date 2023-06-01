@@ -15,9 +15,7 @@ export default function MainCategoryListContainer({ ident }) {
   useEffect(() => dispatch(fetch_sub_categories_by_main(id)), [id])
 
   const subcategories = useSelector(store => store.subcategories)
-  console.log(subcategories)
 
-  const { title, imageLink } = subcategories;
   return (
     <div className={s.subcategories_list}>
       {subcategories.map(elem =>
