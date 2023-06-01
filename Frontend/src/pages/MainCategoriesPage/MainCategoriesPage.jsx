@@ -3,7 +3,8 @@ import s from './MainCategoriesPage.module.css'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import { useDispatch, useSelector } from 'react-redux'
 import MainCategoryListContainer from '../../components/MainCategoryListContainer/MainCategoryListContainer'
-import { fetch_main_categories, fetch_sub_categories_by_main } from '../../requests/requests'
+import { fetch_main_categories } from '../../requests/requests'
+import { NavLink } from 'react-router-dom'
 
 
 export default function MainCategoriesPage() {
@@ -19,10 +20,7 @@ export default function MainCategoriesPage() {
 
 
   useEffect(() => dispatch(fetch_main_categories()), [])
-  useEffect(() => dispatch(fetch_sub_categories_by_main(id)), [])
 
-  const subcategories = useSelector(store => store.subcategories)
-  console.log(subcategories)
 
   return (
     <div className={s.catalog_section}>
@@ -31,12 +29,14 @@ export default function MainCategoriesPage() {
         <div className={s.catalog_wrapper}>
           <h2 className={s.title}>Catalog</h2>
           <div className={s.catalog_headers}>
-            {categories.map(elem => <div
-              className={s.catalog_item_title}
-              key={elem.title}>{elem.title}
-            </div>)}
+            {categories.map(elem =>
+              <NavLink to={`/catalog/${elem.id}`}><div
+                className={s.catalog_item_title}
+                key={elem.title}>{elem.title}
+              </div></NavLink>
+            )}
           </div>
-          <MainCategoryListContainer subcategories={subcategories} />
+          <MainCategoryListContainer ident={id} />
         </div>
       </div>
     </div>

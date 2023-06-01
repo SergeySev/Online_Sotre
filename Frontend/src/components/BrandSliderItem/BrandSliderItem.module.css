@@ -1,4 +1,14 @@
-.slider_item {
-  border-radius: 5px;
+.image_wrapper {
+  background-color: var(--white);
   width: 200px;
+  height: 77px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider_item {
+  width: 100%;
 }

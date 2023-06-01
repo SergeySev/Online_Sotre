@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { fetch_sub_categories_by_main } from '../../requests/requests'
 import s from './MainCategoryListContainer.module.css'
 
-export default function MainCategoryListContainer({ subcategories }) {
+export default function MainCategoryListContainer({ ident }) {
 
-  const { id, title, imageLink } = subcategories;
+  let { id } = useParams()
+  console.log(id);
+
+  id = id ? id : ident
+
+  const dispatch = useDispatch()
+  useEffect(() => dispatch(fetch_sub_categories_by_main(id)), [id])
+
+  const subcategories = useSelector(store => store.subcategories)
+
   return (
     <div className={s.subcategories_list}>
       {subcategories.map(elem =>

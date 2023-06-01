@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/catalog/' element={<MainCategoriesPage />} />
+        <Route path='/catalog/:id' element={<MainCategoriesPage />} />
       </Routes>
       <Footer />
 

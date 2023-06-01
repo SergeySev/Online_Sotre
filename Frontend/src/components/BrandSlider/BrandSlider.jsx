@@ -1,12 +1,15 @@
 import React from 'react'
 import Slider from 'react-slick'
 import s from './BrandSlider.module.css'
-import { brands } from '../../data/data'
+// import { brands } from '../../data/data'
 import BrandSliderItem from '../BrandSliderItem/BrandSliderItem'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useSelector } from 'react-redux'
 
 export default function BrandSlider() {
+
+  const brands = useSelector(store => store.brands)
 
   const settings = {
     dots: false,

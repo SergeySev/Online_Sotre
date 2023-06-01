@@ -1,9 +1,11 @@
 import axios from "axios"
+import { getBrandsAction } from "../store/reducers/brandReducer";
 import { getCategoriesAction } from "../store/reducers/categoriesReducer";
 import { getSubcategoriesByMainAction } from "../store/reducers/subCategoriesReducer";
 const add_user_url = 'http://localhost:8080/api/v1/client/registration'
 const get_main_categories_url = 'http://localhost:8080/api/v1/mainCategory/all'
 const get_subcategories_by_main_url = 'http://localhost:8080/api/v1/mainCategory/byId/';
+const get_brands_url = 'http://localhost:8080/api/v1/brand/all'
 
 export const add_new_user_req = async (user) => {
   try {
@@ -30,11 +32,10 @@ export const fetch_sub_categories_by_main = (id) => {
   }
 }
 
-// export const get_product_category_by_main = () => {
-//   const title = 'For%20home%20and%20garden'
-//   return function (dispatch) {
-//     fetch(get_product_category_by_main_url + title)
-//       .then(res => res.json())
-//       .then(data => dispatch(getCategoriesByMainAction(data)))
-//   }
-// }
+export const get_brands = () => {
+  return function (dispatch) {
+    fetch(get_brands_url)
+      .then(res => res.json())
+      .then(data => dispatch(getBrandsAction(data)))
+  }
+}
