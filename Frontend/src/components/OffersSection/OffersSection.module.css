@@ -8,14 +8,21 @@
   gap: 60px;
 }
 
-.offers_title {
-  color: var(--coal);
+.offers_section_inner h2 {
+  color: var(--smoky);
   font-size: 20px;
   font-family: 'Prosto One';
   font-weight: 400;
+  cursor: pointer;
+  transition: all .5s;
 }
 
-.offers_title_active {
+.offers_section_inner :global(h2.active):hover,
+.offers_section_inner h2:hover {
+  color: var(--orange);
+}
+
+.offers_section_inner :global(h2.active) {
   color: var(--white);
 }
 
