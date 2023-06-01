@@ -2,12 +2,16 @@ import React from 'react'
 import Logo from '../Logo/Logo'
 import SocialIconList from '../SocialIconList/SocialIconList'
 import s from './Footer.module.css'
-import { catalog_list } from '../../data/data'
+// import { catalog_list } from '../../data/data'
 import { main_menu_list } from '../../data/data'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 
 export default function Footer() {
+
+  const catalog_list = useSelector(store => store.categories)
+
   return (
     <div className={s.footer}>
       <div className='container'>

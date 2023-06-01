@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { createHashRouter, RouterProvider } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const router = createHashRouter([
   {
@@ -13,8 +15,10 @@ const router = createHashRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RouterProvider router={router}>
-    <App />
-  </RouterProvider>
+  <Provider store={store}>
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
+  </Provider>
 );
 

@@ -1,0 +1,13 @@
+li a {
+  color: var(--smoky);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+li:last-child a {
+  color: var(--black);
+}
+
+li:hover a {
+  color: var(--black);
+}

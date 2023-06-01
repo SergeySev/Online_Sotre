@@ -52,38 +52,38 @@ export const menu_list = [
 
 // ====================================================
 
-export const catalog_list = [
-  {
-    id: 1,
-    title: 'Painting supplies',
-    link: '#'
-  },
-  {
-    id: 2,
-    title: 'Electrical equipment',
-    link: '#'
-  },
-  {
-    id: 3,
-    title: 'Overalls',
-    link: '#'
-  },
-  {
-    id: 4,
-    title: 'For home and cottage',
-    link: '#'
-  },
-  {
-    id: 5,
-    title: 'Season',
-    link: '#'
-  },
-  {
-    id: 6,
-    title: 'Tools',
-    link: '#'
-  },
-]
+// export const catalog_list = [
+//   {
+//     id: 1,
+//     title: 'Painting supplies',
+//     link: '#'
+//   },
+//   {
+//     id: 2,
+//     title: 'Electrical equipment',
+//     link: '#'
+//   },
+//   {
+//     id: 3,
+//     title: 'Overalls',
+//     link: '#'
+//   },
+//   {
+//     id: 4,
+//     title: 'For home and cottage',
+//     link: '#'
+//   },
+//   {
+//     id: 5,
+//     title: 'Season',
+//     link: '#'
+//   },
+//   {
+//     id: 6,
+//     title: 'Tools',
+//     link: '#'
+//   },
+// ]
 
 //===============================================
 
