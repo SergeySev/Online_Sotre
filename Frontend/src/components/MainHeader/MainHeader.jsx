@@ -12,10 +12,12 @@ export default function MainHeader() {
     <div className={s.main_header}>
       <div className='container'>
         <div className={s.main_header_inner}>
-          <div className={s.burger}>
-            <img src={burger} alt="burger_icon" />
-            <p className={s.burger_title}>Products catalog</p>
-          </div>
+          <NavLink to='/catalog/'>
+            <div className={s.burger}>
+              <img src={burger} alt="burger_icon" />
+              <p className={s.burger_title}>Products catalog</p>
+            </div>
+          </NavLink>
           {menu_list.map(elem => <NavLink to={elem.link} className={s.main_menu_item} key={elem.id}>{elem.title}</NavLink>)}
           <SocialIconList />
           <div className={s.input_wrapper}>

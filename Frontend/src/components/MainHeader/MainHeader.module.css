@@ -26,6 +26,10 @@
   background-color: #F05A00;
 }
 
+.burger_title {
+  color: var(--white);
+}
+
 .main_menu_item {
   cursor: pointer;
   transition: all .3s;
