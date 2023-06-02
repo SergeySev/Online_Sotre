@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -56,7 +57,13 @@ public class ProductService {
                 Boolean.parseBoolean(productDto.getIsHit()),
                 Integer.valueOf(productDto.getInStock()),
                 productDto.getMadeCountry());
-        product.setProductImagesLinks(productDto.getProductImagesLinks());
+        product.getProductImagesLinks().add(productDto.getMainImageLink());
+        List<String> imagesFromDto = productDto.getProductImagesLinks();
+
+        for (String image :
+                imagesFromDto) {
+            product.getProductImagesLinks().add(image);
+        }
 
         brand.getProducts().add(product);
         subCategory.getProducts().add(product);
