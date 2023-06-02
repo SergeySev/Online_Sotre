@@ -3,17 +3,15 @@ import s from './ProductItem.module.css'
 import bars from './assets/bar-chart-2.png'
 import heart from './assets/heart.png'
 import NewSign from '../NewSign/NewSign'
-import { novelties_list } from '../../data/data'
 import AddToCartBtn from '../AddToCartBtn/AddToCartBtn'
 
-export default function ProductItem({ product }) {
-  // { tag, title, price, discount_price, in_stock, image }
+export default function ProductItem({ product, tag }) {
   console.log(product);
 
   return (
     <div className={s.product_item}>
       <div className={s.top_signs}>
-        <div className={s.tag}><NewSign tag={'NEW'} /></div>
+        <div className={s.tag}><NewSign tag={tag} /></div>
         <div className={s.add_to}>
           <img src={bars} alt='bars' className={s.bars} />
           <img src={heart} alt='heart' />
@@ -30,7 +28,7 @@ export default function ProductItem({ product }) {
       <div className={s.properties}>
         <div className={s.price_box}>
           <p className={s.discount_price}>{product.discountPrice === '0.00' ? product.price : product.discountPrice} $</p>
-          <p className={s.price}>{product.price} $</p>
+          {product.discountPrice !== '0.00' && <p className={s.price}>{product.price} $</p>}
         </div>
         <div className={s.stock}>
           {product.inStock && <img src={require('./assets/check.png')} className={s.stock_img} alt='stock_img' />}
