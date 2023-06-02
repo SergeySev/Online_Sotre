@@ -64,12 +64,12 @@
 
 .discount_price {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .price {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   text-decoration-line: line-through;
   color: #DEDBDB;
 }

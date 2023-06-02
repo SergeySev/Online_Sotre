@@ -3,16 +3,15 @@ import s from './ProductItem.module.css'
 import bars from './assets/bar-chart-2.png'
 import heart from './assets/heart.png'
 import NewSign from '../NewSign/NewSign'
-import { novelties_list } from '../../data/data'
 import AddToCartBtn from '../AddToCartBtn/AddToCartBtn'
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, tag }) {
   console.log(product);
 
   return (
     <div className={s.product_item}>
       <div className={s.top_signs}>
-        <div className={s.tag}><NewSign tag={'NEW'} /></div>
+        <div className={s.tag}><NewSign tag={tag} /></div>
         <div className={s.add_to}>
           <img src={bars} alt='bars' className={s.bars} />
           <img src={heart} alt='heart' />
