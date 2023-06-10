@@ -58,4 +58,14 @@ public class MainCategoryController {
         return mainCategoryService.getMainCategoriesByTitle(title);
     }
 
+    @Operation(summary = "Get Main Category by id With all products from this category")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If categories don't exist in the Data Base"),
+    })
+    @GetMapping(path = "/byIdWithProducts/{id}")
+    public MainCategoryDto getMainCategoryByIdWithProducts(@PathVariable String id) {
+        return mainCategoryService.getMainCategoriesByIdWithProducts(id);
+    }
+
 }
