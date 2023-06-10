@@ -18,6 +18,4 @@ public class MainCategoryDto {
     private String title;
 
     private List<SubCategoryDto> subCategories;
-
-    private List<ProductDto> products;
 }
