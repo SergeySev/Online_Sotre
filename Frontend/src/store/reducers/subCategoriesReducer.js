@@ -5,7 +5,6 @@ const GET_SUBCATEGORIES_BY_MAIN = 'GET_SUBCATEGORIES_BY_MAIN';
 export const subCategoriesReducer = (state = defaultState, action) => {
   switch (action.type) {
     case GET_SUBCATEGORIES_BY_MAIN:
-      console.log(action.payload);
       return [...action.payload.subCategories]
 
     default:

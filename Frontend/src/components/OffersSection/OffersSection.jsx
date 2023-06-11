@@ -16,7 +16,7 @@ export default function OffersSection() {
   }
 
   const [offers, setOffers] = useState([])
-  const [tag, setTag] = useState('NEW')
+  // const [tag, setTag] = useState('NEW')
   const [activeElement, setActiveElement] = useState('');
 
   useEffect(() => {
@@ -28,25 +28,25 @@ export default function OffersSection() {
   const handleClick = (elem) => {
     setActiveElement(elem)
     if (elem === 'Novelties') {
-      setTag('NEW')
+      // setTag('NEW')
       fetch('http://localhost:8080/api/v1/product/novelties?page=0&size=6')
         .then(res => res.json())
         .then(data => setOffers(data.content))
 
     } else if (elem === 'Promotions') {
-      setTag('PROMO')
+      // setTag('PROMO')
       fetch('http://localhost:8080/api/v1/product/promo?page=0&size=6')
         .then(res => res.json())
         .then(data => setOffers(data.content))
 
     } else {
-      setTag('HIT')
+      // setTag('HIT')
       fetch('http://localhost:8080/api/v1/product/hit?page=0&size=6')
         .then(res => res.json())
         .then(data => setOffers(data.content))
     }
   }
-  console.log(tag);
+
   return (
     <>
       <div className={s.offers_section}>
@@ -61,7 +61,7 @@ export default function OffersSection() {
         <div className='container'>
           <div className={s.slider_inner}>
             <Slider {...settings}>
-              {offers.map(elem => <ProductItem product={elem} key={elem.id} tag={tag} />)}
+              {offers.map(elem => <ProductItem product={elem} key={elem.id} />)}
             </Slider>
           </div>
         </div>
