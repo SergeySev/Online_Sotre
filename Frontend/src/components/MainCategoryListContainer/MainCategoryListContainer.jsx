@@ -7,7 +7,6 @@ import s from './MainCategoryListContainer.module.css'
 export default function MainCategoryListContainer({ ident }) {
 
   let { id } = useParams()
-  console.log(id);
 
   id = id ? id : ident
 
@@ -19,7 +18,7 @@ export default function MainCategoryListContainer({ ident }) {
   return (
     <div className={s.subcategories_list}>
       {subcategories.map(elem =>
-        <div className={s.subcategory_item}>
+        <div className={s.subcategory_item} key={elem.id}>
           <img src={elem.imageLink} alt={elem.title} className={s.subcategory_img} />
           <p className={s.subcategory_title}>{elem.title}</p>
         </div>

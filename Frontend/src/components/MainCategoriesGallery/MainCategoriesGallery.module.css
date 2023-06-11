@@ -1,0 +1,10 @@
+.main_categories {
+  background-color: var(--background);
+  padding-top: 50px;
+}
+
+.categories_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  /*  grid-template-columns: repeat(2, 1fr); */
+}

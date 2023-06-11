@@ -5,8 +5,18 @@ import heart from './assets/heart.png'
 import NewSign from '../NewSign/NewSign'
 import AddToCartBtn from '../AddToCartBtn/AddToCartBtn'
 
-export default function ProductItem({ product, tag }) {
-  console.log(product);
+export default function ProductItem({ product }) {
+  console.log(product)
+  let tag = 'NEW'
+  if (product.isNew === 'true') {
+    tag = 'NEW'
+  }
+  if (product.isHit === 'true') {
+    tag = 'HIT'
+  }
+  if (product.discountPrice !== '0.00') {
+    tag = 'PROMO'
+  }
 
   return (
     <div className={s.product_item}>

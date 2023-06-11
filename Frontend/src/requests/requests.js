@@ -4,7 +4,7 @@ import { getCategoriesAction } from "../store/reducers/categoriesReducer";
 import { getSubcategoriesByMainAction } from "../store/reducers/subCategoriesReducer";
 const add_user_url = 'http://localhost:8080/api/v1/client/registration'
 const get_main_categories_url = 'http://localhost:8080/api/v1/mainCategory/all'
-const get_subcategories_by_main_url = 'http://localhost:8080/api/v1/mainCategory/byId/';
+const get_subcategories_by_main_url = 'http://localhost:8080/api/v1/mainCategory/byIdWithProducts/';
 const get_brands_url = 'http://localhost:8080/api/v1/brand/all'
 
 export const add_new_user_req = async (user) => {
@@ -39,3 +39,5 @@ export const get_brands = () => {
       .then(data => dispatch(getBrandsAction(data)))
   }
 }
+
+
