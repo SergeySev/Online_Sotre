@@ -6,7 +6,6 @@ import NewSign from '../NewSign/NewSign'
 import AddToCartBtn from '../AddToCartBtn/AddToCartBtn'
 
 export default function ProductItem({ product }) {
-  console.log(product)
   let tag = 'NEW'
   if (product.isNew === 'true') {
     tag = 'NEW'
@@ -40,7 +39,7 @@ export default function ProductItem({ product }) {
         <div className={activeImg && img_index === 0 ? s.bar_item_active : s.bar_item} onClick={() => change_product_img(0)}></div>
         <div className={activeImg && img_index === 1 ? s.bar_item_active : s.bar_item} onClick={() => change_product_img(1)}></div>
         <div className={activeImg && img_index === 2 ? s.bar_item_active : s.bar_item} onClick={() => change_product_img(2)}></div>
-        {/* <div className={s.bar_item} onClick={() => change_product_img(3)}></div> */}
+        <div className={activeImg && img_index === 3 ? s.bar_item_active : s.bar_item} onClick={() => change_product_img(3)}></div>
       </div>
       <p className={s.product_title}>{product.title}</p>
       <div className={s.properties}>
