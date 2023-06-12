@@ -5,22 +5,16 @@ import com.example.fb_project.entity.*;
 import com.example.fb_project.entity.enums.DeliveryType;
 import com.example.fb_project.mapper.ProductMapper;
 import com.example.fb_project.repository.BrandRepository;
-import com.example.fb_project.repository.ProductCategoryRepository;
-import com.example.fb_project.repository.ProductImageRepository;
+import com.example.fb_project.repository.SubCategoryRepository;
 import com.example.fb_project.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.bson.types.ObjectId;
 import org.hibernate.query.IllegalQueryOperationException;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,61 +23,14 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    private final ProductImageRepository productImageRepository;
-
-    private final ImageService imageService;
-
     private final ProductMapper productMapper;
 
     private final BrandRepository brandRepository;
-    private final ProductCategoryRepository productCategoryRepository;
 
-    @Transactional
-    public boolean addProductImage(MultipartFile file, String productTitle) {
-        Product product = getProductOrThrow(productTitle);
-
-        byte[] image = imageService.fileCheckAndToByteArray(file);
-
-        String imageType = imageService.getImageType(file);
-
-        ProductImage productImage = new ProductImage(product, imageType, image, false);
-
-        product.getProductImage().add(productImage);
-
-        productImageRepository.save(productImage);
-        productRepository.save(product);
-        return true;
-    }
-
-    @Transactional
-    public boolean addMainProductImage(MultipartFile file, String productTitle) {
-        Product product = getProductOrThrow(productTitle);
-
-        boolean isMainExists = productImageRepository.findByProductIdAndIsMain(product.getId(), true).isPresent();
-
-        if (isMainExists) throw new IllegalStateException("Main image already exist");
-
-        byte[] image = imageService.fileCheckAndToByteArray(file);
-
-        String imageType = imageService.getImageType(file);
-
-        ProductImage productImage = new ProductImage(product, imageType, image, true);
-
-        product.getProductImage().add(productImage);
-
-        productImageRepository.save(productImage);
-        productRepository.save(product);
-        return true;
-    }
-
-    private Product getProductOrThrow(String productTitle) {
-        return productRepository.findByTitle(productTitle).
-                orElseThrow(() -> new RuntimeException("Product not found"));
-    }
+    private final SubCategoryRepository subCategoryRepository;
 
     @Transactional
     public ProductDto addProduct(ProductDto productDto) {
-        checkDataFromProductDto(productDto);
         boolean isProductExist = productRepository.findByTitle(productDto.getTitle()).isPresent();
         if (isProductExist) {
             throw new IllegalStateException("Product already exist");
@@ -92,9 +39,10 @@ public class ProductService {
                 findByTitle(productDto.getBrand()).
                 orElseThrow(() -> new IllegalQueryOperationException("Brand not found"));
 
-        ProductCategory productCategory = productCategoryRepository.
-                findByTitle(productDto.getProductCategory()).
-                orElseThrow(() -> new IllegalQueryOperationException("Product category not found"));
+
+        SubCategory subCategory = subCategoryRepository.
+                findByTitle(productDto.getSubCategory()).
+                orElseThrow(() -> new IllegalQueryOperationException("Sub category not found"));
 
         Product product = new Product(productDto.getTitle(),
                 BigDecimal.valueOf(Float.parseFloat(productDto.getPrice())),
@@ -103,65 +51,59 @@ public class ProductService {
                 Boolean.valueOf(productDto.getIsNew()),
                 DeliveryType.valueOf(productDto.getDeliveryType()),
                 productDto.getColour(),
-                productCategory,
-                brand);
+                subCategory,
+                brand,
+                productDto.getMainImageLink(),
+                Boolean.parseBoolean(productDto.getIsHit()),
+                Integer.valueOf(productDto.getInStock()),
+                productDto.getMadeCountry());
+        product.getProductImagesLinks().add(productDto.getMainImageLink());
+        List<String> imagesFromDto = productDto.getProductImagesLinks();
 
+        for (String image :
+                imagesFromDto) {
+            product.getProductImagesLinks().add(image);
+        }
 
         brand.getProducts().add(product);
-        productCategory.getProducts().add(product);
+        subCategory.getProducts().add(product);
         productRepository.save(product);
         brandRepository.save(brand);
-        productCategoryRepository.save(productCategory);
+        subCategoryRepository.save(subCategory);
         return productMapper.toDto(product);
     }
 
-    public void checkDataFromProductDto(ProductDto productDto) {
-        if (productDto.getTitle() == null || productDto.getTitle().isBlank() ||
-                productDto.getPrice() == null || productDto.getPrice().isBlank() ||
-                productDto.getDiscountPrice() == null || productDto.getDiscountPrice().isBlank() ||
-                productDto.getDescription() == null || productDto.getDescription().isBlank() ||
-                productDto.getDeliveryType() == null || productDto.getDeliveryType().isBlank() ||
-                productDto.getColour() == null || productDto.getColour().isBlank() ||
-                productDto.getProductCategory() == null || productDto.getProductCategory().isBlank() ||
-                productDto.getBrand() == null || productDto.getBrand().isBlank()
-        ) throw new IllegalArgumentException("The Data is missing");
-    }
-
-    public ResponseEntity<InputStreamResource> getMainProductImage(String productTitle) {
-        Product product = getProductOrThrow(productTitle);
-        ProductImage productImage = productImageRepository.
-                findByProductIdAndIsMain(product.getId(), true).
-                orElseThrow(() -> new IllegalStateException("Main image not found"));
-        return imageService.getInputStreamResourceResponseEntity(productImage);
-    }
-
-    public ResponseEntity<InputStreamResource> getProductImage(ObjectId id) {
-        ProductImage productImage = productImageRepository.findById(id).
-                orElseThrow(() -> new IllegalStateException("Image with this ID doesn't exist in the Data Base"));
-        return imageService.getInputStreamResourceResponseEntity(productImage);
-    }
-
-    public List<String> getAllProductImagesId(ObjectId id) {
-        List<ProductImage> productImages = productImageRepository.findAllByProductId(id);
-        if (productImages.isEmpty()) throw new IllegalStateException("Images not found");
-
-        List<String> imagesId = new ArrayList<>();
-        for (ProductImage image : productImages) {
-            imagesId.add(image.getId().toString());
-        }
-        return imagesId;
-    }
-
-
-    public Page<ProductDto> getAllProductsByProductCategory(Pageable pageable, String productCategoryTitle) {
-        ProductCategory productCategory = productCategoryRepository.
+    public Page<ProductDto> getAllProductsBySubCategory(Pageable pageable, String productCategoryTitle) {
+        SubCategory subCategory = subCategoryRepository.
                 findByTitle(productCategoryTitle).
-                orElseThrow(() -> new IllegalQueryOperationException("Product category not found"));
+                orElseThrow(() -> new IllegalQueryOperationException("Sub category not found"));
 
-        Page<Product> products = productRepository.findAllByProductCategoryId(pageable, productCategory.getId());
+        Page<Product> products = productRepository.findAllBySubCategoryId(pageable, subCategory.getId());
         if (products.isEmpty()) throw new IllegalQueryOperationException("Product not found");
         return products.map(productMapper::toDto);
     }
 
+    public Page<ProductDto> getAllProducts(Pageable pageable) {
+        Page<Product> products = productRepository.findAll(pageable);
+        if (products.isEmpty()) throw new IllegalQueryOperationException("Product not found");
+        return products.map(productMapper::toDto);
+    }
 
+    public Page<ProductDto> getAllNovelties(Pageable pageable) {
+        Page<Product> products = productRepository.findAllByIsNew(pageable, true);
+        if (products.isEmpty()) throw new IllegalQueryOperationException("Product not found");
+        return products.map(productMapper::toDto);
+    }
+
+    public Page<ProductDto> getAllProductsWithoutDiscount(Pageable pageable) {
+        Page<Product> products = productRepository.findAllWithNonZeroDiscountPrice(pageable);
+        if (products.isEmpty()) throw new IllegalQueryOperationException("Product with discount price not found");
+        return products.map(productMapper::toDto);
+    }
+
+    public Page<ProductDto> getAllProductsHit(Pageable pageable) {
+        Page<Product> products = productRepository.findAllByIsHit(pageable, true);
+        if (products.isEmpty()) throw new IllegalQueryOperationException("Product not found");
+        return products.map(productMapper::toDto);
+    }
 }

@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +24,7 @@ public class MainCategory {
     private String title;
     @DBRef(lazy = true)
     @ToString.Exclude
-    private List<ProductCategory> productCategories;
+    private List<SubCategory> subCategories;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -33,7 +32,7 @@ public class MainCategory {
         this.title = title;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
-        this.productCategories = new ArrayList<>();
+        this.subCategories = new ArrayList<>();
     }
 
     @Override

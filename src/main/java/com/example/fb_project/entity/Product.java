@@ -1,6 +1,7 @@
 package com.example.fb_project.entity;
 
 import com.example.fb_project.entity.enums.DeliveryType;
+import com.example.fb_project.entity.enums.MadeCountry;
 import jakarta.persistence.Id;
 import lombok.*;
 import org.bson.types.ObjectId;
@@ -35,7 +36,9 @@ public class Product {
     private String description;
 
     private Boolean isNew;
+    private Boolean isHit;
 
+    private Integer inStock;
     private DeliveryType  deliveryType;
 
     private String colour;
@@ -47,13 +50,16 @@ public class Product {
     private BigInteger purchase_quantity;
 
     @DBRef(lazy = true)
-    private ProductCategory productCategory;
+    private SubCategory subCategory;
+
+    private MadeCountry madeCountry;
 
     @DBRef(lazy = true)
     private Brand brand;
 
-    @DBRef(lazy = true)
-    private List<ProductImage> productImage;
+    private String mainImageLink;
+
+    private List<String> productImagesLinks;
 
     public Product(String title,
                    BigDecimal price,
@@ -62,8 +68,12 @@ public class Product {
                    Boolean isNew,
                    DeliveryType deliveryType,
                    String colour,
-                   ProductCategory productCategory,
-                   Brand brand) {
+                   SubCategory subCategory,
+                   Brand brand,
+                   String mainImageLink,
+                   boolean isHit,
+                   Integer inStock,
+                   String madeCountry) {
         this.title = title;
         this.price = price.setScale(2, RoundingMode.HALF_UP);
         this.discountPrice = discountPrice.setScale(2, RoundingMode.HALF_UP);
@@ -71,10 +81,14 @@ public class Product {
         this.isNew = isNew;
         this.deliveryType = deliveryType;
         this.colour = colour;
-        this.productCategory = productCategory;
+        this.subCategory = subCategory;
         this.brand = brand;
         this.createdAt = LocalDateTime.now();
-        this.productImage = new ArrayList<>();
+        this.productImagesLinks = new ArrayList<>();
+        this.isHit = isHit;
+        this.inStock = inStock;
+        this.mainImageLink = mainImageLink;
+        this.madeCountry = MadeCountry.valueOf(madeCountry);
     }
 
     @Override
