@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage/HomePage';
 import SignWindow from './components/SIgnWindow/SignWindow';
 import { useState } from 'react';
 import MainCategoriesPage from './pages/MainCategoriesPage/MainCategoriesPage';
+import SubCategoryPage from './pages/SubCategoryPage/SubCategoryPage';
 
 function App() {
   const [active, setActive] = useState(false);
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/catalog/' element={<MainCategoriesPage />} />
         <Route path='/catalog/:id' element={<MainCategoriesPage />} />
+        <Route path='/catalog/:id/:id' element={<SubCategoryPage />} />
       </Routes>
       <Footer />
 

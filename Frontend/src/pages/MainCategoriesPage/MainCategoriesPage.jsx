@@ -30,9 +30,9 @@ export default function MainCategoriesPage() {
           <h2 className={s.title}>Catalog</h2>
           <div className={s.catalog_headers}>
             {categories.map(elem =>
-              <NavLink to={`/catalog/${elem.id}`}><div
+              <NavLink to={`/catalog/${elem.id}`} key={elem.title}><div
                 className={s.catalog_item_title}
-                key={elem.title}>{elem.title}
+              >{elem.title}
               </div></NavLink>
             )}
           </div>
