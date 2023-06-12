@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './ProductItem.module.css'
 import bars from './assets/bar-chart-2.png'
 import heart from './assets/heart.png'
@@ -18,6 +18,14 @@ export default function ProductItem({ product }) {
     tag = 'PROMO'
   }
 
+
+  const [img_index, setImg_index] = useState(0)
+  const [activeImg, setActiveImg] = useState(false);
+  const change_product_img = (image_index) => {
+    setImg_index(image_index);
+    setActiveImg(true)
+  }
+
   return (
     <div className={s.product_item}>
       <div className={s.top_signs}>
@@ -27,12 +35,12 @@ export default function ProductItem({ product }) {
           <img src={heart} alt='heart' />
         </div>
       </div>
-      <img src={product.mainImageLink} alt='product_image' className={s.product_img} />
+      <img src={product.productImagesLinks[img_index]} alt='product_image' className={s.product_img} />
       <div className={s.color_bars}>
-        <div className={s.bar_item}></div>
-        <div className={s.bar_item_active}></div>
-        <div className={s.bar_item}></div>
-        <div className={s.bar_item}></div>
+        <div className={activeImg && img_index === 0 ? s.bar_item_active : s.bar_item} onClick={() => change_product_img(0)}></div>
+        <div className={activeImg && img_index === 1 ? s.bar_item_active : s.bar_item} onClick={() => change_product_img(1)}></div>
+        <div className={activeImg && img_index === 2 ? s.bar_item_active : s.bar_item} onClick={() => change_product_img(2)}></div>
+        {/* <div className={s.bar_item} onClick={() => change_product_img(3)}></div> */}
       </div>
       <p className={s.product_title}>{product.title}</p>
       <div className={s.properties}>

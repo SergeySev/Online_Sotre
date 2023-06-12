@@ -7,6 +7,7 @@ import s from './CategoryItemGallery.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetch_sub_categories_by_main } from '../../requests/requests';
 import ProductItem from '../ProductItem/ProductItem';
+import './slick_styles.css'
 
 export default function CategoryItemGallery({ id, title }) {
   const settings = {
@@ -28,7 +29,7 @@ export default function CategoryItemGallery({ id, title }) {
     <>
       <div className={s.category_header}>
         <h2>{title}</h2>
-        <div className={s.category_controls}>
+        <div className='category_controls'>
           <Slider {...settings}>
             {sub_categories.map(elem => <ProductItem product={elem.productDtoList[0]} key={elem.id} />)}
           </Slider>
