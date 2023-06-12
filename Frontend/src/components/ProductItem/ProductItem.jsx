@@ -20,7 +20,7 @@ export default function ProductItem({ product }) {
 
 
   const [img_index, setImg_index] = useState(0)
-  const [activeImg, setActiveImg] = useState(false);
+  const [activeImg, setActiveImg] = useState(true);
   const change_product_img = (image_index) => {
     setImg_index(image_index);
     setActiveImg(true)
