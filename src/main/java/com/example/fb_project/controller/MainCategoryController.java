@@ -1,7 +1,6 @@
 package com.example.fb_project.controller;
 
 import com.example.fb_project.dto.MainCategoryDto;
-import com.example.fb_project.entity.MainCategory;
 import com.example.fb_project.service.MainCategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -19,10 +18,10 @@ public class MainCategoryController {
 
     private final MainCategoryService mainCategoryService;
 
-    @Operation(summary = "Upload a new Category")
+    @Operation(summary = "Create a new Category")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful loaded"),
-            @ApiResponse(responseCode = "500", description = "If the Title is null or empty"),
+            @ApiResponse(responseCode = "500", description = "Main category already exists"),
     })
     @PostMapping(path = "/add")
     public boolean createMainCategory(@RequestParam String title) {
@@ -34,10 +33,39 @@ public class MainCategoryController {
             @ApiResponse(responseCode = "200", description = "Successful loaded"),
             @ApiResponse(responseCode = "500", description = "If categories don't exist in the Data Base"),
     })
-    @GetMapping(path = "/getAllMainCategory")
-    public List<MainCategoryDto> getMainCategory() {
+    @GetMapping(path = "/all")
+    public List<MainCategoryDto> getAllMainCategory() {
         return mainCategoryService.getAllMainCategories();
+    }
 
+    @Operation(summary = "Get Main Category by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If categories don't exist in the Data Base"),
+    })
+    @GetMapping(path = "/byId/{id}")
+    public MainCategoryDto getMainCategoryById(@PathVariable String id) {
+        return mainCategoryService.getMainCategoriesById(id);
+    }
+
+    @Operation(summary = "Get Main Category by title")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If categories don't exist in the Data Base"),
+    })
+    @GetMapping(path = "/byTitle/{title}")
+    public MainCategoryDto getMainCategoryByTitle(@PathVariable String title) {
+        return mainCategoryService.getMainCategoriesByTitle(title);
+    }
+
+    @Operation(summary = "Get Main Category by id With all products from this category")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If categories don't exist in the Data Base"),
+    })
+    @GetMapping(path = "/byIdWithProducts/{id}")
+    public MainCategoryDto getMainCategoryByIdWithProducts(@PathVariable String id) {
+        return mainCategoryService.getMainCategoriesByIdWithProducts(id);
     }
 
 }

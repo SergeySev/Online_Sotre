@@ -16,8 +16,8 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Document(collection = "product_category")
-public class ProductCategory {
+@Document(collection = "sub_category")
+public class SubCategory {
 
     @Id
     private ObjectId id;
@@ -28,9 +28,7 @@ public class ProductCategory {
     @ToString.Exclude
     private MainCategory mainCategory;
 
-    @DBRef(lazy = true)
-    @ToString.Exclude
-    private ProductCategoryImage productCategoryImage;
+    private String imageLink;
 
     @DBRef(lazy = true)
     @ToString.Exclude
@@ -39,13 +37,15 @@ public class ProductCategory {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public ProductCategory(String title,
-                           MainCategory mainCategory) {
+    public SubCategory(String title,
+                       MainCategory mainCategory,
+                       String imageLink) {
         this.title = title;
         this.mainCategory = mainCategory;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
         this.products = new ArrayList<>();
+        this.imageLink = imageLink;
     }
 
 
@@ -53,7 +53,7 @@ public class ProductCategory {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProductCategory that = (ProductCategory) o;
+        SubCategory that = (SubCategory) o;
         return id.equals(that.id) && title.equals(that.title);
     }
 

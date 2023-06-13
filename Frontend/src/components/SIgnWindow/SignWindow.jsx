@@ -21,10 +21,10 @@ export default function SignWindow({ active, setActive }) {
     // }
 
     const newUser = {
-      "firstName": "Sergii",
+      "firstName": "Dmitro",
       "lastName": "Gutsuliak",
-      "phoneNumber": "123456789",
-      "email": "mail@gmail.com",
+      "phoneNumber": "123467856789",
+      "email": "mai678l@gmail.com",
       "password": "987654321",
       "birthDate": "1996-02-16T00:00:00.000Z",
       // "2023-05-22T18:30:39.954Z"

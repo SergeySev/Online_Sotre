@@ -9,12 +9,12 @@ Git
 Docker
 
 ### Installation
-1. Clone the repository by running the following command in your terminal:
-### `git clone https://github.com/SergeySev/Online_Store.git`
+1. Download the files:
+### `https://drive.google.com/drive/folders/1kazmGtKnYvaK0Daf3AzPIQYqAFVHEVwF?usp=sharing`
 
 2. Launch Docker on your machine.
 
-3. Open the terminal and navigate to the directory where you cloned the project
+3. Open the terminal and navigate to the directory where you download the project
 
 4. Run the project using the following command: 
 ### `docker compose up`

@@ -3,7 +3,7 @@ package com.example.fb_project.mapper;
 import com.example.fb_project.dto.ProductDto;
 import com.example.fb_project.entity.Brand;
 import com.example.fb_project.entity.Product;
-import com.example.fb_project.entity.ProductCategory;
+import com.example.fb_project.entity.SubCategory;
 import org.bson.types.ObjectId;
 import org.mapstruct.Mapper;
 
@@ -18,8 +18,8 @@ public interface ProductMapper {
     default String map(Brand brand) {
         return brand.getTitle();
     }
-    default String map(ProductCategory productCategory) {
-        return productCategory.getTitle();
+    default String map(SubCategory subCategory) {
+        return subCategory.getTitle();
     }
     default String map(ObjectId id) {
         return id.toString();

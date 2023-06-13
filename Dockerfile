@@ -16,5 +16,6 @@ COPY Frontend /app/
 
 RUN npm install
 
-CMD npm start & exec java -jar app.jar & sleep 10 && python3 /app/python/add_data.py & tail -f /dev/null
+#CMD npm start & exec java -jar app.jar & sleep 10 && python3 /app/python/add_data.py & tail -f /dev/null
+CMD python3 /app/python/add_data.py & npm start & exec java -jar app.jar
 
