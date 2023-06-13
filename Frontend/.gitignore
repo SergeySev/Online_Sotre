@@ -2,6 +2,7 @@
 
 #db
 /mongo-data
+/*.wt
 
 # dependencies
 /node_modules
