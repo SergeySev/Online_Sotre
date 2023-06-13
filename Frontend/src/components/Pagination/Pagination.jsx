@@ -21,9 +21,6 @@ export default function Pagination({ setCurrentPage, countElem, currentPage }) {
     }
   }
 
-  console.log(countElem);
-  console.log(currentPage);
-
   return (
     <div className={s.pagination}>
       <img src={prev} alt={'arrow-left'} className={s.arrow_img} onClick={decrement_cur_page} />

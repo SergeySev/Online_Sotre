@@ -1,29 +1,4 @@
-.category_item {
-  background-color: var(--coal);
-  width: 310px;
-  padding: 24px;
-  color: var(--white);
-  border-bottom: 1px solid var(--dark-gray);
-  position: relative;
-  transition: var(--transition);
-  cursor: pointer;
-}
-
-.category_item::after {
-  content: '';
-  background-image: url('./assets/arrow-right.png');
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  top: 22px;
-  right: 24px;
-}
-
-.category_item:hover {
-  background-color: var(--orange);
-}
-
 .aside_wrapper {
   border-radius: 5px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
