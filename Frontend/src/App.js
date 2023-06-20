@@ -10,22 +10,25 @@ import MainCategoriesPage from './pages/MainCategoriesPage/MainCategoriesPage';
 import SubCategoryPage from './pages/SubCategoryPage/SubCategoryPage';
 
 function App() {
-  const [active, setActive] = useState(false);
-  return (
-    <div>
-      {/* <SignWindow active={active} setActive={setActive} /> */}
-      <TopHeader active={active} setActive={setActive} />
-      <MainHeader />
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/catalog/' element={<MainCategoriesPage />} />
-        <Route path='/catalog/:id' element={<MainCategoriesPage />} />
-        <Route path='/catalog/:id/:id' element={<SubCategoryPage />} />
-      </Routes>
-      <Footer />
+	// const [active, setActive] = useState(false);
+	return (
+		<div className='app'>
+			{/* <SignWindow active={active} setActive={setActive} /> */}
+			<header id="header">
+				{/* <TopHeader active={active} setActive={setActive} /> */}
+				<TopHeader />
+				<MainHeader />
+			</header>
+			<Routes>
+				<Route path='/' element={<HomePage />} />
+				<Route path='/catalog/' element={<MainCategoriesPage />} />
+				<Route path='/catalog/:id' element={<MainCategoriesPage />} />
+				<Route path='/catalog/:id/:id' element={<SubCategoryPage />} />
+			</Routes>
+			<Footer />
 
-    </div>
-  );
+		</div>
+	);
 }
 
 export default App;

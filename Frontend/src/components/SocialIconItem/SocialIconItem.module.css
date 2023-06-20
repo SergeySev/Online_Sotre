@@ -1,8 +1,15 @@
 .icon_container {
-  background-color: #fff;
+  background-color: var(--white);
   width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 43px;
+  height: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: background-color var(--transition);
+}
+
+.icon_container:hover{
+background-color: var(--orange);
 }
