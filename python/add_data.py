@@ -54,8 +54,6 @@ def send_request(body, url):
         response = requests.post(url, json=item)
         if response.status_code == 200:
             i += 1
-        else:
-            logging('Error')
     logging(str(i) + " items added to the Data base")
 
 
@@ -130,7 +128,6 @@ def main_category():
     logging(str(i) + " main categories successfully added")
 
 
-
 def sub_category():
     url = 'http://localhost:8080/api/v1/sub_category/add'
 
@@ -161,14 +158,15 @@ def product():
                     used_titles.add(title)
                     break
             brand_value = random.choice(brands)
-            price = round(random.uniform(50, 10000), 2)
-            discount_price = price * 0.25 if random.random() < 0.04 else 0.00
+            price = round(random.uniform(1, 500), 2)
+            print("\n\nPrice ", price)
+            discount_price = price * 0.75 if random.random() < 0.04 else 0.00
             description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor " \
                           "incididunt ut labore et dolore magna aliqua"
             sub_category_value = random.choice(sub_category_titles)
             is_new = random.random() < 0.1
             delivery_type_value = random.choice(delivery_type)
-            colour = random.choice(["red", "blue", "green", "yellow", "black", "white"])
+            colour = random.choice(["RED", "BLUE", "GREEN", "YELLOW", "BLACK", "WHITE"])
             main_image_link = random.choice(images_links)
             product_images_links = random.sample(images_links, k=3)
             made_country_value = random.choice(made_country)
@@ -195,7 +193,6 @@ def product():
 
 
 def main():
-    url_start = 'http://localhost:8080/change_log/is_started'
     url_update = 'http://localhost:8080/change_log/update'
     url_is_update = 'http://localhost:8080/change_log/is_update'
     is_started = False
@@ -206,7 +203,7 @@ def main():
             logging("Failed to connect, try again")
             time.sleep(4)
             continue
-        if 'null' in response.text:
+        if 'null' in response.text or response.text == "false":
             logging("Started filling the database")
             brand()
             main_category()
