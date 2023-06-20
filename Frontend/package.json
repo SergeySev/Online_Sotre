@@ -1,6 +1,6 @@
 {
 	"name": "myapp",
-	"homepage": "",
+	"homepage": "http://SergeySev.github.io/Online_Store",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
