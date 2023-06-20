@@ -20,7 +20,7 @@ public class ChangeLogService {
     public boolean addUpdate() {
         ChangeLog changeLog = changeLogRepository.
                 findByIsStarted(true).
-                orElseThrow(() -> new IllegalStateException(""));
+                orElseThrow(() -> new IllegalStateException("The app has already been updated"));
 
         changeLog.setIsUpdated(true);
         changeLog.setUpdatedAt(LocalDateTime.now());
@@ -30,8 +30,7 @@ public class ChangeLogService {
     }
 
     public boolean isUpdate() {
-        ChangeLog changeLog = changeLogRepository.findByIsStarted(true).orElseThrow(() -> new IllegalStateException("The app is not started"));
-        return changeLog.getIsUpdated();
+        return changeLogRepository.findByIsUpdated(true).isPresent();
     }
 
     public boolean deleteChangeLog() {

@@ -38,7 +38,7 @@ public class BrandController {
     public Page<BrandDto> getBrand(@RequestParam(defaultValue = "0") int page,
                                    @RequestParam(defaultValue = "30") int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return brandService.getBrand(pageable);
+        return brandService.getBrands(pageable);
     }
 
 }

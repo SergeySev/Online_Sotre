@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Repository
@@ -26,4 +27,8 @@ public interface ProductRepository extends MongoRepository<Product, ObjectId> {
 
     @Query("{'discountPrice' :  {'$ne': '0.00'}}")
     Page<Product> findAllWithNonZeroDiscountPrice(Pageable pageable);
+
+    Optional<Product> findFirstByOrderByPriceAsc();
+
+    Optional<Product> findFirstByOrderByPriceDesc();
 }

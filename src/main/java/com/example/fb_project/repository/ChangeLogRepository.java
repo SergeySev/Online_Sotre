@@ -12,4 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(exported = false)
 public interface ChangeLogRepository extends MongoRepository<ChangeLog, ObjectId> {
     Optional<ChangeLog> findByIsStarted(boolean b);
+
+    Optional<ChangeLog> findByIsUpdated(boolean b);
 }

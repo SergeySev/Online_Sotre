@@ -16,13 +16,14 @@ public class DataConfig {
 
         return args -> {
             if (changeLogRepository.findByIsStarted(true).isPresent())
-                System.out.println("The app been already started");
+                System.out.println("The app been already started. v 1.0");
             else {
                 ChangeLog changeLog = new ChangeLog();
                 changeLog.setIsStarted(true);
                 changeLog.setCreatedAt(LocalDateTime.now());
 
                 changeLogRepository.save(changeLog);
+                System.out.println("The app been already started. v 1.0");
             }
         };
     }

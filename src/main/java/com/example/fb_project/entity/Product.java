@@ -1,5 +1,6 @@
 package com.example.fb_project.entity;
 
+import com.example.fb_project.entity.enums.Color;
 import com.example.fb_project.entity.enums.DeliveryType;
 import com.example.fb_project.entity.enums.MadeCountry;
 import jakarta.persistence.Id;
@@ -36,12 +37,14 @@ public class Product {
     private String description;
 
     private Boolean isNew;
+
     private Boolean isHit;
 
     private Integer inStock;
-    private DeliveryType  deliveryType;
 
-    private String colour;
+    private DeliveryType deliveryType;
+
+    private Color colour;
 
     private LocalDateTime createdAt;
 
@@ -67,13 +70,13 @@ public class Product {
                    String description,
                    Boolean isNew,
                    DeliveryType deliveryType,
-                   String colour,
+                   Color colour,
                    SubCategory subCategory,
                    Brand brand,
                    String mainImageLink,
                    boolean isHit,
                    Integer inStock,
-                   String madeCountry) {
+                   MadeCountry madeCountry) {
         this.title = title;
         this.price = price.setScale(2, RoundingMode.HALF_UP);
         this.discountPrice = discountPrice.setScale(2, RoundingMode.HALF_UP);
@@ -88,7 +91,7 @@ public class Product {
         this.isHit = isHit;
         this.inStock = inStock;
         this.mainImageLink = mainImageLink;
-        this.madeCountry = MadeCountry.valueOf(madeCountry);
+        this.madeCountry = madeCountry;
     }
 
     @Override

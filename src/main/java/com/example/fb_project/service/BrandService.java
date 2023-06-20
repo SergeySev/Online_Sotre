@@ -19,8 +19,10 @@ public class BrandService {
 
 
     public BrandDto addBrand(BrandDto brandDto) {
-        if (brandDto.getTitle() == null || brandDto.getDescription() == null) throw new IllegalArgumentException("The data is missing");
-        if (brandDto.getTitle().isBlank() || brandDto.getDescription().isBlank()) throw new IllegalArgumentException("The data is missing");
+        if (brandDto.getTitle() == null || brandDto.getDescription() == null)
+            throw new IllegalArgumentException("The data is missing");
+        if (brandDto.getTitle().isBlank() || brandDto.getDescription().isBlank())
+            throw new IllegalArgumentException("The data is missing");
         boolean isBrandExists = brandRepository.findByTitle(brandDto.getTitle()).isPresent();
         if (isBrandExists) throw new IllegalStateException("Brand already exists");
         Brand brand = new Brand(brandDto.getTitle(), brandDto.getDescription(), brandDto.getBrandImageLink());
@@ -28,7 +30,7 @@ public class BrandService {
         return brandMapper.toDto(brand);
     }
 
-    public Page<BrandDto> getBrand(Pageable pageable) {
+    public Page<BrandDto> getBrands(Pageable pageable) {
         Page<Brand> brands = brandRepository.findAll(pageable);
         if (brands.isEmpty())
             throw new IllegalQueryOperationException("Brands doesn't exist in the Data Base");

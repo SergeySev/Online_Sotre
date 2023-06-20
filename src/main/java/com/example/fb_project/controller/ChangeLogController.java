@@ -14,15 +14,6 @@ public class ChangeLogController {
 
     private final ChangeLogService changeLogService;
 
-    @Operation(summary = "Check, if the app was started")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successful loaded"),
-    })
-    @GetMapping(path = "/is_started")
-    public boolean isStart() {
-        return changeLogService.isStart();
-    }
-
     @Operation(summary = "Check, if the data base was updated")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful loaded"),

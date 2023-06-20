@@ -11,6 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "api/v1/product")
 @RequiredArgsConstructor
@@ -89,6 +91,27 @@ public class ProductController {
                                               @RequestParam(defaultValue = "30") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return productService.getAllProductsHit(pageable);
+    }
+
+    @Operation(summary = "Get products by filter")
+    @ApiResponse(responseCode = "200", description = "Successful loaded")
+    @GetMapping(path = "/byFilter")
+    public Page<ProductDto> getAllProductsByFilter(@RequestParam(defaultValue = "0") int page,
+                                                   @RequestParam(defaultValue = "30") int size,
+                                                   @RequestParam(defaultValue = "") String priceFrom,
+                                                   @RequestParam(defaultValue = "") String priceTo,
+                                                   @RequestParam(defaultValue = "") List<String> brandTitles,
+                                                   @RequestParam(defaultValue = "") List<String> madeCountries,
+                                                   @RequestParam(defaultValue = "") List<String> colours,
+                                                   @RequestParam(defaultValue = "") List<String> deliveryTypes) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productService.getAllByFilter(priceFrom,
+                priceTo,
+                brandTitles,
+                madeCountries,
+                colours,
+                deliveryTypes,
+                pageable);
     }
 
 
