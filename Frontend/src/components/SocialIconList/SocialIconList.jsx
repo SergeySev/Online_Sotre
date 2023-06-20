@@ -5,9 +5,9 @@ import { social_icons } from '../../data/data'
 
 
 export default function SocialIconList() {
-  return (
-    <div className={s.social_icon_list}>
-      {social_icons.map(elem => <SocialIconItem key={elem.id} {...elem} />)}
-    </div>
-  )
+	return (
+		<ul className={s.social_icon_list}>
+			{social_icons.map(elem => <SocialIconItem key={elem.id} {...elem} />)}
+		</ul>
+	)
 }

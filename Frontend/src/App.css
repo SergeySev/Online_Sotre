@@ -1,5 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Prosto+One&family=Raleway:wght@100;200;300;400;500;600;700;900&display=swap');
+
+:root {
+  --white: #fff;
+  --background: #f2f5f7;
+  --black: #000;
+  --gray: #dedbdb;
+  --smoky: #8a8a8a;
+  --dark-gray-333: #333333;
+  --dark-gray: #3b3b3b;
+  --coal: #212526;
+  --orange: #f05a00;
+  --red: #fc573b;
+
+  --transition: .3s ease-in-out;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
 .container {
-  max-width: 1360px;
-  padding: 0 30px;
+  /* max-width: 1360px; */
+  max-width: 100%;
+  padding: 0 70px;
   margin: 0 auto;
+}
+
+.app{
+	position: relative;
+	top: 96px;
+}
+
+.slick-arrow.slick-next,
+.slick-arrow.slick-prev {
+  height: 40px;
+  width: 40px;
+}
+
+.slick-arrow.slick-prev {
+  left: -60px;
+}
+
+.slick-arrow.slick-next {
+  right: -45px;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  font-size: 40px !important;
 }

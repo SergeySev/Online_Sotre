@@ -4,6 +4,12 @@
 /mongo-data
 /*.wt
 
+/python
+/Dockerfile
+/backend/
+/docker-compose.yaml  
+/target/
+
 # dependencies
 /node_modules
 /.pnp

@@ -1,0 +1,18 @@
+.main_menu_list{
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 60px;
+}
+
+.main_menu_item {
+	flex-shrink: 0;
+  cursor: pointer;
+  transition: all .3s;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.main_menu_item:hover {
+  color: var(--orange);
+}

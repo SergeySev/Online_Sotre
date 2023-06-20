@@ -1,0 +1,31 @@
+
+.burger {
+	width: 200px;
+
+  display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+  padding: 13px 16px 14px;
+
+  border: 1px solid var(--orange);
+  border-radius: 5px;
+
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.burger:hover {
+  background-color: var(--orange);
+}
+
+.burger_icon {
+	display: block;
+	width: 26px;
+	height: 26px;
+	color:var(--white);
+}
+
+.burger_title {
+  color: var(--white);
+}
