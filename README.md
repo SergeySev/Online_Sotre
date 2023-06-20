@@ -1,4 +1,4 @@
-# [Online_Store](http://SergeySev.github.io/Online_Store)
+# [Online_Store](http://sergeysev.github.io/Online_Store)
 ## Instructions to Start the Application
 This repository contains an Online-Store Application that can be easily run using Docker. Follow these steps to get started:
 
