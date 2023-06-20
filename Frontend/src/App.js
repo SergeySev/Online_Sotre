@@ -14,13 +14,13 @@ function App() {
 	return (
 		<div className='app'>
 			{/* <SignWindow active={active} setActive={setActive} /> */}
-			<header id="header">
+			<header id="home">
 				{/* <TopHeader active={active} setActive={setActive} /> */}
 				<TopHeader />
 				<MainHeader />
 			</header>
 			<Routes>
-				<Route path='/' element={<HomePage />} />
+				<Route path='/Online_Store' element={<HomePage />} />
 				<Route path='/catalog/' element={<MainCategoriesPage />} />
 				<Route path='/catalog/:id' element={<MainCategoriesPage />} />
 				<Route path='/catalog/:id/:id' element={<SubCategoryPage />} />

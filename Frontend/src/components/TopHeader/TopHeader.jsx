@@ -44,7 +44,7 @@ export default function TopHeader() {
 
 					<div className={s.left_part}>
 
-						<HashLink smooth to="/#header" scroll={el => scrollWithOffset(el)}>
+						<HashLink smooth to="/Online_Store/#home" scroll={el => scrollWithOffset(el)}>
 							<Logo />
 						</HashLink>
 
