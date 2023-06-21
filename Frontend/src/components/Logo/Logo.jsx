@@ -1,11 +1,19 @@
-import React from 'react'
-import s from './Logo.module.css'
+import { HashLink } from 'react-router-hash-link';
 import logo from './assets/logo.png'
+import s from './Logo.module.css'
 
-export default function Logo() {
+export default function Logo({ isSticky }) {
+
+	const scrollWithOffset = (el) => {
+		const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+		const yOffset = -96;
+		window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+	}
+
 	return (
-		<div className={s.logo}>
+		// <HashLink className={s.logo} smooth to="/Online_Store/#home" scroll={el => scrollWithOffset(el)}>
+		<HashLink className={`${s.logo} ${s[isSticky ? 'sticky' : ''] || ''}`} smooth to="/Online_Store/#home" scroll={el => scrollWithOffset(el)}>
 			<img src={logo} alt="logo" />
-		</div>
+		</HashLink>
 	)
 }

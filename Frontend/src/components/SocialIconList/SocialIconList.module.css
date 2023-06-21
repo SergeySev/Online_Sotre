@@ -1,4 +1,8 @@
 .social_icon_list {
+	grid-area: media_list;
   display: flex;
   gap: 12px;
+}
+.social_icon_list.sticky {
+	display: none;
 }

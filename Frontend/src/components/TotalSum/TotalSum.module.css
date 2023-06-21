@@ -1,0 +1,21 @@
+
+.total {
+	grid-area: total;
+	display: flex;
+  flex-direction: column;
+  gap: 5px;
+	flex-shrink: 0;
+}
+
+.total_text{
+
+}
+.total_summ{
+
+}
+
+@media (max-width: 1360px){
+	.total{
+		display: none;
+	}
+}

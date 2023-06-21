@@ -1,7 +1,9 @@
 
 .burger {
+	grid-area: catalog;
 	width: 200px;
 
+	flex-shrink: 0;
   display: flex;
 	justify-content: space-between;
 	align-items: center;

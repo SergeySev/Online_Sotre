@@ -1,5 +1,15 @@
 .logo {
+	position: relative;
+	z-index: 40;
+	grid-area: logo;
   width: 90px;
   height: 56px;
   cursor: pointer;
+	transition: all var(--transition);
+}
+
+.logo.sticky{
+	/* opacity: 1 !important; */
+	/* visibility: visible !important; */
+	/* transform: translateY(96px); */
 }

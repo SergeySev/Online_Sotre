@@ -7,12 +7,9 @@ import s from './CatalogBurger.module.css'
 
 export default function CatalogBurger() {
 	return (
-		<NavLink to='/catalog/' >
-			<div className={s.burger}>
-				{/* <HiOutlineMenuAlt2 className={s.burger_icon} /> */}
-				<img src={burger} alt="burger icon" />
-				<p className={s.burger_title}>Products catalog</p>
-			</div>
+		<NavLink className={s.burger} to='/catalog/' >
+			<img src={burger} alt="burger icon" />
+			<p className={s.burger_title}>Products catalog</p>
 		</NavLink>
 	)
 }

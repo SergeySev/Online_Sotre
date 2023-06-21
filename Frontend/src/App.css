@@ -27,8 +27,8 @@ body {
 }
 
 .app{
-	position: relative;
-	top: 96px;
+	/* position: relative;
+	z-index: 0; */
 }
 
 .slick-arrow.slick-next,
