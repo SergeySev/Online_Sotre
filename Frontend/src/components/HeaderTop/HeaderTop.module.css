@@ -1,0 +1,15 @@
+.top_header {
+	position: relative;
+	z-index: 20;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 5px;
+}
+
+@media (max-width: 762px){
+	.top_header{
+		height: var(--header-top_hight);
+	
+	}
+}

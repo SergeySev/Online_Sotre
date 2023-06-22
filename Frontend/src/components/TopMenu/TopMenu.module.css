@@ -1,4 +1,10 @@
 .top_menu {
-  display: flex;
+	display: flex;
 	gap:2px;
+}
+
+@media (max-width: 762px){
+	.top_menu{
+		display: none;
+	}
 }

@@ -1,4 +1,4 @@
-
+import { FiPhoneIncoming } from 'react-icons/fi';
 import avatar from './assets/avatar.png'
 import comparison from './assets/bar-chart.png'
 import favorite from './assets/heart.png'
@@ -10,24 +10,31 @@ import facebook from './assets/fb.png'
 export const top_menu_items = [
 	{
 		id: 1,
+		title: 'phone',
+		image: '',
+		icon: <FiPhoneIncoming />,
+		link: '#'
+	},
+	{
+		id: 2,
 		title: 'favorite',
 		image: favorite,
 		link: '#'
 	},
 	{
-		id: 2,
+		id: 3,
 		title: 'comparison',
 		image: comparison,
 		link: '#'
 	},
 	{
-		id: 3,
+		id: 4,
 		title: 'avatar',
 		image: avatar,
 		link: '#'
 	},
 	{
-		id: 4,
+		id: 5,
 		title: 'cart',
 		image: cart,
 		link: '#'

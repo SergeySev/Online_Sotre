@@ -13,23 +13,28 @@
   --red: #fc573b;
 
   --transition: .3s ease-in-out;
+
+	--header-top_hight: 96px;
+	--container-max: 2060px;
 }
 
 body {
   font-family: 'Raleway', sans-serif;
 }
 
+.app{
+	/* position: relative; */
+	max-width: var(--container-max);
+	margin: 0 auto;
+	/* overflow: hidden; */
+}
+
 .container {
-  /* max-width: 1360px; */
-  max-width: 100%;
+  max-width: 1920px;
   padding: 0 70px;
   margin: 0 auto;
 }
 
-.app{
-	/* position: relative;
-	z-index: 0; */
-}
 
 .slick-arrow.slick-next,
 .slick-arrow.slick-prev {
@@ -48,4 +53,16 @@ body {
 .slick-prev::before,
 .slick-next::before {
   font-size: 40px !important;
+}
+
+@media (max-width: 860px){
+	:root{
+		--header-top_hight: 60px;
+	}
+}
+
+@media (max-width: 762px){
+	.container{
+		padding: 0 15px;
+	}
 }

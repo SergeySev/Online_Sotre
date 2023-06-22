@@ -1,13 +1,29 @@
-
-.menu_item  {
-	width: 96px;
-	height: 96px;
-  padding: 32px;
-  background-color: var(--dark-gray);
-  transition: all .3s;
-  cursor: pointer;
+.menu_item {
+	width: var(--header-top_hight);
+	height: var(--header-top_hight);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--dark-gray);
+	transition: all .3s;
+	cursor: pointer;
 }
 
 .menu_item:hover {
-  background-color: var(--orange);
+	background-color: var(--orange);
+}
+
+.menu_item svg {
+	width: 32px;
+	height: 32px;
+}
+
+.menu_item.blocked {
+	display: none;
+}
+
+@media (max-width: 1360px){
+	.menu_item.blocked {
+		display: flex;
+	}
 }
