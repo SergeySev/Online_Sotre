@@ -1,25 +1,8 @@
+@media (max-width: 1360px){
+
 .hours{
-	grid-area: hours;
+	display: none;
+}
 }
 
-.phones {
-	grid-area: phone;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-	cursor: pointer;
-}
 
-.phone {
-  font-size: 18px;
-	transition: color var(--transition);
-}
-
-.order_call {
-  font-size: 14px;
-  color: var(--red);
-}
-
-.phones:hover{
-	color:var(--red);
-}

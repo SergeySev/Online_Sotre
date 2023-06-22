@@ -2,7 +2,7 @@ import { HashLink } from 'react-router-hash-link';
 import logo from './assets/logo.png'
 import s from './Logo.module.css'
 
-export default function Logo({ isSticky }) {
+export default function Logo() {
 
 	const scrollWithOffset = (el) => {
 		const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
@@ -11,8 +11,11 @@ export default function Logo({ isSticky }) {
 	}
 
 	return (
-		// <HashLink className={s.logo} smooth to="/Online_Store/#home" scroll={el => scrollWithOffset(el)}>
-		<HashLink className={`${s.logo} ${s[isSticky ? 'sticky' : ''] || ''}`} smooth to="/Online_Store/#home" scroll={el => scrollWithOffset(el)}>
+		<HashLink
+			className={s.logo}
+			smooth
+			to="/Online_Store/#home"
+			scroll={el => scrollWithOffset(el)}>
 			<img src={logo} alt="logo" />
 		</HashLink>
 	)

@@ -11,7 +11,7 @@ function App() {
 	// const [active, setActive] = useState(false);
 
 	return (
-		<div className='app'  >
+		<div className='app'>
 			<Header />
 			<Routes>
 				<Route path='/Online_Store' element={<HomePage />} />

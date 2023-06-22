@@ -1,20 +1,18 @@
-
 .burger {
-	grid-area: catalog;
 	width: 200px;
-
 	flex-shrink: 0;
   display: flex;
 	justify-content: space-between;
 	align-items: center;
-
   padding: 13px 16px 14px;
-
   border: 1px solid var(--orange);
   border-radius: 5px;
-
   cursor: pointer;
   transition: background-color var(--transition);
+}
+
+.burger.blocked{
+display: none;
 }
 
 .burger:hover {
@@ -30,4 +28,10 @@
 
 .burger_title {
   color: var(--white);
+}
+
+@media (max-width: 1100px){
+	.burger.scroll{
+		display: none;
+	}
 }
