@@ -7,9 +7,23 @@
 	gap: 5px;
 }
 
-@media (max-width: 762px){
-	.top_header{
+.top_header::before {
+	content: "";
+	position: absolute;
+	z-index: 20;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: var(--header-top_hight);
+	background-color: var(--dark-gray-333);
+}
+
+@media (max-width: 762px) {
+	.top_header {
 		height: var(--header-top_hight);
-	
+	}
+
+	.top_header::before {
+		background-color: var(--black);
 	}
 }

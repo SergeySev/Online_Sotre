@@ -1,6 +1,6 @@
 .burger_menu{
 	position: relative;
-	z-index: 40;
+	z-index: 70;
 	width: 30px;
 	height: 22px;
 	flex-shrink: 0;

@@ -1,8 +1,10 @@
 .call_context {
+	position: relative;
+	z-index: 70;
 	flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 	cursor: pointer;
 }
 
@@ -17,8 +19,8 @@
 
 
 .order_text {
-  font-size: 14px;
-  color: var(--red);
+	font-size: 14px;
+	color: var(--red);
 }
 
 @media (min-width: 1600px){

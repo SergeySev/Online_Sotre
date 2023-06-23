@@ -1,10 +1,20 @@
 .top_menu {
+	position: relative;
+	z-index: 70;
 	display: flex;
 	gap:2px;
+}
+.top_menu.content{
+	display: none;
 }
 
 @media (max-width: 762px){
 	.top_menu{
 		display: none;
+	}
+	.top_menu.content{
+		width: 100%;
+		display: flex;
+		justify-content: center;
 	}
 }

@@ -10,13 +10,14 @@
 .header::before{
 	content: "";
 	position:absolute;
-	z-index: 10;
+	z-index: 20;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: var(--header-top_hight);
 	background-color: var(--dark-gray-333);
 }
+
 
 @media (max-width: 762px){
 	.header::before{

@@ -35,7 +35,7 @@ export default function HeaderScroll() {
 					<div className={s.header_scroll_content} >
 						<Logo />
 						<CatalogBurger isBlocked='scroll' />
-						<Search />
+						<Search isBlocked='scroll'/>
 						<TopMenu />
 						<TotalSum />
 						<Burger />
