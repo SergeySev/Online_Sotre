@@ -1,5 +1,6 @@
 .input_wrapper {
-	position: relative;
+ position: relative;
+	flex-shrink: 0;
 	justify-self: end;
 	max-width: 310px;
 	width: 100%;
@@ -11,9 +12,9 @@
 	background-color: var(--white);
 }
 
-.input_wrapper.blocked{
+.input_wrapper.content{ 
 	display: none;
-	}
+} 
 
 .search {
 	border: none;
@@ -49,16 +50,14 @@
 }
 
 @media (max-width: 1360px){
-	.input_wrapper{
+	.input_wrapper.scroll{
 		display: none;
 	}
-	.input_wrapper.blocked{
-		display: flex;
-		}
 }
 
-@media (max-width: 1160px){
-	.input_wrapper.blocked{
-		display: none;
-	}
+@media (max-width: 860px){
+	.input_wrapper.content{ 
+		display: flex;
+	} 
+	
 }

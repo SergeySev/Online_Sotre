@@ -1,22 +1,26 @@
 .burger {
 	width: 200px;
 	flex-shrink: 0;
-  display: flex;
+	display: flex;
 	justify-content: space-between;
 	align-items: center;
-  padding: 13px 16px 14px;
-  border: 1px solid var(--orange);
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color var(--transition);
+	padding: 13px 16px 14px;
+	border: 1px solid var(--orange);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color var(--transition);
 }
 
 .burger.blocked{
-display: none;
+	display: none;
+}
+
+.burger.content{
+	display: none;
 }
 
 .burger:hover {
-  background-color: var(--orange);
+	background-color: var(--orange);
 }
 
 .burger_icon {
@@ -27,11 +31,18 @@ display: none;
 }
 
 .burger_title {
-  color: var(--white);
+	color: var(--white);
 }
 
 @media (max-width: 1100px){
 	.burger.scroll{
 		display: none;
+	}
+}
+
+
+@media (max-width: 860px){
+	.burger.content{
+		display: flex;
 	}
 }

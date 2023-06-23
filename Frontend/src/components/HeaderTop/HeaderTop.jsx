@@ -7,13 +7,16 @@ import Search from '../Search/Search';
 import Burger from '../Burger/Burger';
 import OrderCall from '../OrderCall/OrderCall';
 import s from './HeaderTop.module.css'
+import ContentMenu from '../ContentMenu/ContentMenu';
 
 export default function HeaderTop() {
+
 	return (
 		<div className={s.top_header}>
+			<ContentMenu/>
 			<Logo />
 			<CatalogBurger isBlocked="blocked" />
-			<Search isBlocked="blocked" />
+			{/* <Search isBlocked="blocked" /> */}
 			<WorkingHours />
 			<OrderCall isBlocked='blocked' />
 			<TopMenu />

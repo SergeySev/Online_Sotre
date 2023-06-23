@@ -1,12 +1,22 @@
 .main_menu_list{
+	position: relative;
+	z-index: 70;
 	grid-area: menu_list;
 	max-width: 450px;
 	width: 100%;
-	height: 88px;
+	/* height: 88px; */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 25px;
+}
+
+.main_menu_list.content{
+	font-size: 22px;
+	display: flex;
+	flex-direction: column;
+	gap:40px;
+
 }
 
 
@@ -20,4 +30,11 @@
 
 .main_menu_item:hover {
   color: var(--orange);
+}
+
+@media (max-width: 1160px){
+	.main_menu_list{
+		display: none;
+	}
+
 }
