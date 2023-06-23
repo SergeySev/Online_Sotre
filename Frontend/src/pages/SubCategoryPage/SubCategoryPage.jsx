@@ -5,7 +5,7 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import MainCategoriesAside from '../../components/MainCategoriesAside/MainCategoriesAside';
 import Pagination from '../../components/Pagination/Pagination';
 import ProductItem from '../../components/ProductItem/ProductItem';
-import { get_category_products } from '../../requests/requests';
+import { fetch_category_products } from '../../requests/requests';
 
 import s from './SubCategoryPage.module.css'
 
@@ -18,7 +18,7 @@ export default function SubCategoryPage() {
   const subcategory_products = useSelector(store => store.category_products.category_products)
   const subcategory_title = useSelector(store => store.category_products.category_title)
 
-  useEffect(() => dispatch(get_category_products(id.id)), [])
+  useEffect(() => dispatch(fetch_category_products(id.id)), [])
 
   const breadcrumbsItems = [
     { text: 'Home /', link: '/' },

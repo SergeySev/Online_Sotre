@@ -52,12 +52,12 @@ export const menu_list = [
 	{
 		id: 2,
 		title: 'Promotions',
-		link: '#'
+		link: '#novelties'
 	},
 	{
 		id: 3,
 		title: 'Season hits',
-		link: '#'
+		link: '#novelties'
 	},
 	{
 		id: 4,
