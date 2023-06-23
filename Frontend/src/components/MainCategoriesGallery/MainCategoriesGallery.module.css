@@ -8,3 +8,11 @@
   flex-wrap: wrap;
   /*  grid-template-columns: repeat(2, 1fr); */
 }
+
+@media (max-width:1420px) {
+  .categories_wrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
