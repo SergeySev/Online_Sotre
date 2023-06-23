@@ -1,15 +1,16 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import { categoriesReducer } from "./reducers/categoriesReducer";
-import thunk from "redux-thunk";
-import { subCategoriesReducer } from "./reducers/subCategoriesReducer";
-import { brandReducer } from "./reducers/brandReducer";
-import { categoryProductsReducer } from "./reducers/categoryProductsReducer";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import brandSlice from "./reducers/brandSlice";
+import categoriesSlice from "./reducers/categoriesSlice";
+import categoryProductsSlice from "./reducers/categoryProductsSlice";
+import subCategoriesSlice from "./reducers/subCategoriesSlice";
 
 const rootReducer = combineReducers({
-  categories: categoriesReducer,
-  subcategories: subCategoriesReducer,
-  brands: brandReducer,
-  category_products: categoryProductsReducer
+  categories: categoriesSlice,
+  subcategories: subCategoriesSlice,
+  brands: brandSlice,
+  category_products: categoryProductsSlice
 })
 
-export const store = createStore(rootReducer, applyMiddleware(thunk))
+export const store = configureStore({
+  reducer: rootReducer
+})

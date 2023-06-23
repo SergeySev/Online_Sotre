@@ -6,14 +6,14 @@ import BrandSlider from '../../components/BrandSlider/BrandSlider'
 import MainCategoriesGallery from '../../components/MainCategoriesGallery/MainCategoriesGallery'
 import NewsSection from '../../components/NewsSection/NewsSection'
 import OffersSection from '../../components/OffersSection/OffersSection'
-import { fetch_main_categories, get_brands } from '../../requests/requests'
+import { fetch_brands, fetch_main_categories } from '../../requests/requests'
 
 export default function HomePage() {
 
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetch_main_categories())
-    dispatch(get_brands())
+    dispatch(fetch_brands())
   }, [])
 
   const categories = useSelector(store => store.categories)
