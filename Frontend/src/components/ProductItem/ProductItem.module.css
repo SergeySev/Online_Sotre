@@ -47,7 +47,7 @@
 .bar_item,
 .bar_item_active {
   width: 30%;
-  height: 2px;
+  height: 4px;
   background-color: #DEDBDB;
   cursor: pointer;
 }

@@ -1,11 +1,26 @@
 .category_controls .slick-arrow.slick-prev {
   top: -34px;
-  right: 340px;
+  right: 195px;
   left: unset;
 }
 
 .category_controls .slick-arrow.slick-next {
   top: -34px;
-  right: 285px;
+  right: 140px;
   left: unset;
+}
+
+.slick-slide>div {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 790px) {
+  .category_controls .slick-arrow.slick-prev {
+    right: 55px;
+  }
+
+  .category_controls .slick-arrow.slick-next {
+    right: 0;
+  }
 }
