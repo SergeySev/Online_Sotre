@@ -44,3 +44,14 @@
   font-size: 16px;
   font-weight: 400;
 }
+
+@media (max-width: 1060px) {
+  .news_section_inner {
+    flex-direction: column;
+  }
+
+  .text_block {
+    max-width: none;
+    margin-bottom: 30px;
+  }
+}

@@ -23,4 +23,8 @@
   .category_controls .slick-arrow.slick-next {
     right: 0;
   }
+
+  .container .slick-slider {
+    margin: 0 15px;
+  }
 }

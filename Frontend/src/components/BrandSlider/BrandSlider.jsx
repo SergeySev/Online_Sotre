@@ -16,7 +16,27 @@ export default function BrandSlider() {
     infinite: true,
     speed: 1000,
     slidesToShow: 6,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1420,
+        settings: {
+          slidesToShow: 5,
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+        }
+      },
+      {
+        breakpoint: 980,
+        settings: {
+          slidesToShow: 3,
+        }
+      }
+    ]
   }
 
   return (

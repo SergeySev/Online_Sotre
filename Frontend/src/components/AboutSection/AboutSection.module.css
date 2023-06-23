@@ -5,7 +5,7 @@
 
 .about_inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 50px;
 }
 
@@ -24,4 +24,14 @@
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 20px;
+}
+
+@media (max-width:1060px) {
+  .about_inner {
+    flex-direction: column;
+  }
+
+  .about_description {
+    max-width: none;
+  }
 }
