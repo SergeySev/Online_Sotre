@@ -35,6 +35,12 @@ export default function BrandSlider() {
         settings: {
           slidesToShow: 3,
         }
+      },
+      {
+        breakpoint: 690,
+        settings: {
+          slidesToShow: 2,
+        }
       }
     ]
   }
