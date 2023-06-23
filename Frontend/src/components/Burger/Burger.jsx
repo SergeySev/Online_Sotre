@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useContext } from 'react'
+import {BurgerContext} from '../../context/burgerContext'
 import { AiOutlineClose } from 'react-icons/ai';
 import s from './Burger.module.css'
 
 export default function Burger() {
-	const [burgerActive, setBurgerActive] = useState(false);
+	const {burgerActive, setBurgerActive}  =  useContext(BurgerContext);
 
 	return (
 		<div

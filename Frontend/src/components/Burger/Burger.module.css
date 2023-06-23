@@ -20,8 +20,8 @@
 
 .burger_menu svg{
 	position: absolute;
-	top: -2px;
-	left: -2px;
+	top: -6px;
+	left: -3px;
 	width: 30px;
 	height: 30px;
 	opacity: 0;

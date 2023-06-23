@@ -6,13 +6,21 @@ import MainCategoriesPage from './pages/MainCategoriesPage/MainCategoriesPage';
 import SubCategoryPage from './pages/SubCategoryPage/SubCategoryPage';
 import Footer from './components/Footer/Footer';
 import './App.css';
+import { BurgerContext } from './context/burgerContext';
 
 function App() {
 	// const [active, setActive] = useState(false);
-
+	const [burgerActive, setBurgerActive] = useState(false);
+	
 	return (
 		<div className='app'>
+			<BurgerContext.Provider
+		value={{
+			burgerActive, 
+			setBurgerActive
+		}}>
 			<Header />
+		</BurgerContext.Provider>
 			<Routes>
 				<Route path='/Online_Store' element={<HomePage />} />
 				<Route path='/catalog/' element={<MainCategoriesPage />} />
