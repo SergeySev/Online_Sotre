@@ -1,11 +1,11 @@
-.hours{
+.hours {
 	position: relative;
 	z-index: 70;
-}
-@media (max-width: 1360px){
-.hours{
-	display: none;
-}
+	flex-shrink: 0;
 }
 
-
+@media (max-width: 1360px) {
+	.hours {
+		display: none;
+	}
+}
