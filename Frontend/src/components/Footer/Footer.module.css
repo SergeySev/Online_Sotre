@@ -20,7 +20,7 @@
 .contacts_list,
 .catalog_list,
 .menu_list {
-	min-width: 220px;
+	min-width: 208px;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
