@@ -35,26 +35,6 @@ body {
   margin: 0 auto;
 }
 
-
-/* .slick-arrow.slick-next,
-.slick-arrow.slick-prev {
-  height: 40px;
-  width: 40px;
-}
-
-.slick-arrow.slick-prev {
-  left: -60px;
-}
-
-.slick-arrow.slick-next {
-  right: -45px;
-}
-
-.slick-prev::before,
-.slick-next::before {
-  font-size: 48px !important;
-} */
-
 @media (max-width: 860px) {
   :root {
     --header-top_hight: 60px;
