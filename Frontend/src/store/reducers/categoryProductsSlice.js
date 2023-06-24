@@ -7,7 +7,7 @@ const categoryProductsSlice = createSlice({
     category_products: []
   },
   reducers: {
-    get_category_products(state, action) {
+    get_subcategory_products(state, action) {
       return {
         category_title: action.payload.title,
         category_products: action.payload.productDtoList
@@ -17,4 +17,4 @@ const categoryProductsSlice = createSlice({
 })
 
 export default categoryProductsSlice.reducer;
-export const { get_category_products } = categoryProductsSlice.actions;
+export const { get_subcategory_products } = categoryProductsSlice.actions;

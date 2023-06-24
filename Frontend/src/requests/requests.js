@@ -1,12 +1,13 @@
 import axios from "axios"
 import { get_brands } from "../store/reducers/brandSlice";
 import { get_categories } from "../store/reducers/categoriesSlice";
+import { get_subcategory_products } from "../store/reducers/categoryProductsSlice";
 import { get_subcategories_by_main } from "../store/reducers/subCategoriesSlice";
 const add_user_url = 'http://localhost:8080/api/v1/client/registration'
 const get_main_categories_url = 'http://localhost:8080/api/v1/mainCategory/all'
 const get_subcategories_by_main_url = 'http://localhost:8080/api/v1/mainCategory/byIdWithProducts/';
 const get_brands_url = 'http://localhost:8080/api/v1/brand/all'
-const get_category_products_url = 'http://localhost:8080/api/v1/sub_category/get_by_id/'
+const get_subcategory_products_url = 'http://localhost:8080/api/v1/sub_category/get_by_id/'
 
 export const add_new_user_req = async (user) => {
   try {
@@ -41,11 +42,11 @@ export const fetch_brands = () => {
   }
 }
 
-export const fetch_category_products = (id) => {
+export const fetch_subcategory_products = (id) => {
   return function (dispatch) {
-    fetch(`${get_category_products_url}${id}`)
+    fetch(`${get_subcategory_products_url}${id}`)
       .then(res => res.json())
-      .then(data => dispatch(get_category_products_url(data)))
+      .then(data => dispatch(get_subcategory_products(data)))
   }
 }
 

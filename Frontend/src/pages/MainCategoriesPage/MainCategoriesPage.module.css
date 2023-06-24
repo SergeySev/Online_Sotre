@@ -12,6 +12,8 @@
 
 .title {
   margin-top: 32px;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .catalog_item_title {
