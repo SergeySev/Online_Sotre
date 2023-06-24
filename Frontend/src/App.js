@@ -47,14 +47,13 @@ function App() {
 	}, [burgerActive]);
 
 	return (
-		<div className='app'>
 			<BurgerContext.Provider
 		value={{
 			burgerActive, 
 			setBurgerActive
 		}}>
+			<div className='app'>
 			<Header />
-		</BurgerContext.Provider>
 			<Routes>
 				<Route path='/Online_Store' element={<HomePage />} />
 				<Route path='/catalog/' element={<MainCategoriesPage />} />
@@ -63,6 +62,7 @@ function App() {
 			</Routes>
 			<Footer />
 		</div>
+		</BurgerContext.Provider>
 	);
 }
 

@@ -10,7 +10,7 @@ export default function HeaderBottom() {
 		<div className={s.header_bottom}>
 			<CatalogBurger />
 			<MainMenu />
-			<SocialIconList />
+			<SocialIconList content='header'/>
 			<Search />
 		</div >
 	)

@@ -1,11 +1,11 @@
 import { HashLink } from 'react-router-hash-link';
 import { useContext } from 'react'
-import {BurgerContext} from '../../context/burgerContext'
+import { BurgerContext } from '../../context/burgerContext'
 import logo from './assets/logo.png'
 import s from './Logo.module.css'
 
-export default function Logo() {
-	const context  =  useContext(BurgerContext);
+export default function Logo({ content }) {
+	const context = useContext(BurgerContext);
 
 	const scrollWithOffset = (el) => {
 		const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
@@ -15,11 +15,11 @@ export default function Logo() {
 
 	return (
 		<HashLink
-			className={s.logo}
+			className={`${s.logo} ${s[content] || ''}`}
 			smooth
 			to="/Online_Store/#home"
 			scroll={el => scrollWithOffset(el)}
-			onClick={()=> context.setBurgerActive(false)}>
+			onClick={() => context.setBurgerActive(false)}>
 			<img src={logo} alt="logo" />
 		</HashLink>
 	)

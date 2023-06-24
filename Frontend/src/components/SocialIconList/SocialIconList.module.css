@@ -1,17 +1,16 @@
 .social_icon_list {
-  display: flex;
-  gap: 12px;
+	display: flex;
+	gap: 12px;
 }
 
-@media (min-width: 1600px){
-	.social_icon_list {
+@media (min-width: 1600px) {
+	.social_icon_list.header {
 		gap: 40px;
-		}
+	}
 }
 
-@media (max-width: 1360px){
-	.social_icon_list {
+@media (max-width: 1360px) {
+	.social_icon_list.header {
 		display: none;
-		}
+	}
 }
-
