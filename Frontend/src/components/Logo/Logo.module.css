@@ -1,9 +1,14 @@
 .logo {
 	position: relative;
-	z-index: 70;
+	z-index: 10;
 	flex-shrink: 0;
 	width: 90px;
 	cursor: pointer;
+}
+
+.header {
+	position: relative;
+	z-index: 70;
 }
 
 

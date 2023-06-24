@@ -1,7 +1,7 @@
 .icon_container {
-  background-color: var(--white);
-  width: 37px;
-  height: 36px;
+	background-color: var(--white);
+	width: 37px;
+	height: 36px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -10,6 +10,14 @@
 	transition: background-color var(--transition);
 }
 
-.icon_container:hover{
-background-color: var(--orange);
+@media (hover: hover) {
+	.icon_container:hover {
+		background-color: var(--orange);
+	}
+}
+
+@media (hover: none) {
+	.icon_container:active {
+		background-color: var(--orange);
+	}
 }
