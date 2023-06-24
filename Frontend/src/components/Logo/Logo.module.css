@@ -2,13 +2,13 @@
 	position: relative;
 	z-index: 70;
 	flex-shrink: 0;
-  width: 90px;
-  cursor: pointer;
+	width: 90px;
+	cursor: pointer;
 }
 
 
-@media (max-width: 762px){
-	.logo {
+@media (max-width: 762px) {
+	.logo.header {
 		width: 60px;
-		}
+	}
 }

@@ -13,10 +13,9 @@ export default function HeaderTop() {
 
 	return (
 		<div className={s.top_header}>
-			<ContentMenu/>
-			<Logo />
+			<ContentMenu />
+			<Logo content="header" />
 			<CatalogBurger isBlocked="blocked" />
-			{/* <Search isBlocked="blocked" /> */}
 			<WorkingHours />
 			<OrderCall isBlocked='blocked' />
 			<TopMenu />

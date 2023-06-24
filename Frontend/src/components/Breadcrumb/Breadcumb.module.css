@@ -1,13 +1,13 @@
-li a {
-  color: var(--smoky);
-  font-size: 14px;
-  font-weight: 400;
+.breadcrumb_item a {
+	color: var(--smoky);
+	font-size: 14px;
+	font-weight: 400;
 }
 
-li:last-child a {
-  color: var(--black);
+.breadcrumb_item:last-child a {
+	color: var(--black);
 }
 
-li:hover a {
-  color: var(--black);
+.breadcrumb_item:hover a {
+	color: var(--black);
 }
