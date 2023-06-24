@@ -1,12 +1,14 @@
-.social_icon_list {
+.social_icon_list,
+.social_icon_list.header {
 	display: flex;
 	gap: 12px;
 }
 
-@media (min-width: 1600px) {
-	.social_icon_list.header {
-		gap: 40px;
-	}
+.social_icon_list.header {
+	flex-grow: 1;
+	min-width: 135px;
+	max-width: 180px;
+	justify-content: space-between;
 }
 
 @media (max-width: 1360px) {
