@@ -1,10 +1,10 @@
-import { HashLink } from 'react-router-hash-link'
 import { useContext } from 'react'
+import { HashLink } from 'react-router-hash-link'
 import { BurgerContext } from '../../context/burgerContext'
 import { menu_list } from '../../data/data'
-import s from './MainMenu.module.css'
+import s from './MenuNavigation.module.css'
 
-export function MainMenu({ isContent }) {
+export function MenuNavigation({ isContent }) {
 	const context = useContext(BurgerContext);
 
 	const scrollWithOffset = (el) => {

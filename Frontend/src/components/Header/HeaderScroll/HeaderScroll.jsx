@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Logo, TopMenu, CartSum, Burger, CatalogBurger, Search } from '../../'
+import { Logo, MenuIconsList, CartSum, Burger, CatalogBurger, Search } from '../../'
 import s from './HeaderScroll.module.css'
 
 export function HeaderScroll() {
@@ -29,7 +29,7 @@ export function HeaderScroll() {
 						<Logo content="header" />
 						<CatalogBurger isBlocked='scroll' />
 						<Search isBlocked='scroll' />
-						<TopMenu />
+						<MenuIconsList />
 						<CartSum />
 						<Burger />
 					</div>

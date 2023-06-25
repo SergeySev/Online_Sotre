@@ -1,18 +1,18 @@
 import { useContext } from 'react';
 import { BurgerContext } from '../../context/burgerContext'
-import s from './ContentMenu.module.css'
-import { TopMenu, CatalogBurger, MainMenu, Search } from '../';
+import { MenuIconsList, CatalogBurger, MenuNavigation, Search } from '..';
+import s from './MenuBurger.module.css'
 
 
-export function ContentMenu() {
+export function MenuBurger() {
 	const context = useContext(BurgerContext);
 
 	return (
 		<div className={`${s.content_menu} ${s[context.burgerActive ? 'active' : ''] || ''}`}>
-			<TopMenu isContent="content" />
+			<MenuIconsList isContent="content" />
 			<Search isBlocked="content" />
 			<CatalogBurger isBlocked="content" />
-			<MainMenu isContent="content" />
+			<MenuNavigation isContent="content" />
 		</div>
 	)
 }
