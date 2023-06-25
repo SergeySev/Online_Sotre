@@ -1,13 +1,18 @@
-import React from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Slider from 'react-slick'
-import s from './BrandSlider.module.css'
-// import { brands } from '../../data/data'
+import { fetch_brands } from '../../requests/requests';
 import BrandSliderItem from '../BrandSliderItem/BrandSliderItem'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useSelector } from 'react-redux'
+import s from './BrandSlider.module.css'
 
 export function BrandSlider() {
+
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(fetch_brands())
+	}, [])
 
 	const brands = useSelector(store => store.brands)
 
