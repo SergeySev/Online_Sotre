@@ -1,13 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import Header from './components/Header/Header';
-import HomePage from './pages/HomePage/HomePage';
-import MainCategoriesPage from './pages/MainCategoriesPage/MainCategoriesPage';
-import SubCategoryPage from './pages/SubCategoryPage/SubCategoryPage';
-import Footer from './components/Footer/Footer';
-import './App.css';
 import { BurgerContext } from './context/burgerContext';
-import ContentMenu from './components/ContentMenu/ContentMenu';
+import {Header, Footer} from './components';
+import {HomePage, MainCategoriesPage, SubCategoryPage} from './pages';
+import './App.css';
 
 function App() {
 	// const [active, setActive] = useState(false);

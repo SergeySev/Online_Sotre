@@ -1,6 +1,6 @@
 import s from './OrderCall.module.css'
 
-export default function OrderCall({ isBlocked }) {
+export function OrderCall({ isBlocked }) {
 	return (
 		<div className={`${s.call_context} ${s[isBlocked] || ''}`}>
 			<p className={s.phone}>+7 495 120-32-14</p>

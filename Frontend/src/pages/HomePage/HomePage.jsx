@@ -8,24 +8,27 @@ import NewsSection from '../../components/NewsSection/NewsSection'
 import OffersSection from '../../components/OffersSection/OffersSection'
 import { fetch_brands, fetch_main_categories } from '../../requests/requests'
 
-export default function HomePage() {
+export function HomePage() {
+	// export default function HomePage() {
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetch_main_categories())
-    dispatch(fetch_brands())
-  }, [])
+	// const dispatch = useDispatch()
 
-  const categories = useSelector(store => store.categories)
+	// useEffect(() => {
+	// 	dispatch(fetch_main_categories())
+	// 	dispatch(fetch_brands())
+	// }, [])
 
-  return (
-    <>
-      <Banner />
-      <MainCategoriesGallery categories={categories} />
-      <BrandSlider />
-      <AboutSection />
-      <OffersSection />
-      <NewsSection />
-    </>
-  )
+	// const categories = useSelector(store => store.categories)
+
+	return (
+		<>
+			<Banner />
+			<MainCategoriesGallery />
+			{/* <MainCategoriesGallery categories={categories} /> */}
+			<BrandSlider />
+			<AboutSection />
+			<OffersSection />
+			<NewsSection />
+		</>
+	)
 }

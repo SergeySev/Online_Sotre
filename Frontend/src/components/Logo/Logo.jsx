@@ -4,7 +4,7 @@ import { BurgerContext } from '../../context/burgerContext'
 import logo from './assets/logo.png'
 import s from './Logo.module.css'
 
-export default function Logo({ content }) {
+export function Logo({ content }) {
 	const context = useContext(BurgerContext);
 
 	const scrollWithOffset = (el) => {
