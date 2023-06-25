@@ -1,6 +1,7 @@
 import s from './CartSum.module.css'
 
-export default function CartSum() {
+export function CartSum() {
+
 	const total_summ = 100;
 	return (
 		<div className={s.total}>

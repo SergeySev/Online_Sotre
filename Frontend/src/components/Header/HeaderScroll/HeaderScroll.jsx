@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import Logo from '../Logo/Logo'
-import CatalogBurger from '../CatalogBurger/CatalogBurger'
-import Search from '../Search/Search'
-import TopMenu from '../TopMenu/TopMenu';
-import TotalSum from '../CartSum/CartSum';
-import Burger from '../Burger/Burger';
+import { useEffect, useState } from 'react'
+import { Logo, MenuIconsList, CartSum, Burger, CatalogBurger, Search } from '../../'
 import s from './HeaderScroll.module.css'
 
-export default function HeaderScroll() {
+export function HeaderScroll() {
 
 	const [isSticky, setIsSticky] = useState(false);
 
@@ -20,9 +15,7 @@ export default function HeaderScroll() {
 				setIsSticky(false);
 			}
 		};
-
 		window.addEventListener('scroll', handleScroll);
-
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
@@ -36,8 +29,8 @@ export default function HeaderScroll() {
 						<Logo content="header" />
 						<CatalogBurger isBlocked='scroll' />
 						<Search isBlocked='scroll' />
-						<TopMenu />
-						<TotalSum />
+						<MenuIconsList />
+						<CartSum />
 						<Burger />
 					</div>
 				</div>

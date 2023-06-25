@@ -1,7 +1,7 @@
 import search from './assets/search.png'
 import s from './Search.module.css'
 
-export default function Search({ isBlocked }) {
+export function Search({ isBlocked }) {
 	return (
 		<div className={`${s.input_wrapper} ${s[isBlocked]}`} >
 			<input

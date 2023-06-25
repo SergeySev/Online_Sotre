@@ -8,7 +8,7 @@ import BannerItem from '../BannerItem/BannerItem'
 
 export default function Banner() {
 	return (
-		<div id="banner" className={s.banner}>
+		<section id="banner" className={s.banner}>
 			<div className='container'>
 				<div className={s.banner_inner}>
 					<div className={s.banner_left}>
@@ -25,6 +25,6 @@ export default function Banner() {
 
 			</div>
 
-		</div>
+		</section>
 	)
 }

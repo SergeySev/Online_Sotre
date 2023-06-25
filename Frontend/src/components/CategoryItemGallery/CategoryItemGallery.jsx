@@ -13,76 +13,76 @@ import nextArrow from '../../media/nextArrow.png'
 
 export default function CategoryItemGallery({ id, title }) {
 
-  const CustomPrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, width: '40px', height: '40px', backgroundImage: `url(${prevArrow})` }}
-        onClick={onClick}
-      />
-    );
-  }
+	const CustomPrevArrow = (props) => {
+		const { className, style, onClick } = props;
+		return (
+			<div
+				className={className}
+				style={{ ...style, width: '40px', height: '40px', backgroundImage: `url(${prevArrow})` }}
+				onClick={onClick}
+			/>
+		);
+	}
 
-  const CustomNextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, width: '40px', height: '40px', backgroundImage: `url(${nextArrow})` }}
-        onClick={onClick}
-      />
-    );
-  }
+	const CustomNextArrow = (props) => {
+		const { className, style, onClick } = props;
+		return (
+			<div
+				className={className}
+				style={{ ...style, width: '40px', height: '40px', backgroundImage: `url(${nextArrow})` }}
+				onClick={onClick}
+			/>
+		);
+	}
 
-  let settings = {
-    dots: false,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    prevArrow: <CustomPrevArrow />,
-    nextArrow: <CustomNextArrow />,
-    responsive: [
-      {
-        breakpoint: 1420,
-        settings: {
-          slidesToShow: 3,
-        }
-      },
-      {
-        breakpoint: 1120,
-        settings: {
-          slidesToShow: 2,
-        }
-      },
-      {
-        breakpoint: 790,
-        settings: {
-          slidesToShow: 1,
-        }
-      }
-    ]
-  }
+	let settings = {
+		dots: false,
+		infinite: true,
+		speed: 1000,
+		slidesToShow: 2,
+		slidesToScroll: 1,
+		prevArrow: <CustomPrevArrow />,
+		nextArrow: <CustomNextArrow />,
+		responsive: [
+			{
+				breakpoint: 1420,
+				settings: {
+					slidesToShow: 3,
+				}
+			},
+			{
+				breakpoint: 1120,
+				settings: {
+					slidesToShow: 2,
+				}
+			},
+			{
+				breakpoint: 790,
+				settings: {
+					slidesToShow: 1,
+				}
+			}
+		]
+	}
 
-  const dispatch = useDispatch();
-  const sub_categories = useSelector(store => store.subcategories)
+	const dispatch = useDispatch();
+	const sub_categories = useSelector(store => store.subcategories)
 
-  useEffect(() => {
-    dispatch(fetch_sub_categories_by_main(id))
-  }, [id])
+	useEffect(() => {
+		dispatch(fetch_sub_categories_by_main(id))
+	}, [id])
 
-  return (
-    <>
-      <div className={s.category_header}>
-        <h2>{title}</h2>
-        <div className='category_controls'>
-          <Slider {...settings}>
-            {sub_categories.map(elem => <ProductItem product={elem.productDtoList[0]} key={elem.id} />)}
-          </Slider>
-        </div>
-      </div>
-    </>
+	return (
+		<>
+			<li className={s.category_header}>
+				<h2>{title}</h2>
+				<div className='category_controls'>
+					<Slider {...settings}>
+						{sub_categories.map(elem => <ProductItem product={elem.productDtoList[0]} key={elem.id} />)}
+					</Slider>
+				</div>
+			</li>
+		</>
 
-  )
+	)
 }

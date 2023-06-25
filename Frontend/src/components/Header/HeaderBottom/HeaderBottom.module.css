@@ -1,0 +1,17 @@
+.header_bottom {
+	height: 88px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 60px;
+}
+
+@media (max-width: 860px) {
+	.header_bottom {
+		display: none;
+	}
+}
+
+@media (max-width: 762px) {
+	.header_bottom {}
+}

@@ -1,23 +1,15 @@
 .total {
 	position: relative;
 	z-index: 70;
-	flex-shrink: 0;
+	line-height: 20px;
 	display: flex;
-  flex-direction: column;
-  gap: 5px;
+	flex-wrap: wrap;
+	row-gap: 5px;
+	column-gap: 30px;
 }
 
-@media (min-width: 1600px){
+@media (max-width: 1160px) {
 	.total {
-		flex-direction: row;
-		align-items: center;
-		gap: 30px;
-		line-height: 26px;
-		}
-}
-
-@media (max-width: 1160px){
-	.total{
 		display: none;
 	}
 }
