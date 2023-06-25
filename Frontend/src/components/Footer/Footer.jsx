@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { main_menu_list } from '../../data/data'
-import Logo from '../Logo/Logo'
-import SocialIconList from '../SocialIconList/SocialIconList'
+import { Logo, SocialIconList } from '../'
 import s from './Footer.module.css'
 
 
-export default function Footer() {
+export function Footer() {
 
 	const catalog_list = useSelector(store => store.categories)
 
