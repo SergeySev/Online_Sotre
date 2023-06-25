@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -41,7 +42,7 @@ public class ProductController {
     public Page<ProductDto> getAllProductsByProductCategory(@RequestParam(defaultValue = "0") int page,
                                                             @RequestParam(defaultValue = "30") int size,
                                                             @RequestParam String productCategoryTitle) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllProductsBySubCategory(pageable, productCategoryTitle);
     }
 
@@ -53,7 +54,7 @@ public class ProductController {
     @GetMapping(path = "/all")
     public Page<ProductDto> getAllProducts(@RequestParam(defaultValue = "0") int page,
                                            @RequestParam(defaultValue = "30") int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllProducts(pageable);
     }
 
@@ -65,7 +66,7 @@ public class ProductController {
     @GetMapping(path = "/novelties")
     public Page<ProductDto> getAllProductsByProductCategory(@RequestParam(defaultValue = "0") int page,
                                                             @RequestParam(defaultValue = "30") int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllNovelties(pageable);
     }
 
@@ -77,7 +78,7 @@ public class ProductController {
     @GetMapping(path = "/promo")
     public Page<ProductDto> getAllProductsWithoutDiscount(@RequestParam(defaultValue = "0") int page,
                                                           @RequestParam(defaultValue = "30") int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllProductsWithoutDiscount(pageable);
     }
 
@@ -89,29 +90,30 @@ public class ProductController {
     @GetMapping(path = "/hit")
     public Page<ProductDto> getAllProductsHit(@RequestParam(defaultValue = "0") int page,
                                               @RequestParam(defaultValue = "30") int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllProductsHit(pageable);
     }
 
     @Operation(summary = "Get products by filter")
     @ApiResponse(responseCode = "200", description = "Successful loaded")
     @GetMapping(path = "/byFilter")
-    public Page<ProductDto> getAllProductsByFilter(@RequestParam(defaultValue = "0") int page,
-                                                   @RequestParam(defaultValue = "30") int size,
-                                                   @RequestParam(defaultValue = "") String priceFrom,
-                                                   @RequestParam(defaultValue = "") String priceTo,
-                                                   @RequestParam(defaultValue = "") List<String> brandTitles,
-                                                   @RequestParam(defaultValue = "") List<String> madeCountries,
-                                                   @RequestParam(defaultValue = "") List<String> colours,
-                                                   @RequestParam(defaultValue = "") List<String> deliveryTypes) {
-        Pageable pageable = PageRequest.of(page, size);
+    public Document getAllProductsByFilter(@RequestParam(defaultValue = "0") int page,
+                                           @RequestParam(defaultValue = "30") int size,
+                                           @RequestParam(defaultValue = "0") String priceFrom,
+                                           @RequestParam(defaultValue = "500") String priceTo,
+                                           @RequestParam(defaultValue = "") List<String> brandTitles,
+                                           @RequestParam(defaultValue = "") List<String> madeCountries,
+                                           @RequestParam(defaultValue = "") List<String> colours,
+                                           @RequestParam(defaultValue = "") List<String> deliveryTypes) {
+        Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllByFilter(priceFrom,
                 priceTo,
                 brandTitles,
                 madeCountries,
                 colours,
                 deliveryTypes,
-                pageable);
+                pageable
+        );
     }
 
 

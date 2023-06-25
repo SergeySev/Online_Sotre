@@ -1,28 +1,29 @@
 package com.example.fb_project.service;
 
 import com.example.fb_project.dto.ProductDto;
-import com.example.fb_project.entity.*;
+import com.example.fb_project.entity.Brand;
+import com.example.fb_project.entity.Product;
+import com.example.fb_project.entity.SubCategory;
 import com.example.fb_project.entity.enums.Color;
 import com.example.fb_project.entity.enums.DeliveryType;
 import com.example.fb_project.entity.enums.MadeCountry;
 import com.example.fb_project.mapper.ProductMapper;
 import com.example.fb_project.repository.BrandRepository;
-import com.example.fb_project.repository.SubCategoryRepository;
 import com.example.fb_project.repository.ProductRepository;
+import com.example.fb_project.repository.SubCategoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
 import org.hibernate.query.IllegalQueryOperationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,8 +39,9 @@ public class ProductService {
 
     private final SubCategoryRepository subCategoryRepository;
 
-    @Autowired
-    private MongoOperations mongoOperations;
+    private final MongoOperations mongoOperations;
+
+    private final MongoTemplate mongoTemplate;
 
     @Transactional
     public ProductDto addProduct(ProductDto productDto) {
@@ -120,18 +122,22 @@ public class ProductService {
         return products.map(productMapper::toDto);
     }
 
-    public Page<ProductDto> getAllByFilter(String priceFrom,
-                                           String priceTo,
-                                           List<String> brandTitle,
-                                           List<String> madeCountries,
-                                           List<String> colours,
-                                           List<String> deliveryTypes,
-                                           Pageable pageable) {
+    public Document getAllByFilter(String priceFrom,
+                                   String priceTo,
+                                   List<String> brandTitle,
+                                   List<String> madeCountries,
+                                   List<String> colours,
+                                   List<String> deliveryTypes,
+                                   Pageable pageable
+    ) {
         Criteria criteria = new Criteria();
-        criteria.andOperator((Criteria
-                .where("price")
-                .gte(new BigDecimal(priceFrom).setScale(2, RoundingMode.HALF_UP)))
-                .lte(new BigDecimal(priceTo).setScale(2, RoundingMode.HALF_UP)));
+
+        Integer priceFromInInteger = Integer.valueOf(priceFrom);
+        Integer priceToInInteger = Integer.valueOf(priceTo);
+
+        if (!priceFrom.isEmpty() && !priceTo.isEmpty()) {
+            criteria.and("price").gte(priceFromInInteger).lte(priceToInInteger);
+        }
 
         if (!brandTitle.isEmpty()) {
             List<Brand> brands = brandRepository.findByTitleIn(brandTitle);
@@ -151,14 +157,33 @@ public class ProductService {
             criteria.and("deliveryType").in(deliveryTypes.stream().map(String::toUpperCase).collect(Collectors.toList()));
         }
 
-        Query query = Query.query(criteria);
 
-        long totalCount = mongoOperations.count(query, Product.class);
-        query.with(pageable);
+        Query totalCountQuery = Query.query(criteria);
+        long totalElement = mongoTemplate.count(totalCountQuery, Product.class);
 
-        List<Product> products = mongoOperations.find(query, Product.class);
+
+        Query query = Query.query(criteria).with(pageable);
+
+        int totalPages = (int) Math.ceil((double) totalElement / pageable.getPageSize());
+        System.out.println(totalPages);
+        System.out.println(totalElement);
+
+        List<Product> products = mongoTemplate.find(query, Product.class);
+
         List<ProductDto> productsDto = productMapper.toDtoList(products);
 
-        return new PageImpl<>(productsDto, pageable, totalCount);
+        Document document = new Document();
+
+        int page = pageable.getPageNumber() + 1;
+
+        document.put("content", productsDto);
+        document.put("totalPages", totalPages);
+        document.put("totalElement", totalElement);
+        document.put("elementOnPage", productsDto.size());
+        document.put("pageNumber", page);
+        document.put("lastPage", totalPages == page);
+        document.put("firstPage", page == 1);
+
+        return document;
     }
 }

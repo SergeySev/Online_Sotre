@@ -8,6 +8,8 @@ import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -30,6 +32,7 @@ public class Product {
 
     private String title;
 
+    @Field(targetType = FieldType.DECIMAL128)
     private BigDecimal price;
 
     private BigDecimal discountPrice;
