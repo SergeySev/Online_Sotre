@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetch_brands, fetch_main_categories } from '../../requests/requests'
 
 // export default function MainCategoriesGallery({ categories }) {
-export default function MainCategoriesGallery() {
+export function MainCategoriesGallery() {
 
 	const dispatch = useDispatch()
 	useEffect(() => {

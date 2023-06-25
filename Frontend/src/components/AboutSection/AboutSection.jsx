@@ -3,9 +3,9 @@ import Button from '../../UI/Button/Button'
 import s from './AboutSection.module.css'
 import image from './assets/about.png'
 
-export default function AboutSection() {
+export function AboutSection() {
 	return (
-		<div id="about" className={s.about_section}>
+		<section id="about" className={s.about_section}>
 			<div className='container'>
 				<div className={s.about_inner}>
 					<img src={image} alt='hands' />
@@ -19,6 +19,6 @@ export default function AboutSection() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }

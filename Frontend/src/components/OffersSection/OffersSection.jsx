@@ -5,7 +5,7 @@ import ProductItem from '../ProductItem/ProductItem';
 import Slider from 'react-slick';
 import './slick_styles.css'
 
-export default function OffersSection() {
+export function OffersSection() {
 
 	const settings = {
 		dots: true,
@@ -68,7 +68,7 @@ export default function OffersSection() {
 	}
 
 	return (
-		<>
+		<section>
 			<div id="novelties" className={s.offers_section}>
 				<div className='container'>
 					<div className={s.offers_section_inner}>
@@ -87,6 +87,6 @@ export default function OffersSection() {
 				</div>
 
 			</div>
-		</>
+		</section>
 	)
 }

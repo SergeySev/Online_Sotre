@@ -13,3 +13,10 @@ export { SocialIconList } from "./SocialIconList/SocialIconList";
 export { Search } from "./Search/Search";
 export { MenuBurger } from "./MenuBurger/MenuBurger";
 
+// sections =================
+export { Banner } from "./Banner/Banner";
+export { MainCategoriesGallery } from "./MainCategoriesGallery/MainCategoriesGallery";
+export { BrandSlider } from "./BrandSlider/BrandSlider";
+export { AboutSection } from "./AboutSection/AboutSection";
+export { OffersSection } from "./OffersSection/OffersSection";
+export { NewsSection } from "./NewsSection/NewsSection";
