@@ -3,9 +3,9 @@ import s from './NewsSection.module.css';
 import Button from '../../UI/Button/Button'
 import { news_list } from '../../data/data'
 
-export default function NewsSection() {
+export function NewsSection() {
 	return (
-		<div className={s.news_section}>
+		<section className={s.news_section}>
 			<div className='container'>
 				<div className={s.news_section_inner}>
 					<div className={s.text_block}>
@@ -27,6 +27,6 @@ export default function NewsSection() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }

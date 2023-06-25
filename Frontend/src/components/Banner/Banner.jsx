@@ -6,7 +6,7 @@ import novelties from './assets/banner3.png'
 import drills from './assets/banner4.png'
 import BannerItem from '../BannerItem/BannerItem'
 
-export default function Banner() {
+export function Banner() {
 	return (
 		<section id="banner" className={s.banner}>
 			<div className='container'>
