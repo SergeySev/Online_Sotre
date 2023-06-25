@@ -1,16 +1,16 @@
-import { ContentMenu, Logo, CatalogBurger, WorkingHours, OrderCall, TopMenu, CartSum, Burger } from '../../'
+import { MenuBurger, Logo, CatalogBurger, WorkingHours, OrderCall, MenuIconsList, CartSum, Burger } from '../../'
 import s from './HeaderTop.module.css'
 
 export function HeaderTop() {
 
 	return (
 		<div className={s.top_header}>
-			<ContentMenu />
+			<MenuBurger />
 			<Logo content="header" />
 			<CatalogBurger isBlocked="blocked" />
 			<WorkingHours />
 			<OrderCall isBlocked='blocked' />
-			<TopMenu />
+			<MenuIconsList />
 			<CartSum />
 			<Burger />
 		</div >
