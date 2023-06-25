@@ -1,16 +1,14 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetch_main_categories } from '../../requests/requests'
 import CategoryItemGallery from '../CategoryItemGallery/CategoryItemGallery'
 import s from './MainCategoriesGallery.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetch_brands, fetch_main_categories } from '../../requests/requests'
 
-// export default function MainCategoriesGallery({ categories }) {
 export function MainCategoriesGallery() {
 
 	const dispatch = useDispatch()
 	useEffect(() => {
 		dispatch(fetch_main_categories())
-		// dispatch(fetch_brands())
 	}, [])
 
 	const categories = useSelector(store => store.categories)
