@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import MainCategoriesAside from '../../components/MainCategoriesAside/MainCategoriesAside';
 import Pagination from '../../components/Pagination/Pagination';
-import ProductItem from '../../components/ProductItem/ProductItem';
+import { ProductItem } from '../../components';
 import { fetch_subcategory_products } from '../../requests/requests';
 import s from './SubCategoryPage.module.css'
 
 export function SubCategoryPage() {
-	// export default function SubCategoryPage() {
 
 	const dispatch = useDispatch()
 

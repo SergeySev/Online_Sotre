@@ -20,3 +20,4 @@ export { BrandSlider } from "./BrandSlider/BrandSlider";
 export { AboutSection } from "./AboutSection/AboutSection";
 export { OffersSection } from "./OffersSection/OffersSection";
 export { NewsSection } from "./NewsSection/NewsSection";
+export { ProductItem } from "./ProductItem/ProductItem";

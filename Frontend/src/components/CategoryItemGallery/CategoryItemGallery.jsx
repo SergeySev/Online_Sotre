@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import s from './CategoryItemGallery.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetch_sub_categories_by_main } from '../../requests/requests';
-import ProductItem from '../ProductItem/ProductItem';
+import { ProductItem } from '../';
 import './slick_styles.css'
 import prevArrow from '../../media/prevArrow.png'
 import nextArrow from '../../media/nextArrow.png'
