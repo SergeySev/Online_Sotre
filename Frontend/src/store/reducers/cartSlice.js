@@ -31,13 +31,19 @@ const cartSlice = createSlice({
 					const cartItem = { ...product, cart_amount: 1 };
 					state.cart_list.push(cartItem);
 					state.total_amount += 1;
-					state.total_summ = +(Number(state.total_summ) + Number(product.discountPrice || product.price)).toFixed(2);
+					const tempTotalSumm =
+						state.total_summ +
+						(+product.discountPrice || +product.price);
+					state.total_summ = +tempTotalSumm.toFixed(2);
 				} else {
 					const cartItem = state.cart_list[index];
 					if (+cartItem.cart_amount < +product.inStock) {
 						cartItem.cart_amount += 1;
 						state.total_amount += 1;
-						state.total_summ = +(Number(state.total_summ) + Number(product.discountPrice || product.price)).toFixed(2);
+						const tempTotalSumm =
+							state.total_summ +
+							(+product.discountPrice || +product.price);
+						state.total_summ = +tempTotalSumm.toFixed(2);
 					}
 				}
 				updateLocalStorage(state.cart_list, state.total_amount, state.total_summ);
