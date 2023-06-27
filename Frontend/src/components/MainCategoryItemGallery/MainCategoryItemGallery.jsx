@@ -3,15 +3,15 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import s from './CategoryItemGallery.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetch_sub_categories_by_main } from '../../requests/requests';
-import { ProductItem } from '../';
+import { ProductItem } from '..';
 import './slick_styles.css'
 import prevArrow from '../../media/prevArrow.png'
 import nextArrow from '../../media/nextArrow.png'
+import s from './MainCategoryItemGallery.module.css'
 
-export default function CategoryItemGallery({ id, title }) {
+export function MainCategoryItemGallery({ id, title }) {
 
 	const CustomPrevArrow = (props) => {
 		const { className, style, onClick } = props;

@@ -1,0 +1,16 @@
+.category_header h2 {
+	margin-bottom: 20px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.category_header {
+	width: 50%;
+	margin-bottom: 70px;
+}
+
+@media (max-width:1420px) {
+	.category_header {
+		width: 100%;
+	}
+}
