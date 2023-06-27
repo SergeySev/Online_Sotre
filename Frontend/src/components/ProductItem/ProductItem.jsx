@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import s from './ProductItem.module.css'
+import { useState } from 'react'
 import bars from './assets/bar-chart-2.png'
 import heart from './assets/heart.png'
-import NewSign from '../NewSign/NewSign'
-import AddToCartBtn from '../AddToCartBtn/AddToCartBtn'
+import { NewSign, AddToCartBtn } from '../'
+import s from './ProductItem.module.css'
 
 export function ProductItem({ product }) {
 
@@ -17,7 +16,6 @@ export function ProductItem({ product }) {
 	if (product.discountPrice !== '0.00') {
 		tag = 'PROMO'
 	}
-
 
 	const [img_index, setImg_index] = useState(0)
 	const [activeImg, setActiveImg] = useState(true);
@@ -56,7 +54,7 @@ export function ProductItem({ product }) {
 					<p className={s.in_stock}>{product.inStock ? 'in stock' : 'not in stock'}</p>
 				</div>
 			</div>
-			<AddToCartBtn product_id={product.id} />
+			<AddToCartBtn product={product} />
 		</div>
 	)
 }

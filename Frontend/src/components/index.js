@@ -25,3 +25,5 @@ export { NewsSection } from "./NewsSection/NewsSection";
 // components ===============
 export { ProductItem } from "./ProductItem/ProductItem";
 export { MainCategoryItemGallery } from "./MainCategoryItemGallery/MainCategoryItemGallery";
+export { NewSign } from "./NewSign/NewSign";
+export { AddToCartBtn } from "./AddToCartBtn/AddToCartBtn";
