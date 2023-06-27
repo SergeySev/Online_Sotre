@@ -1,48 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Prosto+One&family=Raleway:wght@100;200;300;400;500;600;700;900&display=swap');
 
 :root {
-  --white: #fff;
-  --background: #f2f5f7;
-  --black: #000;
-  --gray: #dedbdb;
-  --smoky: #8a8a8a;
-  --dark-gray-333: #333333;
-  --dark-gray: #3b3b3b;
-  --coal: #212526;
-  --orange: #f05a00;
-  --red: #fc573b;
+	--white: #fff;
+	--background: #f2f5f7;
+	--black: #000;
+	--gray: #dedbdb;
+	--smoky: #8a8a8a;
+	--dark-gray-333: #333333;
+	--dark-gray: #3b3b3b;
+	--coal: #212526;
+	--orange: #f05a00;
+	--orange-light: #ffb78b;
+	;
+	--red: #fc573b;
 
-  --transition: .3s ease-in-out;
+	--transition: .3s ease-in-out;
 
-  --header-top_hight: 96px;
-  --container-max: 2060px;
+	--header-top_hight: 96px;
+	--container-max: 2060px;
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 
 .app {
-  /* position: relative; */
-  max-width: var(--container-max);
-  margin: 0 auto;
-  /* overflow: hidden; */
+	/* position: relative; */
+	max-width: var(--container-max);
+	margin: 0 auto;
+	/* overflow: hidden; */
 }
 
 .container {
-  max-width: 1920px;
-  padding: 0 70px;
-  margin: 0 auto;
+	max-width: 1920px;
+	padding: 0 70px;
+	margin: 0 auto;
 }
 
 @media (max-width: 860px) {
-  :root {
-    --header-top_hight: 60px;
-  }
+	:root {
+		--header-top_hight: 60px;
+	}
 }
 
 @media (max-width: 762px) {
-  .container {
-    padding: 0 15px;
-  }
+	.container {
+		padding: 0 15px;
+	}
 }

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetch_main_categories } from '../../requests/requests'
-import { MainCategoryItemGallery } from '..'
+import { MainCategoryItemGallery } from '../'
 import s from './MainCategoriesListGallery.module.css'
 
 export function MainCategoriesListGallery() {

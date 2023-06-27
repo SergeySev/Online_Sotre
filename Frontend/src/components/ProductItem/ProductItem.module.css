@@ -1,99 +1,102 @@
 .product_item {
-  background-color: var(--white);
-  width: 310px;
-  border-radius: 5px;
-  padding: 12px;
-  position: relative;
-  text-align: center;
+	background-color: var(--white);
+	width: 310px;
+	border-radius: 5px;
+	padding: 12px;
+	position: relative;
+	text-align: center;
 }
 
 .top_signs {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 4px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 4px;
 }
 
 .add_to {
-  display: flex;
+	display: flex;
 }
 
 .product_img {
-  margin: 0 auto 12px;
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
+	margin: 0 auto 12px;
+	width: 200px;
+	height: 200px;
+	object-fit: contain;
 }
 
 .bars {
-  margin-right: 8px;
+	margin-right: 8px;
 }
 
 .product_title {
-  font-weight: 500;
-  font-size: 16px;
-  font-family: 'Raleway';
-  margin-bottom: 12px;
-  text-align: left;
-  height: 70px;
+	font-weight: 500;
+	font-size: 16px;
+	font-family: 'Raleway';
+	margin-bottom: 12px;
+	text-align: left;
+	height: 70px;
 }
 
 .color_bars {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 14px;
-  gap: 5px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 14px;
+	gap: 5px;
 }
 
-.bar_item,
-.bar_item_active {
-  width: 30%;
-  height: 4px;
-  background-color: #DEDBDB;
-  cursor: pointer;
+.item {
+	padding: 10px 0;
+	width: 30%;
+	cursor: pointer;
 }
 
-.bar_item_active {
-  background-color: #FFB78B;
+.bar_item {
+	height: 4px;
+	background-color: var(--gray);
+}
+
+.bar_item.active {
+	background-color: var(--orange-light);
 }
 
 .properties {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .price_box {
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
+	display: flex;
+	gap: 10px;
+	align-items: baseline;
 }
 
 .discount_price {
-  font-weight: 600;
-  font-size: 18px;
+	font-weight: 600;
+	font-size: 18px;
 }
 
 .price {
-  font-weight: 500;
-  font-size: 14px;
-  text-decoration-line: line-through;
-  color: #DEDBDB;
+	font-weight: 500;
+	font-size: 14px;
+	text-decoration-line: line-through;
+	color: #DEDBDB;
 }
 
 .in_stock {
-  font-weight: 400;
-  font-size: 14px;
-  color: #126935;
-  margin-right: 60px;
-  white-space: nowrap;
+	font-weight: 400;
+	font-size: 14px;
+	color: #126935;
+	margin-right: 60px;
+	white-space: nowrap;
 }
 
 .stock {
-  display: flex;
-  gap: 4px;
-  align-items: center;
+	display: flex;
+	gap: 4px;
+	align-items: center;
 }
 
 .stock_img {
-  width: 16px;
-  height: 16px;
+	width: 16px;
+	height: 16px;
 }
