@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom'
 import { fetch_sub_categories_by_main } from '../../requests/requests'
 import s from './MainCategoryListContainer.module.css'
 
-export default function MainCategoryListContainer({ ident }) {
+export function MainCategoryListContainer({ ident }) {
 
 	let { id } = useParams()
 

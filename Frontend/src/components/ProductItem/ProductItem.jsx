@@ -33,7 +33,7 @@ export function ProductItem({ product }) {
 	const bar_list = [0, 1, 2, 3]
 
 	return (
-		<div className={s.product_item}>
+		<li className={s.product_item}>
 			<div className={s.top_signs}>
 				<div className={s.tag}><NewSign tag={tag} /></div>
 				<div className={s.add_to}>
@@ -67,6 +67,6 @@ export function ProductItem({ product }) {
 				</div>
 			</div>
 			<AddToCartBtn product={product} />
-		</div>
+		</li>
 	)
 }

@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react'
-import s from './MainCategoriesPage.module.css'
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import MainCategoryListContainer from '../../components/MainCategoryListContainer/MainCategoryListContainer'
-import { fetch_main_categories } from '../../requests/requests'
 import { NavLink } from 'react-router-dom'
+import { fetch_main_categories } from '../../requests/requests'
+import { Breadcrumbs, MainCategoryListContainer } from '../../components'
+import s from './MainCategoriesPage.module.css'
 
 export function MainCategoriesPage() {
-	// export default function MainCategoriesPage() {
-
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/' },
 		{ text: 'Catalog', link: '/catalog' },
