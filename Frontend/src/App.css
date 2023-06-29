@@ -9,6 +9,7 @@
 	--dark-gray-333: #333333;
 	--dark-gray: #3b3b3b;
 	--coal: #212526;
+	--green: #126935;
 	--orange: #f05a00;
 	--orange-light: #ffb78b;
 	;
@@ -25,16 +26,20 @@ body {
 }
 
 .app {
-	/* position: relative; */
 	max-width: var(--container-max);
 	margin: 0 auto;
-	/* overflow: hidden; */
 }
 
 .container {
 	max-width: 1920px;
 	padding: 0 70px;
 	margin: 0 auto;
+}
+
+.photo-card_skeleton {
+	background-color: var(--gray);
+	width: 286px;
+	height: 200px;
 }
 
 @media (max-width: 860px) {

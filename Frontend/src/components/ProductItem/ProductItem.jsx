@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import bars from './assets/bar-chart-2.png'
 import heart from './assets/heart.png'
 import { NewSign, AddToCartBtn } from '../'
@@ -17,6 +18,11 @@ export function ProductItem({ product }) {
 		tag = 'PROMO'
 	}
 
+	const { ref, inView } = useInView({
+		threshold: 0.1,
+		triggerOnce: true,
+	});
+
 	const [img_index, setImg_index] = useState(0)
 	const [activeImg, setActiveImg] = useState(true);
 	const change_product_img = (image_index) => {
@@ -27,7 +33,7 @@ export function ProductItem({ product }) {
 	const bar_list = [0, 1, 2, 3]
 
 	return (
-		<div className={s.product_item}>
+		<li className={s.product_item}>
 			<div className={s.top_signs}>
 				<div className={s.tag}><NewSign tag={tag} /></div>
 				<div className={s.add_to}>
@@ -35,7 +41,13 @@ export function ProductItem({ product }) {
 					<img src={heart} alt='heart' />
 				</div>
 			</div>
-			<img src={product.productImagesLinks[img_index]} alt='product_image' className={s.product_img} />
+			<div ref={ref} className={s.img_wrapper}>
+				{inView ?
+					<img src={product.productImagesLinks[img_index]} alt='product_image' className={s.product_img} />
+					: <div className='photo-card_skeleton'></div>}
+			</div>
+			{/* <img src={product.productImagesLinks[img_index]} alt='product_image' className={s.product_img}
+				loading='lazy' /> */}
 			<ul className={s.color_bars}>
 				{bar_list.map(elem => <li key={elem}
 					className={s.item}
@@ -55,6 +67,6 @@ export function ProductItem({ product }) {
 				</div>
 			</div>
 			<AddToCartBtn product={product} />
-		</div>
+		</li>
 	)
 }

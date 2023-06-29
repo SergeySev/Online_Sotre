@@ -23,7 +23,13 @@ export { OffersSection } from "./OffersSection/OffersSection";
 export { NewsSection } from "./NewsSection/NewsSection";
 
 // components ===============
+export { Breadcrumbs } from "./Breadcrumbs/Breadcrumbs";
 export { ProductItem } from "./ProductItem/ProductItem";
 export { MainCategoryItemGallery } from "./MainCategoryItemGallery/MainCategoryItemGallery";
 export { NewSign } from "./NewSign/NewSign";
 export { AddToCartBtn } from "./AddToCartBtn/AddToCartBtn";
+export { Pagination } from "./Pagination/Pagination";
+
+export { MainCategoryListContainer } from "./MainCategoryListContainer/MainCategoryListContainer";
+export { MainCategoriesAside } from "./MainCategoriesAside/MainCategoriesAside";
+export { MainCategoriesAsideItem } from "./MainCategoriesAsideItem/MainCategoriesAsideItem";
