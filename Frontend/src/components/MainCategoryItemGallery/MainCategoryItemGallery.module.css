@@ -6,6 +6,7 @@
 
 .category_header {
 	width: 50%;
+	min-height: 460px;
 	margin-bottom: 70px;
 }
 

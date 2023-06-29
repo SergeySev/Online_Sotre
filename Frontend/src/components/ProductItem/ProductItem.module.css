@@ -17,11 +17,17 @@
 	display: flex;
 }
 
+.img_wrapper {
+	padding: 0 0 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .product_img {
-	margin: 0 auto 12px;
+	object-fit: contain;
 	width: 200px;
 	height: 200px;
-	object-fit: contain;
 }
 
 .bars {
@@ -79,13 +85,13 @@
 	font-weight: 500;
 	font-size: 14px;
 	text-decoration-line: line-through;
-	color: #DEDBDB;
+	color: var(--grey);
 }
 
 .in_stock {
 	font-weight: 400;
 	font-size: 14px;
-	color: #126935;
+	color: var(--green);
 	margin-right: 60px;
 	white-space: nowrap;
 }
