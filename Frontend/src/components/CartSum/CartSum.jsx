@@ -7,10 +7,12 @@ export function CartSum() {
 	return (
 		<div className={s.total}>
 			<p className={s.total_text}>Total sum</p>
-			<p className={s.total_summ}>
-				{total_summ}
-				<span> &#x24;</span>
-			</p>
+			<div className={s.summ_wrapper}>
+				<p className={s.total_summ}>
+					{total_summ}
+					<span> &#x24;</span>
+				</p>
+			</div>
 		</div>
 	)
 }
