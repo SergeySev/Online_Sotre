@@ -21,10 +21,16 @@ export const fetch_main_categories = () => {
 		try {
 			fetch(`${base_url}/mainCategory/all`)
 				.then((res) => res.json())
-				.then((data) => dispatch(get_categories(data)));
+				.then((data) => dispatch(get_categories(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(get_categories([]));
+				})
 		} catch (error) {
 			console.error("fetch error: ", error);
+			dispatch(get_categories([]));
 		}
+
 	};
 };
 
@@ -33,9 +39,14 @@ export const fetch_sub_categories_by_main = (id) => {
 		try {
 			fetch(`${base_url}/mainCategory/byIdWithProducts/${id}`)
 				.then((res) => res.json())
-				.then((data) => dispatch(get_subcategories_by_main(data)));
+				.then((data) => dispatch(get_subcategories_by_main(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(get_subcategories_by_main([]));
+				})
 		} catch (error) {
 			console.error("fetch error: ", error);
+			dispatch(get_subcategories_by_main([]));
 		}
 	};
 };
@@ -45,9 +56,14 @@ export const fetch_brands = () => {
 		try {
 			fetch(`${base_url}/brand/all`)
 				.then((res) => res.json())
-				.then((data) => dispatch(get_brands(data)));
+				.then((data) => dispatch(get_brands(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(get_brands([]));
+				})
 		} catch (error) {
 			console.error("fetch error: ", error);
+			dispatch(get_brands([]));
 		}
 	};
 };
@@ -57,9 +73,14 @@ export const fetch_subcategory_products = (id) => {
 		try {
 			fetch(`${base_url}/sub_category/get_by_id/${id}`)
 				.then((res) => res.json())
-				.then((data) => dispatch(get_subcategory_products(data)));
+				.then((data) => dispatch(get_subcategory_products(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(get_subcategory_products([]));
+				})
 		} catch (error) {
 			console.error("fetch error: ", error);
+			dispatch(get_subcategory_products([]));
 		}
 	};
 };
@@ -69,9 +90,14 @@ export const fetch_offers_products = (tag) => {
 		try {
 			fetch(`${base_url}/product/${tag}?page=1&size=6`)
 				.then((resp) => resp.json())
-				.then((data) => dispatch(product_offers(data)));
+				.then((data) => dispatch(product_offers(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(product_offers([]));
+				})
 		} catch (error) {
 			console.error("fetch error: ", error);
+			dispatch(product_offers([]));
 		}
 	};
 };
