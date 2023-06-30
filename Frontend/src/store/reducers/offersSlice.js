@@ -4,11 +4,11 @@ const offersSlice = createSlice({
 	name: 'offers',
 	initialState: [],
 	reducers: {
-		product_offers(state, action){
-			return [...action.payload.content]
+		product_offers(state, action) {
+			return action.payload.content ? [...action.payload.content] : []
 		}
 	}
 })
 
 export default offersSlice.reducer;
-export const {product_offers}  =  offersSlice.actions;
+export const { product_offers } = offersSlice.actions;
