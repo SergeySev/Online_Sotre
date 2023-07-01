@@ -6,19 +6,31 @@ import novelties from './assets/banner3.png'
 import drills from './assets/banner4.png'
 import BannerItem from '../BannerItem/BannerItem'
 
-export default function Banner() {
+export function Banner() {
 	return (
 		<section id="banner" className={s.banner}>
 			<div className='container'>
 				<div className={s.banner_inner}>
 					<div className={s.banner_left}>
-						<BannerItem image={tools} text='DeWALT - Tool with real character' has_btn={true} />
+						<BannerItem
+							image={tools}
+							text='DeWALT - Tool with real character'
+							isTitleBig={true}
+							isImageBig={true} />
 					</div>
 					<div className={s.banner_right}>
-						<BannerItem image={promo} text='Promotions' has_btn={false} />
+						<BannerItem
+							image={promo}
+							text='Promotions'
+							isTitleBig={false}
+							isImageBig={true} />
 						<div className={s.small_images}>
-							<BannerItem image={novelties} text='New arrival' has_btn={false} />
-							<BannerItem image={drills} text='Promotions for drills' has_btn={false} />
+							<BannerItem
+								image={novelties}
+								text='New arrival' />
+							<BannerItem
+								image={drills}
+								ext='Promotions for drills' />
 						</div>
 					</div>
 				</div>

@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import MainCategoriesAside from '../../components/MainCategoriesAside/MainCategoriesAside';
-import Pagination from '../../components/Pagination/Pagination';
-import ProductItem from '../../components/ProductItem/ProductItem';
 import { fetch_subcategory_products } from '../../requests/requests';
+import { Breadcrumbs, MainCategoriesAside, ProductItem, Pagination } from '../../components';
 import s from './SubCategoryPage.module.css'
 
 export function SubCategoryPage() {
-	// export default function SubCategoryPage() {
 
 	const dispatch = useDispatch()
 
@@ -55,9 +51,9 @@ export function SubCategoryPage() {
 						<MainCategoriesAside categories={categories} changeProductList={changeProductList} />
 					</div>
 					<div className={s.products_list_wrapper}>
-						<div className={s.products_list}>
+						<ul className={s.products_list}>
 							{productsPageList.map(elem => <ProductItem product={elem} key={elem.id} />)}
-						</div>
+						</ul>
 						<Pagination setCurrentPage={setCurrentPage} countElem={countElem} currentPage={currentPage} />
 					</div>
 

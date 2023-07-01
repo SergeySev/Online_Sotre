@@ -47,21 +47,25 @@ export const menu_list = [
 	{
 		id: 1,
 		title: 'About company',
+		tag: 'novelties',
 		link: '#about'
 	},
 	{
 		id: 2,
 		title: 'Promotions',
+		tag: 'promo',
 		link: '#novelties'
 	},
 	{
 		id: 3,
 		title: 'Season hits',
+		tag: 'hit',
 		link: '#novelties'
 	},
 	{
 		id: 4,
 		title: 'Novelties',
+		tag: 'novelties',
 		link: '#novelties'
 	},
 ]
@@ -210,26 +214,29 @@ export const social_icons = [
 
 // =====================================================
 
-export const offers_menu = [
-	{
-		id: 1,
-		title: 'Novelties',
-		link: '#',
-		active: true
-	},
-	{
-		id: 2,
-		title: 'Promotions',
-		link: '#',
-		active: false
-	},
-	{
-		id: 3,
-		title: 'Sale hits',
-		link: '#',
-		active: false
-	}
-]
+// export const offers_menu = [
+// 	{
+// 		id: 1,
+// 		title: 'Novelties',
+// 		tag: 'novelties',
+// 		// link: '#',
+// 		active: true
+// 	},
+// 	{
+// 		id: 2,
+// 		title: 'Promotions',
+// 		tag: 'promo',
+// 		// link: '#',
+// 		active: false
+// 	},
+// 	{
+// 		id: 3,
+// 		title: 'Sale hits',
+// 		tag: 'hit',
+// 		// link: '#',
+// 		active: false
+// 	}
+// ]
 //  =====================================================
 
 export const novelties_list = [

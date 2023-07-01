@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import s from './OffersSection.module.css';
-import { offers_menu } from '../../data/data';
-import ProductItem from '../ProductItem/ProductItem';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
+import { fetch_offers_products } from '../../requests/requests';
+import { toggle_offer } from '../../store/reducers/navSlice';
+import { ProductItem } from '../';
 import './slick_styles.css'
+import s from './OffersSection.module.css';
 
-export default function OffersSection() {
+export function OffersSection() {
 
 	const settings = {
 		dots: true,
@@ -35,44 +37,33 @@ export default function OffersSection() {
 		]
 	}
 
-	const [offers, setOffers] = useState([])
-	// const [tag, setTag] = useState('NEW')
-	const [activeElement, setActiveElement] = useState('');
+	const dispatch = useDispatch();
+
+	const { active_tag, nav_list } = useSelector(store => store.navigation);
+	const offers = useSelector(store => store.offers);
 
 	useEffect(() => {
-		fetch('http://localhost:8080/api/v1/product/novelties?page=0&size=6')
-			.then(res => res.json())
-			.then(data => setOffers(data.content))
-	}, [])
+		dispatch(fetch_offers_products(active_tag))
+	}, [active_tag]);
 
-	const handleClick = (elem) => {
-		setActiveElement(elem)
-		if (elem === 'Novelties') {
-			// setTag('NEW')
-			fetch('http://localhost:8080/api/v1/product/novelties?page=0&size=6')
-				.then(res => res.json())
-				.then(data => setOffers(data.content))
-
-		} else if (elem === 'Promotions') {
-			// setTag('PROMO')
-			fetch('http://localhost:8080/api/v1/product/promo?page=0&size=6')
-				.then(res => res.json())
-				.then(data => setOffers(data.content))
-
-		} else {
-			// setTag('HIT')
-			fetch('http://localhost:8080/api/v1/product/hit?page=0&size=6')
-				.then(res => res.json())
-				.then(data => setOffers(data.content))
+	const handleClick = (newTag) => {
+		if (active_tag !== newTag) {
+			dispatch(toggle_offer(newTag));
 		}
 	}
 
 	return (
-		<>
-			<div id="novelties" className={s.offers_section}>
+		<section id="novelties">
+			<div className={s.offers_section}>
 				<div className='container'>
 					<div className={s.offers_section_inner}>
-						{offers_menu.map(elem => <h2 className={activeElement === elem.title ? 'active' : ''} key={elem.id} onClick={() => handleClick(elem.title)}>{elem.title}</h2>)}
+						{nav_list.map(elem =>
+							<h2
+								className={`${s.title} ${s[elem.tag === active_tag ? 'active' : ''] || ''}`}
+								key={elem.id}
+								onClick={() => handleClick(elem.tag)}>
+								{elem.title}
+							</h2>)}
 					</div>
 				</div>
 
@@ -85,8 +76,7 @@ export default function OffersSection() {
 						</Slider>
 					</div>
 				</div>
-
 			</div>
-		</>
+		</section>
 	)
 }
