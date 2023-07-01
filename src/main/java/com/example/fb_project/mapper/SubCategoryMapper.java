@@ -11,6 +11,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface SubCategoryMapper {
     List<SubCategoryDto> toListDto(List<SubCategory> productCategories);
+
     default String map(MainCategory mainCategory) {
         return mainCategory.getTitle();
     }

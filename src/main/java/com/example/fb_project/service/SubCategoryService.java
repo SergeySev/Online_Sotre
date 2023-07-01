@@ -65,12 +65,14 @@ public class SubCategoryService {
         return subCategoryDto;
     }
 
-    public List<SubCategoryDto> getAllProductCategoryByMainCategory(String mainCategoryTitle) {
+    public List<SubCategoryDto> getAllSubCategoryByMainCategory(String mainCategoryTitle) {
         MainCategory mainCategory = mainCategoryRepository.
                 findByTitle(mainCategoryTitle).
                 orElseThrow(() -> new IllegalStateException("Main category not found"));
+
         List<SubCategory> allSubCategoryByMainCategoryTitle = subCategoryRepository.
                 findByMainCategoryId(mainCategory.getId());
+
         if (allSubCategoryByMainCategoryTitle.isEmpty()) {
             throw new IllegalStateException("Sub category not found");
         }

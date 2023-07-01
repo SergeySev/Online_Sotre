@@ -2,6 +2,7 @@ package com.example.fb_project.dto;
 
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -16,15 +17,15 @@ public class ProductDto {
 
     private String brand;
 
-    private String price;
+    private BigDecimal price;
 
-    private String discountPrice;
+    private BigDecimal discountPrice;
 
     private String description;
 
     private String subCategory;
 
-    private String isNew;
+    private Boolean isNew;
 
     private String deliveryType;
 
@@ -36,8 +37,8 @@ public class ProductDto {
 
     private String madeCountry;
 
-    private String inStock;
+    private Integer inStock;
 
-    private String isHit;
+    private Boolean isHit;
 
 }
