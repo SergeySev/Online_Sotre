@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetch_main_categories, fetch_subcategory_products } from '../../requests/requests';
-import { Breadcrumbs, MainCategoriesAside, ProductItem, Pagination } from '../../components';
+import { Breadcrumbs, MainCategoriesAside, ProductItem, Pagination, FilterAside } from '../../components';
 import s from './SubCategoryPage.module.css'
-import { FilterAside } from '../../components/FilterAside/FilterAside';
 
 export function SubCategoryPage() {
 

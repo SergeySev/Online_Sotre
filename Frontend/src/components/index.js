@@ -34,3 +34,4 @@ export { Pagination } from "./Pagination/Pagination";
 export { MainCategoryListContainer } from "./MainCategoryListContainer/MainCategoryListContainer";
 export { MainCategoriesAside } from "./MainCategoriesAside/MainCategoriesAside";
 export { MainCategoriesAsideItem } from "./MainCategoriesAsideItem/MainCategoriesAsideItem";
+export { FilterAside } from "./FilterAside/FilterAside";
