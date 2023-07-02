@@ -22,7 +22,33 @@
 	display: none;
 }
 
-@media (max-width: 1360px){
+.icon_wrapper {
+	position: relative;
+}
+
+.counter {
+	position: absolute;
+	top: 4px;
+	right: 0;
+	transform: translate(50%, -50%);
+	width: 22px;
+	height: 22px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 500;
+	font-size: 11px;
+	line-height: 22px;
+	background-color: var(--orange);
+	border-radius: 50%;
+	transition: background-color var(--transition);
+}
+
+.menu_item:hover .counter {
+	background-color: var(--dark-gray);
+}
+
+@media (max-width: 1360px) {
 	.menu_item.blocked {
 		display: flex;
 	}

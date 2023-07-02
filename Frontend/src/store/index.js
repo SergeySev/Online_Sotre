@@ -6,6 +6,8 @@ import subCategoriesSlice from "./reducers/subCategoriesSlice";
 import offersSlice from "./reducers/offersSlice";
 import navSlice from "./reducers/navSlice";
 import cartSlice from "./reducers/cartSlice";
+import favoriteSlice from "./reducers/favoriteSlice";
+import comparisonSlice from "./reducers/comparisonSlice";
 
 const rootReducer = combineReducers({
 	categories: categoriesSlice,
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
 	category_products: categoryProductsSlice,
 	offers: offersSlice,
 	navigation: navSlice,
+	favorite: favoriteSlice,
+	comparison: comparisonSlice,
 	cart: cartSlice
 })
 
