@@ -17,8 +17,23 @@
 	display: flex;
 }
 
+.bars,
+.heart {
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	color: var(--gray);
+	transition: color var(--transition);
+}
+
+.bars.active,
+.heart.active {
+	color: var(--red);
+	fill: currentColor;
+
+}
+
 .img_wrapper {
-	/* padding: 0 0 12px; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -38,7 +53,6 @@
 	font-weight: 500;
 	font-size: 16px;
 	font-family: 'Raleway';
-	/* margin-bottom: 12px; */
 	text-align: left;
 	height: 70px;
 }
