@@ -32,6 +32,7 @@ export function OffersSection() {
 				breakpoint: 790,
 				settings: {
 					slidesToShow: 1,
+					arrows: false
 				}
 			}
 		]

@@ -45,6 +45,7 @@ export function BrandSlider() {
 				breakpoint: 690,
 				settings: {
 					slidesToShow: 2,
+					arrows: false
 				}
 			}
 		]
