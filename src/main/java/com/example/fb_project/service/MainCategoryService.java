@@ -14,9 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -72,9 +70,15 @@ public class MainCategoryService {
                     j++;
                 }
             }
+
             List<ProductDto> productDtoList = productMapper.toDtoList(productForMainCategory);
+
             mainCategoryDto.getSubCategories().get(i).setProductDtoList(productDtoList);
         }
+
+
+        Collections.shuffle(mainCategoryDto.getSubCategories());
+
         return mainCategoryDto;
     }
 

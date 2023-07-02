@@ -21,11 +21,15 @@ public class MainCategory {
 
     @Id
     private ObjectId id;
+
     private String title;
+
     @DBRef(lazy = true)
     @ToString.Exclude
     private List<SubCategory> subCategories;
+
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
 
     public MainCategory(String title) {

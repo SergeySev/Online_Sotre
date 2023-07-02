@@ -2,22 +2,16 @@ package com.example.fb_project.dto;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubCategoryDto {
-
-    private String id;
+public class OfferDto {
 
     private String title;
 
-    private String mainCategory;
+    private String description;
 
     private String imageLink;
-
-    private List<ProductDto> productDtoList;
 }

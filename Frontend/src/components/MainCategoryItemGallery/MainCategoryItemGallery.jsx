@@ -72,16 +72,14 @@ export function MainCategoryItemGallery({ id, title }) {
 	}, [id])
 
 	return (
-		<>
-			<li className={s.category_header}>
-				<h2>{title}</h2>
-				<div className='category_controls'>
-					<Slider {...settings}>
-						{sub_categories.map(elem => <ProductItem product={elem.productDtoList[0]} key={elem.id} />)}
-					</Slider>
-				</div>
-			</li>
-		</>
+		<li className={s.category_header}>
+			<h2>{title}</h2>
+			<ul className='category_controls'>
+				<Slider {...settings}>
+					{sub_categories.map(elem => <ProductItem product={elem.productDtoList[0]} key={elem.id} />)}
+				</Slider>
+			</ul>
+		</li>
 
 	)
 }

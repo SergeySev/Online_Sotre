@@ -30,7 +30,7 @@
 .news_block {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
+  column-gap: 30px;
   row-gap: 33px;
 }
 
@@ -53,5 +53,16 @@
   .text_block {
     max-width: none;
     margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 762px) {
+  .news_block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .news_item img {
+    width: 100%;
   }
 }
