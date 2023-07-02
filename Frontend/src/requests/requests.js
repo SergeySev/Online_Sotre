@@ -4,6 +4,7 @@ import { get_categories } from "../store/reducers/categoriesSlice";
 import { get_subcategory_products } from "../store/reducers/categoryProductsSlice";
 import { get_subcategories_by_main } from "../store/reducers/subCategoriesSlice";
 import { product_offers } from "../store/reducers/offersSlice";
+import { get_filter_data } from "../store/reducers/filterSlice";
 
 const base_url = "http://localhost:8080/api/v1";
 
@@ -98,6 +99,23 @@ export const fetch_offers_products = (tag) => {
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(product_offers([]));
+		}
+	};
+};
+
+export const fetch_filter_data = () => {
+	return function (dispatch) {
+		try {
+			fetch(`${base_url}/filter/get`)
+				.then((res) => res.json())
+				.then((data) => dispatch(get_filter_data(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(get_filter_data([]));
+				})
+		} catch (error) {
+			console.error("fetch error: ", error);
+			dispatch(get_filter_data([]));
 		}
 	};
 };

@@ -21,3 +21,7 @@
   font-size: 40px;
   font-weight: bold;
 }
+
+.aside_container {
+  border-radius: 5px;
+}
