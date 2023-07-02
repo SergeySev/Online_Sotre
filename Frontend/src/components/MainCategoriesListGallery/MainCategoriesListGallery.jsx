@@ -12,6 +12,7 @@ export function MainCategoriesListGallery() {
 	}, [])
 
 	const categories = useSelector(store => store.categories)
+	// console.log("MainCategoriesListGallery: ", categories);
 
 	return (
 		<section className={s.main_categories}>

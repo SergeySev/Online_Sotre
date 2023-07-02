@@ -70,6 +70,8 @@ export function MainCategoryItemGallery({ id, title }) {
 	useEffect(() => {
 		dispatch(fetch_sub_categories_by_main(id))
 	}, [id])
+	console.log("MainCategoryItemGallery ID: ", id);
+	console.log("MainCategoryItemGallery sub_categories: ", sub_categories);
 
 	return (
 		<li className={s.category_header}>
