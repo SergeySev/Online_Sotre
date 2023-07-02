@@ -66,7 +66,7 @@ public class ClientController {
             @ApiResponse(responseCode = "500", description = "If client don't exist in the Data Base"),
     })
     @GetMapping(path = "/get_clients")
-    public Page<ClientDto> getClient(@RequestParam(defaultValue = "0") int page,
+    public Page<ClientDto> getClient(@RequestParam(defaultValue = "1") int page,
                                      @RequestParam(defaultValue = "30") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return clientService.getClientsByPage(pageable);

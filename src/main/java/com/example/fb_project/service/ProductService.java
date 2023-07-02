@@ -17,13 +17,11 @@ import org.bson.Document;
 import org.hibernate.query.IllegalQueryOperationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,8 +36,6 @@ public class ProductService {
     private final BrandRepository brandRepository;
 
     private final SubCategoryRepository subCategoryRepository;
-
-    private final MongoOperations mongoOperations;
 
     private final MongoTemplate mongoTemplate;
 
@@ -59,24 +55,23 @@ public class ProductService {
                 orElseThrow(() -> new IllegalQueryOperationException("Sub category not found"));
 
         Product product = new Product(productDto.getTitle(),
-                BigDecimal.valueOf(Float.parseFloat(productDto.getPrice())),
-                BigDecimal.valueOf(Float.parseFloat(productDto.getDiscountPrice())),
+                productDto.getPrice(),
+                productDto.getDiscountPrice(),
                 productDto.getDescription(),
-                Boolean.valueOf(productDto.getIsNew()),
+                productDto.getIsNew(),
                 DeliveryType.valueOf(productDto.getDeliveryType().toUpperCase()),
                 Color.valueOf(productDto.getColour().toUpperCase()),
                 subCategory,
                 brand,
                 productDto.getMainImageLink(),
-                Boolean.parseBoolean(productDto.getIsHit()),
-                Integer.valueOf(productDto.getInStock()),
+                productDto.getIsHit(),
+                productDto.getInStock(),
                 MadeCountry.valueOf(productDto.getMadeCountry().toUpperCase()));
 
         product.getProductImagesLinks().add(productDto.getMainImageLink());
         List<String> imagesFromDto = productDto.getProductImagesLinks();
 
-        for (String image :
-                imagesFromDto) {
+        for (String image : imagesFromDto) {
             product.getProductImagesLinks().add(image);
         }
 

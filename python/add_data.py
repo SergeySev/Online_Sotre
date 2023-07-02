@@ -3,23 +3,22 @@ import time
 
 import requests
 
-sub_category_titles_overalls = ['Watering tools', 'Pumps', 'Polycarbonate', 'Gardening tools', 'Primer',
-                                'Rabitz wire mesh',
-                                'Summer shower', 'Washbasins, hand basins', 'Whitewashing', 'Garden paint',
-                                'Fertilizer', 'Furnace castings and accessories']
+sub_category_titles_overalls = ['Work Overalls', "Women's Overalls", "Men's Overalls", 'Coveralls', 'Painter Overalls',
+                                'Mechanic Overalls', 'Protective Overalls', 'Insulated Overalls']
 
-sub_category_titles_electrical_equipment = ['Hammers', 'Screwdrivers', 'Wrenches', 'Pliers', 'Measuring tools',
-                                            'Tool sets']
+sub_category_titles_electrical_equipment = ['Electrical outlets', 'Extension cords', 'Electric motors', 'Transformers',
+                                            'Resistors', 'Electrical connectors']
 
-sub_category_titles_painting_products = ['Drills', 'Circular saws', 'Grinders', 'Sanders', 'Planers', 'Jigsaws']
+sub_category_titles_painting_products = ['Paint brushes', 'Rollers', 'Paint trays', 'Painting kits', 'Primer',
+                                         'Acrylic paint']
 
-sub_category_titles_seasonal = ['Paint brushes', 'Rollers', 'Paint trays', 'Paint sprayers', 'Paint scrapers',
-                                'Painting kits']
+sub_category_titles_seasonal = ['Seasonal decorations', 'Holiday ornaments', 'Winter accessories', 'Summer essentials',
+                                'Christmas lights', 'Easter baskets']
 
-sub_category_titles_for_home_and_garden = ['Lawn mowers', 'Hedge trimmers', 'Leaf blowers',
-                                           'Chainsaws', 'Garden shredders', 'String trimmers']
+sub_category_titles_for_home_and_garden = ['Plant pots', 'Garden Furniture', 'Picnic ware',
+                                           'Watering nozzles and hoses', 'Garden shredders', 'Garden accessories']
 
-sub_category_titles_tools = ['Screw hooks', 'Wall anchors', 'Nails', 'Screws', 'Bolts', 'Washers']
+sub_category_titles_tools = ['Hammer', 'Screwdriver', 'Wrench', 'Pliers', 'Drill', 'Saw']
 
 sub_category_all_titles = [sub_category_titles_electrical_equipment, sub_category_titles_painting_products,
                            sub_category_titles_seasonal, sub_category_titles_for_home_and_garden,
@@ -144,6 +143,24 @@ def sub_category():
         body = []
 
 
+def offers():
+    url = 'http://localhost:8080/api/v1/offers/add'
+
+    body = []
+    offers_titles = ['New products', "Discounts products", "Hot sales"]
+    offers_description = ["Let's check", "Get in time", "Customer choice"]
+    links = ['https://i.imgur.com/K0Xjpco.png', 'https://i.imgur.com/wVq0rrJ.png', 'https://i.imgur.com/Ja6V5gf.jpg']
+
+    for i in range(3):
+        body.append({
+            'title': offers_titles[i],
+            'description': offers_description[i],
+            'imageLink': links[i]
+        })
+    print(body)
+    send_request(body, url)
+
+
 def product():
     url = 'http://localhost:8080/api/v1/product/add_product'
 
@@ -152,18 +169,29 @@ def product():
     for sub_category_titles in sub_category_all_titles:
         body = []
         for i in range(300):
+            sub_category_value = random.choice(sub_category_titles)
             while True:
-                title = ' '.join(random.sample(sub_category_titles, k=random.randint(1, 5)))
+                random_letters = ""
+                for j in range(random.randrange(4)):
+                    random_letters = random_letters + (random.choice(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+                                                                      'J', 'K', 'L', 'M',
+                                                                      'N', 'O', 'P', 'R', 'S', 'T', ',U', 'V', 'W',
+                                                                      'X', 'Y', 'Z', 'a',
+                                                                      'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+                                                                      'l', 'm', 'n',
+                                                                      'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
+                                                                      'x', 'y', 'z,']))
+                random_number = random.randint(1, 9999)
+
+                title = "" + sub_category_value + " " + random_letters + "-" + str(random_number)
                 if title not in used_titles:
                     used_titles.add(title)
                     break
             brand_value = random.choice(brands)
             price = round(random.uniform(1, 500), 2)
-            print("\n\nPrice ", price)
-            discount_price = price * 0.75 if random.random() < 0.04 else 0.00
+            discount_price = price * 0.15 if random.random() < 0.04 else 0.00
             description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor " \
                           "incididunt ut labore et dolore magna aliqua"
-            sub_category_value = random.choice(sub_category_titles)
             is_new = random.random() < 0.1
             delivery_type_value = random.choice(delivery_type)
             colour = random.choice(["RED", "BLUE", "GREEN", "YELLOW", "BLACK", "WHITE"])
@@ -205,11 +233,12 @@ def main():
             continue
         if 'null' in response.text or response.text == "false":
             logging("Started filling the database")
-            brand()
-            main_category()
-            sub_category()
-            product()
-            requests.post(url_update)
+            # brand()
+            # main_category()
+            # sub_category()
+            offers()
+            # product()
+            # requests.post(url_update)
         print("\n\n================\n__PYTHON__: The database has been successfully filled\n================")
         is_started = True
 

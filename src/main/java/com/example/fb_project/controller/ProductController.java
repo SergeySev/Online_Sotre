@@ -39,7 +39,7 @@ public class ProductController {
             @ApiResponse(responseCode = "500", description = "Sub Category or Products not found in the Data Base"),
     })
     @GetMapping(path = "/getProductsBySubCategory")
-    public Page<ProductDto> getAllProductsByProductCategory(@RequestParam(defaultValue = "0") int page,
+    public Page<ProductDto> getAllProductsByProductCategory(@RequestParam(defaultValue = "1") int page,
                                                             @RequestParam(defaultValue = "30") int size,
                                                             @RequestParam String productCategoryTitle) {
         Pageable pageable = PageRequest.of(page - 1, size);
@@ -52,7 +52,7 @@ public class ProductController {
             @ApiResponse(responseCode = "500", description = "Products not found in the Data Base"),
     })
     @GetMapping(path = "/all")
-    public Page<ProductDto> getAllProducts(@RequestParam(defaultValue = "0") int page,
+    public Page<ProductDto> getAllProducts(@RequestParam(defaultValue = "1") int page,
                                            @RequestParam(defaultValue = "30") int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllProducts(pageable);
@@ -64,7 +64,7 @@ public class ProductController {
             @ApiResponse(responseCode = "500", description = "Products not found in the Data Base"),
     })
     @GetMapping(path = "/novelties")
-    public Page<ProductDto> getAllProductsByProductCategory(@RequestParam(defaultValue = "0") int page,
+    public Page<ProductDto> getAllProductsByProductCategory(@RequestParam(defaultValue = "1") int page,
                                                             @RequestParam(defaultValue = "30") int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllNovelties(pageable);
@@ -76,7 +76,7 @@ public class ProductController {
             @ApiResponse(responseCode = "500", description = "Products with discount price not found in the Data Base"),
     })
     @GetMapping(path = "/promo")
-    public Page<ProductDto> getAllProductsWithoutDiscount(@RequestParam(defaultValue = "0") int page,
+    public Page<ProductDto> getAllProductsWithoutDiscount(@RequestParam(defaultValue = "1") int page,
                                                           @RequestParam(defaultValue = "30") int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllProductsWithoutDiscount(pageable);
@@ -88,7 +88,7 @@ public class ProductController {
             @ApiResponse(responseCode = "500", description = "Hit Products not found in the Data Base"),
     })
     @GetMapping(path = "/hit")
-    public Page<ProductDto> getAllProductsHit(@RequestParam(defaultValue = "0") int page,
+    public Page<ProductDto> getAllProductsHit(@RequestParam(defaultValue = "1") int page,
                                               @RequestParam(defaultValue = "30") int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
         return productService.getAllProductsHit(pageable);
@@ -97,7 +97,7 @@ public class ProductController {
     @Operation(summary = "Get products by filter")
     @ApiResponse(responseCode = "200", description = "Successful loaded")
     @GetMapping(path = "/byFilter")
-    public Document getAllProductsByFilter(@RequestParam(defaultValue = "0") int page,
+    public Document getAllProductsByFilter(@RequestParam(defaultValue = "1") int page,
                                            @RequestParam(defaultValue = "30") int size,
                                            @RequestParam(defaultValue = "0") String priceFrom,
                                            @RequestParam(defaultValue = "500") String priceTo,

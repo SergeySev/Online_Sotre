@@ -47,7 +47,7 @@ public class SubCategoryController {
     })
     @GetMapping(path = "/get_by_main/{title}")
     public List<SubCategoryDto> getSubCategoryByMainTitle(@PathVariable String title) {
-        return subCategoryService.getAllProductCategoryByMainCategory(title);
+        return subCategoryService.getAllSubCategoryByMainCategory(title);
     }
 
     @Operation(summary = "Get the Sub Category by id")
