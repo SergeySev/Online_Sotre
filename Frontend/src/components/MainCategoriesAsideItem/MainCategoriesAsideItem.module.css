@@ -39,7 +39,7 @@
 
 }
 
-.category_item_list ul {
+.category_item_list {
 	background-color: var(--white);
 	list-style: none;
 	display: grid;
@@ -59,7 +59,6 @@
 }
 
 .category_item:hover .category_item_list {
-	/* display: block; */
 	opacity: 1;
 	visibility: visible;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetch_subcategory_products } from '../../requests/requests';
+import { fetch_main_categories, fetch_subcategory_products } from '../../requests/requests';
 import { Breadcrumbs, MainCategoriesAside, ProductItem, Pagination } from '../../components';
 import s from './SubCategoryPage.module.css'
+import { FilterAside } from '../../components/FilterAside/FilterAside';
 
 export function SubCategoryPage() {
 
@@ -14,7 +15,10 @@ export function SubCategoryPage() {
 	const subcategory_products = useSelector(store => store.category_products.category_products)
 	const subcategory_title = useSelector(store => store.category_products.category_title)
 
-	useEffect(() => dispatch(fetch_subcategory_products(id.id)), [])
+	useEffect(() => {
+		dispatch(fetch_subcategory_products(id.id))
+		dispatch(fetch_main_categories())
+	}, [])
 
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/' },
@@ -49,6 +53,7 @@ export function SubCategoryPage() {
 				<div className={s.page_container}>
 					<div className={s.aside_container}>
 						<MainCategoriesAside categories={categories} changeProductList={changeProductList} />
+						<FilterAside />
 					</div>
 					<div className={s.products_list_wrapper}>
 						<ul className={s.products_list}>
