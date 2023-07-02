@@ -1,9 +1,6 @@
 .menu_item {
 	width: var(--header-top_hight);
 	height: var(--header-top_hight);
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	background-color: var(--dark-gray);
 	transition: all .3s;
 	cursor: pointer;
@@ -11,6 +8,14 @@
 
 .menu_item:hover {
 	background-color: var(--orange);
+}
+
+.item_link {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .menu_item svg {

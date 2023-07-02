@@ -15,21 +15,21 @@ export const top_menu_items = [
 		title: 'phone',
 		image: '',
 		icon: <FiPhoneIncoming />,
-		link: '#'
+		// link: '#'
 	},
 	{
 		id: 2,
 		title: 'favorite',
 		image: '',
 		icon: <FiHeart />,
-		link: '#'
+		link: '/favorite'
 	},
 	{
 		id: 3,
 		title: 'comparison',
 		image: '',
 		icon: <FiBarChart2 />,
-		link: '#'
+		link: '/comparison'
 	},
 	{
 		id: 4,
@@ -37,14 +37,14 @@ export const top_menu_items = [
 		image: avatar,
 		// icon: <FaRegUserCircle />,
 		// icon: <RiAccountCircleLine />,
-		link: '#'
+		// link: '#'
 	},
 	{
 		id: 5,
 		title: 'cart',
 		image: '',
 		icon: <FiShoppingCart />,
-		link: '#'
+		link: '/cart'
 	},
 ]
 
