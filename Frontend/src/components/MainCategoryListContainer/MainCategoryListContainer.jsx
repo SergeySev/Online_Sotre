@@ -7,14 +7,15 @@ import s from './MainCategoryListContainer.module.css'
 export function MainCategoryListContainer({ ident }) {
 
 	let { id } = useParams()
-
 	id = id ? id : ident
 
 	const dispatch = useDispatch()
-	useEffect(() => dispatch(fetch_sub_categories_by_main(id)), [id])
+
+	useEffect(() => {
+		if (id) dispatch(fetch_sub_categories_by_main(id))
+	}, [id])
 
 	const subcategories = useSelector(store => store.subcategories)
-	// console.log(subcategories);
 
 	return (
 		<div className={s.subcategories_list}>
