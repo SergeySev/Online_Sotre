@@ -11,7 +11,11 @@
   position: relative;
 }
 
-.filter_item_active .filter_item_list {
+.filter_item_active {
+  border-bottom: 1px solid var(--coal);
+}
+
+.filter_item_active~.filter_item_list {
   display: flex;
   transition: display .3s;
 }
@@ -43,19 +47,40 @@
 }
 
 .filter_item_list {
-  margin-top: 18px;
+  padding: 18px 24px;
   flex-direction: column;
   gap: 12px;
   display: none;
+  background-color: var(--coal);
+  color: var(--white);
+  border-bottom: 1px solid var(--dark-gray);
 }
 
 .filter_item_list form {
-  display: flex;
-  gap: 12px;
-  align-items: center;
+  position: relative;
 }
 
-.filter_item_list input {
-  width: 20px;
+.filter_item_list form label {
+  margin-left: 32px;
+  cursor: pointer;
+}
+
+.filter_checkbox {
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: background-color .3s ease-in-out;
+}
+
+.filter_item_list input:checked~.checkmark {
+  background-color: var(--orange);
 }
