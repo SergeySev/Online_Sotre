@@ -1,8 +1,10 @@
-import { FiPhoneIncoming } from 'react-icons/fi';
+import { FiPhoneIncoming, FiHeart, FiBarChart2, FiShoppingCart } from 'react-icons/fi';
+// import { FaRegUserCircle } from 'react-icons/fa';
+// import { RiAccountCircleLine } from 'react-icons/ri';
 import avatar from './assets/avatar.png'
-import comparison from './assets/bar-chart.png'
-import favorite from './assets/heart.png'
-import cart from './assets/cart.png'
+// import comparison from './assets/bar-chart.png'
+// import favorite from './assets/heart.png'
+// import cart from './assets/cart.png'
 import instagram from './assets/instagram.png'
 import vk from './assets/vk.png'
 import facebook from './assets/fb.png'
@@ -13,31 +15,36 @@ export const top_menu_items = [
 		title: 'phone',
 		image: '',
 		icon: <FiPhoneIncoming />,
-		link: '#'
+		// link: '#'
 	},
 	{
 		id: 2,
 		title: 'favorite',
-		image: favorite,
-		link: '#'
+		image: '',
+		icon: <FiHeart />,
+		link: '/favorite'
 	},
 	{
 		id: 3,
 		title: 'comparison',
-		image: comparison,
-		link: '#'
+		image: '',
+		icon: <FiBarChart2 />,
+		link: '/comparison'
 	},
 	{
 		id: 4,
 		title: 'avatar',
 		image: avatar,
-		link: '#'
+		// icon: <FaRegUserCircle />,
+		// icon: <RiAccountCircleLine />,
+		// link: '#'
 	},
 	{
 		id: 5,
 		title: 'cart',
-		image: cart,
-		link: '#'
+		image: '',
+		icon: <FiShoppingCart />,
+		link: '/cart'
 	},
 ]
 

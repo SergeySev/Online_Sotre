@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { BurgerContext } from './context/burgerContext';
-import {Header, Footer} from './components';
-import {HomePage, MainCategoriesPage, SubCategoryPage} from './pages';
+import { Header, Footer } from './components';
+import { CartPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, SubCategoryPage } from './pages';
 import './App.css';
 
 function App() {
@@ -43,21 +43,24 @@ function App() {
 	}, [burgerActive]);
 
 	return (
-			<BurgerContext.Provider
-		value={{
-			burgerActive, 
-			setBurgerActive
-		}}>
+		<BurgerContext.Provider
+			value={{
+				burgerActive,
+				setBurgerActive
+			}}>
 			<div className='app'>
-			<Header />
-			<Routes>
-				<Route path='/Online_Store' element={<HomePage />} />
-				<Route path='/catalog/' element={<MainCategoriesPage />} />
-				<Route path='/catalog/:id' element={<MainCategoriesPage />} />
-				<Route path='/catalog/:id/:id' element={<SubCategoryPage />} />
-			</Routes>
-			<Footer />
-		</div>
+				<Header />
+				<Routes>
+					<Route path='/Online_Store' element={<HomePage />} />
+					<Route path='/catalog/' element={<MainCategoriesPage />} />
+					<Route path='/catalog/:id' element={<MainCategoriesPage />} />
+					<Route path='/catalog/:id/:id' element={<SubCategoryPage />} />
+					<Route path='/favorite' element={<FavoriteProductsPage />} />
+					<Route path='/comparison' element={<ComparisonPage />} />
+					<Route path='/cart' element={<CartPage />} />
+				</Routes>
+				<Footer />
+			</div>
 		</BurgerContext.Provider>
 	);
 }

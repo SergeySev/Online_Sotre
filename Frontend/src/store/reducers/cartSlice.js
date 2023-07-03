@@ -23,7 +23,7 @@ const cartSlice = createSlice({
 	reducers: {
 		add_to_cart(state, action) {
 			const product = action.payload;
-			console.log(product);
+			// console.log(product);
 			if (+product.inStock > 0) {
 				const index = state.cart_list.findIndex(elem => elem.id === product.id);
 

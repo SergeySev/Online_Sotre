@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import s from './FilterAsideItem.module.css'
 
-export default function FilterAsideItem({ title }) {
-  const temp_list = ['item1', 'item2', 'item3', 'item4']
-  const [activeFilter, setActiveFilter] = useState(false)
+export function FilterAsideItem({ title }) {
+	const temp_list = ['item1', 'item2', 'item3', 'item4']
+	const [activeFilter, setActiveFilter] = useState(false)
+
 
   const changeActive = () => {
     setActiveFilter(!activeFilter)

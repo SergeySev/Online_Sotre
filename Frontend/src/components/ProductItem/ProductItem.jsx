@@ -1,22 +1,27 @@
 import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import bars from './assets/bar-chart-2.png'
-import heart from './assets/heart.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggle_favorite } from '../../store/reducers/favoriteSlice'
+import { toggle_comparison } from '../../store/reducers/comparisonSlice'
+import { FiHeart, FiBarChart2 } from 'react-icons/fi';
 import { NewSign, AddToCartBtn } from '../'
 import s from './ProductItem.module.css'
 
 export function ProductItem({ product }) {
-
-	let tag = 'NEW'
-	if (product.isNew === 'true') {
+	let tag = ''
+	if (product.isNew) {
 		tag = 'NEW'
 	}
-	if (product.isHit === 'true') {
+	if (product.isHit) {
 		tag = 'HIT'
 	}
-	if (product.discountPrice !== '0.00') {
+	if (product.discountPrice) {
 		tag = 'PROMO'
 	}
+
+	const dispatch = useDispatch();
+	const favorite_id_list = useSelector(store => store.favorite.favorite_list).map(el => el.id)
+	const comparison_id_list = useSelector(store => store.comparison.comparison_list).map(el => el.id)
 
 	const { ref, inView } = useInView({
 		threshold: 0.1,
@@ -35,10 +40,14 @@ export function ProductItem({ product }) {
 	return (
 		<li className={s.product_item}>
 			<div className={s.top_signs}>
-				<div className={s.tag}><NewSign tag={tag} /></div>
+				<div><NewSign tag={tag} /></div>
 				<div className={s.add_to}>
-					<img src={bars} alt='bars' className={s.bars} />
-					<img src={heart} alt='heart' />
+					<FiBarChart2
+						className={`${s.bars} ${s[comparison_id_list.includes(product.id) ? "active" : ""] || ''}`}
+						onClick={() => dispatch(toggle_comparison(product))} />
+					<FiHeart
+						className={`${s.heart} ${s[favorite_id_list.includes(product.id) ? "active" : ""] || ''}`}
+						onClick={() => dispatch(toggle_favorite(product))} />
 				</div>
 			</div>
 			<div ref={ref} className={s.img_wrapper}>
@@ -46,8 +55,6 @@ export function ProductItem({ product }) {
 					<img src={product.productImagesLinks[img_index]} alt='product_image' className={s.product_img} />
 					: <div className='photo-card_skeleton'></div>}
 			</div>
-			{/* <img src={product.productImagesLinks[img_index]} alt='product_image' className={s.product_img}
-				loading='lazy' /> */}
 			<ul className={s.color_bars}>
 				{bar_list.map(elem => <li key={elem}
 					className={s.item}

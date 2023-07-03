@@ -1,0 +1,1 @@
+export { FilterAsideItem } from "./FilterAsideItem/FilterAsideItem";

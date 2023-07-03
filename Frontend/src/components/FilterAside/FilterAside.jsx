@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetch_filter_data } from '../../requests/requests';
+import { FilterAsideItem } from './';
 import s from './FilterAside.module.css'
-import FilterAsideItem from './FilterAsideItem/FilterAsideItem';
 
 export function FilterAside() {
 
