@@ -8,6 +8,7 @@ import navSlice from "./reducers/navSlice";
 import cartSlice from "./reducers/cartSlice";
 import favoriteSlice from "./reducers/favoriteSlice";
 import comparisonSlice from "./reducers/comparisonSlice";
+import filterSlice from "./reducers/filterSlice";
 
 const rootReducer = combineReducers({
 	categories: categoriesSlice,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
 	navigation: navSlice,
 	favorite: favoriteSlice,
 	comparison: comparisonSlice,
-	cart: cartSlice
+	cart: cartSlice,
+	filter_data: filterSlice
 })
 
 export const store = configureStore({

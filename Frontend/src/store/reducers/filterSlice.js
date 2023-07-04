@@ -3,18 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 const filterSlice = createSlice({
   name: 'filter',
   initialState: {
-    countries_list: [],
-    colors_list: [],
-    brands_list: [],
-    deliveries_list: [],
+    ['Made Country']: [],
+    ['Color']: [],
+    ['Brands']: [],
+    ['Delivery Type']: [],
   },
   reducers: {
     get_filter_data(state, action) {
       console.log(action.payload)
-      state.countries_list = [...action.payload['Made Country']]
-      state.colors_list = [...action.payload['Color']]
-      state.brands_list = [...action.payload['Brands']]
-      state.deliveries_list = [...action.payload['Delivery Type']]
+      state['Made Country'] = [...action.payload['Made Country']]
+      state['Color'] = [...action.payload['Color']]
+      state['Brands'] = [...action.payload['Brands']]
+      state['Delivery Type'] = [...action.payload['Delivery Type']]
     }
   }
 })
