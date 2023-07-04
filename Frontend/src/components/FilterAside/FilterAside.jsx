@@ -7,15 +7,31 @@ import s from './FilterAside.module.css'
 export function FilterAside() {
 
 	const dispatch = useDispatch()
-	const filters = ['Price, $', 'Brand', 'Country Made', 'Color', 'Delivery Type']
 
-	useEffect(() => dispatch(fetch_filter_data()))
-	const filter_data = useSelector(store => store.filter)
-	console.log((filter_data));
+	useEffect(() => dispatch(fetch_filter_data()), [dispatch])
+	const filter_data = useSelector(store => store.filter_data)
 
 	return (
 		<ul className={s.aside_wrapper}>
-			{filters.map((elem, index) => <FilterAsideItem key={index} title={elem} />)}
+			{Object.keys(filter_data).map((elem, index) => {
+				let data = [];
+				console.log(elem)
+				if (elem === 'Brands') {
+					data = filter_data['Brands']
+				} else if (elem === 'Color') {
+					data = filter_data['Color']
+				} else if (elem === 'Delivery Type') {
+					data = filter_data['Delivery Type']
+				} else if (elem === 'Made Country') {
+					data = filter_data['Made Country']
+				}
+				return <FilterAsideItem
+					key={index}
+					title={elem}
+					data={data}
+				/>
+			}
+			)}
 		</ul>
 	)
 }
