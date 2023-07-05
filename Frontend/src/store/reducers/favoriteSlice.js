@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { sortByNew } from "../actions";
 
 
 const updateLocalStorage = (list, amount) => {
@@ -31,9 +32,13 @@ const favoriteSlice = createSlice({
 				state.favorite_list = state.favorite_list.filter(elem => elem.id !== product.id)
 			}
 			updateLocalStorage(state.favorite_list, state.total_amount);
+		},
+		sort_by_tag(state, action) {
+			state = sortByNew(state, action.payload);
 		}
+
 	}
 })
 
 export default favoriteSlice.reducer;
-export const { toggle_favorite } = favoriteSlice.actions;
+export const { toggle_favorite, sort_by_tag } = favoriteSlice.actions;

@@ -21,7 +21,7 @@ export function FavoriteProductsPage() {
 						<p className={s.items_count}>{total_amount}</p>
 						<p>goods</p>
 					</div>
-					<SortSelect />
+					<SortSelect content='favorite' />
 				</div>
 				<ProductsList products={products_list} />
 			</div>

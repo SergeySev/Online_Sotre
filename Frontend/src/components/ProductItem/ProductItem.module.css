@@ -26,11 +26,13 @@
 	transition: color var(--transition);
 }
 
-.bars.active,
+.bars.active {
+	color: var(--black);
+}
+
 .heart.active {
 	color: var(--red);
 	fill: currentColor;
-
 }
 
 .img_wrapper {
