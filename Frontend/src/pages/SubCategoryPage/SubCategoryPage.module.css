@@ -1,27 +1,13 @@
 .subcategory_container {
-  padding: 24px 0 80px;
-  background-color: var(--background);
-
+	padding-top: 24px;
+	background-color: var(--background);
 }
 
 .page_container {
-  display: flex;
-  gap: 20px;
-}
-
-.products_list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.subcategory_title {
-  margin: 30px 0;
-  font-size: 40px;
-  font-weight: bold;
+	display: flex;
+	gap: 20px;
 }
 
 .aside_container {
-  border-radius: 5px;
+	border-radius: 5px;
 }

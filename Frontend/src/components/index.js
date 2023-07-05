@@ -25,7 +25,9 @@ export { NewsSection } from "./NewsSection/NewsSection";
 
 // components ===============
 export { Breadcrumbs } from "./Breadcrumbs/Breadcrumbs";
+export { ProductsList } from "./ProductsList/ProductsList";
 export { ProductItem } from "./ProductItem/ProductItem";
+export { SubCategoryItem } from "./SubCategoryItem/SubCategoryItem";
 export { MainCategoryItemGallery } from "./MainCategoryItemGallery/MainCategoryItemGallery";
 export { NewSign } from "./NewSign/NewSign";
 export { AddToCartBtn } from "./AddToCartBtn/AddToCartBtn";
@@ -35,3 +37,4 @@ export { MainCategoryListContainer } from "./MainCategoryListContainer/MainCateg
 export { MainCategoriesAside } from "./MainCategoriesAside/MainCategoriesAside";
 export { MainCategoriesAsideItem } from "./MainCategoriesAsideItem/MainCategoriesAsideItem";
 export { FilterAside } from "./FilterAside/FilterAside";
+export { SortSelect } from "./SortSelect/SortSelect";

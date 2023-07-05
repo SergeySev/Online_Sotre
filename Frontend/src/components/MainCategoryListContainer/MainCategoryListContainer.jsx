@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { fetch_sub_categories_by_main } from '../../requests/requests'
+import { ProductsList } from '../'
 import s from './MainCategoryListContainer.module.css'
 
 export function MainCategoryListContainer({ ident }) {
@@ -18,14 +19,6 @@ export function MainCategoryListContainer({ ident }) {
 	const subcategories = useSelector(store => store.subcategories)
 
 	return (
-		<div className={s.subcategories_list}>
-			{subcategories.map(elem =>
-				<div className={s.subcategory_item} key={elem.id}>
-					<img src={elem.imageLink} alt={elem.title} className={s.subcategory_img} />
-					{/* <p className={s.subcategory_title}>{elem.title}</p> */}
-					{<NavLink to={`/catalog/${id}/${elem.id}`}><p className={s.subcategory_title}>{elem.title}</p></NavLink>}
-				</div>
-			)}
-		</div>
+		<ProductsList products={subcategories} content={id} pagination_content='subcategories' />
 	)
 }

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Breadcrumbs } from '../../components';
+import { Breadcrumbs, Pagination, ProductsList, SortSelect } from '../../components';
 import s from './FavoriteProductsPage.module.css'
 
 export function FavoriteProductsPage() {
@@ -9,28 +9,22 @@ export function FavoriteProductsPage() {
 	];
 
 	const total_amount = useSelector(store => store.favorite.total_amount)
+	const products_list = useSelector(store => store.favorite.favorite_list)
 
 	return (
-		<div>
+		<section className={s.favorite_page}>
 			<div className="container">
 				<Breadcrumbs items={breadcrumbsItems} />
-				<h2>Favorites</h2>
+				<h1 className='title'>Favorites</h1>
 				<div className={s.favorite_top}>
 					<div className={s.total}>
 						<p className={s.items_count}>{total_amount}</p>
 						<p>goods</p>
 					</div>
-					<label>
-						sort:
-						<select>
-							<option>new first</option>
-							<option>discount first</option>
-							<option>ascending price</option>
-							<option>descending price</option>
-						</select>
-					</label>
+					<SortSelect />
 				</div>
+				<ProductsList products={products_list} />
 			</div>
-		</div>
+		</section >
 	)
 }
