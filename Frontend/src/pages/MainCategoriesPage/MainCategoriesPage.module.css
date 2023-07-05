@@ -10,12 +10,6 @@
   grid-gap: 2px;
 }
 
-.title {
-  margin-top: 32px;
-  font-size: 40px;
-  font-weight: bold;
-}
-
 .catalog_item_title {
   color: var(--black);
   font-weight: 500;

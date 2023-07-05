@@ -46,6 +46,12 @@ body {
 	height: 200px;
 }
 
+.title {
+	margin: 32px 0;
+	font-size: 40px;
+	font-weight: bold;
+}
+
 @media (max-width: 860px) {
 	:root {
 		--header-top_hight: 60px;

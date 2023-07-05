@@ -15,16 +15,14 @@ export function MainCategoriesPage() {
 	const categories = useSelector(state => state.categories)
 	const id = categories[0]?.id;
 
-
 	useEffect(() => dispatch(fetch_main_categories()), [])
-
 
 	return (
 		<div className={s.catalog_section}>
 			<div className='container'>
 				<Breadcrumbs items={breadcrumbsItems} />
 				<div className={s.catalog_wrapper}>
-					<h2 className={s.title}>Catalog</h2>
+					<h1 className='title'>Catalog</h1>
 					<div className={s.catalog_headers}>
 						{categories.map(elem =>
 							<NavLink to={`/catalog/${elem.id}`} key={elem.title}><div
@@ -37,7 +35,5 @@ export function MainCategoriesPage() {
 				</div>
 			</div>
 		</div>
-
-
 	)
 }

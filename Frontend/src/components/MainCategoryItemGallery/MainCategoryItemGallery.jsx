@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -70,8 +70,6 @@ export function MainCategoryItemGallery({ id, title }) {
 	useEffect(() => {
 		dispatch(fetch_sub_categories_by_main(id))
 	}, [id])
-	// console.log("MainCategoryItemGallery ID: ", id);
-	// console.log("MainCategoryItemGallery sub_categories: ", sub_categories);
 
 	return (
 		<li className={s.category_header}>

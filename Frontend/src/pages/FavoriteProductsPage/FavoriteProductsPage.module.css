@@ -1,0 +1,29 @@
+.favorite_page {
+	padding-top: 24px;
+	background-color: var(--background);
+}
+
+.favorite_top {
+	padding-bottom: 24px;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	font-family: var(--font_prosto);
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px;
+
+}
+
+.total {
+	position: relative;
+	padding-left: 50px;
+	max-width: 310px;
+	width: 100%;
+	display: flex;
+}
+
+.items_count {
+	position: absolute;
+	left: 0;
+}
