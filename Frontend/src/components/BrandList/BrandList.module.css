@@ -1,0 +1,21 @@
+.brand_list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding-bottom: 80px;
+}
+
+.brand_item {
+  width: 324px;
+  height: 160px;
+  background-color: var(--white);
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand_item img {
+  object-fit: cover;
+}

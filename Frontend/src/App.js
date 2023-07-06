@@ -4,6 +4,7 @@ import { BurgerContext } from './context/burgerContext';
 import { Header, Footer } from './components';
 import { CartPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, SubCategoryPage } from './pages';
 import './App.css';
+import BrandsPage from './pages/BrandsPage/BrandsPage';
 
 function App() {
 	// const [active, setActive] = useState(false);
@@ -58,6 +59,7 @@ function App() {
 					<Route path='/favorite' element={<FavoriteProductsPage />} />
 					<Route path='/comparison' element={<ComparisonPage />} />
 					<Route path='/cart' element={<CartPage />} />
+					<Route path='/brands' element={<BrandsPage />} />
 				</Routes>
 				<Footer />
 			</div>
