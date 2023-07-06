@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { sort_ascending_price, sort_by_hits, sort_by_new, sort_by_promo, sort_descending_price, sort_fromA, sort_fromZ } from '../../store/reducers/favoriteSlice';
 import s from './SortSelect.module.css'
-import { sort_by_tag } from '../../store/reducers/favoriteSlice';
 
 export function SortSelect({ content }) {
 	const refSelect = useRef();
@@ -13,29 +13,27 @@ export function SortSelect({ content }) {
 	const dispatch = useDispatch();
 
 	const handleSelect = (e) => {
-		const isTag = (
-			e.target.value === 'new' ||
-			e.target.value === 'hits' ||
-			e.target.value === 'promo') ?
-			"tag" : e.target.value;
-		switch (isTag) {
-			case 'default':
-				console.log(e.target.value);
+		switch (e.target.value) {
+			case 'new':
+				dispatch(sort_by_new());
 				break;
-			case 'tag':
-				dispatch(sort_by_tag(e.target.value));
+			case 'hits':
+				dispatch(sort_by_hits());
+				break;
+			case 'promo':
+				dispatch(sort_by_promo());
 				break;
 			case 'asc':
-				console.log(e.target.value);
+				dispatch(sort_ascending_price());
 				break;
 			case 'desc':
-				console.log(e.target.value);
+				dispatch(sort_descending_price());
 				break;
 			case 'fromA':
-				console.log(e.target.value);
+				dispatch(sort_fromA());
 				break;
 			case 'fromZ':
-				console.log(e.target.value);
+				dispatch(sort_fromZ());
 				break;
 			default:
 				break;
@@ -50,7 +48,6 @@ export function SortSelect({ content }) {
 					onChange={handleSelect}
 					ref={refSelect}
 				>
-					{/* <option value="default" ></option> */}
 					<option value="new" >New first</option>
 					<option value="hits">Popular first</option>
 					<option value="promo">Discount first</option>
