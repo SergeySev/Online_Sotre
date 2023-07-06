@@ -52,6 +52,16 @@ body {
 	font-weight: bold;
 }
 
+.toast_message {
+	background-color: var(--coal);
+	color: var(--white);
+	font-size: 20px;
+	width: 18vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 @media (max-width: 860px) {
 	:root {
 		--header-top_hight: 60px;
