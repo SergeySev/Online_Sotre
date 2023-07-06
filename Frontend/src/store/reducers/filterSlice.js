@@ -10,7 +10,6 @@ const filterSlice = createSlice({
   },
   reducers: {
     get_filter_data(state, action) {
-      console.log(action.payload)
       state['Made Country'] = [...action.payload['Made Country']]
       state['Color'] = [...action.payload['Color']]
       state['Brands'] = [...action.payload['Brands']]

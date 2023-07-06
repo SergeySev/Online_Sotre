@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetch_filter_data } from '../../requests/requests';
 import { FilterAsideItem } from './';
 import s from './FilterAside.module.css'
+import { FilterAsideElem } from './FilterAsideElem/FilterAsideElem';
 
 export function FilterAside() {
 
@@ -15,7 +16,6 @@ export function FilterAside() {
 		<ul className={s.aside_wrapper}>
 			{Object.keys(filter_data).map((elem, index) => {
 				let data = [];
-				console.log(elem)
 				if (elem === 'Brands') {
 					data = filter_data['Brands']
 				} else if (elem === 'Color') {
@@ -25,12 +25,18 @@ export function FilterAside() {
 				} else if (elem === 'Made Country') {
 					data = filter_data['Made Country']
 				}
-				return <FilterAsideItem
+				return <FilterAsideElem
 					key={index}
 					title={elem}
 					data={data}
 				/>
 			}
+				// 	return <FilterAsideItem
+				// 		key={index}
+				// 		title={elem}
+				// 		data={data}
+				// 	/>
+				// }
 			)}
 		</ul>
 	)
