@@ -12,6 +12,8 @@ export function ProductsList({ products, content, pagination_content }) {
 	const products_list = products.slice(firstElem, lastElem)
 	const countElem = Math.ceil(products.length / countProductsPage)
 
+	console.log(content, pagination_content)
+
 	useEffect(() => {
 		if (Math.ceil(products.length / countProductsPage) < currentPage) {
 			setCurrentPage(1)
@@ -30,7 +32,6 @@ export function ProductsList({ products, content, pagination_content }) {
 				<ul className={s.products_list}>
 					{products_list.map(product => <ProductItem key={product.id} product={product} />)}
 				</ul>
-
 			}
 
 			<Pagination setCurrentPage={setCurrentPage} countElem={countElem} currentPage={currentPage} pagination_content={pagination_content} />

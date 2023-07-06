@@ -6,6 +6,7 @@ import BrandSliderItem from '../BrandSliderItem/BrandSliderItem'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import s from './BrandSlider.module.css'
+import { NavLink } from 'react-router-dom';
 
 export function BrandSlider() {
 
@@ -54,7 +55,7 @@ export function BrandSlider() {
 	return (
 		<section className={s.brand_slider}>
 			<div className='container'>
-				<h2 className={s.slider_title}>Our Brands</h2>
+				<NavLink to={'/brands'}><h2 className={s.slider_title}>Our Brands</h2></NavLink>
 				<Slider {...settings}>
 					{brands.map(elem => <BrandSliderItem {...elem} key={elem.id} />)}
 				</Slider>

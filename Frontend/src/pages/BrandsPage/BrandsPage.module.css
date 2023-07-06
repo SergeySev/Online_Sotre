@@ -1,0 +1,9 @@
+.brand_page {
+  background-color: var(--background);
+}
+
+.page_title {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 32px 0;
+}
