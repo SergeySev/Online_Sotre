@@ -29,6 +29,7 @@
   border-bottom: 1px solid var(--dark-gray);
   position: relative;
   cursor: pointer;
+  transition: all .3s ease-in-out;
 }
 
 .tab_active {

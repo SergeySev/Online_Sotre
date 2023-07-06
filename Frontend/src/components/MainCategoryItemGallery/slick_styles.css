@@ -4,6 +4,11 @@
   left: unset;
 }
 
+.slick-prev:before,
+.slick-next:before {
+  font-size: 0;
+}
+
 .category_controls .slick-arrow.slick-next {
   top: -34px;
   right: 140px;
