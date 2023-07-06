@@ -1,12 +1,22 @@
-import { useSelector } from 'react-redux';
-import { Breadcrumbs, Pagination, ProductsList, SortSelect } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Breadcrumbs, ProductsList, SortSelect } from '../../components';
+import { sort_by_new } from '../../store/reducers/favoriteSlice';
 import s from './FavoriteProductsPage.module.css'
 
 export function FavoriteProductsPage() {
+	// console.log("FavoriteProductsPage reload");
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/' },
 		{ text: 'Favorites', link: '/favorite' },
 	];
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		// console.log("FavoriteProductsPage useEffect");
+		dispatch(sort_by_new());
+	}, [])
 
 	const total_amount = useSelector(store => store.favorite.total_amount)
 	const products_list = useSelector(store => store.favorite.favorite_list)
@@ -21,7 +31,7 @@ export function FavoriteProductsPage() {
 						<p className={s.items_count}>{total_amount}</p>
 						<p>goods</p>
 					</div>
-					<SortSelect />
+					<SortSelect content='favorite' />
 				</div>
 				<ProductsList products={products_list} />
 			</div>

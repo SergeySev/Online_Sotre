@@ -4,4 +4,9 @@
 	background-color: transparent;
 	outline: none;
 	cursor: pointer;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
 }
