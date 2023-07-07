@@ -47,6 +47,46 @@ export const top_menu_items = [
 		link: '/cart'
 	},
 ]
+// ====================================================
+
+export const sort_select_values = [
+	{
+		id: 1,
+		value: 'New first',
+		data: 'new'
+	},
+	{
+		id: 2,
+		value: 'Popular first',
+		data: 'hits'
+	},
+	{
+		id: 3,
+		value: 'Discount first',
+		data: 'promo'
+	},
+	{
+		id: 4,
+		value: 'Ascending price',
+		data: 'asc'
+	},
+	{
+		id: 5,
+		value: 'Descending price',
+		data: 'desc'
+	},
+	{
+		id: 6,
+		value: 'From A to Z',
+		data: 'fromA'
+	},
+	{
+		id: 7,
+		value: 'From Z to A',
+		data: 'fromZ'
+	},
+]
+
 
 // ====================================================
 
