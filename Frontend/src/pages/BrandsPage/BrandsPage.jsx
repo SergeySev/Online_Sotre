@@ -23,7 +23,7 @@ export default function BrandsPage() {
   return (
     <div className={s.brand_page}>
       <div className='container'>
-        <Breadcrumbs items={breadcrumbsItems} />
+        <Breadcrumbs items={breadcrumbsItems} className={s.breadcrumbs} />
         <h1 className={s.page_title}>Brands</h1>
         <BrandList brands={brands} />
       </div>

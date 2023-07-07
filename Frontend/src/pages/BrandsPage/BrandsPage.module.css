@@ -1,5 +1,6 @@
 .brand_page {
   background-color: var(--background);
+  padding-top: 24px;
 }
 
 .page_title {
