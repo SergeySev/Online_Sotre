@@ -1,16 +1,13 @@
 package com.example.fb_project.service;
 
 import com.example.fb_project.entity.Brand;
-import com.example.fb_project.entity.Product;
 import com.example.fb_project.entity.enums.Color;
 import com.example.fb_project.entity.enums.DeliveryType;
 import com.example.fb_project.entity.enums.MadeCountry;
 import com.example.fb_project.repository.BrandRepository;
-import com.example.fb_project.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

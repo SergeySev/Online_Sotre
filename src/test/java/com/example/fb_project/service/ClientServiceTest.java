@@ -1,10 +1,9 @@
 package com.example.fb_project.service;
 
-import com.example.fb_project.createEntity.CreateClientDto;
 import com.example.fb_project.dto.ClientRegisterDto;
 import com.example.fb_project.entity.Clients;
+import com.example.fb_project.entity.CreateClientDto;
 import com.example.fb_project.mapper.ClientMapperDto;
-import com.example.fb_project.mapper.ClientMapperDtoImpl;
 import com.example.fb_project.repository.ClientRepository;
 import com.example.fb_project.security.CheckEmail;
 import org.hibernate.query.IllegalQueryOperationException;
@@ -20,7 +19,7 @@ class ClientServiceTest {
 
     ClientRepository clientRepository = Mockito.mock(ClientRepository.class);
 
-    ClientMapperDto clientMapperDto = new ClientMapperDtoImpl();
+    ClientMapperDto clientMapperDto = Mockito.mock(ClientMapperDto.class);
 
     CheckEmail checkEmail = new CheckEmail();
 
@@ -145,5 +144,6 @@ class ClientServiceTest {
         assertEquals("Email is not valid", illegalArgumentException.getMessage());
         Mockito.verify(clientRepository, Mockito.times(0)).save(Mockito.any());
     }
+
 
 }
