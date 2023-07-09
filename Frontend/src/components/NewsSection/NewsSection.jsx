@@ -1,7 +1,6 @@
-import React from 'react';
-import s from './NewsSection.module.css';
-import Button from '../../UI/Button/Button'
+import { Button } from '../../UI'
 import { news_list } from '../../data/data'
+import s from './NewsSection.module.css';
 
 export function NewsSection() {
 	return (
@@ -14,7 +13,7 @@ export function NewsSection() {
 							association of entrepreneurs, a form of organization of an enterprise in which its legal
 							personality differs from the legal personality of the persons participating in it.
 							Companies have the status of a legal entity.</p>
-						<Button text='Go to news' class_name='orange' />
+						<Button text='Go to news' content='news' />
 					</div>
 					<div className={s.news_block}>
 						{news_list.map(elem => (

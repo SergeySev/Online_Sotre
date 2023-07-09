@@ -48,9 +48,20 @@ const cartSlice = createSlice({
 				}
 				updateLocalStorage(state.cart_list, state.total_amount, state.total_summ);
 			}
+		},
+		remove_from_cart(state, action) {
+			const product = action.payload;
+
+			state.total_amount -= 1;
+			state.cart_list = state.cart_list.filter(elem => elem.id !== product.id);
+			const tempTotalSumm =
+				state.total_summ -
+				(+product.discountPrice || +product.price);
+			state.total_summ = +tempTotalSumm.toFixed(2);
+			updateLocalStorage(state.cart_list, state.total_amount, state.total_summ);
 		}
 	}
 })
 
 export default cartSlice.reducer;
-export const { add_to_cart } = cartSlice.actions;
+export const { add_to_cart, remove_from_cart } = cartSlice.actions;

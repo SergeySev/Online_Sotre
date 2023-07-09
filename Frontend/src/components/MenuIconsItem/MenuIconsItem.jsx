@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useCallback, useContext } from 'react'
 import { BurgerContext } from '../../context/burgerContext'
 import { NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,15 +8,31 @@ import s from './MenuIconsItem.module.css'
 export function MenuIconsItem({ image, title, icon, count, link }) {
 	const context = useContext(BurgerContext);
 
+	const showToast = useCallback((message) => {
+		toast(message, {
+			position: toast.POSITION.TOP_CENTER,
+			className: 'toast_message'
+		});
+	})
 
 	const handleClick = (e) => {
 		e.preventDefault();
 		context.setBurgerActive(false);
-		if (!count && title === "favorite") {
-			toast("You don't have any favorites...", {
-				position: toast.POSITION.TOP_CENTER,
-				className: 'toast_message'
-			});
+
+		if (!count) {
+			switch (title) {
+				case 'favorite':
+					showToast("You don't have any favorites...");
+					break;
+				case 'comparison':
+					showToast("You have nothing to compare...");
+					break;
+				case 'cart':
+					showToast("You cart is empty...");
+					break;
+				default:
+					break;
+			}
 		}
 	}
 

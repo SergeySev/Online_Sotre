@@ -1,0 +1,11 @@
+.cart_list {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+@media (max-width: 1100px) {
+	.cart_list {
+		gap: 15px;
+	}
+}

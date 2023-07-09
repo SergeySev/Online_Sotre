@@ -56,13 +56,14 @@ body {
 .toast_message {
 	position: relative;
 	top: 80px;
-	background-color: var(--coal);
-	color: var(--white);
-	font-size: 20px;
 	width: 30vw;
+	font-size: 20px;
+	text-align: center;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: var(--white);
+	background-color: var(--coal);
 }
 
 @media (max-width: 1100px) {
