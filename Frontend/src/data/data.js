@@ -9,6 +9,11 @@ import instagram from './assets/instagram.png'
 import vk from './assets/vk.png'
 import facebook from './assets/fb.png'
 
+export const tabs = [
+	{ id: 1, title: "Customer data" },
+	{ id: 2, title: "Delivery" },
+	{ id: 3, title: "Payment" }]
+
 export const top_menu_items = [
 	{
 		id: 1,

@@ -13,9 +13,15 @@
 	transition: background-color var(--transition), color var(--transition);
 }
 
+.button.checkout,
 .button.about {
 	width: 230px;
 	background-color: var(--black);
+}
+
+.button.checkout {
+	margin-top: 30px;
+	width: 310px;
 }
 
 .button.news {
@@ -28,6 +34,12 @@
 	background-color: var(--orange);
 }
 
+.button.confirmOrder {
+	margin-top: 30px;
+	width: 310px;
+	background-color: var(--orange);
+}
+
 .button.to_shop {
 	width: 264px;
 	background-color: transparent;
@@ -35,15 +47,19 @@
 	border: 1px solid var(--gray);
 }
 
+
+
 @media (min-width: 762px) {
 	.button:active {
 		top: 1px;
 	}
 
+	.button.checkout:hover,
 	.button.about:hover {
 		background-color: var(--orange);
 	}
 
+	.button.confirmOrder:hover,
 	.button.order:hover,
 	.button.news:hover {
 		background-color: var(--black);

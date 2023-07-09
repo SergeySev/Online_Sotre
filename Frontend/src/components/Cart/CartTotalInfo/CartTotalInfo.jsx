@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Button } from '../../../UI';
 import s from './CartTotalInfo.module.css'
 
@@ -21,7 +22,9 @@ export function CartTotalInfo() {
 				<p>To pay</p>
 				<span>{total} &#36;</span>
 			</div>
-			<Button text="Go to design" content="order" />
+			<NavLink to='/checkout'>
+				<Button text="Go to design" content="order" />
+			</NavLink>
 		</div>
 	)
 }
