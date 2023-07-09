@@ -1,0 +1,29 @@
+.order_list {
+	padding: 60px 70px;
+	width: 420px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	border-radius: 0 5px 5px 5px;
+	background-color: var(--black);
+	color: var(--white);
+}
+
+.order_item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+.ordet_item_total {
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.ordet_item_total .item_value {
+	color: var(--orange);
+}

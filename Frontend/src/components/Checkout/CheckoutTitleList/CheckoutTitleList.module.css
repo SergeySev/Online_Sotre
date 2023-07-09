@@ -1,0 +1,32 @@
+.title_list {
+	display: flex;
+	align-items: center;
+	gap: 60px;
+}
+
+.title_item {
+	flex-shrink: 0;
+	min-width: 100px;
+	font-weight: 600;
+	font-size: 20px;
+	color: var(--smoky);
+	cursor: pointer;
+	transition: color var(--transition);
+
+}
+
+.title_item p {
+	padding-bottom: 2px;
+	display: inline-block;
+	border-bottom: 1px solid transparent;
+	transition: border-color var(--transition);
+}
+
+.title_item.active {
+	color: var(--black);
+	border-color: var(--orange);
+}
+
+.title_item.active p {
+	border-color: var(--orange);
+}

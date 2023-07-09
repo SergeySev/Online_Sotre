@@ -1,0 +1,9 @@
+.checkout_page {
+	background-color: var(--background);
+}
+
+.checkout_content {
+	background-color: var(--white);
+	display: flex;
+	justify-content: space-between;
+}

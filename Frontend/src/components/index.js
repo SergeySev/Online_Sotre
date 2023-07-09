@@ -43,3 +43,6 @@ export { CartTitlesList } from "./Cart/CartTitlesList";
 export { CartList } from "./Cart/CartList/CartList";
 export { CartItem } from "./Cart/CartItem/CartItem";
 export { CartTotalInfo } from "./Cart/CartTotalInfo/CartTotalInfo";
+
+export { CheckoutTabs } from "./Checkout/CheckoutTabs/CheckoutTabs";
+export { CheckoutOrder } from "./Checkout/CheckoutOrder/CheckoutOrder";

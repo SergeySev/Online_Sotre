@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { BurgerContext } from './context/burgerContext';
 import { Header, Footer } from './components';
-import { CartPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, SubCategoryPage } from './pages';
+import { CartPage, CheckoutPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, SubCategoryPage } from './pages';
 import './App.css';
 import BrandsPage from './pages/BrandsPage/BrandsPage';
 
@@ -60,6 +60,7 @@ function App() {
 					<Route path='/comparison' element={<ComparisonPage />} />
 					<Route path='/cart' element={<CartPage />} />
 					<Route path='/brands' element={<BrandsPage />} />
+					<Route path='/checkout' element={<CheckoutPage />} />
 				</Routes>
 				<Footer />
 			</div>

@@ -1,0 +1,41 @@
+.data_list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 24px;
+}
+
+.data_item {
+	border-bottom: 1px solid var(--black);
+}
+
+.data_item label {
+	font-size: 12px;
+	line-height: 16px;
+	color: var(--smoky);
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.data_item input {
+	padding-bottom: 4px;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 500;
+	color: var(--black);
+	border: none;
+	outline: none;
+}
+
+@media (min-width: 762px) {
+
+	.data_item input:hover {}
+
+	.data_item input:active {}
+
+	.data_item input:focus {
+		background-color: var(--background);
+	}
+
+}
