@@ -9,10 +9,12 @@ import cartSlice from "./reducers/cartSlice";
 import favoriteSlice from "./reducers/favoriteSlice";
 import comparisonSlice from "./reducers/comparisonSlice";
 import filterSlice from "./reducers/filterSlice";
+import subCategorySlice from "./reducers/subCategorySlice";
 
 const rootReducer = combineReducers({
 	categories: categoriesSlice,
 	subcategories: subCategoriesSlice,
+	// subCategory: subCategorySlice,
 	brands: brandSlice,
 	category_products: categoryProductsSlice,
 	offers: offersSlice,

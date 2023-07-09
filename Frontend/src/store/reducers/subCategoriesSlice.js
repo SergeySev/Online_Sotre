@@ -6,7 +6,7 @@ const subCategoriesSlice = createSlice({
 	reducers: {
 		get_subcategories_by_main(state, action) {
 			return action.payload.subCategories ? [...action.payload.subCategories] : []
-		}
+		},
 	}
 })
 
