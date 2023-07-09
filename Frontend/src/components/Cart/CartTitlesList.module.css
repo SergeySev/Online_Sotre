@@ -1,0 +1,14 @@
+.cart_titles {
+	font-weight: 600;
+	display: grid;
+	grid-template-columns: 8fr 2fr 3fr 3fr;
+	gap: 50px;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+@media (max-width: 1100px) {
+	.cart_titles {
+		display: none;
+	}
+}

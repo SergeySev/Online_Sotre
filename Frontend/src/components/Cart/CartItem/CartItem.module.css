@@ -86,12 +86,12 @@
 	transition: color var(--transition);
 }
 
-.total_summ {
+.summ {
 	text-align: center;
 	font-weight: 500;
 }
 
-.total_summ span {
+.summ span {
 	display: none;
 }
 
@@ -141,15 +141,15 @@
 		grid-area: quantity;
 	}
 
-	.total_summ {
+	.summ {
 		grid-area: total;
 		display: flex;
-		justify-content: end;
+		justify-content: flex-end;
 		gap: 8px;
 		margin-top: auto;
 	}
 
-	.total_summ span {
+	.summ span {
 		display: inline-block;
 	}
 
@@ -159,7 +159,7 @@
 }
 
 @media (max-width: 762px) {
-	.total_summ {
+	.summ {
 		flex-direction: column;
 		gap: 4px;
 		justify-self: end;
@@ -191,11 +191,11 @@
 		transform: translate(0, -5px);
 	}
 
-	.total_summ {
+	.summ {
 		flex-direction: row;
 	}
 
-	.total_summ span {
+	.summ span {
 		flex-shrink: 0;
 		display: block;
 	}

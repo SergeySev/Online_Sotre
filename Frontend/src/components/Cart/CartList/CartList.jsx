@@ -1,5 +1,4 @@
-
-import { CartItem } from '../'
+import { CartItem } from '../..'
 import s from './CartList.module.css'
 
 export function CartList({ products }) {

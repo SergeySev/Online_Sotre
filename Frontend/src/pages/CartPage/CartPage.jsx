@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Breadcrumbs, CartList, CartTotalInfo } from '../../components';
-import s from './CartPage.module.css'
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { Breadcrumbs, CartList, CartTitlesList, CartTotalInfo } from '../../components';
 import { Button } from '../../UI';
+import s from './CartPage.module.css'
 
 export function CartPage() {
 
@@ -11,17 +11,7 @@ export function CartPage() {
 		{ text: 'Shopping cart', link: '/cart' },
 	];
 
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
 	const products_list = useSelector(store => store.cart.cart_list)
-	if (!products_list) {
-		navigate('/Online_Store/#home')
-	}
-
-	const handleClick = () => {
-		navigate('/Online_Store/#home')
-	}
 
 	return (
 		<section className={s.cart_page}>
@@ -29,16 +19,18 @@ export function CartPage() {
 				<Breadcrumbs items={breadcrumbsItems} />
 				<div className={s.cart_top}>
 					<h1 className='title'>Shopping cart</h1>
-					<Button text='continue shopping' onclick={handleClick} content="to_shop" />
+					<NavLink to='/Online_Store/#home'>
+						<Button text='continue shopping' content="to_shop" />
+					</NavLink>
 				</div>
-				<ul className={s.cart_titles}>
-					<li>Product name</li>
-					<li>Price</li>
-					<li>Quantity</li>
-					<li>Total</li>
-				</ul>
-				<CartList products={products_list} />
-				<CartTotalInfo />
+				{!products_list?.length ?
+					<p className={s.cart_empty}>You cart is empty...</p> :
+					<>
+						<CartTitlesList />
+						<CartList products={products_list} />
+						<CartTotalInfo />
+					</>
+				}
 			</div>
 		</section >
 	)

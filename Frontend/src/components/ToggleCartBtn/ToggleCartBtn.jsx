@@ -13,7 +13,11 @@ export function ToggleCartBtn({ product }) {
 	const toggleHand = () => {
 		if (isActive) {
 			setActive(false);
-			dispatch(remove_from_cart(product))
+			const data = {
+				product,
+				count: 1
+			}
+			dispatch(remove_from_cart(data))
 		} else {
 			setActive(true);
 			dispatch(add_to_cart(product))

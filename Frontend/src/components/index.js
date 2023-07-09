@@ -7,7 +7,7 @@ export { WorkingHours } from "./WorkingHours/WorkingHours";
 export { OrderCall } from "./OrderCall/OrderCall";
 export { MenuIconsList } from "./MenuIconsList/MenuIconsList";
 export { MenuIconsItem } from "./MenuIconsItem/MenuIconsItem";
-export { CartSum } from "./CartSum/CartSum";
+export { CartSum } from "./Cart/CartSum/CartSum";
 export { Burger } from "./Burger/Burger";
 export { CatalogBurger } from "./CatalogBurger/CatalogBurger";
 export { MenuNavigation } from "./MenuNavigation/MenuNavigation";
@@ -39,6 +39,7 @@ export { MainCategoriesAsideItem } from "./MainCategoriesAsideItem/MainCategorie
 export { FilterAside } from "./FilterAside/FilterAside";
 export { SortSelect } from "./SortSelect/SortSelect";
 
-export { CartList } from "./CartList/CartList";
-export { CartItem } from "./CartItem/CartItem";
-export { CartTotalInfo } from "./CartTotalInfo/CartTotalInfo";
+export { CartTitlesList } from "./Cart/CartTitlesList";
+export { CartList } from "./Cart/CartList/CartList";
+export { CartItem } from "./Cart/CartItem/CartItem";
+export { CartTotalInfo } from "./Cart/CartTotalInfo/CartTotalInfo";

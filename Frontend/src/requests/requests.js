@@ -5,6 +5,7 @@ import { get_subcategory_products } from "../store/reducers/categoryProductsSlic
 import { get_subcategories_by_main } from "../store/reducers/subCategoriesSlice";
 import { product_offers } from "../store/reducers/offersSlice";
 import { get_filter_data } from "../store/reducers/filterSlice";
+import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
 
 const base_url = "http://localhost:8080/api/v1";
 
@@ -82,6 +83,23 @@ export const fetch_subcategory_products = (id) => {
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_subcategory_products([]));
+		}
+	};
+};
+
+export const fetch_get_subcategory_by_title = (title) => {
+	return function (dispatch) {
+		try {
+			fetch(`${base_url}/sub_category/get_by_title/${title}`)
+				.then((res) => res.json())
+				.then((data) => dispatch(get_subcategory_by_title(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(get_subcategory_by_title({}));
+				})
+		} catch (error) {
+			console.error("fetch error: ", error);
+			dispatch(get_subcategory_by_title({}));
 		}
 	};
 };
