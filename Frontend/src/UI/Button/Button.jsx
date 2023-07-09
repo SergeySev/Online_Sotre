@@ -1,8 +1,8 @@
 import s from './Button.module.css'
 
-export default function Button({ text, class_name, ...other }) {
+export function Button({ text, content, ...other }) {
 	return (
-		<button className={class_name}
+		<button className={`${s.button} ${s[content]}`}
 			{...other}>
 			{text}
 		</button>

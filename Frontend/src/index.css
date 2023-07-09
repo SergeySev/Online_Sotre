@@ -1,39 +1,40 @@
-.orange {
-  background-color: var(--orange);
-  width: 230px;
-  height: 50px;
-  border: 2px solid var(--orange);
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: var(--transititon);
-}
+/* .orange {
+	background-color: var(--orange);
+	width: 230px;
+	height: 50px;
+	border: 2px solid var(--orange);
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 16px;
+	border-radius: 5px;
+	transition: var(--transititon);
+} */
 
-.orange:hover {
-  background-color: var(--black);
-  border: 2px solid var(--black);
-}
+/* .orange:hover {
+	background-color: var(--black);
+	border: 2px solid var(--black);
+} */
 
 .gray {
-  background-color: var(--gray);
+	background-color: var(--gray);
 }
 
 .gray:hover,
 .smoky:hover,
 .coal:hover {
-  background-color: var(--orange);
+	background-color: var(--orange);
 }
 
 .smoky {
-  background-color: var(--smoky);
+	background-color: var(--smoky);
 }
 
 .coal {
-  background-color: var(--coal);
+	background-color: var(--coal);
 }
 
+/* 
 .black {
   background-color: var(--black);
   width: 230px;
@@ -46,9 +47,9 @@
   border-radius: 5px;
   transition: var(--transititon);
   cursor: pointer;
-}
+} */
 
-.black:hover {
-  background-color: var(--white);
-  color: var(--black)
-}
+/* .black:hover {
+	background-color: var(--white);
+	color: var(--black)
+} */

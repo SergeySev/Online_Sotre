@@ -30,7 +30,7 @@ export { ProductItem } from "./ProductItem/ProductItem";
 export { SubCategoryItem } from "./SubCategoryItem/SubCategoryItem";
 export { MainCategoryItemGallery } from "./MainCategoryItemGallery/MainCategoryItemGallery";
 export { NewSign } from "./NewSign/NewSign";
-export { AddToCartBtn } from "./AddToCartBtn/AddToCartBtn";
+export { ToggleCartBtn } from "./ToggleCartBtn/ToggleCartBtn";
 export { Pagination } from "./Pagination/Pagination";
 
 export { MainCategoryListContainer } from "./MainCategoryListContainer/MainCategoryListContainer";
@@ -38,3 +38,7 @@ export { MainCategoriesAside } from "./MainCategoriesAside/MainCategoriesAside";
 export { MainCategoriesAsideItem } from "./MainCategoriesAsideItem/MainCategoriesAsideItem";
 export { FilterAside } from "./FilterAside/FilterAside";
 export { SortSelect } from "./SortSelect/SortSelect";
+
+export { CartList } from "./CartList/CartList";
+export { CartItem } from "./CartItem/CartItem";
+export { CartTotalInfo } from "./CartTotalInfo/CartTotalInfo";

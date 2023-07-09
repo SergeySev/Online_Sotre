@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toggle_favorite } from '../../store/reducers/favoriteSlice'
 import { toggle_comparison } from '../../store/reducers/comparisonSlice'
 import { FiHeart, FiBarChart2 } from 'react-icons/fi';
-import { NewSign, AddToCartBtn } from '../'
+import { NewSign, ToggleCartBtn } from '../'
 import s from './ProductItem.module.css'
 
 export function ProductItem({ product }) {
@@ -65,15 +65,15 @@ export function ProductItem({ product }) {
 			<p className={s.product_title}>{product.title}</p>
 			<div className={s.properties}>
 				<div className={s.price_box}>
-					<p className={s.discount_price}>{product.discountPrice === 0.00 ? product.price : product.discountPrice} $</p>
-					{product.discountPrice !== 0.00 && <p className={s.price}>{product.price} $</p>}
+					<p className={s.discount_price}>{product.discountPrice === 0.00 ? product.price : product.discountPrice} &#36;</p>
+					{product.discountPrice !== 0.00 && <p className={s.price}>{product.price} &#36;</p>}
 				</div>
 				<div className={s.stock}>
 					{product.inStock && <img src={require('./assets/check.png')} className={s.stock_img} alt='stock_img' />}
 					<p className={s.in_stock}>{product.inStock ? 'in stock' : 'not in stock'}</p>
 				</div>
 			</div>
-			<AddToCartBtn product={product} />
+			<ToggleCartBtn product={product} />
 		</li>
 	)
 }
