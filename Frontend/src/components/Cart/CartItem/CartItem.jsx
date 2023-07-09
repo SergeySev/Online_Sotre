@@ -1,5 +1,5 @@
 import { AiOutlineClose } from 'react-icons/ai';
-import { remove_from_cart } from '../../../store/reducers/cartSlice';
+import { add_to_cart, remove_from_cart } from '../../../store/reducers/cartSlice';
 import { NavLink } from 'react-router-dom';
 import s from './CartItem.module.css'
 import { useDispatch } from 'react-redux';
@@ -44,7 +44,10 @@ export function CartItem(product) {
 					onClick={() => remoove_from(1)}
 				>-</button>
 				<span>{cart_amount}</span>
-				<button className={s.btn}>+</button>
+				<button
+					className={s.btn}
+					onClick={() => dispatch(add_to_cart(product))}
+				>+</button>
 			</div>
 			<p className={s.summ}>
 				<span>total: </span>
