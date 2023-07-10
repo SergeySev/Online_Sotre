@@ -6,4 +6,20 @@
 	background-color: var(--white);
 	display: flex;
 	justify-content: space-between;
+	/* justify-content: space-evenly; */
+	/* flex-wrap: wrap; */
+	/* gap: 40px; */
+}
+
+@media (max-width: 1360px) {
+	.checkout_content {
+		flex-direction: column-reverse;
+		align-items: center;
+	}
+}
+
+@media (max-width: 480px) {
+	.checkout_content {
+		background-color: transparent;
+	}
 }

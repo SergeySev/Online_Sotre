@@ -10,9 +10,8 @@
 	font-weight: 600;
 	font-size: 20px;
 	color: var(--smoky);
-	cursor: pointer;
+	cursor: default;
 	transition: color var(--transition);
-
 }
 
 .title_item p {
@@ -27,6 +26,39 @@
 	border-color: var(--orange);
 }
 
+.title_item.clicable {
+	cursor: pointer;
+}
+
 .title_item.active p {
 	border-color: var(--orange);
+}
+
+@media (min-width: 762px) {
+	.title_item.clicable:hover {
+		color: var(--orange);
+	}
+}
+
+@media (max-width: 762px) {
+	.title_list {
+		justify-content: space-between;
+		gap: 30px;
+	}
+
+	.title_item {
+		text-align: right;
+	}
+}
+
+@media (max-width: 480px) {
+
+	.title_item {
+		font-size: 16px;
+		min-width: auto;
+	}
+
+	.title_list {
+		gap: 10px;
+	}
 }

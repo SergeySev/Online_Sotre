@@ -69,5 +69,12 @@
 		background-color: var(--orange);
 		color: var(--white);
 	}
+}
 
+@media (max-width: 480px) {
+
+	.button.confirmOrder,
+	.button.checkout {
+		width: 100%;
+	}
 }
