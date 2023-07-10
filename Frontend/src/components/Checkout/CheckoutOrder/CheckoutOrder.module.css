@@ -1,4 +1,5 @@
 .order_list {
+	flex-shrink: 0;
 	padding: 60px 70px;
 	width: 420px;
 	height: 100%;
@@ -26,4 +27,24 @@
 
 .ordet_item_total .item_value {
 	color: var(--orange);
+}
+
+@media (max-width: 1360px) {
+	.order_list {
+		align-self: end;
+	}
+}
+
+@media (max-width: 762px) {
+	.order_list {
+		width: 100%;
+		align-self: center;
+		border-radius: 5px 5px 0 0;
+	}
+}
+
+@media (max-width: 480px) {
+	.order_list {
+		padding: 40px;
+	}
 }
