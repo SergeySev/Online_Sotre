@@ -33,9 +33,15 @@ build/
 .vscode/
 
 ### project ###
-/mongo-data
+/mongo-data/
 /python
 /Dockerfile
-/backend/
 /docker-compose.yaml  
 /target/
+/backend/
+
+
+pom.xml
+README.md
+src/
+!Frontend/src/
