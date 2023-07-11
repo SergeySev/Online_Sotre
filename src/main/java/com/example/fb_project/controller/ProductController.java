@@ -46,6 +46,16 @@ public class ProductController {
         return productService.getAllProductsBySubCategory(pageable, productCategoryTitle);
     }
 
+    @Operation(summary = "Get products by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "Products not found in the Data Base"),
+    })
+    @GetMapping(path = "/getProductById")
+    public ProductDto getProductById(@RequestParam String id) {
+        return productService.getProductById(id);
+    }
+
     @Operation(summary = "Get all Products")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful loaded"),
@@ -99,6 +109,8 @@ public class ProductController {
     @GetMapping(path = "/byFilter")
     public Document getAllProductsByFilter(@RequestParam(defaultValue = "1") int page,
                                            @RequestParam(defaultValue = "30") int size,
+                                           @RequestParam(defaultValue = "") String subCategoryId,
+                                           @RequestParam(defaultValue = "") String subCategoryTitle,
                                            @RequestParam(defaultValue = "0") String priceFrom,
                                            @RequestParam(defaultValue = "500") String priceTo,
                                            @RequestParam(defaultValue = "") List<String> brandTitles,
@@ -106,7 +118,9 @@ public class ProductController {
                                            @RequestParam(defaultValue = "") List<String> colours,
                                            @RequestParam(defaultValue = "") List<String> deliveryTypes) {
         Pageable pageable = PageRequest.of(page - 1, size);
-        return productService.getAllByFilter(priceFrom,
+        return productService.getAllByFilter(subCategoryId,
+                subCategoryTitle,
+                priceFrom,
                 priceTo,
                 brandTitles,
                 madeCountries,

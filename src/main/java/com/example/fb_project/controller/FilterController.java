@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class FilterController {
             @ApiResponse(responseCode = "500", description = "The products not found in the Data Base")
     })
     @GetMapping(path = "/get")
-    public Map<String, List<?>> getFilter() {
+    public Document getFilter() {
         return filterService.getFilter();
     }
 

@@ -23,7 +23,13 @@ public class ProductDto {
 
     private String description;
 
-    private String subCategory;
+    private String subCategoryTitle;
+
+    private String mainCategoryTitle;
+
+    private String subCategoryId;
+
+    private String mainCategoryId;
 
     private Boolean isNew;
 

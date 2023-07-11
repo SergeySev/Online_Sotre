@@ -14,6 +14,7 @@ import com.example.fb_project.repository.SubCategoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.hibernate.query.IllegalQueryOperationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -51,7 +52,7 @@ public class ProductService {
 
 
         SubCategory subCategory = subCategoryRepository.
-                findByTitle(productDto.getSubCategory()).
+                findByTitle(productDto.getSubCategoryTitle()).
                 orElseThrow(() -> new IllegalQueryOperationException("Sub category not found"));
 
         Product product = new Product(productDto.getTitle(),
@@ -77,9 +78,18 @@ public class ProductService {
 
         brand.getProducts().add(product);
         subCategory.getProducts().add(product);
+
         productRepository.save(product);
         brandRepository.save(brand);
         subCategoryRepository.save(subCategory);
+
+        return productMapper.toDto(product);
+    }
+
+    public ProductDto getProductById(String id) {
+        Product product = productRepository.
+                findById(new ObjectId(id)).
+                orElseThrow(() -> new IllegalArgumentException("Product with id: " + id + " not found"));
         return productMapper.toDto(product);
     }
 
@@ -117,7 +127,9 @@ public class ProductService {
         return products.map(productMapper::toDto);
     }
 
-    public Document getAllByFilter(String priceFrom,
+    public Document getAllByFilter(String subCategoryId,
+                                   String subCategoryTitle,
+                                   String priceFrom,
                                    String priceTo,
                                    List<String> brandTitle,
                                    List<String> madeCountries,
@@ -129,6 +141,21 @@ public class ProductService {
 
         Integer priceFromInInteger = Integer.valueOf(priceFrom);
         Integer priceToInInteger = Integer.valueOf(priceTo);
+
+        SubCategory subCategory;
+        if (!subCategoryId.isEmpty()) {
+            subCategory = subCategoryRepository.
+                    findById(new ObjectId(subCategoryId)).
+                    orElseThrow(() ->
+                            new IllegalArgumentException("The Sub Category with ID: " + subCategoryId + " not found"));
+        } else {
+            subCategory = subCategoryRepository.
+                    findByTitle(subCategoryTitle).
+                    orElseThrow(() ->
+                            new IllegalArgumentException("The Sub Category with sub category title: " +
+                                    subCategoryTitle + " not found"));
+        }
+        criteria.and("subCategory").in(subCategory);
 
         if (!priceFrom.isEmpty() && !priceTo.isEmpty()) {
             criteria.and("price").gte(priceFromInInteger).lte(priceToInInteger);
@@ -152,20 +179,16 @@ public class ProductService {
             criteria.and("deliveryType").in(deliveryTypes.stream().map(String::toUpperCase).collect(Collectors.toList()));
         }
 
-
         Query totalCountQuery = Query.query(criteria);
         long totalElement = mongoTemplate.count(totalCountQuery, Product.class);
-
 
         Query query = Query.query(criteria).with(pageable);
 
         int totalPages = (int) Math.ceil((double) totalElement / pageable.getPageSize());
-        System.out.println(totalPages);
-        System.out.println(totalElement);
 
         List<Product> products = mongoTemplate.find(query, Product.class);
 
-        List<ProductDto> productsDto = productMapper.toDtoList(products);
+        List<ProductDto> productsDto = products.stream().map(productMapper::toDto).toList();
 
         Document document = new Document();
 
