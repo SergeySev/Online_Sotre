@@ -43,3 +43,5 @@ build/
 
 pom.xml
 README.md
+src/
+!Frontend/src/
