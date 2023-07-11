@@ -5,9 +5,8 @@ import s from './CartItem.module.css'
 import { useDispatch } from 'react-redux';
 
 export function CartItem(product) {
-	// console.log("🚀 ~ file: CartItem.jsx:8 ~ CartItem ~ product:", product)
 	const { mainImageLink, title, subCategoryTitle, discountPrice, price, cart_amount, mainCategoryId, subCategoryId } = product;
-	// const { mainImagmainCategoryIdeLink, title, subCategoryTitle, discountPrice, price, cart_amount } = product;
+	// const { mainImageLink, title, subCategory, discountPrice, price, cart_amount } = product;
 	const dispatch = useDispatch()
 	const total_summ = ((discountPrice ? discountPrice : price) * cart_amount).toFixed(2);
 
