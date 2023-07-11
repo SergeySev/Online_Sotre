@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: fb_project
+    volumes:
+      - ./mongo-data:/data/db
+    ports:
+      - "27017:27017"
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+      - "3000:3000"
+
+    environment:
+      SPRING_DATASOURCE_URL: mongodb://mongo:27017/fb_project
+
