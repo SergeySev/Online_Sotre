@@ -1,6 +1,7 @@
 package com.example.fb_project.repository;
 
 import com.example.fb_project.entity.Product;
+import com.example.fb_project.entity.SubCategory;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,4 +30,6 @@ public interface ProductRepository extends MongoRepository<Product, ObjectId> {
 
     @Query(value = "{}", sort = "{ price: -1 }")
     List<Product> findOneMostExpensiveProduct(Pageable pageable);
+
+    Optional<Product> findAnyBySubCategory(SubCategory subCategory);
 }

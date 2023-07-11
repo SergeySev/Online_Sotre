@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -68,4 +69,13 @@ public class MainCategoryController {
         return mainCategoryService.getMainCategoriesByIdWithProducts(id);
     }
 
+    @Operation(summary = "Get all Main Categories with 10 product")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If categories don't exist in the Data Base"),
+    })
+    @GetMapping(path = "/getAllMainCategoriesWithProducts")
+    public Document getAllMainCategoriesWithProducts() {
+        return mainCategoryService.getAllMainCategoriesWithTenProduct();
+    }
 }

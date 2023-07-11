@@ -30,7 +30,7 @@ public class SubCategory {
 
     private String imageLink;
 
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     @ToString.Exclude
     private List<Product> products;
 

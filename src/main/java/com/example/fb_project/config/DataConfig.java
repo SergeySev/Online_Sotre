@@ -15,15 +15,16 @@ public class DataConfig {
     CommandLineRunner commandLineRunner(ChangeLogRepository changeLogRepository) {
 
         return args -> {
+            String version = "The app been already started. v 1.2";
             if (changeLogRepository.findByIsStarted(true).isPresent())
-                System.out.println("The app been already started. v 1.1");
+                System.out.println(version);
             else {
                 ChangeLog changeLog = new ChangeLog();
                 changeLog.setIsStarted(true);
                 changeLog.setCreatedAt(LocalDateTime.now());
 
                 changeLogRepository.save(changeLog);
-                System.out.println("The app been already started. v 1.1");
+                System.out.println(version);
             }
         };
     }
