@@ -3,8 +3,6 @@ import { Pagination, ProductItem, SubCategoryItem } from '../'
 import s from './ProductsList.module.css'
 
 export function ProductsList({ products, content, pagination_content }) {
-	// console.log("🚀 ~ file: ProductsList.jsx:6 ~ ProductsList ~ content:", content)
-	// console.log("🚀 ~ file: ProductsList.jsx:6 ~ ProductsList ~ pagination_content:", pagination_content)
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const [countProductsPage, setCountProductsPage] = useState(20);
@@ -13,6 +11,8 @@ export function ProductsList({ products, content, pagination_content }) {
 	const firstElem = lastElem - countProductsPage;
 	const products_list = products.slice(firstElem, lastElem)
 	const countElem = Math.ceil(products.length / countProductsPage)
+
+	console.log(content, pagination_content)
 
 	useEffect(() => {
 		if (Math.ceil(products.length / countProductsPage) < currentPage) {
