@@ -23,7 +23,7 @@ export function CartTotalInfo() {
 				<span>{total} &#36;</span>
 			</div>
 			<NavLink to='/checkout'>
-				<Button text="Go to design" content="order" />
+				<Button text="Go to order" content="order" />
 			</NavLink>
 		</div>
 	)
