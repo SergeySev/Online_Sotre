@@ -1,13 +1,11 @@
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { CSSTransition } from 'react-transition-group';
-import Calendar from 'react-calendar'
 import { delivery_data } from '../../../store/reducers/orderSlice';
-import 'react-calendar/dist/Calendar.css';
 import { PopUp } from '../../';
 import { Button } from '../../../UI';
-import './calendar.css'
 import s from './TabDelivery.module.css'
+import { CalendarCustom } from '../../CalendarCustom/CalendarCustom';
 
 export function TabDelivery({ activeTab, setActiveTab }) {
 	const delivery = { ...useSelector(store => store.order.delivery) }
@@ -122,14 +120,9 @@ export function TabDelivery({ activeTab, setActiveTab }) {
 					ref={nodeRef}
 					onClick={() => setPopupActive(false)}
 					content={
-						<button
-							onClick={(e) => e.stopPropagation()}>
-							<Calendar
-								className={s.calendar}
-								// value={delivery_date}
-								onChange={(value) => setCalendarValue(value)}
-							/>
-						</button>
+						<CalendarCustom
+							setCalendarValue={setCalendarValue}
+						/>
 					}
 				/>
 			</CSSTransition >
