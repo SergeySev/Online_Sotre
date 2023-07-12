@@ -31,11 +31,32 @@ const orderSlise = createSlice({
 	},
 	reducers: {
 		customer_data(state, action) {
-			console.log("🚀 ~ file: orderSlice.js:34 ~ customer_data ~ action:", action.payload)
-
+			// console.log("🚀 ~ file: orderSlice.js:34 ~ customer_data ~ action:", action.payload);
+			const { first_name, last_name, phone, email } = action.payload
+			return { ...state, first_name: first_name, last_name: last_name, phone: phone, email: email }
+		},
+		delivery_data(state, action) {
+			const { title, city, street, house, frame, app, date, shipping } = action.payload
+			if (title === 'courier') {
+				return {
+					...state,
+					delivery: [
+						{
+							address: {
+								city: city, street: street, house: house, frame: frame, app: app
+							},
+							title: 'courier',
+							is_active: true,
+							date: date,
+							shipping: shipping
+						},
+						state.delivery[1]
+					],
+				}
+			}
 		}
 	}
 })
 
 export default orderSlise.reducer;
-export const { customer_data } = orderSlise.actions;
+export const { customer_data, delivery_data } = orderSlise.actions;

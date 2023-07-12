@@ -2,13 +2,14 @@ import { useSelector } from 'react-redux'
 import s from './CheckoutOrder.module.css'
 
 export function CheckoutOrder() {
-
+	// console.log("🚀 ~ file: CheckoutOrder.jsx:5 ~ CheckoutOrder ~ CheckoutOrder:")
 
 	const cart_summ = useSelector(store => store.cart.total_summ)
 	const amount = useSelector(store => store.cart.total_amount)
 	const discount = -(cart_summ * .07).toFixed(2)
 	const delivery = useSelector(store => store.order.delivery[0].shipping)
-	const total = (cart_summ + discount + (delivery ? delivery : 0)).toFixed(2)
+	// console.log("🚀 ~ file: CheckoutOrder.jsx:11 ~ CheckoutOrder ~ delivery:", delivery)
+	const total = (cart_summ + discount + (delivery ? +delivery : 0)).toFixed(2)
 	return (
 		<ul className={s.order_list}>
 			<li className={`${s.order_item} ${s.ordet_item_total}`}>

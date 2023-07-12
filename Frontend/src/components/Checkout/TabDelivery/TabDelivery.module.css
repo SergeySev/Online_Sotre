@@ -1,0 +1,147 @@
+.delivery_title {
+	margin: 36px 0 32px;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+
+.data_list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(270px, 310px));
+	grid-template-rows: repeat(2, 1fr);
+	gap: 24px;
+}
+
+.data_item {
+	border-bottom: 1px solid var(--black);
+}
+
+.data_item label {
+	font-size: 12px;
+	line-height: 16px;
+	color: var(--smoky);
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.data_item input {
+	padding-bottom: 4px;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 500;
+	color: var(--black);
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+.data_item_house {
+	display: flex;
+	justify-content: space-between;
+	border: none;
+}
+
+.data_item_house input {
+	max-width: 140px;
+	border-bottom: 1px solid var(--black);
+}
+
+.data_item_date {
+	padding-bottom: 2px;
+	font-size: 12px;
+	line-height: 16px;
+	color: var(--smoky);
+	display: flex;
+	justify-content: space-between;
+}
+
+.data_item_date div {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+
+.data_item_date label {
+	position: relative;
+	width: 100px;
+	/* height: 60px; */
+	align-self: end;
+	text-align: right;
+}
+
+.data_item_date input {
+	cursor: pointer;
+	padding: 0;
+	font-size: 30px;
+	/* width: 40px; */
+	/* width: 80px; */
+	/* cursor: pointer; */
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	/* height: 100%; */
+	/* z-index: 20; */
+	/* margin: 0; */
+	/* opacity: 0; */
+	/* tab-size: 0; */
+	/* line-height: 0; */
+	/* height: 0px; */
+}
+
+@media (min-width: 762px) {
+
+	.data_item input:hover {}
+
+	.data_item input:active {}
+
+	.data_item input:focus {
+		background-color: var(--background);
+	}
+}
+
+@media (max-width: 860px) {
+	.data_list {
+		grid-template-columns: 1fr;
+		/* grid-template-rows: repeat(4, 1fr); */
+		/* justify-content: center; */
+		gap: 24px;
+	}
+}
+
+@media (max-width: 480px) {
+	.data_list {
+		/* width: 100%; */
+	}
+
+	.data_item {
+		/* width: 100%; */
+		/* min-width: 270px; */
+		/* max-width: 270px; */
+	}
+
+	.data_item input {
+		/* width: 100%; */
+		/* display: block; */
+	}
+}
+
+
+/* ================= */
+
+.checkout_form {
+	margin-top: 35px;
+}
+
+@media (max-width: 860px) {
+	.checkout_form {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 480px) {}

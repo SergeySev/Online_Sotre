@@ -1,9 +1,12 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import s from './TabData.module.css'
 import { Button } from '../../../UI';
+import { customer_data } from '../../../store/reducers/orderSlice';
 
 export function TabData({ activeTab, setActiveTab }) {
 	const { last_name, first_name, phone, email, } = { ...useSelector(store => store.order) };
+
+	const dispatch = useDispatch()
 
 	const saveData = (e) => {
 		e.preventDefault();
@@ -17,7 +20,7 @@ export function TabData({ activeTab, setActiveTab }) {
 		if (activeTab < 3) {
 			setActiveTab(++activeTab)
 		}
-		// dispatch(customer_data(userData));
+		dispatch(customer_data(obj));
 	}
 
 
