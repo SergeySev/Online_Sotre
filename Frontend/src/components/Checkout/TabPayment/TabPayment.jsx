@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
 import { Button } from '../../../UI';
 import s from './TabPayment.module.css'
 
 export const TabPayment = ({ activeTab, setActiveTab }) => {
-
+	const order = { ...useSelector(store => store.order) }
+	// console.log("🚀 ~ file: TabPayment.jsx:6 ~ TabPayment ~ order:", order)
 	// const { last_name, first_name, phone, email, } = { ...useSelector(store => store.order) };
 
 	const saveData = (e) => {

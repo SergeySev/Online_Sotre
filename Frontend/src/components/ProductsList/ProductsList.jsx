@@ -3,8 +3,8 @@ import { Pagination, ProductItem, SubCategoryItem } from '../'
 import s from './ProductsList.module.css'
 
 export function ProductsList({ products, content, pagination_content }) {
-	// console.log("🚀 ~ file: ProductsList.jsx:6 ~ ProductsList ~ content:", content)
 	// console.log("🚀 ~ file: ProductsList.jsx:6 ~ ProductsList ~ pagination_content:", pagination_content)
+	// console.log("🚀 ~ file: ProductsList.jsx:6 ~ ProductsList ~ products:", products)
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const [countProductsPage, setCountProductsPage] = useState(20);

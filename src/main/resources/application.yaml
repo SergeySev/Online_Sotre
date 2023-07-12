@@ -1,0 +1,22 @@
+
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mongo:27017/fb_project
+#      uri: mongodb://localhost:27017/fb_project
+      database: fb_project
+  main:
+    banner-mode: off
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+logging:
+  level:
+    org.springframework: INFO
+
