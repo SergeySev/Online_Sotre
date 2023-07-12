@@ -4,6 +4,7 @@
 	--white: #fff;
 	--background: #f2f5f7;
 	--black: #000;
+	--black-opacity: rgba(0, 0, 0, .5);
 	--navy: #180a3e;
 	--gray: #dedbdb;
 	--smoky: #8a8a8a;

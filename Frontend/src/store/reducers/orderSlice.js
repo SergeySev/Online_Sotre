@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const temp_date = new Date(Date.now() + (24 * 60 * 60 * 1000));
+const default_date = `${temp_date.getDate()}.${temp_date.getMonth() + 1}.${temp_date.getFullYear()}`
+
 const orderSlise = createSlice({
 	name: 'order',
 	initialState: {
@@ -18,14 +21,14 @@ const orderSlise = createSlice({
 					frame: 'corp.',
 					app: 'app'
 				},
-				date: Date.now(),
+				date: default_date,
 				shipping: 0,
 			},
 			{
 				title: 'pickup',
 				is_active: false,
 				address: ["Berlin, Alexanderplatz 1", "Munich, Marienplatz 3", "New York, 5th Avenue 1"],
-				date: Date.now(),
+				date: default_date,
 			}
 		],
 	},

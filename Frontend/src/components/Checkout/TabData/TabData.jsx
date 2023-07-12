@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
-import s from './TabData.module.css'
 import { Button } from '../../../UI';
 import { customer_data } from '../../../store/reducers/orderSlice';
+import s from './TabData.module.css'
 
 export function TabData({ activeTab, setActiveTab }) {
 	const { last_name, first_name, phone, email, } = { ...useSelector(store => store.order) };
@@ -22,7 +22,6 @@ export function TabData({ activeTab, setActiveTab }) {
 		}
 		dispatch(customer_data(obj));
 	}
-
 
 	return (
 		<form className={s.checkout_form} onSubmit={saveData}>
