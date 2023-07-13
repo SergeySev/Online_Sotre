@@ -11,6 +11,7 @@ import comparisonSlice from "./reducers/comparisonSlice";
 import filterSlice from "./reducers/filterSlice";
 import subCategorySlice from "./reducers/subCategorySlice";
 import orderSlise from "./reducers/orderSlice";
+import requestBodySlice from "./reducers/requestBodySlice";
 
 const rootReducer = combineReducers({
 	categories: categoriesSlice,
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
 	comparison: comparisonSlice,
 	cart: cartSlice,
 	filter_data: filterSlice,
-	order: orderSlise
+	order: orderSlise,
+	requestBody: requestBodySlice
 })
 
 export const store = configureStore({
