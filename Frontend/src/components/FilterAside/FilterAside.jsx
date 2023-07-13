@@ -15,7 +15,9 @@ export function FilterAside() {
 		<ul className={s.aside_wrapper}>
 			{Object.keys(filter_data).map((elem, index) => {
 				let data = [];
-				if (elem === 'Brands') {
+				if (elem === 'Price') {
+					data = filter_data['Price']
+				} else if (elem === 'Brands') {
 					data = filter_data['Brands']
 				} else if (elem === 'Color') {
 					data = filter_data['Color']
@@ -30,12 +32,6 @@ export function FilterAside() {
 					data={data}
 				/>
 			}
-				// 	return <FilterAsideItem
-				// 		key={index}
-				// 		title={elem}
-				// 		data={data}
-				// 	/>
-				// }
 			)}
 		</ul>
 	)

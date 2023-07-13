@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const filterSlice = createSlice({
   name: 'filter',
   initialState: {
+    ['Price']: [],
     ['Made Country']: [],
     ['Color']: [],
     ['Brands']: [],
@@ -10,6 +11,7 @@ const filterSlice = createSlice({
   },
   reducers: {
     get_filter_data(state, action) {
+      state['Price'] = [...state['Price'], 0, action.payload['maxPrice']]
       state['Made Country'] = [...action.payload['Made Country']]
       state['Color'] = [...action.payload['Color']]
       state['Brands'] = [...action.payload['Brands']]
