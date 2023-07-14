@@ -11,10 +11,17 @@ export function CheckoutTabs() {
 
 	return (
 		<div className={s.checkout_content} >
-			<CheckoutTitleList activeTab={activeTab} setActiveTab={setActiveTab} error={error} />
-			{activeTab === 1 ? <TabData activeTab={activeTab} setActiveTab={setActiveTab} /> :
-				activeTab === 2 ? <TabDelivery activeTab={activeTab} setActiveTab={setActiveTab} /> :
+			<CheckoutTitleList
+				activeTab={activeTab}
+				setActiveTab={setActiveTab}
+				error={error} />
+
+			{activeTab === 1 ?
+				<TabData activeTab={activeTab} setActiveTab={setActiveTab} /> :
+				activeTab === 2 ?
+					<TabDelivery activeTab={activeTab} setActiveTab={setActiveTab} /> :
 					<TabPayment activeTab={activeTab} setActiveTab={setActiveTab} />}
+
 		</div>
 	)
 }

@@ -1,131 +1,132 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { CSSTransition } from 'react-transition-group';
 import { delivery_data } from '../../../store/reducers/orderSlice';
-import { PopUp } from '../../';
 import { Button } from '../../../UI';
+import { TabCourier, TabPickup } from '../';
 import s from './TabDelivery.module.css'
-import { CalendarCustom } from '../../CalendarCustom/CalendarCustom';
+import { useForm } from 'react-hook-form';
 
 export function TabDelivery({ activeTab, setActiveTab }) {
-	const delivery = { ...useSelector(store => store.order.delivery) }
-	const { city, street, house, frame, app } = delivery[0]?.address;
-	const { date, shipping } = { ...delivery[0] };
+	const [delivery_type, setDeliverytype] = useState('courier');
+	// console.log("🚀 ~ file: TabDelivery.jsx:11 ~ TabDelivery ~ delivery_type:", delivery_type)
 
-	const [delivery_date, setDeliveryDate] = useState(date)
-	const [popup_active, setPopupActive] = useState(false)
-
-	const nodeRef = useRef(null);
 	const dispatch = useDispatch();
 
-	const setCalendarValue = (date) => {
-		const temp_date = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
-		setDeliveryDate(temp_date);
-		setPopupActive(false);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({ mode: 'all' });
+
+	// const deliveryTitle = register('title', {
+	// 	required: true,
+	// });
+	const cityInput = register('city', {
+		required: 'required field',
+	});
+	const postInput = register('post', {
+		required: 'required field',
+	});
+	const streetInput = register('street', {
+		required: 'required field',
+	});
+	const houseInput = register('house', {
+		required: 'required field',
+	});
+	const appartmentInput = register('app', {
+	});
+	const dateInput = register('date', {
+		// required: 'required field',
+	});
+	const amountInput = register('shipping', {
+		// required: 'required field',
+	});
+	const addressInput = register('pickup_address', {});
+
+	const courierInputs = {
+		cityInput,
+		postInput,
+		streetInput,
+		houseInput,
+		appartmentInput,
+		dateInput,
+		amountInput
 	}
 
-	const saveData = (e) => {
-		e.preventDefault();
-		const { city, street, house, frame, app, date, shipping } = e.target
-		const obj = {
-			title: 'courier',
-			city: city?.value,
-			street: street?.value,
-			house: house?.value,
-			frame: frame?.value,
-			app: app?.value,
-			date: date?.value,
-			shipping: shipping?.value,
-		}
+	const radioChange = (e) => {
+		// console.log("🚀 ~ file: TabDelivery.jsx:29 ~ radioChange ~ e:", e.target)
+		setDeliverytype(e.target.value)
+	}
+
+	const saveData = (data) => {
+		console.log("🚀 ~ file: TabDelivery.jsx:31 ~ saveData ~ data:", data)
+		// console.log("🚀 ~ file: TabDelivery.jsx:36 ~ saveData ~ data:", data)
+		// e.preventDefault();
+		// const { city, street, house, frame, app, date, shipping } = e.target
+		// const obj = {
+		// 	title: 'courier',
+		// 	city: city?.value,
+		// 	street: street?.value,
+		// 	house: house?.value,
+		// 	frame: frame?.value,
+		// 	app: app?.value,
+		// 	date: date?.value,
+		// 	shipping: shipping?.value,
+		// }
+
 		if (activeTab < 3) {
 			setActiveTab(++activeTab)
 		}
-		dispatch(delivery_data(obj));
+		dispatch(delivery_data(data));
 	}
 
 	return (
 		<>
-			<form className={s.checkout_form} onSubmit={saveData}>
-				<h2 className={s.delivery_title}>
-					Choose the delivery option that suits you:
-				</h2>
-				<ul className={s.data_list}>
-					<li className={s.data_item}>
+			<h2 className={s.delivery_title}>
+				Choose the delivery option that suits you:
+			</h2>
+			<form className={s.checkout_form} onSubmit={handleSubmit(saveData)}>
+
+				<ul className={s.radio_buttons}>
+					<li className={`${s.radio_item} ${s[delivery_type === 'courier' ? 'active' : ''] || ''}`}>
 						<label>
-							City
-							<input type="text" name="city" placeholder={city} />
+							<input
+								// {...deliveryTitle}
+								type="radio"
+								value="courier"
+								// name="delivery"
+								// checked={delivery_type === 'courier'}
+								onChange={radioChange} />
+							Courier delivery
 						</label>
 					</li>
-					<li className={s.data_item}>
+					<li className={`${s.radio_item} ${s[delivery_type === 'pickup' ? 'active' : ''] || ''}`}>
 						<label>
-							Corp
-							<input type="text" name="frame" placeholder={frame} />
-						</label>
-					</li>
-					<li className={s.data_item}>
-						<label>
-							Street
-							<input type="text" name="street" placeholder={street} />
-						</label>
-					</li>
-
-					<li className={`${s.data_item} ${s.data_item_house}`}>
-						<div>
-							<label>
-								House
-								<input type="text" name="house" placeholder={house} />
-							</label>
-						</div>
-						<div>
-							<label>
-								appartment
-								<input type="text" name="app" placeholder={app} />
-							</label>
-						</div>
-					</li>
-
-					<li className={`${s.data_item} ${s.data_item_date}`}>
-						<div>
-							<span>Next delivery date</span>
-							<p>{delivery_date}</p>
-						</div>
-						<p className={s.calendar_link}
-							onClick={() => setPopupActive(true)}>
-							change
-						</p>
-					</li>
-
-					<li className={s.data_item}>
-						<label>
-							Delivery amount
-							<input type="text" name="shipping" placeholder={shipping ? `${shipping} &#36;` : 'free'} />
+							<input
+								// {...deliveryTitle}
+								type="radio"
+								value="pickup"
+								// name="delivery"
+								// checked={delivery_type === 'pickup'}
+								onChange={radioChange} />
+							Pickup
 						</label>
 					</li>
 				</ul>
 
+				{delivery_type === "courier" ?
+					<TabCourier errors={errors} {...courierInputs} /> :
+					<TabPickup errors={errors} addressInput={addressInput} />}
+
 				<Button
 					text='next'
 					content='checkout'
+				// onSubmit={saveData}
+				// type='submit'
 				/>
 			</form>
 
-			<CSSTransition
-				in={popup_active}
-				nodeRef={nodeRef}
-				timeout={400}
-				classNames="my-node"
-				unmountOnExit>
 
-				<PopUp
-					ref={nodeRef}
-					onClick={() => setPopupActive(false)}
-					content={
-						<CalendarCustom
-							setCalendarValue={setCalendarValue}
-						/>
-					}
-				/>
-			</CSSTransition >
 		</>
 	)
 }
