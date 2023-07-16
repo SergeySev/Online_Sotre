@@ -2,6 +2,7 @@
 .react-calendar {
 	max-width: 100%;
 	height: auto;
+	padding: 0 15px 10px;
 	font-family: var(--font_prosto);
 	background-color: var(--white);
 	color: var(--coal);

@@ -48,5 +48,6 @@ export { CheckoutTabs } from "./Checkout/CheckoutTabs/CheckoutTabs";
 export { CheckoutOrder } from "./Checkout/CheckoutOrder/CheckoutOrder";
 
 
+export { CalendarCustom } from "./CalendarCustom/CalendarCustom";
 export { PopUp } from "./PopUp/PopUp";
 
