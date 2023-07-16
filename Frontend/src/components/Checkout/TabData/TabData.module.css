@@ -10,48 +10,6 @@
 	margin-top: 35px;
 }
 
-.data_item {
-	border-bottom: 1px solid var(--black);
-	overflow: hidden;
-}
-
-.data_item.error_style {
-	border-color: var(--orange);
-}
-
-.data_item.error_style input::placeholder {
-	color: var(--orange);
-	background-color: var(--white);
-}
-
-.data_item.error_style input {
-	color: var(--orange);
-}
-
-.data_item label {
-	font-size: 12px;
-	line-height: 16px;
-	color: var(--smoky);
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
-}
-
-.data_item input {
-	padding-bottom: 4px;
-	font-size: 16px;
-	line-height: 20px;
-	font-weight: 500;
-	color: var(--black);
-	border: none;
-	outline: none;
-}
-
-@media (min-width: 762px) {
-	.data_item input:focus {
-		background-color: var(--background);
-	}
-}
 
 @media (max-width: 860px) {
 	.data_list {

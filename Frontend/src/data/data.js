@@ -1,13 +1,117 @@
 import { FiPhoneIncoming, FiHeart, FiBarChart2, FiShoppingCart } from 'react-icons/fi';
-// import { FaRegUserCircle } from 'react-icons/fa';
-// import { RiAccountCircleLine } from 'react-icons/ri';
 import avatar from './assets/avatar.png'
-// import comparison from './assets/bar-chart.png'
-// import favorite from './assets/heart.png'
-// import cart from './assets/cart.png'
 import instagram from './assets/instagram.png'
 import vk from './assets/vk.png'
 import facebook from './assets/fb.png'
+
+export const courier_inputs = [
+	{
+		id: 1,
+		name: "city",
+		type: "text",
+		placeholder: 'city',
+		error_message: "Field should has not be empty",
+		label: "City",
+		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
+		required: true
+	},
+	{
+		id: 2,
+		name: "post",
+		type: "text",
+		placeholder: 'code',
+		error_message: "Field should has not be empty",
+		label: "Post code",
+		pattern: "^[0-9]{1,}$",
+		required: true
+	},
+	{
+		id: 3,
+		name: "street",
+		type: "text",
+		placeholder: 'street',
+		error_message: "Field should has not be empty",
+		label: "Street",
+		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
+		required: true
+	},
+	{
+		id: 4,
+		name: "house",
+		type: "text",
+		placeholder: 'house',
+		error_message: "Field should has not be empty",
+		label: "House",
+		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
+		required: true
+	},
+	{
+		id: 5,
+		name: "app",
+		type: "text",
+		placeholder: 'appartment',
+		label: "appartment",
+	},
+	{
+		id: 6,
+		name: "date",
+		type: "text",
+		label: "Next delivery date",
+		isCalendar: true,
+		disabled: true
+	},
+	{
+		id: 7,
+		name: "shipping",
+		type: "text",
+		label: "Delivery amount",
+		placeholder: 'free',
+		disabled: true
+	},
+]
+
+export const user_inputs = [
+	{
+		id: 1,
+		name: "first_name",
+		type: "text",
+		placeholder: 'Enter your first name',
+		error_message: "First name should be 2-16 characters",
+		label: "First name",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 2,
+		name: "last_name",
+		type: "text",
+		placeholder: 'Enter your last name',
+		error_message: "Last name should be 2-16 characters",
+		label: "Last name",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 3,
+		name: "phone",
+		type: "tel",
+		placeholder: 'Enter your phone number',
+		error_message: "Phone number should be in format +99 999...",
+		label: "Pnone number",
+		pattern: "^\+\d{5,}$",
+		required: true
+	},
+	{
+		id: 4,
+		name: "email",
+		type: "email",
+		placeholder: 'Enter your email',
+		error_message: "It should be a valid email address!",
+		label: "Email",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+		required: true
+	}
+]
 
 export const tabs = [
 	{ id: 1, title: "Customer data" },

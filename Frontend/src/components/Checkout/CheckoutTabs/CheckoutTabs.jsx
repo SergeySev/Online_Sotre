@@ -21,7 +21,6 @@ export function CheckoutTabs() {
 				activeTab === 2 ?
 					<TabDelivery activeTab={activeTab} setActiveTab={setActiveTab} /> :
 					<TabPayment activeTab={activeTab} setActiveTab={setActiveTab} />}
-
 		</div>
 	)
 }

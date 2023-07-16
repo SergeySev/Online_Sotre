@@ -73,17 +73,9 @@
 	height: 0;
 }
 
-.calendar_link {
-	padding-bottom: 4px;
-	align-self: end;
-	text-align: right;
-	cursor: pointer;
-	transition: color var(--transition);
 
-}
 
 @media (min-width: 762px) {
-
 	.data_item input:focus {
 		background-color: var(--background);
 	}

@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// const temp_date = new Date(Date.now() + (24 * 60 * 60 * 1000));
-// const default_date = `${temp_date.getDate()}.${temp_date.getMonth() + 1}.${temp_date.getFullYear()}`
-const default_date = Date.now();
-
-
 const orderSlise = createSlice({
 	name: 'order',
 	initialState: {
@@ -15,22 +10,20 @@ const orderSlise = createSlice({
 		delivery: [
 			{
 				title_courier: true,
-				// is_active: true,
 				address: {
-					city: 'city',
-					street: 'street',
-					house: 'house',
-					post_code: 'post code',
-					app: 'appartment'
+					city: '',
+					street: '',
+					house: '',
+					post_code: '',
+					app: ''
 				},
-				date: default_date,
-				shipping: 0,
+				date: '',
+				shipping: '',
 			},
 			{
 				title_pickup: false,
-				// is_active: false,
 				addresses: ["Berlin, Alexanderplatz 1", "Munich, Marienplatz 3", "New York, 5th Avenue 1"],
-				date: default_date,
+				address: ''
 			}
 		],
 	},
@@ -41,7 +34,7 @@ const orderSlise = createSlice({
 			return { ...state, first_name, last_name, phone, email }
 		},
 		delivery_data(state, action) {
-			const { title, city, street, house, frame, app, date, shipping } = action.payload
+			const { title, city, street, house, frame, app, date, shipping, address } = action.payload
 			if (title === 'courier') {
 				return {
 					...state,
@@ -50,13 +43,30 @@ const orderSlise = createSlice({
 							address: {
 								city: city, street: street, house: house, frame: frame, app: app
 							},
-							title: 'courier',
-							is_active: true,
+							title_courier: true,
 							date: date,
 							shipping: shipping
 						},
-						state.delivery[1]
+						{
+							...state.delivery[1],
+							title_pickup: false,
+						}
 					],
+				}
+			} else {
+				return {
+					...state,
+					delivery: [
+						{
+							...state.delivery[0],
+							title_courier: false
+						},
+						{
+							title_pickup: true,
+							address: address
+						}
+					],
+
 				}
 			}
 		}
