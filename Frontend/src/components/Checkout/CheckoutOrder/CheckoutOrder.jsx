@@ -7,7 +7,6 @@ export function CheckoutOrder() {
 	const amount = useSelector(store => store.cart.total_amount)
 	const discount = -(cart_summ * .07).toFixed(2)
 	const delivery = useSelector(store => store.order.delivery[0].shipping)
-	console.log("🚀 ~ file: CheckoutOrder.jsx:10 ~ CheckoutOrder ~ delivery:", delivery)
 	const total = (cart_summ + discount + (delivery ? +delivery : 0)).toFixed(2)
 
 	useEffect(() => {

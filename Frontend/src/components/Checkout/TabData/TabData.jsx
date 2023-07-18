@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useForm, SubmitHandler } from "react-hook-form"
+import { SubmitHandler } from "react-hook-form"
 import { Button, InputOrder } from '../../../UI';
 import { customer_data } from '../../../store/reducers/orderSlice';
-import s from './TabData.module.css'
-import { useState } from 'react';
 import { user_inputs } from '../../../data/data';
+import s from './TabData.module.css'
 
 export function TabData({ activeTab, setActiveTab }) {
 	const { first_name, last_name, phone, email } = { ...useSelector(store => store.order) };

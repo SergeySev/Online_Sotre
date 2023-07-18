@@ -4,6 +4,19 @@ import instagram from './assets/instagram.png'
 import vk from './assets/vk.png'
 import facebook from './assets/fb.png'
 
+
+export const radio_orders = [
+	{ id: 1, title: 'in cash', type: 'cash' },
+	{ id: 2, title: 'bank card', type: 'card' }
+]
+
+export const payments = [{ id: 1, title: 'Payment upon receipt', type: 'receiving' }, { id: 2, title: 'Online payment', type: 'online' }]
+
+export const addresses = [
+	"Berlin, Alexanderplatz 1",
+	"Munich, Marienplatz 3",
+	"New York, 5th Avenue 1"]
+
 export const courier_inputs = [
 	{
 		id: 1,

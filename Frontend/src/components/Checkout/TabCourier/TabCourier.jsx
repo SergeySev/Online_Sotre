@@ -53,6 +53,7 @@ export function TabCourier() {
 					<InputOrder
 						key={input.id}
 						{...input}
+						content='courier'
 						value={values[input.name]}
 						onChange={onChange}
 						setPopupActive={setPopupActive}

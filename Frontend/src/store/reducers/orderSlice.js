@@ -22,14 +22,13 @@ const orderSlise = createSlice({
 			},
 			{
 				title_pickup: false,
-				addresses: ["Berlin, Alexanderplatz 1", "Munich, Marienplatz 3", "New York, 5th Avenue 1"],
 				address: ''
 			}
 		],
+		payment: ''
 	},
 	reducers: {
 		customer_data(state, action) {
-			// console.log("🚀 ~ file: orderSlice.js:34 ~ customer_data ~ action:", action.payload);
 			const { first_name, last_name, phone, email } = action.payload
 			return { ...state, first_name, last_name, phone, email }
 		},
@@ -45,7 +44,7 @@ const orderSlise = createSlice({
 							},
 							title_courier: true,
 							date: date,
-							shipping: shipping
+							shipping: shipping === "free" ? 50 : shipping
 						},
 						{
 							...state.delivery[1],
@@ -69,9 +68,13 @@ const orderSlise = createSlice({
 
 				}
 			}
+		},
+		payment_data(state, action) {
+			console.log("🚀 ~ file: orderSlice.js:74 ~ payment_data ~ action:", action.payload)
+			return { ...state, payment: action.payload }
 		}
 	}
 })
 
 export default orderSlise.reducer;
-export const { customer_data, delivery_data } = orderSlise.actions;
+export const { customer_data, delivery_data, payment_data } = orderSlise.actions;

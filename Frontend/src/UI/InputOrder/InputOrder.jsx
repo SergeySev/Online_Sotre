@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import s from './InputOrder.module.css'
 
-export function InputOrder({ label, error_message, isCalendar, onChange, setPopupActive, ...input_props }) {
+export function InputOrder({ content, label, error_message, isCalendar, onChange, setPopupActive, ...input_props }) {
 	const [focused, setFocused] = useState(false);
 	const handleFocus = (e) => {
 		e.preventDefault();
 		setFocused(true);
 	};
 	return (
-		<li className={s.data_item}>
+		<li className={`${s.data_item} ${s[content === 'courier' ? 'courier' : ''] || ''}`}>
 			<label>
 				{label}
 				<input className={`${s.input} ${s[input_props.name === 'shipping' ? 'shipping' : ''] || ''}`}

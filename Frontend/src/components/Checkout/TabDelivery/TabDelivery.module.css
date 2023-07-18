@@ -1,12 +1,13 @@
+.checkout_form {
+	margin-top: 35px;
+}
+
 .delivery_title {
 	margin-top: 36px;
 	font-weight: 500;
 	line-height: 20px;
 }
 
-.checkout_form {
-	margin-top: 35px;
-}
 
 .radio_buttons {
 	display: flex;
