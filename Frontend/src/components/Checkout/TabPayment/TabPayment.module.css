@@ -1,0 +1,78 @@
+.checkout_form {
+	margin-top: 35px;
+}
+
+.payment_title {
+	margin-top: 36px;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+.radio_buttons {
+	display: flex;
+	align-items: center;
+	gap: 80px;
+}
+
+.radio_item label {
+	position: relative;
+	z-index: 2;
+	padding-left: 30px;
+	cursor: pointer;
+}
+
+.radio_item label::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	border: 1px solid var(--black);
+	border-radius: 50%;
+	transition: background-color var(--transition);
+}
+
+.radio_item.active label::before {
+	background-color: var(--black);
+}
+
+.radio_item.disabled.active label::before {
+	background-color: var(--gray);
+}
+
+.radio_item.disabled {
+	opacity: .3;
+}
+
+.radio_item label {
+	cursor: pointer;
+}
+
+.radio_item input {
+	display: none;
+}
+
+.order_buttons {
+	margin-top: 21px;
+	display: flex;
+	flex-direction: column;
+	gap: 11px;
+}
+
+
+.order_description {
+	margin-top: 12px;
+	max-width: 310px;
+	width: 100%;
+	font-size: 12px;
+}
+
+
+
+@media (max-width: 860px) {
+	.checkout_form {
+		display: flex;
+		flex-direction: column;
+	}
+}

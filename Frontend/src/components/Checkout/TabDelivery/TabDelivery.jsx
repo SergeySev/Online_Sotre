@@ -30,8 +30,6 @@ export function TabDelivery({ activeTab, setActiveTab }) {
 			address: address?.value,
 		}
 
-		console.log("🚀 ~ file: TabDelivery.jsx:25 ~ saveData ~ obj:", obj)
-
 		if (activeTab < 3) {
 			setActiveTab(++activeTab)
 		}
