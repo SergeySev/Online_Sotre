@@ -4,7 +4,7 @@ import { fetch_filter_data } from '../../requests/requests';
 import s from './FilterAside.module.css'
 import { FilterAsideElem } from './FilterAsideElem/FilterAsideElem';
 
-export function FilterAside() {
+export function FilterAside({ subcategory_title }) {
 
 	const dispatch = useDispatch()
 
@@ -30,6 +30,7 @@ export function FilterAside() {
 					key={index}
 					title={elem}
 					data={data}
+					subcategory_title={subcategory_title}
 				/>
 			}
 			)}

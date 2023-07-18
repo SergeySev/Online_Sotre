@@ -1,11 +1,12 @@
 import axios from "axios";
 import { get_brands } from "../store/reducers/brandSlice";
 import { get_categories } from "../store/reducers/categoriesSlice";
-import { get_subcategory_products } from "../store/reducers/categoryProductsSlice";
+import { get_filtered_subcategory_products, get_subcategory_products } from "../store/reducers/categoryProductsSlice";
 import { get_subcategories_by_main } from "../store/reducers/subCategoriesSlice";
 import { product_offers } from "../store/reducers/offersSlice";
 import { get_filter_data } from "../store/reducers/filterSlice";
 import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
+import { data } from "jquery";
 
 const base_url = "http://localhost:8080/api/v1";
 
@@ -79,6 +80,23 @@ export const fetch_subcategory_products = (id) => {
 				.catch(() => {
 					console.error("Failed to fetch data from the server. Setting empty categories.");
 					dispatch(get_subcategory_products([]));
+				})
+		} catch (error) {
+			console.error("fetch error: ", error);
+			dispatch(get_subcategory_products([]));
+		}
+	};
+};
+
+export const fetch_filtered_subcategory_products = (requestUrl) => {
+	return function (dispatch) {
+		try {
+			fetch(requestUrl)
+				.then((res) => res.json())
+				.then((data) => dispatch(get_filtered_subcategory_products(data)))
+				.catch(() => {
+					// console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(get_filtered_subcategory_products([]));
 				})
 		} catch (error) {
 			console.error("fetch error: ", error);
