@@ -25,9 +25,9 @@ export function SubCategoryPage() {
 		{ text: `${subcategory_title}`, link: '#' },
 	];
 
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, [])
+	// useEffect(() => {
+	// 	window.scrollTo(0, 0);
+	// }, [])
 
 	const changeProductList = (id) => {
 		dispatch(fetch_subcategory_products(id))
@@ -41,7 +41,7 @@ export function SubCategoryPage() {
 				<div className={s.page_container}>
 					<div className={s.aside_container}>
 						<MainCategoriesAside categories={categories} changeProductList={changeProductList} />
-						<FilterAside />
+						<FilterAside subcategory_title={subcategory_title} />
 					</div>
 					<div className={s.products_list_wrapper}>
 						<ProductsList products={subcategory_products} />
