@@ -1,22 +1,44 @@
-import React from 'react'
+
+import { useState } from 'react';
+import { Button, Input } from '../../UI'
+import { sign_in } from '../../data/data';
 import s from './SignForm.module.css'
-import Input from '../../UI/Input/Input'
-import { useRef } from 'react'
-import { useForm } from 'react-hook-form'
 
-export default function SignForm(props) {
-  const { title, link, button, input, infoText, type } = props;
-  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm;
+export function SignForm({ setActiveWindow }) {
 
-  const password = useRef();
-  password.current = watch('password', '')
-  return (
-    <div>
-      <form>
-        <h2></h2>
-        <p></p>
-        <Input />
-      </form>
-    </div>
-  )
+	const [values, setValues] = useState({
+		email: '',
+		password: '',
+	});
+
+	const onChange = (e) => {
+		setValues({ ...values, [e.target.name]: e.target.value });
+	};
+
+	const sendHandler = (e) => {
+		e.preventDefault();
+	}
+
+	return (
+		<form className={s.form} onSubmit={sendHandler}>
+			<h2 className={s.form_title}>Sign in</h2>
+			<ul className={s.form_inner}>
+
+				{sign_in.map(input =>
+					<Input
+						key={input.id}
+						{...input}
+						value={values[input.name]}
+						onChange={onChange}
+					/>
+				)
+				}
+			</ul>
+			<Button text='Sign in' content="registr" />
+			<span className={s.register_link}
+				onClick={() => setActiveWindow("register")}>
+				Or register if you haven't already
+			</span>
+		</form>
+	)
 }

@@ -1,83 +1,20 @@
-.modal_container {
-  position: relative;
-}
-
-.modal {
-  width: 0;
-  height: 0;
-  background-color: rgba(0, 0, 0, .4);
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: .5s;
-  z-index: 2;
-}
-
-.modal_active {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, .4);
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 1;
-  scroll-behavior: unset;
-  z-index: 2;
+.modal_wrapper {
+	position: relative;
+	z-index: 50;
+	padding: 50px 16px 40px;
+	max-width: 622px;
+	width: 100%;
+	background-color: var(--white);
+	border-radius: 5px;
+	overflow: hidden;
 }
 
 .close {
-  float: right;
-}
-
-.form {
-  background-color: var(--white);
-  width: 622px;
-  margin: 100px auto;
-  padding: 32px;
-  border-radius: 5px;
-}
-
-.form_title {
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.form_inner {
-  display: flex;
-  flex-direction: column;
-  width: 310px;
-  margin: 0 auto;
-}
-
-.form_inner input {
-  border: none;
-  border-bottom: 1px solid var(--gray);
-  margin-top: 10px;
-  padding-bottom: 3px;
-  outline: none;
-}
-
-.form_inner label {
-  margin-top: 24px;
-  color: var(--smoky);
-  font-size: 12px;
-  font-weight: 400;
-}
-
-.form_inner button {
-  margin-top: 32px;
-  width: 100%;
-}
-
-.form_agreement {
-  margin-top: 12px;
-  font-size: 12px;
-  color: var(--smoky);
-}
-
-.form_agreement span:hover {
-  cursor: pointer;
-  color: var(--black);
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	width: 24px;
+	height: 24px;
+	color: var(--smoky);
+	cursor: pointer;
 }

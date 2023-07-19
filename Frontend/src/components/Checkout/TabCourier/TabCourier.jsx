@@ -1,8 +1,7 @@
-import { useRef, useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { courier_inputs } from '../../../data/data';
-import { PopUp, CalendarCustom } from '../../';
+import { CalendarCustom, PopUpContainer } from '../../';
 import { InputOrder } from '../../../UI';
 import s from './TabCourier.module.css'
 
@@ -12,8 +11,6 @@ export function TabCourier() {
 	const { date, shipping } = { ...delivery[0] };
 	const { city, street, house, post_code, app } = delivery[0]?.address;
 	const [popup_active, setPopupActive] = useState(false);
-
-	const nodeRef = useRef(null);
 
 	const [values, setValues] = useState({
 		city: city ? city : '',
@@ -59,23 +56,12 @@ export function TabCourier() {
 						setPopupActive={setPopupActive}
 					/>)}
 			</ul>
-			<CSSTransition
-				in={popup_active}
-				nodeRef={nodeRef}
-				timeout={400}
-				classNames="my-node"
-				unmountOnExit>
 
-				<PopUp
-					ref={nodeRef}
-					onClick={() => setPopupActive(false)}
-					content={
-						<CalendarCustom
-							setCalendarValue={setCalendarValue}
-						/>
-					}
-				/>
-			</CSSTransition >
+			<PopUpContainer
+				popup_active={popup_active}
+				setPopupActive={setPopupActive}
+				content={<CalendarCustom setCalendarValue={setCalendarValue} />}
+			/>
 		</>
 	)
 }

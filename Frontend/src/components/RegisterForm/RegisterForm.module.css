@@ -39,19 +39,19 @@
 	margin-top: 32px;
 }
 
-.register_link {
-	margin-top: 20px;
-	display: block;
-	text-align: center;
+.form_agreement {
+	margin-top: 12px;
 	font-size: 12px;
 	color: var(--smoky);
 	cursor: pointer;
-	transition: color var(--transition);
+}
 
+.form_agreement span {
+	transition: color var(--transition);
 }
 
 @media (min-width: 762px) {
-	.register_link:hover {
-		color: var(--orange);
+	.form_agreement:hover span {
+		color: var(--black);
 	}
 }

@@ -1,12 +1,14 @@
-import { useCallback, useContext } from 'react'
+import { useCallback, useContext, useState } from 'react'
 import { BurgerContext } from '../../context/burgerContext'
 import { NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PopUpContainer, SignWindow } from '../';
 import s from './MenuIconsItem.module.css'
 
 export function MenuIconsItem({ image, title, icon, count, link }) {
 	const context = useContext(BurgerContext);
+	const [popup_active, setPopupActive] = useState(false);
 
 	const showToast = useCallback((message) => {
 		toast(message, {
@@ -26,6 +28,9 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 					break;
 				case 'comparison':
 					showToast("You have nothing to compare...");
+					break;
+				case 'avatar':
+					setPopupActive(true);
 					break;
 				case 'cart':
 					showToast("You cart is empty...");
@@ -53,6 +58,16 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 				</NavLink>
 			</li>
 			<ToastContainer />
+			<PopUpContainer
+				popup_active={popup_active}
+				setPopupActive={setPopupActive}
+				content={
+					<SignWindow
+						active={popup_active}
+						setActive={setPopupActive}
+					/>
+				}
+			/>
 		</>
 	)
 }

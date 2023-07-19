@@ -19,9 +19,14 @@
 	background-color: var(--black);
 }
 
+.button.confirmOrder,
 .button.checkout {
 	margin-top: 30px;
 	width: 310px;
+}
+
+.button.confirmOrder {
+	background-color: var(--orange);
 }
 
 .button.news {
@@ -34,12 +39,6 @@
 	background-color: var(--orange);
 }
 
-.button.confirmOrder {
-	margin-top: 30px;
-	width: 310px;
-	background-color: var(--orange);
-}
-
 .button.to_shop {
 	width: 264px;
 	background-color: transparent;
@@ -47,13 +46,19 @@
 	border: 1px solid var(--gray);
 }
 
-
+.button.registr {
+	margin-top: 16px;
+	width: 100%;
+	background-color: var(--black);
+}
 
 @media (min-width: 762px) {
 	.button:active {
 		top: 1px;
 	}
 
+
+	.button.registr:hover,
 	.button.checkout:hover,
 	.button.about:hover {
 		background-color: var(--orange);

@@ -1,9 +1,27 @@
-import React, { forwardRef } from 'react'
+import { useState } from 'react';
 import s from './Input.module.css'
 
-export const Input = forwardRef((props, ref) => {
+export function Input({ label, error_message, onChange, password_confirm, ...input_props }) {
+
+	const [focused, setFocused] = useState(false);
+	const handleFocus = (e) => {
+		e.preventDefault();
+		setFocused(true);
+	};
 	return (
-		<input ref={ref} {...props} className={s.input_elem} />
+		<li className={s.item}>
+			<label className={s.label}>
+				{label}
+				<input
+					className={s.input}
+					{...input_props}
+					onChange={onChange}
+					onBlur={handleFocus}
+					focused={focused.toString()}
+				/>
+				<span className={s.error}>{error_message}</span>
+			</label>
+		</li>
 	)
-})
+}
 
