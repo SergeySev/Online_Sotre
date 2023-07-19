@@ -11,6 +11,7 @@ export function FilterAsideElem({ title, data, subcategory_title }) {
   const base_filter_url = 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30';
   let request_url = 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle='
   const subcategory_string = `&subCategoryTitle=${subcategory_title}`;
+  let price_range_string = [];
   let brands_string = '';
   let country_string = '';
   let color_string = '';
@@ -60,6 +61,12 @@ export function FilterAsideElem({ title, data, subcategory_title }) {
 
   useEffect(() => {
     for (let key in requestBody) {
+      if (key === 'priceRange') {
+        if (requestBody.priceRange.length !== 0) {
+          price_range_string = `&priceFrom=${requestBody.priceRange[0]}&priceTo=${Math.ceil(requestBody.priceRange[1])}`
+        }
+      }
+
       if (key === 'brands') {
         if (requestBody.brands.length !== 0) {
           for (let i = 0; i < requestBody.brands.length; i++) {
@@ -93,13 +100,18 @@ export function FilterAsideElem({ title, data, subcategory_title }) {
         }
       }
     }
-    request_url = base_filter_url + subcategory_string + brands_string + country_string + color_string + delivery_string;
-    console.log(request_url)
+    request_url = base_filter_url + subcategory_string + brands_string + country_string + color_string + price_range_string;
+    // request_url = base_filter_url + subcategory_string + brands_string + country_string + color_string + delivery_string;
+
+    if (request_url !== 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle=') {
+      dispatch(fetch_filtered_subcategory_products(request_url))
+    }
   }, [requestBody])
 
-  useEffect(() => {
-    dispatch(fetch_filtered_subcategory_products(request_url))
-  }, [requestBody])
+  // useEffect(() => {
+
+  //   }
+  // }, [requestBody])
 
 
 
