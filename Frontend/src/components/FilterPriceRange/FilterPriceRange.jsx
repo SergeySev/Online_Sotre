@@ -10,7 +10,11 @@ export default function FilterPriceRange({ max, min, setRequestBody }) {
 
 	const sliderChange = (event, newValue) => {
 		setValue(newValue);
-		setRequestBody('Price', newValue)
+		// setRequestBody('Price', newValue)
+	}
+
+	const get_range_data = (event) => {
+		setRequestBody('Price', value)
 	}
 
 	return (
@@ -18,6 +22,7 @@ export default function FilterPriceRange({ max, min, setRequestBody }) {
 			<Slider
 				value={value}
 				onChange={sliderChange}
+				onMouseUp={get_range_data}
 				valueLabelDisplay="auto"
 				step={10}
 				min={min} max={max}
