@@ -9,6 +9,7 @@
 
 .aside_container {
 	border-radius: 5px;
+	max-width: 310px;
 }
 
 .products_list_wrapper {
