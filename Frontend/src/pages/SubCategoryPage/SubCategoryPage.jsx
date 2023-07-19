@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetch_main_categories, fetch_subcategory_products } from '../../requests/requests';
 import { Breadcrumbs, MainCategoriesAside, FilterAside, ProductsList } from '../../components';
 import s from './SubCategoryPage.module.css'
+import OffersAside from '../../components/OffersAside/OffersAside';
 
 export function SubCategoryPage() {
 
@@ -25,10 +26,6 @@ export function SubCategoryPage() {
 		{ text: `${subcategory_title}`, link: '#' },
 	];
 
-	// useEffect(() => {
-	// 	window.scrollTo(0, 0);
-	// }, [])
-
 	const changeProductList = (id) => {
 		dispatch(fetch_subcategory_products(id))
 	}
@@ -42,6 +39,7 @@ export function SubCategoryPage() {
 					<div className={s.aside_container}>
 						<MainCategoriesAside categories={categories} changeProductList={changeProductList} />
 						<FilterAside subcategory_title={subcategory_title} />
+						<OffersAside />
 					</div>
 					<div className={s.products_list_wrapper}>
 						<ProductsList products={subcategory_products} />

@@ -1,0 +1,30 @@
+.offers_item {
+    width: 310px;
+    height: 200px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.offers_item img {
+    border-radius: 5px;
+    height: 100%;
+    object-position: center center;
+}
+
+.offers_item h4,
+.offers_item p {
+    position: absolute;
+}
+
+.offers_item h4 {
+    top: 16px;
+    left: 16px;
+    font-weight: 700;
+}
+
+.offers_item p {
+    top: 36px;
+    left: 16px;
+    font-size: 12px;
+    font-weight: 400;
+}

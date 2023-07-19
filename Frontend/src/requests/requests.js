@@ -95,7 +95,7 @@ export const fetch_filtered_subcategory_products = (requestUrl) => {
 				.then((res) => res.json())
 				.then((data) => dispatch(get_filtered_subcategory_products(data)))
 				.catch(() => {
-					// console.error("Failed to fetch data from the server. Setting empty categories.");
+					console.error("Failed to fetch data from the server. Setting empty categories.");
 					dispatch(get_filtered_subcategory_products([]));
 				})
 		} catch (error) {
