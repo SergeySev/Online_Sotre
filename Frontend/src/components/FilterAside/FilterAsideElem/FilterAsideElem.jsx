@@ -61,6 +61,7 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
       if (key === 'priceRange') {
         if (requestBody.priceRange.length !== 0) {
           price_range_string = `&priceFrom=${requestBody.priceRange[0]}&priceTo=${Math.ceil(requestBody.priceRange[1])}`
+          // console.log(price_range_string)
         }
       }
 
@@ -68,7 +69,7 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
         if (requestBody.brands.length !== 0) {
           for (let i = 0; i < requestBody.brands.length; i++) {
             brands_string += `&brandTitles=${requestBody.brands[i]}`
-            console.log(brands_string)
+            // console.log(brands_string)
           }
         }
       }
@@ -76,7 +77,7 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
         if (requestBody.country.length !== 0) {
           for (let i = 0; i < requestBody.country.length; i++) {
             country_string += `&madeCountries=${requestBody.country[i]}`
-            console.log(country_string)
+            // console.log(country_string)
           }
         }
       }
@@ -84,7 +85,7 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
         if (requestBody.color.length !== 0) {
           for (let i = 0; i < requestBody.color.length; i++) {
             color_string += `&colours=${requestBody.color[i]}`
-            console.log(color_string)
+            // console.log(color_string)
           }
         }
       }
@@ -92,7 +93,7 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
         if (requestBody.delivery.length !== 0) {
           for (let i = 0; i < requestBody.delivery.length; i++) {
             delivery_string += `&deliveryTypes=${requestBody.delivery[i]}`
-            console.log(delivery_string)
+            // console.log(delivery_string)
           }
         }
       }
