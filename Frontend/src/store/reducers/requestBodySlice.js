@@ -13,6 +13,7 @@ const requestBodySlice = createSlice({
   reducers: {
 
     set_price_data(state, action) {
+      console.log(action.payload);
       return { ...state, priceRange: [...action.payload] }
     },
 

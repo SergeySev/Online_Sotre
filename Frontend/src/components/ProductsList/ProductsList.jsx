@@ -11,7 +11,7 @@ export function ProductsList({ products, content, pagination_content }) {
 
 	const lastElem = currentPage * countProductsPage;
 	const firstElem = lastElem - countProductsPage;
-	// console.log(products)
+	console.log(products)
 	const products_list = products.slice(firstElem, lastElem)
 	const countElem = Math.ceil(products.length / countProductsPage)
 
@@ -26,7 +26,7 @@ export function ProductsList({ products, content, pagination_content }) {
 		<>
 			{content ?
 				<ul className={s.subcategories_list}>
-					{products_list.map(product => <SubCategoryItem key={product.id} product={product} id={content} />
+					{products_list?.map(product => <SubCategoryItem key={product.id} product={product} id={content} />
 					)}
 				</ul>
 				:

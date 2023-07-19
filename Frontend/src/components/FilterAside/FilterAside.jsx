@@ -5,23 +5,23 @@ import s from './FilterAside.module.css'
 import { FilterAsideElem } from './FilterAsideElem/FilterAsideElem';
 
 export function FilterAside({ subcategory_title }) {
-	// let request_url = 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle='
-	const [request_url, setRequest_url] = useState('http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle=')
+	const [request_url, setRequest_url] = useState('')
+	// const [request_url, setRequest_url] = useState('http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle=')
 
 	const dispatch = useDispatch()
 
 	useEffect(() => dispatch(fetch_filter_data()), [dispatch])
 	const filter_data = useSelector(store => store.filter_data)
-	const requestBody = useSelector(state => state.requestBody)
+	// const requestBody = useSelector(state => state.requestBody)
 
 	useEffect(() => {
 		if (request_url !== 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle=') {
 			dispatch(fetch_filtered_subcategory_products(request_url))
 		}
-		console.log('request_url has changed')
+		// console.log('request_url has changed')
 		console.log(request_url)
 
-	}, [requestBody])
+	}, [request_url])
 
 
 
