@@ -4,6 +4,90 @@ import instagram from './assets/instagram.png'
 import vk from './assets/vk.png'
 import facebook from './assets/fb.png'
 
+export const sign_in = [
+	{
+		id: 1,
+		name: "email",
+		type: "email",
+		placeholder: '',
+		error_message: "It should be a valid email address!",
+		label: "Email",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+		required: true
+	},
+	{
+		id: 2,
+		name: "password",
+		type: "password",
+		placeholder: '',
+		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+		label: "Password",
+		pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+		required: true
+	},
+]
+
+export const registrations = [
+	{
+		id: 1,
+		name: "surname",
+		type: "text",
+		placeholder: '',
+		error_message: "Field should be 2-16 characters",
+		label: "Surname",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 2,
+		name: "name",
+		type: "text",
+		placeholder: '',
+		error_message: "Field should be 2-16 characters",
+		label: "Name",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 3,
+		name: "phone",
+		type: "tel",
+		placeholder: '+49',
+		error_message: "Phone number should be in format +99 999...",
+		label: "Pnone",
+		pattern: "^[+]{1}[0-9]{5,13}$",
+		required: true
+	},
+	{
+		id: 4,
+		name: "email",
+		type: "email",
+		placeholder: '',
+		error_message: "It should be a valid email address!",
+		label: "Email",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+		required: true
+	},
+	{
+		id: 5,
+		name: "password",
+		type: "password",
+		placeholder: '',
+		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+		label: "Password",
+		pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+		required: true
+	},
+	{
+		id: 6,
+		name: "confirm_password",
+		type: "password",
+		placeholder: '',
+		error_message: "This must equal the password field",
+		label: "Confirm password",
+		required: true
+	}
+]
 
 export const radio_orders = [
 	{ id: 1, title: 'in cash', type: 'cash' },
@@ -111,7 +195,7 @@ export const user_inputs = [
 		placeholder: 'Enter your phone number',
 		error_message: "Phone number should be in format +99 999...",
 		label: "Pnone number",
-		pattern: "^\+\d{5,}$",
+		pattern: "^[+]{1}[0-9]{5,13}$",
 		required: true
 	},
 	{
@@ -137,7 +221,6 @@ export const top_menu_items = [
 		title: 'phone',
 		image: '',
 		icon: <FiPhoneIncoming />,
-		// link: '#'
 	},
 	{
 		id: 2,
@@ -157,9 +240,6 @@ export const top_menu_items = [
 		id: 4,
 		title: 'avatar',
 		image: avatar,
-		// icon: <FaRegUserCircle />,
-		// icon: <RiAccountCircleLine />,
-		// link: '#'
 	},
 	{
 		id: 5,
