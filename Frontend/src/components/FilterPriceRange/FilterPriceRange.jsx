@@ -4,13 +4,11 @@ import s from './FilterRange.module.css'
 import './style.css'
 
 export default function FilterPriceRange({ max, min, setRequestBody }) {
-	// console.log(typeof (min), typeof (max));
 
 	const [value, setValue] = useState([0, 500]);
 
 	const sliderChange = (event, newValue) => {
 		setValue(newValue);
-		// setRequestBody('Price', newValue)
 	}
 
 	const get_range_data = (event) => {

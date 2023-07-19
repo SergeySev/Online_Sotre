@@ -7,9 +7,9 @@ import { fetch_filtered_subcategory_products } from '../../../requests/requests'
 
 
 
-export function FilterAsideElem({ title, data, subcategory_title }) {
+export function FilterAsideElem({ title, data, subcategory_title, setRequest_url }) {
   const base_filter_url = 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30';
-  let request_url = 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle='
+
   const subcategory_string = `&subCategoryTitle=${subcategory_title}`;
   let price_range_string = [];
   let brands_string = '';
@@ -20,7 +20,6 @@ export function FilterAsideElem({ title, data, subcategory_title }) {
 
 
   const [activeFilter, setActiveFilter] = useState(false)
-  // console.log(data)
 
   const dispatch = useDispatch()
 
@@ -29,7 +28,6 @@ export function FilterAsideElem({ title, data, subcategory_title }) {
   }
 
   const requestBody = useSelector(state => state.requestBody)
-  // console.log(requestBody, subcategory_title)
 
   const setRequestBody = (title, elem) => {
 
@@ -55,7 +53,6 @@ export function FilterAsideElem({ title, data, subcategory_title }) {
   }
 
   const handleChange = (title, elem) => {
-    // e.preventDefault();
     setRequestBody(title, elem)
   }
 
@@ -100,20 +97,10 @@ export function FilterAsideElem({ title, data, subcategory_title }) {
         }
       }
     }
-    request_url = base_filter_url + subcategory_string + brands_string + country_string + color_string + price_range_string;
+    setRequest_url(base_filter_url + subcategory_string + brands_string + country_string + color_string + price_range_string);
     // request_url = base_filter_url + subcategory_string + brands_string + country_string + color_string + delivery_string;
 
-    if (request_url !== 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle=') {
-      dispatch(fetch_filtered_subcategory_products(request_url))
-    }
   }, [requestBody])
-
-  // useEffect(() => {
-
-  //   }
-  // }, [requestBody])
-
-
 
   return (
     <li className={s.wrapper}>
