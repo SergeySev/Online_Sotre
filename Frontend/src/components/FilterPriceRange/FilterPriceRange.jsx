@@ -4,13 +4,15 @@ import s from './FilterRange.module.css'
 import './style.css'
 
 export default function FilterPriceRange({ max, min, setRequestBody }) {
-	// console.log(typeof (min), typeof (max));
 
 	const [value, setValue] = useState([0, 500]);
 
 	const sliderChange = (event, newValue) => {
 		setValue(newValue);
-		setRequestBody('Price', newValue)
+	}
+
+	const get_range_data = (event) => {
+		setRequestBody('Price', value)
 	}
 
 	return (
@@ -18,6 +20,7 @@ export default function FilterPriceRange({ max, min, setRequestBody }) {
 			<Slider
 				value={value}
 				onChange={sliderChange}
+				onMouseUp={get_range_data}
 				valueLabelDisplay="auto"
 				step={10}
 				min={min} max={max}
