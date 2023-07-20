@@ -58,3 +58,35 @@
     width: 16px;
     height: 16px;
 }
+
+.top_signs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.add_to {
+    display: flex;
+    position: absolute;
+    top: 14px;
+    right: 74px;
+    gap: 16px;
+}
+
+.bars,
+.heart {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    color: var(--gray);
+    transition: color var(--transition);
+}
+
+.bars.active {
+    color: var(--black);
+}
+
+.heart.active {
+    color: var(--red);
+    fill: currentColor;
+}

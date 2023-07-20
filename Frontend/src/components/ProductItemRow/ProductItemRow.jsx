@@ -1,12 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './ProductItemRow.module.css'
+import { FiHeart, FiBarChart2 } from 'react-icons/fi';
 import { ToggleCartBtn } from '../ToggleCartBtn/ToggleCartBtn';
+import { NewSign } from '../NewSign/NewSign';
+import { useDispatch, useSelector } from 'react-redux';
+import { useInView } from 'react-intersection-observer';
+import { toggle_favorite } from '../../store/reducers/favoriteSlice';
+import { toggle_comparison } from '../../store/reducers/comparisonSlice';
 
 export default function ProductItemRow({ product }) {
 
     const { id, mainImageLink, title, description, discountPrice, price, inStock } = product;
 
-    console.log(product);
+    const dispatch = useDispatch();
+    const favorite_id_list = useSelector(store => store.favorite.favorite_list).map(el => el.id)
+    const comparison_id_list = useSelector(store => store.comparison.comparison_list).map(el => el.id)
+
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+    });
+
+    const [img_index, setImg_index] = useState(0)
+    const [activeImg, setActiveImg] = useState(true);
+    // const change_product_img = (image_index) => {
+    //     setImg_index(image_index);
+    //     setActiveImg(true)
+    // }
+
 
     console.log(product.inStock);
 
@@ -22,6 +43,17 @@ export default function ProductItemRow({ product }) {
     }
     return (
         <div className={s.product_item_row}>
+            <div className={s.top_signs}>
+                <div><NewSign tag={tag} /></div>
+                <div className={s.add_to}>
+                    <FiBarChart2
+                        className={`${s.bars} ${s[comparison_id_list.includes(product.id) ? "active" : ""] || ''}`}
+                        onClick={() => dispatch(toggle_comparison(product))} />
+                    <FiHeart
+                        className={`${s.heart} ${s[favorite_id_list.includes(product.id) ? "active" : ""] || ''}`}
+                        onClick={() => dispatch(toggle_favorite(product))} />
+                </div>
+            </div>
             <div className={s.image_wrapper}>
                 <img src={mainImageLink} />
             </div>
