@@ -5,7 +5,9 @@ import cart from './assets/shopping-cart.png';
 import checked_cart from './assets/check-circle.png';
 import s from './ToggleCartBtn.module.css'
 
-export function ToggleCartBtn({ product }) {
+export function ToggleCartBtn({ product, bottom }) {
+
+	console.log(bottom)
 	const [isActive, setActive] = useState(false);
 
 	const dispatch = useDispatch();
@@ -27,7 +29,7 @@ export function ToggleCartBtn({ product }) {
 	const image = isActive ? checked_cart : cart;
 	return (
 		<button
-			className={`${s.cart_btn} ${s[isActive ? 'active' : ''] || ''}`}
+			className={`${s[bottom ? 'cart_btn_bottom' : 'cart_btn_top'] || 'cart_btn_bottom'} ${s[isActive ? 'active' : ''] || ''}`}
 			onClick={toggleHand}>
 			<img src={image} />
 		</button>

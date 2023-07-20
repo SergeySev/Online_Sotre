@@ -3,6 +3,7 @@
     padding: 28px 36px 28px 76px;
     background-color: #fff;
     gap: 66px;
+    position: relative;
 }
 
 .image_wrapper {
@@ -37,4 +38,23 @@
     font-weight: 500;
     text-decoration: line-through;
     color: #DEDBDB;
+}
+
+.in_stock {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--green);
+    margin-right: 60px;
+    white-space: nowrap;
+}
+
+.stock {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.stock_img {
+    width: 16px;
+    height: 16px;
 }
