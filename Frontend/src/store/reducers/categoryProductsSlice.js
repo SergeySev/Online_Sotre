@@ -15,7 +15,6 @@ const categoryProductsSlice = createSlice({
     },
 
     get_filtered_subcategory_products(state, action) {
-      console.log(action.payload)
       if (action.payload.length === 0) {
         return { ...state, category_products: [] }
       } else return {

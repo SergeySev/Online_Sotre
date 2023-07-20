@@ -18,4 +18,11 @@
 .layout_icon {
     font-size: 22px;
     cursor: pointer;
+    color: #DEDBDB;
+}
+
+.layout_icon_active {
+    color: #212526;
+    font-size: 22px;
+    cursor: pointer;
 }
