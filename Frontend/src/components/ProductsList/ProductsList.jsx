@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Pagination, ProductItem, SubCategoryItem } from '../'
 import s from './ProductsList.module.css'
 import SortBar from '../SortBar/SortBar';
+import ProductItemRow from '../ProductItemRow/ProductItemRow';
 
 export function ProductsList({ products, content, pagination_content }) {
 	// console.log("🚀 ~ file: ProductsList.jsx:6 ~ ProductsList ~ pagination_content:", pagination_content)
@@ -13,7 +14,7 @@ export function ProductsList({ products, content, pagination_content }) {
 
 	const lastElem = currentPage * countProductsPage;
 	const firstElem = lastElem - countProductsPage;
-	// console.log(products)
+	console.log(products)
 	const products_list = products.slice(firstElem, lastElem)
 	const countElem = Math.ceil(products.length / countProductsPage)
 
@@ -33,9 +34,15 @@ export function ProductsList({ products, content, pagination_content }) {
 					)}
 				</ul>
 				:
-				<ul className={!layout ? s.products_list : s.products_list_row}>
+				!layout ? (<ul className={s.products_list} >
 					{products_list.map(product => <ProductItem key={product.id} product={product} layout={layout} />)}
-				</ul>
+				</ul >)
+					: (<ul className={s.products_list_row}>
+						{products_list.map(product => <ProductItemRow key={product.id} product={product} layout={layout} />)}
+					</ul>)
+
+
+
 			}
 
 			<Pagination setCurrentPage={setCurrentPage} countElem={countElem} currentPage={currentPage} pagination_content={pagination_content} />

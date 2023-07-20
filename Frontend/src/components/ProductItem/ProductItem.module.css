@@ -7,14 +7,6 @@
 	text-align: center;
 }
 
-/* .product_item_row {
-	background-color: var(--white);
-	border-radius: 5px;
-	padding: 12px;
-	position: relative;
-	display: flex;
-} */
-
 .top_signs {
 	display: flex;
 	justify-content: space-between;
