@@ -14,3 +14,9 @@
 	gap: 20px;
 	background-color: var(--white);
 }
+
+.products_list_row {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}

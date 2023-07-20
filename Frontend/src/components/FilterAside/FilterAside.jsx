@@ -18,9 +18,6 @@ export function FilterAside({ subcategory_title }) {
 		if (request_url !== 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle=') {
 			dispatch(fetch_filtered_subcategory_products(request_url))
 		}
-		// console.log('request_url has changed')
-		console.log(request_url)
-
 	}, [request_url])
 
 
