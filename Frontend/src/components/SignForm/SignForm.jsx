@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Button, Input } from '../../UI'
 import { sign_in } from '../../data/data';
 import s from './SignForm.module.css'
+import { useDispatch } from 'react-redux';
+import { add_new_user_req } from '../../requests/requests';
 
 export function SignForm({ setActiveWindow }) {
 
@@ -11,12 +13,15 @@ export function SignForm({ setActiveWindow }) {
 		password: '',
 	});
 
+	const dispatch = useDispatch();
+
 	const onChange = (e) => {
 		setValues({ ...values, [e.target.name]: e.target.value });
 	};
 
 	const sendHandler = (e) => {
 		e.preventDefault();
+		// console.log("🚀 ~ file: SignForm.jsx:22 ~ sendHandler ~ e:", e.target)
 	}
 
 	return (

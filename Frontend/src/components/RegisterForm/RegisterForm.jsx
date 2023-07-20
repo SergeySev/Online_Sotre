@@ -5,7 +5,7 @@ import { add_new_user_req } from '../../requests/requests'
 import { registrations } from '../../data/data'
 import s from './RegisterForm.module.css'
 
-export function RegisterForm() {
+export function RegisterForm({ setActiveWindow }) {
 
 	const [values, setValues] = useState({
 		surname: '',
@@ -18,7 +18,7 @@ export function RegisterForm() {
 
 	useEffect(() => {
 		registrations.forEach(elem => {
-			if (elem.id === 6) {
+			if (elem.name === "confirm_password") {
 				elem.pattern = values.password;
 			}
 		})
@@ -31,7 +31,17 @@ export function RegisterForm() {
 
 	const sendHandler = (e) => {
 		e.preventDefault();
-		// 	add_new_user_req(newUser);
+
+		const { surname, name, email, phone, birthday, password } = e.target
+
+		const newUser = {
+			surname: surname.value,
+			name: name.value,
+			email: email.value,
+			birthday: birthday.value,
+			password: password.value
+		}
+		add_new_user_req(newUser);
 	}
 
 	return (
@@ -49,11 +59,17 @@ export function RegisterForm() {
 					/>
 				)
 				}
-				<Button text='Registration' content="registr" />
-				<p className={s.form_agreement}>
-					Clicking on the button you agree to the <span>processing of your personal data</span>
-				</p>
 			</ul>
+			<Button text='Registration' content="registr" />
+			<p className={s.form_agreement}>
+				Clicking on the button you agree to the <span>processing of your personal data</span>
+			</p>
+			<p >
+				Already have an account?
+			</p>
+			<span className={s.sign_in}
+				onClick={() => setActiveWindow("sign")}
+			>Sign in</span>
 		</form>
 	)
 }

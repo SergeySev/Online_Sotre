@@ -2,6 +2,9 @@
 	padding: 0 120px;
 	font-family: var(--font_prosto);
 	color: var(--smoky);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	max-height: 610px;
 	overflow-y: auto;
 	background-color: var(--white);
@@ -22,7 +25,6 @@
 
 .form_title {
 	margin-top: 20px;
-	text-align: center;
 	color: var(--black);
 	font-size: 20px;
 	line-height: 24px;
@@ -41,17 +43,17 @@
 
 .register_link {
 	margin-top: 20px;
-	display: block;
-	text-align: center;
+	padding-bottom: 2px;
 	font-size: 12px;
-	color: var(--smoky);
+	color: var(--orange);
+	border-bottom: 1px solid transparent;
 	cursor: pointer;
-	transition: color var(--transition);
+	transition: border-color var(--transition);
 
 }
 
 @media (min-width: 762px) {
 	.register_link:hover {
-		color: var(--orange);
+		border-color: var(--orange);
 	}
 }
