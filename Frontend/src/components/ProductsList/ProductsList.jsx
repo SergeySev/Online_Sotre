@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Pagination, ProductItem, SubCategoryItem } from '../'
 import s from './ProductsList.module.css'
+import SortBar from '../SortBar/SortBar';
 
 export function ProductsList({ products, content, pagination_content }) {
 	// console.log("🚀 ~ file: ProductsList.jsx:6 ~ ProductsList ~ pagination_content:", pagination_content)
@@ -24,6 +25,7 @@ export function ProductsList({ products, content, pagination_content }) {
 
 	return (
 		<>
+			<SortBar />
 			{content ?
 				<ul className={s.subcategories_list}>
 					{products_list?.map(product => <SubCategoryItem key={product.id} product={product} id={content} />

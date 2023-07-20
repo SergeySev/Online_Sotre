@@ -1,0 +1,21 @@
+.sort_bar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.layout {
+    display: flex;
+    gap: 8px;
+    text-align: right;
+    margin-bottom: 24px;
+}
+
+.layout p {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.layout_icon {
+    font-size: 22px;
+    cursor: pointer;
+}
