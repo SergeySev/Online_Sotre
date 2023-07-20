@@ -70,6 +70,15 @@ export const registrations = [
 	},
 	{
 		id: 5,
+		name: "birthday",
+		type: "date",
+		placeholder: '',
+		error_message: "Enter your date of birth",
+		label: "Birthday",
+		required: true
+	},
+	{
+		id: 6,
 		name: "password",
 		type: "password",
 		placeholder: '',
@@ -79,7 +88,7 @@ export const registrations = [
 		required: true
 	},
 	{
-		id: 6,
+		id: 7,
 		name: "confirm_password",
 		type: "password",
 		placeholder: '',

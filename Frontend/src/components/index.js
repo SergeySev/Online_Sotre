@@ -56,3 +56,6 @@ export { SignWindow } from "./SignWindow/SignWindow";
 export { RegisterForm } from "./RegisterForm/RegisterForm";
 export { SignForm } from "./SignForm/SignForm";
 
+
+export { useAuth } from "./hooks/useAuth";
+
