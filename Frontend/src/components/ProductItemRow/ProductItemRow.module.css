@@ -90,3 +90,9 @@
     color: var(--red);
     fill: currentColor;
 }
+
+.tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
