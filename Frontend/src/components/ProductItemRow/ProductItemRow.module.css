@@ -7,10 +7,14 @@
 }
 
 .image_wrapper {
-    width: 113px;
+    min-width: 113px;
     height: 92px;
     display: flex;
     justify-content: center;
+}
+
+.image_wrapper img {
+    object-fit: cover;
 }
 
 .title {
@@ -38,6 +42,11 @@
     font-weight: 500;
     text-decoration: line-through;
     color: #DEDBDB;
+}
+
+.discount_price,
+.price {
+    white-space: nowrap;
 }
 
 .in_stock {
@@ -89,4 +98,10 @@
 .heart.active {
     color: var(--red);
     fill: currentColor;
+}
+
+.tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
 }

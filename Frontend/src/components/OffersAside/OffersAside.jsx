@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './OffersAside.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetch_aside_offers } from '../../requests/requests';
 
 export default function OffersAside() {
 
-    const [offersList, setOffersList] = useState([]);
-    const offers_url = 'http://localhost:8080/api/v1/offers/all';
+    const offersList = useSelector(state => state.asideOffers)
+    const dispatch = useDispatch()
 
-    fetch(offers_url)
-        .then(res => res.json())
-        .then(data => setOffersList(data))
-
+    useEffect(() => {
+        dispatch(fetch_aside_offers())
+    }, [])
 
     return (
         <div className={s.offers_list}>
