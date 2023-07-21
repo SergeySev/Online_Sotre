@@ -60,7 +60,7 @@ export function RegisterForm({ setActiveWindow }) {
 				)
 				}
 			</ul>
-			<Button text='Registration' content="registr" />
+			<Button text='Registration' content="register" />
 			<p className={s.form_agreement}>
 				Clicking on the button you agree to the <span>processing of your personal data</span>
 			</p>

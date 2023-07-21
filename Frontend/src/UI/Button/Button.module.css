@@ -29,9 +29,14 @@
 	background-color: var(--orange);
 }
 
+.button.phone_alert,
 .button.news {
 	width: 250px;
 	background-color: var(--orange);
+}
+
+.button.phone_alert {
+	margin: 0 auto;
 }
 
 .button.order {
@@ -46,7 +51,7 @@
 	border: 1px solid var(--gray);
 }
 
-.button.registr {
+.button.register {
 	margin-top: 16px;
 	width: 100%;
 	background-color: var(--black);
@@ -58,7 +63,7 @@
 	}
 
 
-	.button.registr:hover,
+	.button.register:hover,
 	.button.checkout:hover,
 	.button.about:hover {
 		background-color: var(--orange);
@@ -66,6 +71,7 @@
 
 	.button.confirmOrder:hover,
 	.button.order:hover,
+	.button.phone_alert:hover,
 	.button.news:hover {
 		background-color: var(--black);
 	}
