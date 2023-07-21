@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import { SignForm, RegisterForm } from '../'
+import { SignForm, RegisterForm } from '..'
 import s from './SignWindow.module.css'
 import { useState } from 'react'
 

@@ -16,21 +16,6 @@ export default function ProductItemRow({ product }) {
     const favorite_id_list = useSelector(store => store.favorite.favorite_list).map(el => el.id)
     const comparison_id_list = useSelector(store => store.comparison.comparison_list).map(el => el.id)
 
-    const { ref, inView } = useInView({
-        threshold: 0.1,
-        triggerOnce: true,
-    });
-
-    const [img_index, setImg_index] = useState(0)
-    const [activeImg, setActiveImg] = useState(true);
-    // const change_product_img = (image_index) => {
-    //     setImg_index(image_index);
-    //     setActiveImg(true)
-    // }
-
-
-    console.log(product.inStock);
-
     let tag = ''
     if (product.isNew) {
         tag = 'NEW'
