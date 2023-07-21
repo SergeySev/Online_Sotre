@@ -43,17 +43,17 @@ export default function ProductItemRow({ product }) {
     }
     return (
         <div className={s.product_item_row}>
-            <div className={s.top_signs}>
-                <div><NewSign tag={tag} /></div>
-                <div className={s.add_to}>
-                    <FiBarChart2
-                        className={`${s.bars} ${s[comparison_id_list.includes(product.id) ? "active" : ""] || ''}`}
-                        onClick={() => dispatch(toggle_comparison(product))} />
-                    <FiHeart
-                        className={`${s.heart} ${s[favorite_id_list.includes(product.id) ? "active" : ""] || ''}`}
-                        onClick={() => dispatch(toggle_favorite(product))} />
-                </div>
+
+            <div className={s.tag}><NewSign tag={tag} /></div>
+            <div className={s.add_to}>
+                <FiBarChart2
+                    className={`${s.bars} ${s[comparison_id_list.includes(product.id) ? "active" : ""] || ''}`}
+                    onClick={() => dispatch(toggle_comparison(product))} />
+                <FiHeart
+                    className={`${s.heart} ${s[favorite_id_list.includes(product.id) ? "active" : ""] || ''}`}
+                    onClick={() => dispatch(toggle_favorite(product))} />
             </div>
+
             <div className={s.image_wrapper}>
                 <img src={mainImageLink} />
             </div>
