@@ -4,13 +4,13 @@ import userEvent from "@testing-library/user-event";
 const userSlice = createSlice({
 	name: 'user',
 	initialState: {
-		id: null,
-		// token: null,
-		surname: null,
-		name: null,
-		email: null,
-		birthday: null,
-		password: null
+		id: '',
+		// token: '',
+		surname: '',
+		name: '',
+		email: '',
+		birthday: '',
+		password: ''
 	},
 	reducers: {
 		setUser(state, action) {

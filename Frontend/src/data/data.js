@@ -4,6 +4,29 @@ import instagram from './assets/instagram.png'
 import vk from './assets/vk.png'
 import facebook from './assets/fb.png'
 
+export const call_request = [
+	{
+		id: 1,
+		name: "name",
+		type: "text",
+		placeholder: '',
+		error_message: "Field should be 2-16 characters",
+		label: "Name",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 2,
+		name: "phone",
+		type: "tel",
+		placeholder: '+49',
+		error_message: "Phone number should be in format +99 999...",
+		label: "Pnone",
+		pattern: "^[+]{1}[0-9]{5,13}$",
+		required: true
+	},
+]
+
 export const sign_in = [
 	{
 		id: 1,

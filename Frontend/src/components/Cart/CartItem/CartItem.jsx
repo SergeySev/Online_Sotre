@@ -49,10 +49,10 @@ export function CartItem(product) {
 					onClick={() => dispatch(add_to_cart(product))}
 				>+</button>
 			</div>
-			<p className={s.summ}>
+			<div className={s.summ}>
 				<span>total: </span>
 				<p>{total_summ} &#36;</p>
-			</p>
+			</div>
 			<AiOutlineClose
 				className={s.close_btn}
 				onClick={() => remoove_from(cart_amount)}

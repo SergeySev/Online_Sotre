@@ -3,9 +3,8 @@ import { BurgerContext } from '../../context/burgerContext'
 import { NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CallRequest, PopUpContainer, SignWindow } from '../';
 import s from './MenuIconsItem.module.css'
-import { PopUpContainer, SignWindow } from '../../components';
-// import { SignWindow } from '../SignWindow/SignWindow';
 
 export function MenuIconsItem({ image, title, icon, count, link }) {
 	const context = useContext(BurgerContext);
@@ -24,6 +23,9 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 
 		if (!count) {
 			switch (title) {
+				case 'phone':
+					setPopupActive(true);
+					break;
 				case 'favorite':
 					showToast("You don't have any favorites...");
 					break;
@@ -63,10 +65,11 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 				popup_active={popup_active}
 				setPopupActive={setPopupActive}
 				content={
-					<SignWindow
+
+					< SignWindow
 						active={popup_active}
 						setActive={setPopupActive}
-					/>
+						popup={title === "avatar" ? 'sign' : "phone"} />
 				}
 			/>
 		</>

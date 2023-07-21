@@ -1,10 +1,10 @@
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Button, Input } from '../../UI'
 import { sign_in } from '../../data/data';
-import s from './SignForm.module.css'
-import { useDispatch } from 'react-redux';
 import { add_new_user_req } from '../../requests/requests';
+import s from './SignForm.module.css'
 
 export function SignForm({ setActiveWindow }) {
 
@@ -13,7 +13,7 @@ export function SignForm({ setActiveWindow }) {
 		password: '',
 	});
 
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
 	const onChange = (e) => {
 		setValues({ ...values, [e.target.name]: e.target.value });
@@ -21,7 +21,6 @@ export function SignForm({ setActiveWindow }) {
 
 	const sendHandler = (e) => {
 		e.preventDefault();
-		// console.log("🚀 ~ file: SignForm.jsx:22 ~ sendHandler ~ e:", e.target)
 	}
 
 	return (
@@ -39,7 +38,7 @@ export function SignForm({ setActiveWindow }) {
 				)
 				}
 			</ul>
-			<Button text='Sign in' content="registr" />
+			<Button text='Sign in' content="register" />
 			<span className={s.register_link}
 				onClick={() => setActiveWindow("register")}>
 				Or register if you haven't already
