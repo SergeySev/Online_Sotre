@@ -12,6 +12,7 @@ import filterSlice from "./reducers/filterSlice";
 import subCategorySlice from "./reducers/subCategorySlice";
 import orderSlise from "./reducers/orderSlice";
 import requestBodySlice from "./reducers/requestBodySlice";
+import asideOffersSlice from "./reducers/asideOffersSlice";
 
 const rootReducer = combineReducers({
 	categories: categoriesSlice,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
 	brands: brandSlice,
 	category_products: categoryProductsSlice,
 	offers: offersSlice,
+	asideOffers: asideOffersSlice,
 	navigation: navSlice,
 	favorite: favoriteSlice,
 	comparison: comparisonSlice,

@@ -7,8 +7,10 @@ import { product_offers } from "../store/reducers/offersSlice";
 import { get_filter_data } from "../store/reducers/filterSlice";
 import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
 import { data } from "jquery";
+import { aside_product_offers } from "../store/reducers/asideOffersSlice";
 
 const base_url = "http://localhost:8080/api/v1";
+const offers_url = 'http://localhost:8080/api/v1/offers/all';
 
 export const add_new_user_req = async (user) => {
 	try {
@@ -135,6 +137,23 @@ export const fetch_offers_products = (tag) => {
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(product_offers([]));
+		}
+	};
+};
+
+export const fetch_aside_offers = () => {
+	return function (dispatch) {
+		try {
+			fetch(offers_url)
+				.then((resp) => resp.json())
+				.then((data) => dispatch(aside_product_offers(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(aside_product_offers([]));
+				})
+		} catch (error) {
+			console.error("fetch error: ", error);
+			dispatch(aside_product_offers([]));
 		}
 	};
 };
