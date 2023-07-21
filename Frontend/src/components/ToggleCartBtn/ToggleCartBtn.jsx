@@ -7,7 +7,6 @@ import s from './ToggleCartBtn.module.css'
 
 export function ToggleCartBtn({ product, bottom }) {
 
-	console.log(bottom)
 	const [isActive, setActive] = useState(false);
 
 	const dispatch = useDispatch();
