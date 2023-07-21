@@ -8,16 +8,33 @@ import { get_filter_data } from "../store/reducers/filterSlice";
 import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
 import { data } from "jquery";
 import { aside_product_offers } from "../store/reducers/asideOffersSlice";
+import { setUser } from "../store/reducers/userSlice";
 
 const base_url = "http://localhost:8080/api/v1";
 const offers_url = 'http://localhost:8080/api/v1/offers/all';
 
-export const add_new_user_req = async (user) => {
-	try {
-		const response = await axios.post(`${base_url}/client/registration`, user);
-		console.log(response.data);
-	} catch (error) {
-		console.error(error);
+export const add_new_user_req = (user) => {
+	return function (dispatch) {
+		try {
+			fetch(`${base_url}/client/registration`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(user)
+				// body: user
+			})
+				.then((res) => res.json())
+				.then((data) => console.log(data))
+				// .then((data) => dispatch(setUser(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server.");
+					dispatch(setUser([]));
+				})
+		} catch (error) {
+			console.error("fetch error: ", error);
+			dispatch(setUser([]));
+		}
 	}
 };
 

@@ -49,5 +49,13 @@ export { CheckoutOrder } from "./Checkout/CheckoutOrder/CheckoutOrder";
 
 
 export { CalendarCustom } from "./CalendarCustom/CalendarCustom";
+export { PopUpContainer } from "./PopUpContainer/PopUpContainer";
 export { PopUp } from "./PopUp/PopUp";
+
+export { SignWindow } from "./SignWindow/SignWindow";
+export { RegisterForm } from "./RegisterForm/RegisterForm";
+export { SignForm } from "./SignForm/SignForm";
+
+
+export { useAuth } from "./hooks/useAuth";
 

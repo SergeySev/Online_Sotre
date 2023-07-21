@@ -70,7 +70,7 @@ const orderSlise = createSlice({
 			}
 		},
 		payment_data(state, action) {
-			console.log("🚀 ~ file: orderSlice.js:74 ~ payment_data ~ action:", action.payload)
+			// console.log("🚀 ~ file: orderSlice.js:74 ~ payment_data ~ action:", action.payload)
 			return { ...state, payment: action.payload }
 		}
 	}

@@ -13,6 +13,7 @@ import subCategorySlice from "./reducers/subCategorySlice";
 import orderSlise from "./reducers/orderSlice";
 import requestBodySlice from "./reducers/requestBodySlice";
 import asideOffersSlice from "./reducers/asideOffersSlice";
+import userSlice from "./reducers/userSlice";
 
 const rootReducer = combineReducers({
 	categories: categoriesSlice,
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
 	cart: cartSlice,
 	filter_data: filterSlice,
 	order: orderSlise,
-	requestBody: requestBodySlice
+	requestBody: requestBodySlice,
+	user: userSlice
 })
 
 export const store = configureStore({
