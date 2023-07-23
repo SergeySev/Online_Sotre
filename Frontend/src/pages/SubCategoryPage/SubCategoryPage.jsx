@@ -21,7 +21,7 @@ export function SubCategoryPage() {
 	}, [])
 
 	const breadcrumbsItems = [
-		{ text: 'Home /', link: '/' },
+		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Catalog /', link: '/catalog' },
 		{ text: `${subcategory_title}`, link: '#' }
 	];

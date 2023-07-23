@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Input, Button } from '../../UI/'
-import { add_new_user_req } from '../../requests/requests'
-import { registrations } from '../../data/data'
-import s from './RegisterForm.module.css'
+import { useEffect, useState } from 'react';
+import { Input, Button } from '../../UI/';
+import { useDispatch } from 'react-redux';
+import { registrations } from '../../data/data';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import s from './RegisterForm.module.css';
+import { set_user } from '../../store/reducers/userSlice';
 
-export function RegisterForm({ setActiveWindow }) {
+export function RegisterForm({ setActiveWindow, setActive }) {
 
 	const [values, setValues] = useState({
 		surname: '',
@@ -28,6 +29,34 @@ export function RegisterForm({ setActiveWindow }) {
 		setValues({ ...values, [e.target.name]: e.target.value });
 	};
 
+	const dispatch = useDispatch();
+
+	function register_new_user(user) {
+		const { surname, name, birthday, email, phone, password } = user;
+		const auth = getAuth();
+		createUserWithEmailAndPassword(auth, email, password)
+			// createUserWithEmailAndPassword(auth, surname, name, birthday, email, phone, password)
+			.then(({ user }) => {
+				// console.log("🚀 ~ file: RegisterForm.jsx:40 ~ .then ~ user:", user)
+				dispatch(set_user({
+					id: user.uid,
+					surname,
+					name,
+					phone,
+					birthday,
+					email: user.email,
+					token: user.accessToken
+				}))
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log("🚀 ~ file: RegisterForm.jsx:50 ~ register_new_user ~ errorCode:", errorCode)
+				console.log("🚀 ~ file: RegisterForm.jsx:52 ~ register_new_user ~ errorMessage:", errorMessage)
+
+			});
+		setActive(false);
+	}
 
 	const sendHandler = (e) => {
 		e.preventDefault();
@@ -38,10 +67,13 @@ export function RegisterForm({ setActiveWindow }) {
 			surname: surname.value,
 			name: name.value,
 			email: email.value,
+			phone: phone.value,
 			birthday: birthday.value,
 			password: password.value
 		}
-		add_new_user_req(newUser);
+		// register_user(newUser);
+		register_new_user(newUser);
+
 	}
 
 	return (
@@ -60,7 +92,7 @@ export function RegisterForm({ setActiveWindow }) {
 				)
 				}
 			</ul>
-			<Button text='Registration' content="register" />
+			<Button text='Registration' content="register" type='submit' />
 			<p className={s.form_agreement}>
 				Clicking on the button you agree to the <span>processing of your personal data</span>
 			</p>

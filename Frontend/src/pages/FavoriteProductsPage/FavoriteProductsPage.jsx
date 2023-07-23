@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export function FavoriteProductsPage() {
 	// console.log("FavoriteProductsPage reload");
 	const breadcrumbsItems = [
-		{ text: 'Home /', link: '/' },
+		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Favorites', link: '/favorite' },
 	];
 
