@@ -5,3 +5,4 @@ export { FavoriteProductsPage } from "./FavoriteProductsPage/FavoriteProductsPag
 export { ComparisonPage } from "./ComparisonPage/ComparisonPage";
 export { CartPage } from "./CartPage/CartPage";
 export { CheckoutPage } from "./CheckoutPage/CheckoutPage";
+export { UserProfilePage } from "./UserProfilePage/UserProfilePage";

@@ -5,15 +5,18 @@ import { Button, InputOrder } from '../../../UI';
 import { customer_data } from '../../../store/reducers/orderSlice';
 import { user_inputs } from '../../../data/data';
 import s from './TabData.module.css'
+import { useAuth } from '../../hooks/useAuth';
 
 export function TabData({ activeTab, setActiveTab }) {
 	const { first_name, last_name, phone, email } = { ...useSelector(store => store.order) };
 
+	const { isAuth, mail, surname, name, tel } = useAuth()
+
 	const [values, setValues] = useState({
-		first_name: first_name ? first_name : '',
-		last_name: last_name ? last_name : '',
-		phone: phone ? phone : '',
-		email: email ? email : ''
+		first_name: first_name ? first_name : surname,
+		last_name: last_name ? last_name : name,
+		phone: phone ? phone : tel,
+		email: email ? email : mail
 	});
 
 	const dispatch = useDispatch();

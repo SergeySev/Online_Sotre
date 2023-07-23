@@ -7,7 +7,7 @@ import s from './CartPage.module.css'
 export function CartPage() {
 
 	const breadcrumbsItems = [
-		{ text: 'Home /', link: '/' },
+		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Shopping cart', link: '/cart' },
 	];
 

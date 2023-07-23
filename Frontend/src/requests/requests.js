@@ -8,35 +8,65 @@ import { get_filter_data } from "../store/reducers/filterSlice";
 import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
 import { data } from "jquery";
 import { aside_product_offers } from "../store/reducers/asideOffersSlice";
-import { setUser } from "../store/reducers/userSlice";
+import { set_user } from "../store/reducers/userSlice";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 const base_url = "http://localhost:8080/api/v1";
 const offers_url = 'http://localhost:8080/api/v1/offers/all';
 
-export const add_new_user_req = (user) => {
+export const sign_in_user = ((email, password) => {
+	const auth = getAuth();
+	signInWithEmailAndPassword(auth, email, password)
+		.then(console.log)
+		.catch(console.error)
+});
+
+export const register_user = ((user) => {
+	const { surname, name, birthday, email, password } = user
+
 	return function (dispatch) {
-		try {
-			fetch(`${base_url}/client/registration`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(user)
-				// body: user
+		// try {
+		// 	fetch(`${base_url}/client/registration`, {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 		},
+		// 		body: JSON.stringify(user)
+		// 		// body: user
+		// 	})
+		// 		.then((res) => res.json())
+		// 		.then((data) => console.log(data))
+		// 		// .then((data) => dispatch(setUser(data)))
+		// 		.catch(() => {
+		// 			console.error("Failed to fetch data from the server.");
+		// 			dispatch(setUser([]));
+		// 		})
+		// } catch (error) {
+		// 	console.error("fetch error: ", error);
+		// 	dispatch(setUser([]));
+		// }
+		const auth = getAuth();
+		createUserWithEmailAndPassword(auth, email, password)
+			.then(({ user }) => {
+				console.log("🚀 ~ file: requests.js:53 ~ .then ~ user:", user)
+				dispatch(set_user({
+					id: user.uid,
+					surname,
+					name,
+					birthday,
+					email: user.email,
+					// password: action.payload.password,
+					token: user.accessToken
+				}))
 			})
-				.then((res) => res.json())
-				.then((data) => console.log(data))
-				// .then((data) => dispatch(setUser(data)))
-				.catch(() => {
-					console.error("Failed to fetch data from the server.");
-					dispatch(setUser([]));
-				})
-		} catch (error) {
-			console.error("fetch error: ", error);
-			dispatch(setUser([]));
-		}
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log("🚀 ~ file: requests.js:64 ~ errorCode:", errorCode)
+				console.log("🚀 ~ file: requests.js:66 ~ errorMessage:", errorMessage)
+			});
 	}
-};
+});
 
 export const fetch_main_categories = () => {
 	return function (dispatch) {
