@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
 	brands: brandSlice,
 	category_products: categoryProductsSlice,
 	offers: offersSlice,
-	asideOffers: asideOffersSlice,
+	aside_offers: asideOffersSlice,
 	navigation: navSlice,
 	favorite: favoriteSlice,
 	comparison: comparisonSlice,

@@ -12,7 +12,7 @@ import { set_user } from "../store/reducers/userSlice";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 const base_url = "http://localhost:8080/api/v1";
-const offers_url = 'http://localhost:8080/api/v1/offers/all';
+// const offers_url = 'http://localhost:8080/api/v1/offers/all';
 
 export const sign_in_user = ((email, password) => {
 	const auth = getAuth();
@@ -191,7 +191,7 @@ export const fetch_offers_products = (tag) => {
 export const fetch_aside_offers = () => {
 	return function (dispatch) {
 		try {
-			fetch(offers_url)
+			fetch(`${base_url}/offers/all`)
 				.then((resp) => resp.json())
 				.then((data) => dispatch(aside_product_offers(data)))
 				.catch(() => {

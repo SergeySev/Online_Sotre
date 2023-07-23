@@ -1,0 +1,31 @@
+.page_container {
+	display: flex;
+	gap: 20px;
+}
+
+.tabs_container {
+	margin-bottom: 20px;
+	background-color: var(--coal);
+	border-radius: 5px;
+	color: var(--white)
+}
+
+.tab_item {
+	padding: 26px 24px;
+	cursor: pointer;
+	transition: color var(--transition);
+}
+
+.tab_item:nth-child(1) {
+	border-bottom: 1px solid var(--dark-gray);
+}
+
+.tab_item.active {
+	color: var(--orange);
+}
+
+@media (min-width: 762px) {
+	.tab_item:hover {
+		color: var(--orange);
+	}
+}

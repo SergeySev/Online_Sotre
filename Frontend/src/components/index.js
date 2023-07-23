@@ -28,6 +28,8 @@ export { Breadcrumbs } from "./Breadcrumbs/Breadcrumbs";
 export { ProductsList } from "./ProductsList/ProductsList";
 export { ProductItem } from "./ProductItem/ProductItem";
 export { SubCategoryItem } from "./SubCategoryItem/SubCategoryItem";
+export { OffersAside } from "./OffersAside/OffersAside";
+
 export { MainCategoryItemGallery } from "./MainCategoryItemGallery/MainCategoryItemGallery";
 export { NewSign } from "./NewSign/NewSign";
 export { ToggleCartBtn } from "./ToggleCartBtn/ToggleCartBtn";
@@ -60,4 +62,7 @@ export { CallRequest } from "./CallRequest/CallRequest";
 export { CallRequestAlert } from "./CallRequestAlert/CallRequestAlert";
 
 export { useAuth } from "./hooks/useAuth";
+
+export { PrivateInfo } from "./PrivateInfo/PrivateInfo";
+export { OrdersHistory } from "./OrdersHistory/OrdersHistory";
 

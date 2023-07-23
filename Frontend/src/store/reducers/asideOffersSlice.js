@@ -5,7 +5,7 @@ const asideOffersSlice = createSlice({
 	initialState: [],
 	reducers: {
 		aside_product_offers(state, action) {
-			return [...state, ...action.payload]
+			return [...action.payload]
 		}
 	}
 })
