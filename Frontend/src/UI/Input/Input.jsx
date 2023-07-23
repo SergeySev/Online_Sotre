@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import s from './Input.module.css'
 
-export function Input({ label, error_message, onChange, password_confirm, ...input_props }) {
+export function Input({ label, error_message, onChange, ...input_props }) {
 
 	const [focused, setFocused] = useState(false);
 	const handleFocus = (e) => {

@@ -44,11 +44,18 @@
 	background-color: var(--orange);
 }
 
+
 .button.to_shop {
 	width: 264px;
 	background-color: transparent;
 	color: var(--black);
 	border: 1px solid var(--gray);
+}
+
+.button.profile {
+	width: 266px;
+	background-color: var(--gray);
+	color: var(--white);
 }
 
 .button.register {
@@ -62,7 +69,7 @@
 		top: 1px;
 	}
 
-
+	.button.profile:hover,
 	.button.register:hover,
 	.button.checkout:hover,
 	.button.about:hover {

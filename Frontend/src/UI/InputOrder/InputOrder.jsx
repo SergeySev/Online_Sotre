@@ -8,7 +8,10 @@ export function InputOrder({ content, label, error_message, isCalendar, onChange
 		setFocused(true);
 	};
 	return (
-		<li className={`${s.data_item} ${s[content === 'courier' ? 'courier' : ''] || ''}`}>
+		<li className={`${s.data_item} 
+		${s[content === 'courier' ? 'courier' : ''] || ''}
+		${s[content === 'profile' ? 'profile' : ''] || ''}
+		`}>
 			<label>
 				{label}
 				<input className={`${s.input} ${s[input_props.name === 'shipping' ? 'shipping' : ''] || ''}`}

@@ -1,0 +1,28 @@
+.profile_title {
+	font-family: var(--font_prosto);
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.profile_form {
+	padding: 25px 0 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.form_wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.data_list {
+	display: grid;
+	grid-template-columns: minmax(250px, 310px);
+	row-gap: 24px;
+}
+
+.data_address {
+	grid-template-columns: repeat(2, minmax(110px, 140px));
+	column-gap: 30px;
+}
