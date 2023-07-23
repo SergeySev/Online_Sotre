@@ -28,7 +28,9 @@ export function UserProfilePage() {
 							</ul>
 							<OffersAside />
 						</aside>
-						{user_content === 'data' ? <PrivateInfo /> : <UserOrdersHistory />}
+						<div className={s.profile_content}>
+							{user_content === 'data' ? <PrivateInfo /> : <UserOrdersHistory />}
+						</div>
 					</div>
 				</div>
 			</div>

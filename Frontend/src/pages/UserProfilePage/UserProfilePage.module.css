@@ -1,6 +1,18 @@
+.profile_section {
+	background-color: var(--background);
+	padding-bottom: 80px;
+}
+
 .page_container {
 	display: flex;
 	gap: 20px;
+}
+
+.profile_content {
+	border-radius: 5px;
+	padding: 40px 110px 40px 50px;
+	width: 100%;
+	background-color: var(--white);
 }
 
 .tabs_container {

@@ -67,3 +67,5 @@ export { useAuth } from "./hooks/useAuth";
 export { PrivateInfo } from "./PrivateInfo/PrivateInfo";
 export { UserOrdersHistory } from "./UserOrdersHistory/UserOrdersHistory";
 
+export { FormPasswordChange } from "./FormPasswordChange/FormPasswordChange";
+

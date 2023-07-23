@@ -4,6 +4,34 @@ import instagram from './assets/instagram.png'
 import vk from './assets/vk.png'
 import facebook from './assets/fb.png'
 
+export const update_password = [
+	{
+		id: 1,
+		name: "old_password",
+		type: "password",
+		error_message: "Password must be equal your current password",
+		label: "Old Password",
+		// required: true
+	},
+	{
+		id: 2,
+		name: "new_password",
+		type: "password",
+		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+		label: "New Password",
+		pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+		// required: true
+	},
+	{
+		id: 3,
+		name: "confirm_password",
+		type: "password",
+		error_message: "Password must equal the New Password field",
+		label: "Confirm new password",
+		// required: true
+	}
+]
+
 export const call_request = [
 	{
 		id: 1,
@@ -138,7 +166,7 @@ export const courier_inputs = [
 		id: 1,
 		name: "city",
 		type: "text",
-		placeholder: 'city',
+		// placeholder: 'city',
 		error_message: "Field should has not be empty",
 		label: "City",
 		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
@@ -148,7 +176,7 @@ export const courier_inputs = [
 		id: 2,
 		name: "post",
 		type: "text",
-		placeholder: 'code',
+		// placeholder: 'code',
 		error_message: "Field should has not be empty",
 		label: "Post code",
 		pattern: "^[0-9]{1,}$",
@@ -158,7 +186,7 @@ export const courier_inputs = [
 		id: 3,
 		name: "street",
 		type: "text",
-		placeholder: 'street',
+		// placeholder: 'street',
 		error_message: "Field should has not be empty",
 		label: "Street",
 		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
@@ -168,7 +196,7 @@ export const courier_inputs = [
 		id: 4,
 		name: "house",
 		type: "text",
-		placeholder: 'house',
+		// placeholder: 'house',
 		error_message: "Field should has not be empty",
 		label: "House",
 		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
@@ -178,7 +206,7 @@ export const courier_inputs = [
 		id: 5,
 		name: "app",
 		type: "text",
-		placeholder: 'appartment',
+		// placeholder: 'appartment',
 		label: "appartment",
 	},
 	{
@@ -204,7 +232,7 @@ export const user_inputs = [
 		id: 1,
 		name: "first_name",
 		type: "text",
-		placeholder: 'Enter your first name',
+		// placeholder: 'Enter your first name',
 		error_message: "First name should be 2-16 characters",
 		label: "First name",
 		pattern: "^[A-Za-z0-9]{2,16}$",
@@ -214,7 +242,7 @@ export const user_inputs = [
 		id: 2,
 		name: "last_name",
 		type: "text",
-		placeholder: 'Enter your last name',
+		// placeholder: 'Enter your last name',
 		error_message: "Last name should be 2-16 characters",
 		label: "Last name",
 		pattern: "^[A-Za-z0-9]{2,16}$",
@@ -224,7 +252,7 @@ export const user_inputs = [
 		id: 3,
 		name: "phone",
 		type: "tel",
-		placeholder: 'Enter your phone number',
+		// placeholder: 'Enter your phone number',
 		error_message: "Phone number should be in format +99 999...",
 		label: "Pnone number",
 		pattern: "^[+]{1}[0-9]{5,13}$",
@@ -234,7 +262,7 @@ export const user_inputs = [
 		id: 4,
 		name: "email",
 		type: "email",
-		placeholder: 'Enter your email',
+		// placeholder: 'Enter your email',
 		error_message: "It should be a valid email address!",
 		label: "Email",
 		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
