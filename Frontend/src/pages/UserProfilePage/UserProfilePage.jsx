@@ -1,10 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { Button } from '../../UI';
-import { Breadcrumbs, OffersAside, OrdersHistory, PrivateInfo } from '../../components';
-import { remove_user } from '../../store/reducers/userSlice';
-import { useNavigate } from 'react-router-dom';
-import s from './UserProfilePage.module.css'
 import { useState } from 'react';
+import { Breadcrumbs, OffersAside, UserOrdersHistory, PrivateInfo } from '../../components';
+import s from './UserProfilePage.module.css'
 
 export function UserProfilePage() {
 	const breadcrumbsItems = [
@@ -13,14 +9,6 @@ export function UserProfilePage() {
 	];
 
 	const [user_content, setUserContent] = useState('data');
-
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const handleReAuth = () => {
-		dispatch(remove_user());
-		navigate('/Online_Store')
-	}
 
 	return (
 		<section className={s.profile_section}>
@@ -40,9 +28,8 @@ export function UserProfilePage() {
 							</ul>
 							<OffersAside />
 						</aside>
-						{user_content === 'data' ? <PrivateInfo /> : <OrdersHistory />}
+						{user_content === 'data' ? <PrivateInfo /> : <UserOrdersHistory />}
 					</div>
-					<Button text='Log out' content='about' onClick={handleReAuth} />
 				</div>
 			</div>
 		</section>
