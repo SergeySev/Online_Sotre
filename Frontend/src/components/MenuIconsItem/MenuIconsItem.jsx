@@ -3,7 +3,7 @@ import { BurgerContext } from '../../context/burgerContext'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { CallRequest, PopUpContainer, SignWindow, useAuth } from '../';
+import { CallRequest, PopUpContainer, PopUpContent, useAuth } from '../';
 import s from './MenuIconsItem.module.css'
 
 export function MenuIconsItem({ image, title, icon, count, link }) {
@@ -11,7 +11,9 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 	const [popup_active, setPopupActive] = useState(false);
 
 	const { isAuth } = useAuth();
-	const navigate = useNavigate();
+	console.log("🚀 ~ file: MenuIconsItem.jsx:10 ~ MenuIconsItem ~ title:", title)
+	console.log("🚀 ~ file: MenuIconsItem.jsx:14 ~ MenuIconsItem ~ isAuth:", isAuth)
+	// const navigate = useNavigate();
 
 	const showToast = useCallback((message) => {
 		toast(message, {
@@ -36,9 +38,7 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 					showToast("You have nothing to compare...");
 					break;
 				case 'avatar':
-					!isAuth ?
-						setPopupActive(true) :
-						navigate('/user')
+					setPopupActive(true)
 					break;
 				case 'cart':
 					showToast("You cart is empty...");
@@ -70,10 +70,12 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 				popup_active={popup_active}
 				setPopupActive={setPopupActive}
 				content={
-					< SignWindow
+					< PopUpContent
 						active={popup_active}
 						setActive={setPopupActive}
-						popup={title === "avatar" ? 'sign' : "phone"} />
+						popup={title === "avatar" ?
+							(isAuth ? 'profile' : 'sign') :
+							"phone"} />
 				}
 			/>
 		</>

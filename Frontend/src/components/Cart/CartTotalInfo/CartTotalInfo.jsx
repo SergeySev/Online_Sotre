@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../UI';
 import s from './CartTotalInfo.module.css'
-import { PopUpContainer, SignWindow, useAuth } from '../../';
+import { PopUpContainer, PopUpContent, useAuth } from '../../';
 import { useState } from 'react';
 
 export function CartTotalInfo() {
@@ -45,7 +45,7 @@ export function CartTotalInfo() {
 				popup_active={popup_active}
 				setPopupActive={setPopupActive}
 				content={
-					< SignWindow
+					< PopUpContent
 						active={popup_active}
 						setActive={setPopupActive}
 						popup='sign' />

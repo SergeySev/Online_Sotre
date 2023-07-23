@@ -1,9 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { Button } from '../../UI';
-import { Breadcrumbs } from '../../components';
+import { useState } from 'react';
+import { Breadcrumbs, OffersAside, UserOrdersHistory, PrivateInfo } from '../../components';
 import s from './UserProfilePage.module.css'
-import { remove_user } from '../../store/reducers/userSlice';
-import { useNavigate } from 'react-router-dom';
 
 export function UserProfilePage() {
 	const breadcrumbsItems = [
@@ -11,13 +8,7 @@ export function UserProfilePage() {
 		{ text: 'Personal Profile', link: '/user' },
 	];
 
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const handleReAuth = () => {
-		dispatch(remove_user());
-		navigate('/Online_Store')
-	}
+	const [user_content, setUserContent] = useState('data');
 
 	return (
 		<section className={s.profile_section}>
@@ -25,7 +16,20 @@ export function UserProfilePage() {
 				<Breadcrumbs items={breadcrumbsItems} />
 				<div className={s.profile_wrapper}>
 					<h1 className='title'>Personal Profile</h1>
-					<Button text='Log out' content='about' onClick={handleReAuth} />
+					<div className={s.page_container}>
+						<aside>
+							<ul className={s.tabs_container}>
+								<li className={s.tab_item} onClick={() => setUserContent('orders')}>
+									<p>History of orders</p>
+								</li>
+								<li className={s.tab_item} onClick={() => setUserContent('data')}>
+									<p>Personal information</p>
+								</li>
+							</ul>
+							<OffersAside />
+						</aside>
+						{user_content === 'data' ? <PrivateInfo /> : <UserOrdersHistory />}
+					</div>
 				</div>
 			</div>
 		</section>

@@ -28,6 +28,8 @@ export { Breadcrumbs } from "./Breadcrumbs/Breadcrumbs";
 export { ProductsList } from "./ProductsList/ProductsList";
 export { ProductItem } from "./ProductItem/ProductItem";
 export { SubCategoryItem } from "./SubCategoryItem/SubCategoryItem";
+export { OffersAside } from "./OffersAside/OffersAside";
+
 export { MainCategoryItemGallery } from "./MainCategoryItemGallery/MainCategoryItemGallery";
 export { NewSign } from "./NewSign/NewSign";
 export { ToggleCartBtn } from "./ToggleCartBtn/ToggleCartBtn";
@@ -50,14 +52,18 @@ export { CheckoutOrder } from "./Checkout/CheckoutOrder/CheckoutOrder";
 export { CalendarCustom } from "./CalendarCustom/CalendarCustom";
 export { PopUpContainer } from "./PopUpContainer/PopUpContainer";
 export { PopUp } from "./PopUp/PopUp";
+export { PopUpProfile } from "./PopUpProfile/PopUpProfile";
 
-export { SignWindow } from "./SignWindow/SignWindow";
+export { PopUpContent } from "./PopUpContent/PopUpContent";
 export { RegisterForm } from "./RegisterForm/RegisterForm";
 export { SignForm } from "./SignForm/SignForm";
-export { WrongAuthentication } from "./WrongAuthentication/WrongAuthentication";
+// export { WrongAuthentication } from "./WrongAuthentication/WrongAuthentication";
 
 export { CallRequest } from "./CallRequest/CallRequest";
 export { CallRequestAlert } from "./CallRequestAlert/CallRequestAlert";
 
 export { useAuth } from "./hooks/useAuth";
+
+export { PrivateInfo } from "./PrivateInfo/PrivateInfo";
+export { UserOrdersHistory } from "./UserOrdersHistory/UserOrdersHistory";
 

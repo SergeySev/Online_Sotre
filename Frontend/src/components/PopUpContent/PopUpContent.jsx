@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { SignForm, RegisterForm, CallRequest, CallRequestAlert, WrongAuthentication } from '..'
-import s from './SignWindow.module.css'
+import { SignForm, RegisterForm, CallRequest, CallRequestAlert, WrongAuthentication, PopUpProfile } from '..'
+import s from './PopUpContent.module.css'
 
-export function SignWindow({ setActive, popup }) {
+export function PopUpContent({ setActive, popup }) {
 
 	const [activeWindow, setActiveWindow] = useState(popup)
 
@@ -23,10 +23,12 @@ export function SignWindow({ setActive, popup }) {
 			case 'alert':
 				field = <CallRequestAlert setActive={setActive} />
 				break;
-			case 'error':
-				console.log("🚀 ~ file: SignWindow.jsx:10 ~ SignWindow ~ activeWindow:", activeWindow)
-				field = <WrongAuthentication setActiveWindow={setActiveWindow} setActive={setActive} />
+			case 'profile':
+				field = <PopUpProfile setActive={setActive} />
 				break;
+			// case 'error':
+			// 	field = <WrongAuthentication setActiveWindow={setActiveWindow} setActive={setActive} />
+			// 	break;
 			default: n
 				break;
 		}

@@ -24,7 +24,7 @@ const userSlice = createSlice({
 			state.token = action.payload.token
 		},
 		sign_auth_user(state, action) {
-			console.log("🚀 ~ file: userSlice.js:25 ~ sign_auth_user ~ action:", action.payload)
+			// console.log("🚀 ~ file: userSlice.js:25 ~ sign_auth_user ~ action:", action.payload)
 			return { ...state, token: action.payload }
 		},
 		remove_user(state) {
