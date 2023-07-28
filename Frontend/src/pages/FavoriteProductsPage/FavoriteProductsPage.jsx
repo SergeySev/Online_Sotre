@@ -15,6 +15,8 @@ export function FavoriteProductsPage() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	const products_list = useSelector(store => store.favorite.favorite_list);
+
 	useEffect(() => {
 		dispatch(sort_by_new());
 	}, [])
@@ -23,7 +25,6 @@ export function FavoriteProductsPage() {
 	if (!total_amount) {
 		navigate('/Online_Store/#home')
 	}
-	const products_list = useSelector(store => store.favorite.favorite_list)
 
 	return (
 		<section className={s.favorite_page}>
