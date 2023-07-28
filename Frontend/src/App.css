@@ -48,7 +48,7 @@ body {
 }
 
 .title {
-	margin: 32px 0;
+	margin: 32px 0 0;
 	font-size: 40px;
 	font-weight: bold;
 }
@@ -91,5 +91,15 @@ body {
 		top: 100px;
 		margin: 0 auto;
 		width: 98vw;
+	}
+}
+
+@media (max-width: 480px) {
+	.title {
+		font-size: 32px;
+	}
+
+	:root {
+		/*--header-top_hight: 50px;*/
 	}
 }

@@ -14,6 +14,7 @@
 .form_wrapper {
 	display: flex;
 	justify-content: space-between;
+	gap: 40px;
 }
 
 .data_list {
@@ -25,4 +26,20 @@
 .data_address {
 	grid-template-columns: repeat(2, minmax(110px, 140px));
 	column-gap: 30px;
+}
+
+@media (max-width: 1160px) {
+	.form_wrapper {
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.data_list {
+		grid-template-columns: minmax(250px, 1fr);
+	}
+
+	.data_address {
+		grid-template-columns: repeat(2, minmax(110px, 1fr));
+		column-gap: 30px;
+	}
 }

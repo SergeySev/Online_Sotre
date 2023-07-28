@@ -36,8 +36,6 @@
 	gap: 12px;
 }
 
-.item {}
-
 .label {
 	font-size: 12px;
 }
@@ -73,4 +71,16 @@
 		color: var(--black);
 	}
 
+}
+
+@media (max-width: 762px) {
+	.form {
+		padding: 0 60px;
+	}
+}
+
+@media (max-width: 480px) {
+	.form {
+		padding: 0;
+	}
 }

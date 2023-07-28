@@ -29,7 +29,7 @@ export function PopUpContent({ setActive, popup }) {
 			// case 'error':
 			// 	field = <WrongAuthentication setActiveWindow={setActiveWindow} setActive={setActive} />
 			// 	break;
-			default: n
+			default:
 				break;
 		}
 		return field
