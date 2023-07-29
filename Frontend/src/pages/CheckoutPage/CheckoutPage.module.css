@@ -3,12 +3,10 @@
 }
 
 .checkout_content {
+	margin-top: 32px;
 	background-color: var(--white);
 	display: flex;
 	justify-content: space-between;
-	/* justify-content: space-evenly; */
-	/* flex-wrap: wrap; */
-	/* gap: 40px; */
 }
 
 @media (max-width: 1360px) {
