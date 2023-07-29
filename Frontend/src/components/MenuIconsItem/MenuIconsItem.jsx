@@ -1,21 +1,17 @@
-import { useCallback, useContext, useState } from 'react'
-import { BurgerContext } from '../../context/burgerContext'
-import { PopUpContext } from '../../context/popUpContext';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useCallback, useContext } from 'react'
+import { NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { CallRequest, PopUpContainer, PopUpContent, useAuth } from '../';
+import { useAuth } from '../';
+import { BurgerContext } from '../../context/burgerContext'
+import { PopUpContext } from '../../context/popUpContext';
 import s from './MenuIconsItem.module.css'
 
 export function MenuIconsItem({ image, title, icon, count, link }) {
 	const context = useContext(BurgerContext);
 	const contextPopUp = useContext(PopUpContext);
-	//const [popup_active, setPopupActive] = useState(false);
 
 	const { isAuth } = useAuth();
-	//console.log("🚀 ~ file: MenuIconsItem.jsx:10 ~ MenuIconsItem ~ title:", title)
-	//console.log("🚀 ~ file: MenuIconsItem.jsx:14 ~ MenuIconsItem ~ isAuth:", isAuth)
-	const navigate = useNavigate();
 
 	const showToast = useCallback((message) => {
 		toast(message, {
@@ -24,50 +20,52 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 		});
 	})
 
-	const handleClick = (e) => {
-		e.preventDefault();
-		//if (context.burgerActive) {
-		//}
-		//console.log("🚀 ~ file: MenuIconsItem.jsx:32 ~ handleClick ~ title:", title)
-		contextPopUp.setTitle(title);
-		if (!count) {
-			switch (title) {
-				case 'phone':
-					context.setBurgerActive(false);
-					//contextPopUp.setTitle('phone');
-					contextPopUp.setPopupActive(true);
-					break;
-				case 'favorite':
-					//contextPopUp.setTitle('favorite');
-					context.setBurgerActive(false);
+	const handleClick = () => {
+		//context.setBurgerActive(false);
+		//if (!count) {
+		switch (title) {
+			case 'phone':
+				//context.setBurgerActive(false);
+				contextPopUp.setTitle('phone');
+				contextPopUp.setPopupActive(true);
+				break;
+			case 'favorite':
+				if (!count) {
 					showToast("You don't have any favorites...");
-					break;
-				case 'comparison':
-					//contextPopUp.setTitle('comparison');
+				} else {
 					context.setBurgerActive(false);
+				}
+				//contextPopUp.setTitle('favorite');
+				break;
+			case 'comparison':
+				if (!count) {
 					showToast("You have nothing to compare...");
-					break;
-				case 'avatar':
-					if (isAuth) {
-						context.setBurgerActive(false);
-						//contextPopUp.setTitle('avatar');
-						contextPopUp.setPopupActive(true)
-						//navigate('/user')
-					} else {
-						contextPopUp.setPopupActive(true)
-					}
-					break;
-				case 'cart':
-					//if (isAuth) {
-
-					//}
-					//contextPopUp.setTitle('cart');
+				} else {
 					context.setBurgerActive(false);
+				}
+				contextPopUp.setTitle('comparison');
+				break;
+			case 'avatar':
+				contextPopUp.setPopupActive(true)
+				if (isAuth) {
+					//context.setBurgerActive(false);
+					contextPopUp.setTitle('profile');
+				} else {
+					contextPopUp.setTitle('sign');
+				}
+				break;
+			case 'cart':
+				if (!count) {
 					showToast("You cart is empty...");
-					break;
-				default:
-					break;
-			}
+
+				} else {
+					context.setBurgerActive(false);
+				}
+				//contextPopUp.setTitle('cart');
+				break;
+			default:
+				break;
+			//}
 		}
 	}
 
@@ -87,7 +85,10 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 					</div>
 				</NavLink>
 			</li>
-			<ToastContainer />
+			<ToastContainer
+				autoClose={1000}
+				closeOnClick
+			/>
 			{/*<PopUpContainer
 				popup_active={popup_active}
 				setPopupActive={setPopupActive}

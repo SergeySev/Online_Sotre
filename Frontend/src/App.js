@@ -8,11 +8,11 @@ import './App.css';
 import BrandsPage from './pages/BrandsPage/BrandsPage';
 
 function App() {
-	// const [active, setActive] = useState(false);
 	const [burgerActive, setBurgerActive] = useState(false);
 	const [popupActive, setPopupActive] = useState(false);
 	const [title, setTitle] = useState('');
-	const { isAuth } = useAuth();
+	console.log("🚀 ~ file: App.js:14 ~ App ~ title:", title)
+	//const { isAuth } = useAuth();
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -46,6 +46,17 @@ function App() {
 			document.removeEventListener('touchmove', handleScroll);
 		};
 	}, [burgerActive]);
+
+	//const popup_content = 
+	//	if (title === "phone") {
+	//	return "phone"
+	//} else if (title === "avatar") {
+	//	return isAuth ? 'profile' : 'sign'
+	//} else if (title === "sing") {
+	//	return 'sing'
+	//}
+
+
 
 	return (
 		<PopUpContext.Provider
@@ -82,9 +93,11 @@ function App() {
 							< PopUpContent
 								active={popupActive}
 								setActive={setPopupActive}
-								popup={title === "avatar" ?
-									(isAuth ? 'profile' : 'sign') :
-									"phone"} />
+								//popup={title === "avatar" ?
+								//	(isAuth ? 'profile' : 'sign') :
+								//	"phone"} 
+								popup={title}
+							/>
 						}
 					/>
 				</div>
