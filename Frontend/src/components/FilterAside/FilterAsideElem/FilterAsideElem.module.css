@@ -1,93 +1,101 @@
 .wrapper {
-  background-color: var(--coal);
-  color: var(--white);
+	background-color: var(--coal);
+	color: var(--white);
 }
 
 .wrapper button {
-  color: var(--white);
+	color: var(--white);
+}
+
+.aside_subtitle:first-child {
+	border-radius: 5px 5px 0 0;
+}
+
+.aside_subtitle:last-child {
+	border-radius: 0 0 5px 5px;
 }
 
 .collapse {
-  display: grid;
-  grid-template-rows: 0fr;
-  overflow: hidden;
-  transition: all .3s ease-in-out;
-  opacity: 0;
+	display: grid;
+	grid-template-rows: 0fr;
+	overflow: hidden;
+	transition: all .3s ease-in-out;
+	opacity: 0;
 }
 
 .collapse_open {
-  display: grid;
-  grid-template-rows: 1fr;
-  opacity: 1;
-  transition: all .3s ease-in-out;
-  padding: 5px 0 10px;
-  border-bottom: 1px solid var(--dark-gray);
+	display: grid;
+	grid-template-rows: 1fr;
+	opacity: 1;
+	transition: all .3s ease-in-out;
+	padding: 5px 0 10px;
+	border-bottom: 1px solid var(--dark-gray);
 }
 
 .tab {
-  padding: 24px;
-  border-bottom: 1px solid var(--dark-gray);
-  position: relative;
-  cursor: pointer;
-  transition: all .3s ease-in-out;
+	padding: 24px;
+	border-bottom: 1px solid var(--dark-gray);
+	position: relative;
+	cursor: pointer;
+	transition: all .3s ease-in-out;
 }
 
 .tab_active {
-  padding: 24px;
-  border-bottom: 1px solid var(--coal);
-  position: relative;
-  cursor: pointer;
+	padding: 24px;
+	border-bottom: 1px solid var(--coal);
+	position: relative;
+	cursor: pointer;
 }
 
 .tab_form {
-  min-height: 0;
-  padding: 0 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+	min-height: 0;
+	padding: 0 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .tab:hover {
-  background-color: var(--orange);
-  cursor: pointer;
+	background-color: var(--orange);
+	cursor: pointer;
 }
 
 .tab::after,
 .tab_active::after {
-  content: '';
-  background-image: url('./assets/arrow-right.png');
-  transform: rotate(90deg);
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  top: 22px;
-  right: 24px;
+	content: '';
+	background-image: url('./assets/arrow-right.png');
+	transform: rotate(90deg);
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: 22px;
+	right: 24px;
 }
 
 .tab_active::after {
-  transform: rotate(-90deg);
+	transform: rotate(-90deg);
 }
 
 .tab_form label {
-  position: relative;
-  cursor: pointer;
+	position: relative;
+	cursor: pointer;
 }
 
 .checkmark {
-  position: absolute;
-  top: -2px;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #fff;
-  border-radius: 2px;
-  transition: background-color .3s ease-in-out;
+	position: absolute;
+	top: -2px;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	background-color: #fff;
+	border-radius: 2px;
+	transition: background-color .3s ease-in-out;
 }
 
 .tab_form label input {
-  margin-right: 20px;
+	margin-right: 20px;
 }
 
 .tab_form input:checked~.checkmark {
-  background-color: var(--orange);
+	background-color: var(--orange);
 }

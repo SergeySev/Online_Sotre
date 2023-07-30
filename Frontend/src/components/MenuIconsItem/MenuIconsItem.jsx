@@ -25,14 +25,15 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 		//if (!count) {
 		switch (title) {
 			case 'phone':
-				//context.setBurgerActive(false);
+				context.setBurgerActive(false);
 				contextPopUp.setTitle('phone');
 				contextPopUp.setPopupActive(true);
 				break;
 			case 'favorite':
 				if (!count) {
 					showToast("You don't have any favorites...");
-				} else {
+				}
+				else {
 					context.setBurgerActive(false);
 				}
 				//contextPopUp.setTitle('favorite');
@@ -40,15 +41,16 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 			case 'comparison':
 				if (!count) {
 					showToast("You have nothing to compare...");
-				} else {
+				}
+				else {
 					context.setBurgerActive(false);
 				}
-				contextPopUp.setTitle('comparison');
+				//contextPopUp.setTitle('comparison');
 				break;
 			case 'avatar':
+				context.setBurgerActive(false);
 				contextPopUp.setPopupActive(true)
 				if (isAuth) {
-					//context.setBurgerActive(false);
 					contextPopUp.setTitle('profile');
 				} else {
 					contextPopUp.setTitle('sign');
@@ -58,7 +60,8 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 				if (!count) {
 					showToast("You cart is empty...");
 
-				} else {
+				}
+				else {
 					context.setBurgerActive(false);
 				}
 				//contextPopUp.setTitle('cart');

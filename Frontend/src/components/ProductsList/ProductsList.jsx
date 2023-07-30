@@ -34,15 +34,13 @@ export function ProductsList({ products, content, pagination_content }) {
 					)}
 				</ul>
 				:
-				!layout ? (<ul className={s.products_list} >
-					{products_list.map(product => <ProductItem key={product.id} product={product} layout={layout} />)}
-				</ul >)
-					: (<ul className={s.products_list_row}>
+				(!layout ?
+					<ul className={s.products_list} >
+						{products_list.map(product => <ProductItem key={product.id} product={product} layout={layout} />)}
+					</ul > :
+					<ul className={s.products_list_row}>
 						{products_list.map(product => <ProductItemRow key={product.id} product={product} layout={layout} />)}
 					</ul>)
-
-
-
 			}
 
 			<Pagination setCurrentPage={setCurrentPage} countElem={countElem} currentPage={currentPage} pagination_content={pagination_content} />

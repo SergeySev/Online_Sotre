@@ -8,118 +8,118 @@ import { fetch_filtered_subcategory_products } from '../../../requests/requests'
 
 
 export function FilterAsideElem({ title, data, subcategory_title, setRequest_url }) {
-  const base_filter_url = 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30';
+	const base_filter_url = 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30';
 
-  const subcategory_string = `&subCategoryTitle=${subcategory_title}`;
-  let price_range_string = [];
-  let brands_string = '';
-  let country_string = '';
-  let color_string = '';
-  let delivery_string = '';
+	const subcategory_string = `&subCategoryTitle=${subcategory_title}`;
+	let price_range_string = [];
+	let brands_string = '';
+	let country_string = '';
+	let color_string = '';
+	let delivery_string = '';
 
 
 
-  const [activeFilter, setActiveFilter] = useState(false)
+	const [activeFilter, setActiveFilter] = useState(false)
 
-  const dispatch = useDispatch()
+	const dispatch = useDispatch()
 
-  const changeActive = () => {
-    setActiveFilter(!activeFilter)
-  }
+	const changeActive = () => {
+		setActiveFilter(!activeFilter)
+	}
 
-  const requestBody = useSelector(state => state.requestBody)
+	const requestBody = useSelector(state => state.requestBody)
 
-  const setRequestBody = (title, elem) => {
+	const setRequestBody = (title, elem) => {
 
-    if (title === 'Price') {
-      dispatch(set_price_data(elem))
-    }
+		if (title === 'Price') {
+			dispatch(set_price_data(elem))
+		}
 
-    if (title === 'Made Country') {
-      dispatch(set_country_data(elem))
-    }
+		if (title === 'Made Country') {
+			dispatch(set_country_data(elem))
+		}
 
-    if (title === 'Color') {
-      dispatch(set_color_data(elem))
-    }
+		if (title === 'Color') {
+			dispatch(set_color_data(elem))
+		}
 
-    if (title === 'Brands') {
-      dispatch(set_brand_data(elem))
-    }
+		if (title === 'Brands') {
+			dispatch(set_brand_data(elem))
+		}
 
-    if (title === 'Delivery Type') {
-      dispatch(set_delivery_data(elem))
-    }
-  }
+		if (title === 'Delivery Type') {
+			dispatch(set_delivery_data(elem))
+		}
+	}
 
-  const handleChange = (title, elem) => {
-    setRequestBody(title, elem)
-  }
+	const handleChange = (title, elem) => {
+		setRequestBody(title, elem)
+	}
 
-  useEffect(() => {
-    for (let key in requestBody) {
-      if (key === 'priceRange') {
-        if (requestBody.priceRange.length !== 0) {
-          price_range_string = `&priceFrom=${requestBody.priceRange[0]}&priceTo=${Math.ceil(requestBody.priceRange[1])}`
-          // console.log(price_range_string)
-        }
-      }
+	useEffect(() => {
+		for (let key in requestBody) {
+			if (key === 'priceRange') {
+				if (requestBody.priceRange.length !== 0) {
+					price_range_string = `&priceFrom=${requestBody.priceRange[0]}&priceTo=${Math.ceil(requestBody.priceRange[1])}`
+					// console.log(price_range_string)
+				}
+			}
 
-      if (key === 'brands') {
-        if (requestBody.brands.length !== 0) {
-          for (let i = 0; i < requestBody.brands.length; i++) {
-            brands_string += `&brandTitles=${requestBody.brands[i]}`
-            // console.log(brands_string)
-          }
-        }
-      }
-      if (key === 'country') {
-        if (requestBody.country.length !== 0) {
-          for (let i = 0; i < requestBody.country.length; i++) {
-            country_string += `&madeCountries=${requestBody.country[i]}`
-            // console.log(country_string)
-          }
-        }
-      }
-      if (key === 'color') {
-        if (requestBody.color.length !== 0) {
-          for (let i = 0; i < requestBody.color.length; i++) {
-            color_string += `&colours=${requestBody.color[i]}`
-            // console.log(color_string)
-          }
-        }
-      }
-      if (key === 'delivery') {
-        if (requestBody.delivery.length !== 0) {
-          for (let i = 0; i < requestBody.delivery.length; i++) {
-            delivery_string += `&deliveryTypes=${requestBody.delivery[i]}`
-            // console.log(delivery_string)
-          }
-        }
-      }
-    }
-    setRequest_url(base_filter_url + subcategory_string + brands_string + country_string + color_string + price_range_string);
-    // request_url = base_filter_url + subcategory_string + brands_string + country_string + color_string + delivery_string;
+			if (key === 'brands') {
+				if (requestBody.brands.length !== 0) {
+					for (let i = 0; i < requestBody.brands.length; i++) {
+						brands_string += `&brandTitles=${requestBody.brands[i]}`
+						// console.log(brands_string)
+					}
+				}
+			}
+			if (key === 'country') {
+				if (requestBody.country.length !== 0) {
+					for (let i = 0; i < requestBody.country.length; i++) {
+						country_string += `&madeCountries=${requestBody.country[i]}`
+						// console.log(country_string)
+					}
+				}
+			}
+			if (key === 'color') {
+				if (requestBody.color.length !== 0) {
+					for (let i = 0; i < requestBody.color.length; i++) {
+						color_string += `&colours=${requestBody.color[i]}`
+						// console.log(color_string)
+					}
+				}
+			}
+			if (key === 'delivery') {
+				if (requestBody.delivery.length !== 0) {
+					for (let i = 0; i < requestBody.delivery.length; i++) {
+						delivery_string += `&deliveryTypes=${requestBody.delivery[i]}`
+						// console.log(delivery_string)
+					}
+				}
+			}
+		}
+		setRequest_url(base_filter_url + subcategory_string + brands_string + country_string + color_string + price_range_string);
+		// request_url = base_filter_url + subcategory_string + brands_string + country_string + color_string + delivery_string;
 
-  }, [requestBody])
+	}, [requestBody])
 
-  return (
-    <li className={s.wrapper}>
-      <div className={!activeFilter ? s.tab : s.tab_active} onClick={changeActive}>{title}</div>
-      <div className={!activeFilter ? s.collapse : s.collapse_open}>
-        <form className={s.tab_form}>
-          {title !== 'Price' ? data.map((elem, index) => {
-            return <label key={index}>
-              <input type={'checkbox'} name={elem} className={s.filter_checkbox} onChange={(e) => handleChange(title, elem)} />
-              <span className={s.checkmark}></span>
-              {elem}
-            </label>
-          })
-            : <FilterPriceRange min={data[0]} max={data[1]} setRequestBody={setRequestBody} />
-          }
-        </form>
+	return (
+		<li className={`${s.wrapper} ${s.aside_subtitle}`}>
+			<div className={!activeFilter ? s.tab : s.tab_active} onClick={changeActive}>{title}</div>
+			<div className={!activeFilter ? s.collapse : s.collapse_open}>
+				<form className={s.tab_form}>
+					{title !== 'Price' ? data.map((elem, index) => {
+						return <label key={index}>
+							<input type={'checkbox'} name={elem} className={s.filter_checkbox} onChange={(e) => handleChange(title, elem)} />
+							<span className={s.checkmark}></span>
+							{elem}
+						</label>
+					})
+						: <FilterPriceRange min={data[0]} max={data[1]} setRequestBody={setRequestBody} />
+					}
+				</form>
 
-      </div>
-    </li>
-  )
+			</div>
+		</li>
+	)
 }
