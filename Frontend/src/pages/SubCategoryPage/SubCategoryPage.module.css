@@ -75,11 +75,22 @@
 
 
 @media (min-width: 762px) {
-	/*.tab_item:hover {
-		color: var(--orange);
-	}*/
+
 
 	.menu_burger:hover svg {
 		color: var(--orange);
+	}
+}
+
+@media (max-width: 860px) {
+	.page_container {
+		display: block;
+		gap: none;
+	}
+
+	.aside_container {
+		position: absolute;
+		margin: 0;
+		max-width: 50px;
 	}
 }
