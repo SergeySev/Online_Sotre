@@ -1,17 +1,13 @@
 .menu_burger {
 	position: relative;
 	z-index: 30;
-	width: 40px;
-	height: 40px;
-	margin: 20px 0;
+	width: 24px;
+	height: 24px;
 	display: none;
 	cursor: pointer;
 }
 
 .menu_burger.aside {
-	margin: 0 0 24px;
-	width: 24px;
-	height: 24px;
 	display: block;
 	opacity: 0;
 	visibility: hidden;
@@ -35,7 +31,7 @@
 	}
 
 	.menu_burger.open svg {
-		color: var(--white);
+		color: var(--black);
 	}
 }
 

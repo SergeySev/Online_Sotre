@@ -21,13 +21,8 @@ export function UserProfilePage() {
 		<section className={`${s.profile_section} ${s[isAssideOpen ? "open" : ''] || ''}`}>
 			<div className='container'>
 				<Breadcrumbs items={breadcrumbsItems} />
+				<h1 className='title'>Personal Profile</h1>
 				<div className={s.profile_wrapper}>
-					<h1 className='title'>Personal Profile</h1>
-					{/*<div
-						className={`${s.menu_burger} ${s[isAssideOpen ? "open" : ''] || ''}`}
-						onClick={() => setIsAssideOpen(!isAssideOpen)}>
-						{!isAssideOpen ? <HiOutlineMenuAlt2 /> : <AiOutlineClose />}
-					</div>*/}
 					<BurgerAside isAssideOpen={isAssideOpen} setIsAssideOpen={setIsAssideOpen} />
 					<div className={s.page_container}>
 						<aside className={`${s.profile_aside} ${s[isAssideOpen ? "open" : ''] || ''}`}>
