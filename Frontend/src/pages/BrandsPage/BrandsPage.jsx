@@ -5,7 +5,7 @@ import BrandList from '../../components/BrandList/BrandList';
 import { fetch_brands } from '../../requests/requests';
 import s from './BrandsPage.module.css'
 
-export default function BrandsPage() {
+export function BrandsPage() {
 
 	const dispatch = useDispatch()
 

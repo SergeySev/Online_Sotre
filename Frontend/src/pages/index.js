@@ -4,5 +4,7 @@ export { SubCategoryPage } from "./SubCategoryPage/SubCategoryPage";
 export { FavoriteProductsPage } from "./FavoriteProductsPage/FavoriteProductsPage";
 export { ComparisonPage } from "./ComparisonPage/ComparisonPage";
 export { CartPage } from "./CartPage/CartPage";
+export { BrandsPage } from "./BrandsPage/BrandsPage";
 export { CheckoutPage } from "./CheckoutPage/CheckoutPage";
 export { UserProfilePage } from "./UserProfilePage/UserProfilePage";
+export { NotFoundPage } from "./NotFoundPage/NotFoundPage";

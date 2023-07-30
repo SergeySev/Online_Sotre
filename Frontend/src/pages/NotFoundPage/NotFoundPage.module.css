@@ -1,0 +1,49 @@
+.notfound_page {
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--background);
+	color: var(--black);
+	background-image: url('./assets/404.jpg');
+	background-color: var(--white-opacity);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.notfound_content {
+	position: relative;
+	z-index: 110;
+	height: 100%;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 32px;
+	font-family: var(--font_prosto);
+	color: var(--black);
+}
+
+.notfound_title {
+	font-size: 32px;
+	line-height: 36px;
+}
+
+.notfound_subtitle {
+	margin-top: 10px;
+	max-width: 420px;
+	font-family: var(--font_releway);
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 28px;
+}
+
+.notfound_404 {
+	margin-top: 50px;
+	font-size: 200px;
+	line-height: 247px;
+}
