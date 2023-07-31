@@ -2,17 +2,14 @@ import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { BurgerContext } from './context/burgerContext';
 import { PopUpContext } from './context/popUpContext';
-import { Header, Footer, PopUpContainer, PopUpContent, useAuth } from './components';
-import { CartPage, CheckoutPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, SubCategoryPage, UserProfilePage } from './pages';
+import { Header, Footer, PopUpContainer, PopUpContent } from './components';
+import { CartPage, BrandsPage, CheckoutPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, NotFoundPage, SubCategoryPage, UserProfilePage } from './pages';
 import './App.css';
-import BrandsPage from './pages/BrandsPage/BrandsPage';
 
 function App() {
-	// const [active, setActive] = useState(false);
 	const [burgerActive, setBurgerActive] = useState(false);
 	const [popupActive, setPopupActive] = useState(false);
 	const [title, setTitle] = useState('');
-	const { isAuth } = useAuth();
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -73,6 +70,7 @@ function App() {
 						<Route path='/brands' element={<BrandsPage />} />
 						<Route path='/checkout' element={<CheckoutPage />} />
 						<Route path='/user' element={<UserProfilePage />} />
+						<Route path="*" element={<NotFoundPage />} />
 					</Routes>
 					<Footer />
 					<PopUpContainer
@@ -82,9 +80,8 @@ function App() {
 							< PopUpContent
 								active={popupActive}
 								setActive={setPopupActive}
-								popup={title === "avatar" ?
-									(isAuth ? 'profile' : 'sign') :
-									"phone"} />
+								popup={title}
+							/>
 						}
 					/>
 				</div>

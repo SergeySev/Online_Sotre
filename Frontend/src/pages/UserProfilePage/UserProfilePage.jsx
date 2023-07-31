@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { Breadcrumbs, OffersAside, UserOrdersHistory, PrivateInfo, CatalogBurger } from '../../components';
-import { HiOutlineMenuAlt2 } from 'react-icons/hi';
-import { AiOutlineClose } from 'react-icons/ai';
+import { Breadcrumbs, OffersAside, UserOrdersHistory, PrivateInfo, CatalogBurger, BurgerAside } from '../../components';
 
 import s from './UserProfilePage.module.css'
 
@@ -23,13 +21,9 @@ export function UserProfilePage() {
 		<section className={`${s.profile_section} ${s[isAssideOpen ? "open" : ''] || ''}`}>
 			<div className='container'>
 				<Breadcrumbs items={breadcrumbsItems} />
+				<h1 className='title'>Personal Profile</h1>
 				<div className={s.profile_wrapper}>
-					<h1 className='title'>Personal Profile</h1>
-					<div
-						className={`${s.menu_burger} ${s[isAssideOpen ? "open" : ''] || ''}`}
-						onClick={() => setIsAssideOpen(!isAssideOpen)}>
-						{!isAssideOpen ? <HiOutlineMenuAlt2 /> : <AiOutlineClose />}
-					</div>
+					<BurgerAside isAssideOpen={isAssideOpen} setIsAssideOpen={setIsAssideOpen} />
 					<div className={s.page_container}>
 						<aside className={`${s.profile_aside} ${s[isAssideOpen ? "open" : ''] || ''}`}>
 							<ul className={s.tabs_container}>

@@ -3,13 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../UI';
 import s from './CartTotalInfo.module.css'
 import { PopUpContainer, PopUpContent, useAuth } from '../../';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { PopUpContext } from '../../../context/popUpContext';
 
 export function CartTotalInfo() {
 
 	const { isAuth } = useAuth()
 	const navigate = useNavigate()
-	const [popup_active, setPopupActive] = useState(false);
+	//const [popup_active, setPopupActive] = useState(false);
+	const contextPopUp = useContext(PopUpContext);
 
 	const sum = useSelector(store => store.cart.total_summ);
 	const discont = -(sum * .07).toFixed(2);
@@ -19,7 +21,8 @@ export function CartTotalInfo() {
 		if (isAuth) {
 			navigate('/checkout')
 		} else {
-			setPopupActive(true);
+			contextPopUp.setPopupActive(true);
+			contextPopUp.setTitle('sign');
 		}
 	}
 
@@ -41,7 +44,7 @@ export function CartTotalInfo() {
 				<Button text="Go to order" content="order" onClick={handleOrder} />
 			</div>
 
-			<PopUpContainer
+			{/*<PopUpContainer
 				popup_active={popup_active}
 				setPopupActive={setPopupActive}
 				content={
@@ -50,7 +53,7 @@ export function CartTotalInfo() {
 						setActive={setPopupActive}
 						popup='sign' />
 				}
-			/>
+			/>*/}
 		</>
 	)
 }

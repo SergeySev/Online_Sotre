@@ -1,11 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetch_main_categories, fetch_subcategory_products } from '../../requests/requests';
-import { Breadcrumbs, MainCategoriesAside, FilterAside, ProductsList, OffersAside } from '../../components';
+import { Breadcrumbs, MainCategoriesAside, FilterAside, ProductsList, OffersAside, BurgerAside } from '../../components';
 import s from './SubCategoryPage.module.css'
 
 export function SubCategoryPage() {
+
+	const [isAssideOpen, setIsAssideOpen] = useState(false);
 
 	const dispatch = useDispatch()
 
@@ -30,21 +32,28 @@ export function SubCategoryPage() {
 	}
 
 	return (
-		<div className={s.subcategory_container}>
+		<section className={`${s.subcategory_section} ${s[isAssideOpen ? "open" : ''] || ''}`}>
 			<div className='container'>
 				<Breadcrumbs items={breadcrumbsItems} />
 				<h1 className='title'>{subcategory_title}</h1>
 				<div className={s.page_container}>
-					<div className={s.aside_container}>
-						<MainCategoriesAside categories={categories} changeProductList={changeProductList} />
-						<FilterAside subcategory_title={subcategory_title} />
-						<OffersAside />
-					</div>
+					<aside className={s.aside_container}>
+						<BurgerAside
+							content='aside'
+							isAssideOpen={isAssideOpen}
+							setIsAssideOpen={setIsAssideOpen}
+						/>
+						<div className={`${s.aside_content} ${s[isAssideOpen ? "open" : ''] || ''}`}>
+							<MainCategoriesAside categories={categories} changeProductList={changeProductList} />
+							<FilterAside subcategory_title={subcategory_title} />
+							<OffersAside />
+						</div>
+					</aside>
 					<div className={s.products_list_wrapper}>
 						<ProductsList products={subcategory_products} />
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }

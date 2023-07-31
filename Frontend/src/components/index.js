@@ -69,3 +69,6 @@ export { UserOrdersHistory } from "./UserOrdersHistory/UserOrdersHistory";
 
 export { FormPasswordChange } from "./FormPasswordChange/FormPasswordChange";
 
+export { BurgerAside } from "./BurgerAside/BurgerAside";
+
+

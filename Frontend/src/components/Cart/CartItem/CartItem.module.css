@@ -91,6 +91,11 @@
 	font-weight: 500;
 }
 
+.summ {
+	white-space: nowrap;
+}
+
+
 .summ span {
 	display: none;
 }
@@ -168,12 +173,13 @@
 
 @media (max-width: 480px) {
 	.cart_item {
-		padding: 5px;
+		padding: 15px;
 		grid-template-columns: 3fr 1fr;
 		grid-template-areas:
 			"image close"
 			"info price "
 			" quantity total";
+		justify-items: center;
 		gap: 10px;
 	}
 
@@ -181,6 +187,10 @@
 		width: 100px;
 		height: 100px;
 		justify-self: center;
+	}
+
+	.product_info {
+		text-align: center;
 	}
 
 	.price_wrapper {
@@ -198,10 +208,6 @@
 	.summ span {
 		flex-shrink: 0;
 		display: block;
-	}
-
-	.quantity_wrapper {
-		justify-self: start;
 	}
 
 	.close_btn {
