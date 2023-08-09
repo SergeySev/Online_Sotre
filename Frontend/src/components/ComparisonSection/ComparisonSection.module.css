@@ -63,21 +63,25 @@
 	color: var(--white);
 }
 
-.image_block {
+.pagination_list {
 	margin-top: 32px;
-	padding: 0 0 0 20px;
+	width: 100%;
 	display: flex;
-	flex-wrap: wrap;
-	align-items: start;
-	gap: 30px;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
+.pagination_item.unavailable svg {
+	color: var(--gray);
 }
 
 .slider_block {
-	width: 100%;
+	margin-top: 18px;
+	padding: 0 20px;
 	display: flex;
-	flex-wrap: wrap;
+	align-items: start;
 	justify-content: space-between;
-	gap: 30px;
+	gap: 18px;
 }
 
 .diff_btn {
@@ -89,8 +93,6 @@
 }
 
 .img_slider {
-	margin: 0 auto;
-	max-width: 1080px;
 	width: 100%;
 	overflow: hidden;
 }
@@ -99,6 +101,7 @@
 	display: flex;
 	align-items: center;
 	gap: 20px;
+	transition: transform var(--transition);
 }
 
 .content_block {
@@ -129,6 +132,10 @@
 @media (min-width: 762px) {
 	.pagination_item:hover svg {
 		color: var(--orange);
+	}
+
+	.pagination_item:hover.unavailable svg {
+		color: var(--gray);
 	}
 
 	.subcaregories_item:hover {
