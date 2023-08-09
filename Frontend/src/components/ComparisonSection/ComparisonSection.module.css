@@ -1,0 +1,143 @@
+.comparison {
+	padding-bottom: 80px;
+}
+
+.comparison_top {
+	margin-top: 32px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pagination_list {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.pagination_item {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--white);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.pagination_item svg {
+	width: 24px;
+	height: auto;
+	color: var(--smoky);
+	transition: color var(--transition);
+}
+
+.subcaregories_list {
+	margin-top: 32px;
+	display: flex;
+	flex-wrap: wrap;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 323px));
+	gap: 2px;
+}
+
+.subcaregories_item {
+	flex-shrink: 0;
+	padding: 0 10px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 64px;
+	text-align: center;
+	width: 100%;
+	background-color: var(--white);
+	color: var(--black);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color var(--transition), color var(--transition);
+}
+
+.subcaregories_item.active {
+	background-color: var(--orange);
+	color: var(--white);
+}
+
+.image_block {
+	margin-top: 32px;
+	padding: 0 0 0 20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: start;
+	gap: 30px;
+}
+
+.slider_block {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 30px;
+}
+
+.diff_btn {
+	flex-shrink: 0;
+	font-weight: 500;
+	color: var(--black);
+	transition: color var(--transition);
+	cursor: pointer;
+}
+
+.img_slider {
+	margin: 0 auto;
+	max-width: 1080px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.img_list {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.content_block {
+	margin-top: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.content_block>div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 50px;
+}
+
+.arrow {
+	width: 24px;
+	height: auto;
+	color: var(--smoky);
+	cursor: pointer;
+	transition: color var(--transition);
+}
+
+
+
+
+@media (min-width: 762px) {
+	.pagination_item:hover svg {
+		color: var(--orange);
+	}
+
+	.subcaregories_item:hover {
+		background-color: var(--orange);
+		color: var(--white);
+	}
+
+	.arrow:hover,
+	.diff_btn:hover {
+		color: var(--orange);
+	}
+}
