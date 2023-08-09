@@ -71,4 +71,7 @@ export { FormPasswordChange } from "./FormPasswordChange/FormPasswordChange";
 
 export { BurgerAside } from "./BurgerAside/BurgerAside";
 
+export { ComparisonSection } from "./ComparisonSection/ComparisonSection";
+export { ComparisonProduct } from "./ComparisonProduct/ComparisonProduct";
+
 

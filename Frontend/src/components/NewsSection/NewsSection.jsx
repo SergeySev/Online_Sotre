@@ -2,9 +2,9 @@ import { Button } from '../../UI'
 import { news_list } from '../../data/data'
 import s from './NewsSection.module.css';
 
-export function NewsSection() {
+export function NewsSection({ content }) {
 	return (
-		<section className={s.news_section}>
+		<section className={`${s.news_section} ${s[content ? content : ''] || ''}`}>
 			<div className='container'>
 				<div className={s.news_section_inner}>
 					<div className={s.text_block}>

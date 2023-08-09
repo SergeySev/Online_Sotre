@@ -32,3 +32,11 @@
 .cart_btn_top.active {
 	background-color: var(--orange);
 }
+
+.comparison {
+	border: none;
+}
+
+.comparison.active {
+	background-color: var(--white);
+}
