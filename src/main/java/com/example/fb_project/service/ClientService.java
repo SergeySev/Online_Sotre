@@ -84,4 +84,15 @@ public class ClientService {
             throw new IllegalQueryOperationException("Clients don't exist in the Data Base");
         return clients.map(clientMapperDto::toDto);
     }
+
+    public ClientDto getClient(String password, String email) {
+        Clients client = clientRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Client not found"));
+
+        if (bCryptPasswordEncoder.matches(password, client.getPassword())) {
+            return clientMapperDto.toDto(client);
+        } else {
+            throw new IllegalArgumentException("Invalid credentials");
+        }
+    }
 }
