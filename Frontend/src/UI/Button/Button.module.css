@@ -19,14 +19,24 @@
 	background-color: var(--black);
 }
 
+.button.confirmOrder,
 .button.checkout {
 	margin-top: 30px;
 	width: 310px;
 }
 
+.button.confirmOrder {
+	background-color: var(--orange);
+}
+
+.button.phone_alert,
 .button.news {
 	width: 250px;
 	background-color: var(--orange);
+}
+
+.button.phone_alert {
+	margin: 0 auto;
 }
 
 .button.order {
@@ -34,11 +44,6 @@
 	background-color: var(--orange);
 }
 
-.button.confirmOrder {
-	margin-top: 30px;
-	width: 310px;
-	background-color: var(--orange);
-}
 
 .button.to_shop {
 	width: 264px;
@@ -47,13 +52,25 @@
 	border: 1px solid var(--gray);
 }
 
+.button.profile {
+	width: 266px;
+	background-color: var(--gray);
+	color: var(--white);
+}
 
+.button.register {
+	margin-top: 16px;
+	width: 100%;
+	background-color: var(--black);
+}
 
 @media (min-width: 762px) {
 	.button:active {
 		top: 1px;
 	}
 
+	.button.profile:hover,
+	.button.register:hover,
 	.button.checkout:hover,
 	.button.about:hover {
 		background-color: var(--orange);
@@ -61,6 +78,7 @@
 
 	.button.confirmOrder:hover,
 	.button.order:hover,
+	.button.phone_alert:hover,
 	.button.news:hover {
 		background-color: var(--black);
 	}

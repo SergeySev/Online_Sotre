@@ -5,8 +5,8 @@ import s from './CartItem.module.css'
 import { useDispatch } from 'react-redux';
 
 export function CartItem(product) {
-	// const { mainImageLink, title, subCategory, discountPrice, price, cart_amount, categoryId, subCategoryId } = product;
-	const { mainImageLink, title, subCategory, discountPrice, price, cart_amount } = product;
+	const { mainImageLink, title, subCategoryTitle, discountPrice, price, cart_amount, mainCategoryId, subCategoryId } = product;
+	// const { mainImageLink, title, subCategory, discountPrice, price, cart_amount } = product;
 	const dispatch = useDispatch()
 	const total_summ = ((discountPrice ? discountPrice : price) * cart_amount).toFixed(2);
 
@@ -24,12 +24,12 @@ export function CartItem(product) {
 				<img src={mainImageLink} alt={title} />
 			</div>
 			<div className={s.product_info}>
-				{/* <NavLink to={`/catalog/${categoryId}/${subCategoryId}`}> */}
-				<h3
-					className={s.sub_title}>
-					{subCategory}
-				</h3>
-				{/* </NavLink> */}
+				<NavLink to={`/catalog/${mainCategoryId}/${subCategoryId}`}>
+					<h3
+						className={s.sub_title}>
+						{subCategoryTitle}
+					</h3>
+				</NavLink>
 				<p className={s.product_title}>{title}</p>
 			</div>
 			<div className={s.price_wrapper}>
@@ -49,10 +49,10 @@ export function CartItem(product) {
 					onClick={() => dispatch(add_to_cart(product))}
 				>+</button>
 			</div>
-			<p className={s.summ}>
+			<div className={s.summ}>
 				<span>total: </span>
 				<p>{total_summ} &#36;</p>
-			</p>
+			</div>
 			<AiOutlineClose
 				className={s.close_btn}
 				onClick={() => remoove_from(cart_amount)}

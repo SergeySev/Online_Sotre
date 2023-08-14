@@ -5,28 +5,28 @@ import BrandList from '../../components/BrandList/BrandList';
 import { fetch_brands } from '../../requests/requests';
 import s from './BrandsPage.module.css'
 
-export default function BrandsPage() {
+export function BrandsPage() {
 
-  const dispatch = useDispatch()
+	const dispatch = useDispatch()
 
-  const breadcrumbsItems = [
-    { text: 'Home /', link: '/' },
-    { text: 'Brands ', link: '/brands' },
-  ];
+	const breadcrumbsItems = [
+		{ text: 'Home /', link: '/Online_Store' },
+		{ text: 'Brands ', link: '/brands' },
+	];
 
-  useEffect(() => {
-    dispatch(fetch_brands())
-  }, [])
+	useEffect(() => {
+		dispatch(fetch_brands())
+	}, [])
 
-  const brands = useSelector(store => store.brands)
+	const brands = useSelector(store => store.brands)
 
-  return (
-    <div className={s.brand_page}>
-      <div className='container'>
-        <Breadcrumbs items={breadcrumbsItems} className={s.breadcrumbs} />
-        <h1 className={s.page_title}>Brands</h1>
-        <BrandList brands={brands} />
-      </div>
-    </div>
-  )
+	return (
+		<div className={s.brand_page}>
+			<div className='container'>
+				<Breadcrumbs items={breadcrumbsItems} className={s.breadcrumbs} />
+				<h1 className={s.page_title}>Brands</h1>
+				<BrandList brands={brands} />
+			</div>
+		</div>
+	)
 }

@@ -7,7 +7,7 @@ import s from './MainCategoriesPage.module.css'
 
 export function MainCategoriesPage() {
 	const breadcrumbsItems = [
-		{ text: 'Home /', link: '/' },
+		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Catalog', link: '/catalog' },
 	];
 

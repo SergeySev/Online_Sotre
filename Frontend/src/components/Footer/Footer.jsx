@@ -17,7 +17,8 @@ export function Footer() {
 						{catalog_list.map(elem =>
 							<li className={s.item} key={elem.id}>
 								<NavLink to={elem.link} >{elem.title}</NavLink>
-							</li>)}
+							</li>)
+						}
 					</ul>
 					<ul className={s.menu_list}>
 						{main_menu_list.map(elem =>

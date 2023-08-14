@@ -11,6 +11,9 @@ import comparisonSlice from "./reducers/comparisonSlice";
 import filterSlice from "./reducers/filterSlice";
 import subCategorySlice from "./reducers/subCategorySlice";
 import orderSlise from "./reducers/orderSlice";
+import requestBodySlice from "./reducers/requestBodySlice";
+import asideOffersSlice from "./reducers/asideOffersSlice";
+import userSlice from "./reducers/userSlice";
 
 const rootReducer = combineReducers({
 	categories: categoriesSlice,
@@ -19,12 +22,15 @@ const rootReducer = combineReducers({
 	brands: brandSlice,
 	category_products: categoryProductsSlice,
 	offers: offersSlice,
+	aside_offers: asideOffersSlice,
 	navigation: navSlice,
 	favorite: favoriteSlice,
 	comparison: comparisonSlice,
 	cart: cartSlice,
 	filter_data: filterSlice,
-	order: orderSlise
+	order: orderSlise,
+	requestBody: requestBodySlice,
+	user: userSlice
 })
 
 export const store = configureStore({

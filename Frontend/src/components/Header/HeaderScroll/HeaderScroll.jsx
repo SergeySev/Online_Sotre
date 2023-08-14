@@ -22,7 +22,7 @@ export function HeaderScroll() {
 	}, []);
 
 	return (
-		<div className={`${s.header_scroll} ${s[isSticky ? "fixed" : ''] || ''}`}>
+		<div className={`fixed ${s.header_scroll} ${s[isSticky ? "fixed" : ''] || ''}`}>
 			<div className={s.header_scroll_wrapper}>
 				<div className="container">
 					<div className={s.header_scroll_content} >

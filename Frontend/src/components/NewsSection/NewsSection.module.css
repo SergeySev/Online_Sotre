@@ -1,68 +1,73 @@
 .news_section {
-  background-color: var(--background);
-  padding: 80px 0;
+	background-color: var(--background);
+	padding: 80px 0;
+}
+
+.news_section.comparison {
+	background-color: var(--white);
 }
 
 .news_section_inner {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
+	gap: 50px;
 }
 
 .text_block {
-  display: flex;
-  flex-direction: column;
-  max-width: 388px;
+	display: flex;
+	flex-direction: column;
+	max-width: 388px;
 }
 
 .title {
-  font-family: 'Prosto One';
-  font-weight: 400;
-  font-size: 30px;
-  margin-bottom: 24px;
+	font-family: 'Prosto One';
+	font-weight: 400;
+	font-size: 30px;
+	margin-bottom: 24px;
 }
 
 .text {
-  margin-bottom: 40px;
-  font-weight: 400;
-  font-size: 16px;
+	margin-bottom: 40px;
+	font-weight: 400;
+	font-size: 16px;
 }
 
 .news_block {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 30px;
-  row-gap: 33px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 30px;
+	row-gap: 33px;
 }
 
 .news_title {
-  margin: 16px 0 4px;
-  font-weight: 600;
-  font-size: 20px;
+	margin: 16px 0 4px;
+	font-weight: 600;
+	font-size: 20px;
 }
 
 .date {
-  font-size: 16px;
-  font-weight: 400;
+	font-size: 16px;
+	font-weight: 400;
 }
 
 @media (max-width: 1060px) {
-  .news_section_inner {
-    flex-direction: column;
-  }
+	.news_section_inner {
+		flex-direction: column;
+	}
 
-  .text_block {
-    max-width: none;
-    margin-bottom: 30px;
-  }
+	.text_block {
+		max-width: none;
+		margin-bottom: 30px;
+	}
 }
 
 @media (max-width: 762px) {
-  .news_block {
-    display: flex;
-    flex-direction: column;
-  }
+	.news_block {
+		display: flex;
+		flex-direction: column;
+	}
 
-  .news_item img {
-    width: 100%;
-  }
+	.news_item img {
+		width: 100%;
+	}
 }

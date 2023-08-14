@@ -3,9 +3,11 @@ import { useDispatch } from 'react-redux';
 import { add_to_cart, remove_from_cart } from '../../store/reducers/cartSlice';
 import cart from './assets/shopping-cart.png';
 import checked_cart from './assets/check-circle.png';
+import checked_cart_colored from './assets/check-circle_colored.png';
 import s from './ToggleCartBtn.module.css'
 
-export function ToggleCartBtn({ product }) {
+export function ToggleCartBtn({ product, bottom, content }) {
+
 	const [isActive, setActive] = useState(false);
 
 	const dispatch = useDispatch();
@@ -24,10 +26,15 @@ export function ToggleCartBtn({ product }) {
 		}
 	}
 
-	const image = isActive ? checked_cart : cart;
+	const image = isActive ? (content === "comparison" ? checked_cart_colored : checked_cart) : cart;
+
 	return (
 		<button
-			className={`${s.cart_btn} ${s[isActive ? 'active' : ''] || ''}`}
+			className={`
+			${s[bottom ? 'cart_btn_bottom' : 'cart_btn_top'] || 'cart_btn_bottom'} 
+			${s[isActive ? 'active' : ''] || ''}
+			${s[content ? content : ''] || ''}
+			`}
 			onClick={toggleHand}>
 			<img src={image} />
 		</button>

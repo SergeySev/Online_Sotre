@@ -1,22 +1,72 @@
 import axios from "axios";
 import { get_brands } from "../store/reducers/brandSlice";
 import { get_categories } from "../store/reducers/categoriesSlice";
-import { get_subcategory_products } from "../store/reducers/categoryProductsSlice";
+import { get_filtered_subcategory_products, get_subcategory_products } from "../store/reducers/categoryProductsSlice";
 import { get_subcategories_by_main } from "../store/reducers/subCategoriesSlice";
 import { product_offers } from "../store/reducers/offersSlice";
 import { get_filter_data } from "../store/reducers/filterSlice";
 import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
+import { data } from "jquery";
+import { aside_product_offers } from "../store/reducers/asideOffersSlice";
+import { set_user } from "../store/reducers/userSlice";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 const base_url = "http://localhost:8080/api/v1";
+// const offers_url = 'http://localhost:8080/api/v1/offers/all';
 
-export const add_new_user_req = async (user) => {
-	try {
-		const response = await axios.post(`${base_url}/client/registration`, user);
-		console.log(response.data);
-	} catch (error) {
-		console.error(error);
+export const sign_in_user = ((email, password) => {
+	const auth = getAuth();
+	signInWithEmailAndPassword(auth, email, password)
+		.then(console.log)
+		.catch(console.error)
+});
+
+export const register_user = ((user) => {
+	const { surname, name, birthday, email, password } = user
+
+	return function (dispatch) {
+		// try {
+		// 	fetch(`${base_url}/client/registration`, {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 		},
+		// 		body: JSON.stringify(user)
+		// 		// body: user
+		// 	})
+		// 		.then((res) => res.json())
+		// 		.then((data) => console.log(data))
+		// 		// .then((data) => dispatch(setUser(data)))
+		// 		.catch(() => {
+		// 			console.error("Failed to fetch data from the server.");
+		// 			dispatch(setUser([]));
+		// 		})
+		// } catch (error) {
+		// 	console.error("fetch error: ", error);
+		// 	dispatch(setUser([]));
+		// }
+		const auth = getAuth();
+		createUserWithEmailAndPassword(auth, email, password)
+			.then(({ user }) => {
+				console.log("🚀 ~ file: requests.js:53 ~ .then ~ user:", user)
+				dispatch(set_user({
+					id: user.uid,
+					surname,
+					name,
+					birthday,
+					email: user.email,
+					// password: action.payload.password,
+					token: user.accessToken
+				}))
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log("🚀 ~ file: requests.js:64 ~ errorCode:", errorCode)
+				console.log("🚀 ~ file: requests.js:66 ~ errorMessage:", errorMessage)
+			});
 	}
-};
+});
 
 export const fetch_main_categories = () => {
 	return function (dispatch) {
@@ -87,6 +137,23 @@ export const fetch_subcategory_products = (id) => {
 	};
 };
 
+export const fetch_filtered_subcategory_products = (requestUrl) => {
+	return function (dispatch) {
+		try {
+			fetch(requestUrl)
+				.then((res) => res.json())
+				.then((data) => dispatch(get_filtered_subcategory_products(data)))
+				.catch(() => {
+					// console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(get_filtered_subcategory_products([]));
+				})
+		} catch (error) {
+			console.error("fetch error: ", error);
+			dispatch(get_subcategory_products([]));
+		}
+	};
+};
+
 export const fetch_get_subcategory_by_title = (title) => {
 	return function (dispatch) {
 		try {
@@ -117,6 +184,23 @@ export const fetch_offers_products = (tag) => {
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(product_offers([]));
+		}
+	};
+};
+
+export const fetch_aside_offers = () => {
+	return function (dispatch) {
+		try {
+			fetch(`${base_url}/offers/all`)
+				.then((resp) => resp.json())
+				.then((data) => dispatch(aside_product_offers(data)))
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(aside_product_offers([]));
+				})
+		} catch (error) {
+			console.error("fetch error: ", error);
+			dispatch(aside_product_offers([]));
 		}
 	};
 };

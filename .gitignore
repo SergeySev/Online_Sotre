@@ -33,6 +33,7 @@ build/
 .vscode/
 
 ### project ###
+/node_modules
 /mongo-data
 /python
 /Dockerfile

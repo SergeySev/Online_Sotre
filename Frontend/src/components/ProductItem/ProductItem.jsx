@@ -73,7 +73,7 @@ export function ProductItem({ product }) {
 					<p className={s.in_stock}>{product.inStock ? 'in stock' : 'not in stock'}</p>
 				</div>
 			</div>
-			<ToggleCartBtn product={product} />
+			<ToggleCartBtn product={product} bottom={true} />
 		</li>
 	)
 }

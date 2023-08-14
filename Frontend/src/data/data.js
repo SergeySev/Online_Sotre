@@ -1,13 +1,274 @@
 import { FiPhoneIncoming, FiHeart, FiBarChart2, FiShoppingCart } from 'react-icons/fi';
-// import { FaRegUserCircle } from 'react-icons/fa';
-// import { RiAccountCircleLine } from 'react-icons/ri';
 import avatar from './assets/avatar.png'
-// import comparison from './assets/bar-chart.png'
-// import favorite from './assets/heart.png'
-// import cart from './assets/cart.png'
 import instagram from './assets/instagram.png'
 import vk from './assets/vk.png'
 import facebook from './assets/fb.png'
+
+export const update_password = [
+	{
+		id: 1,
+		name: "old_password",
+		type: "password",
+		error_message: "Password must be equal your current password",
+		label: "Old Password",
+		// required: true
+	},
+	{
+		id: 2,
+		name: "new_password",
+		type: "password",
+		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+		label: "New Password",
+		pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+		// required: true
+	},
+	{
+		id: 3,
+		name: "confirm_password",
+		type: "password",
+		error_message: "Password must equal the New Password field",
+		label: "Confirm new password",
+		// required: true
+	}
+]
+
+export const call_request = [
+	{
+		id: 1,
+		name: "name",
+		type: "text",
+		placeholder: '',
+		error_message: "Field should be 2-16 characters",
+		label: "Name",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 2,
+		name: "phone",
+		type: "tel",
+		placeholder: '+49',
+		error_message: "Phone number should be in format +99 999...",
+		label: "Pnone",
+		pattern: "^[+]{1}[0-9]{5,13}$",
+		required: true
+	},
+]
+
+export const sign_in = [
+	{
+		id: 1,
+		name: "email",
+		type: "email",
+		placeholder: '',
+		error_message: "It should be a valid email address!",
+		label: "Email",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+		required: true
+	},
+	{
+		id: 2,
+		name: "password",
+		type: "password",
+		placeholder: '',
+		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+		label: "Password",
+		pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+		required: true
+	},
+]
+
+export const registrations = [
+	{
+		id: 1,
+		name: "surname",
+		type: "text",
+		placeholder: '',
+		error_message: "Field should be 2-16 characters",
+		label: "Surname",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 2,
+		name: "name",
+		type: "text",
+		placeholder: '',
+		error_message: "Field should be 2-16 characters",
+		label: "Name",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 3,
+		name: "phone",
+		type: "tel",
+		placeholder: '+49',
+		error_message: "Phone number should be in format +99 999...",
+		label: "Pnone",
+		pattern: "^[+]{1}[0-9]{5,13}$",
+		required: true
+	},
+	{
+		id: 4,
+		name: "email",
+		type: "email",
+		placeholder: '',
+		error_message: "It should be a valid email address!",
+		label: "Email",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+		required: true
+	},
+	{
+		id: 5,
+		name: "birthday",
+		type: "date",
+		placeholder: '',
+		error_message: "Enter your date of birth",
+		label: "Birthday",
+		required: true
+	},
+	{
+		id: 6,
+		name: "password",
+		type: "password",
+		placeholder: '',
+		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+		label: "Password",
+		pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+		required: true
+	},
+	{
+		id: 7,
+		name: "confirm_password",
+		type: "password",
+		placeholder: '',
+		error_message: "This must equal the password field",
+		label: "Confirm password",
+		required: true
+	}
+]
+
+export const radio_orders = [
+	{ id: 1, title: 'in cash', type: 'cash' },
+	{ id: 2, title: 'bank card', type: 'card' }
+]
+
+export const payments = [{ id: 1, title: 'Payment upon receipt', type: 'receiving' }, { id: 2, title: 'Online payment', type: 'online' }]
+
+export const addresses = [
+	"Berlin, Alexanderplatz 1",
+	"Munich, Marienplatz 3",
+	"New York, 5th Avenue 1"]
+
+export const courier_inputs = [
+	{
+		id: 1,
+		name: "city",
+		type: "text",
+		// placeholder: 'city',
+		error_message: "Field should has not be empty",
+		label: "City",
+		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
+		required: true
+	},
+	{
+		id: 2,
+		name: "post",
+		type: "text",
+		// placeholder: 'code',
+		error_message: "Field should has not be empty",
+		label: "Post code",
+		pattern: "^[0-9]{1,}$",
+		required: true
+	},
+	{
+		id: 3,
+		name: "street",
+		type: "text",
+		// placeholder: 'street',
+		error_message: "Field should has not be empty",
+		label: "Street",
+		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
+		required: true
+	},
+	{
+		id: 4,
+		name: "house",
+		type: "text",
+		// placeholder: 'house',
+		error_message: "Field should has not be empty",
+		label: "House",
+		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
+		required: true
+	},
+	{
+		id: 5,
+		name: "app",
+		type: "text",
+		// placeholder: 'appartment',
+		label: "appartment",
+	},
+	{
+		id: 6,
+		name: "date",
+		type: "text",
+		label: "Next delivery date",
+		isCalendar: true,
+		disabled: true
+	},
+	{
+		id: 7,
+		name: "shipping",
+		type: "text",
+		label: "Delivery amount",
+		placeholder: 'free',
+		disabled: true
+	},
+]
+
+export const user_inputs = [
+	{
+		id: 1,
+		name: "first_name",
+		type: "text",
+		// placeholder: 'Enter your first name',
+		error_message: "First name should be 2-16 characters",
+		label: "First name",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 2,
+		name: "last_name",
+		type: "text",
+		// placeholder: 'Enter your last name',
+		error_message: "Last name should be 2-16 characters",
+		label: "Last name",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true
+	},
+	{
+		id: 3,
+		name: "phone",
+		type: "tel",
+		// placeholder: 'Enter your phone number',
+		error_message: "Phone number should be in format +99 999...",
+		label: "Pnone number",
+		pattern: "^[+]{1}[0-9]{5,13}$",
+		required: true
+	},
+	{
+		id: 4,
+		name: "email",
+		type: "email",
+		// placeholder: 'Enter your email',
+		error_message: "It should be a valid email address!",
+		label: "Email",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+		required: true
+	}
+]
 
 export const tabs = [
 	{ id: 1, title: "Customer data" },
@@ -20,7 +281,6 @@ export const top_menu_items = [
 		title: 'phone',
 		image: '',
 		icon: <FiPhoneIncoming />,
-		// link: '#'
 	},
 	{
 		id: 2,
@@ -40,9 +300,6 @@ export const top_menu_items = [
 		id: 4,
 		title: 'avatar',
 		image: avatar,
-		// icon: <FaRegUserCircle />,
-		// icon: <RiAccountCircleLine />,
-		// link: '#'
 	},
 	{
 		id: 5,

@@ -1,0 +1,20 @@
+.tab_title {
+	margin-top: 32px;
+	font-weight: 600;
+	line-height: 20px;
+}
+
+.data_list {
+	margin-top: 32px;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(135px, 155px));
+	gap: 24px;
+}
+
+@media (max-width: 860px) {
+	.data_list {
+		padding: 0 30px;
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
+}

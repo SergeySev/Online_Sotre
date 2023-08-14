@@ -1,14 +1,15 @@
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { BurgerContext } from './context/burgerContext';
-import { Header, Footer } from './components';
-import { CartPage, CheckoutPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, SubCategoryPage } from './pages';
+import { PopUpContext } from './context/popUpContext';
+import { Header, Footer, PopUpContainer, PopUpContent } from './components';
+import { CartPage, BrandsPage, CheckoutPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, NotFoundPage, SubCategoryPage, UserProfilePage } from './pages';
 import './App.css';
-import BrandsPage from './pages/BrandsPage/BrandsPage';
 
 function App() {
-	// const [active, setActive] = useState(false);
 	const [burgerActive, setBurgerActive] = useState(false);
+	const [popupActive, setPopupActive] = useState(false);
+	const [title, setTitle] = useState('');
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -44,27 +45,48 @@ function App() {
 	}, [burgerActive]);
 
 	return (
-		<BurgerContext.Provider
+		<PopUpContext.Provider
 			value={{
-				burgerActive,
-				setBurgerActive
+				popupActive,
+				setPopupActive,
+				title,
+				setTitle
 			}}>
-			<div className='app'>
-				<Header />
-				<Routes>
-					<Route path='/Online_Store' element={<HomePage />} />
-					<Route path='/catalog/' element={<MainCategoriesPage />} />
-					<Route path='/catalog/:id' element={<MainCategoriesPage />} />
-					<Route path='/catalog/:id/:id' element={<SubCategoryPage />} />
-					<Route path='/favorite' element={<FavoriteProductsPage />} />
-					<Route path='/comparison' element={<ComparisonPage />} />
-					<Route path='/cart' element={<CartPage />} />
-					<Route path='/brands' element={<BrandsPage />} />
-					<Route path='/checkout' element={<CheckoutPage />} />
-				</Routes>
-				<Footer />
-			</div>
-		</BurgerContext.Provider>
+			<BurgerContext.Provider
+				value={{
+					burgerActive,
+					setBurgerActive
+				}}>
+				<div className='app'>
+					<Header />
+					<Routes>
+						<Route path='/Online_Store' element={<HomePage />} />
+						<Route path='/catalog/' element={<MainCategoriesPage />} />
+						<Route path='/catalog/:id' element={<MainCategoriesPage />} />
+						<Route path='/catalog/:id/:id' element={<SubCategoryPage />} />
+						<Route path='/favorite' element={<FavoriteProductsPage />} />
+						<Route path='/comparison' element={<ComparisonPage />} />
+						<Route path='/cart' element={<CartPage />} />
+						<Route path='/brands' element={<BrandsPage />} />
+						<Route path='/checkout' element={<CheckoutPage />} />
+						<Route path='/user' element={<UserProfilePage />} />
+						<Route path="*" element={<NotFoundPage />} />
+					</Routes>
+					<Footer />
+					<PopUpContainer
+						popup_active={popupActive}
+						setPopupActive={setPopupActive}
+						content={
+							< PopUpContent
+								active={popupActive}
+								setActive={setPopupActive}
+								popup={title}
+							/>
+						}
+					/>
+				</div>
+			</BurgerContext.Provider>
+		</PopUpContext.Provider>
 	);
 }
 

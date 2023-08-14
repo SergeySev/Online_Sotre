@@ -1,3 +1,8 @@
+.list {
+	margin-top: 24px;
+
+}
+
 .products_list {
 	display: flex;
 	flex-wrap: wrap;
@@ -6,11 +11,16 @@
 }
 
 .subcategories_list {
-	margin-top: 2px;
 	padding: 60px 30px 0;
 	display: grid;
 	grid-template-columns: repeat(3, 310px);
 	justify-content: center;
 	gap: 20px;
 	background-color: var(--white);
+}
+
+.products_list_row {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 }

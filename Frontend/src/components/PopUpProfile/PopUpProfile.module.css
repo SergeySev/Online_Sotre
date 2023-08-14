@@ -1,0 +1,21 @@
+.popup_profile {
+	padding: 20px 140px;
+	color: var(--black);
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	font-weight: 600;
+}
+
+.popup_profile h2 {
+	font-size: 20px;
+}
+
+.popup_profile p {
+	cursor: pointer;
+	transition: color var(--transition);
+}
+
+.popup_profile p:hover {
+	color: var(--orange);
+}

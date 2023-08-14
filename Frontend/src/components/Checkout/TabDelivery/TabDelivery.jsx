@@ -1,83 +1,82 @@
-import { useSelector } from 'react-redux'
-import s from './TabDelivery.module.css'
-// import s from '../TabData/TabData.module.css'
+import { useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { delivery_data } from '../../../store/reducers/orderSlice';
 import { Button } from '../../../UI';
+import { TabCourier, TabPickup } from '../';
+import s from './TabDelivery.module.css'
 
 export function TabDelivery({ activeTab, setActiveTab }) {
-	const delivery = { ...useSelector(store => store.order.delivery) }
-	const { city, street, house, frame, app } = delivery[0]?.address;
-	const { date, shipping } = { ...delivery[0] };
+	const [delivery_type, setDeliverytype] = useState('courier');
 
-	const saveData = (e) => {
-		e.preventDefault();
-		const { city, street, house, frame, app, date, shipping } = e.target
+	const dispatch = useDispatch();
+
+	const radioChange = (e) => {
+		setDeliverytype(e.target.value)
+	}
+
+	const saveData = (event) => {
+		event.preventDefault();
+		const { delivery, city, post, street, house, app, date, shipping, address } = event.target;
+
 		const obj = {
+			title: delivery?.value,
 			city: city?.value,
+			post_code: post?.value,
 			street: street?.value,
 			house: house?.value,
-			frame: frame?.value,
 			app: app?.value,
 			date: date?.value,
 			shipping: shipping?.value,
+			address: address?.value,
 		}
-		// console.log("🚀 ~ file: TabDelivery.jsx:21 ~ saveData ~ obj:", obj)
+
 		if (activeTab < 3) {
 			setActiveTab(++activeTab)
 		}
-		// dispatch(customer_data(userData));
+		dispatch(delivery_data(obj));
 	}
 
 	return (
-		<form className={s.checkout_form} onSubmit={saveData}>
-			<h2 className={s.delivery_title}>Choose the delivery option that suits you:</h2>
-			<ul className={s.data_list}>
-				<li className={s.data_item}>
-					<label>
-						City
-						<input type="text" name="city" placeholder={city} />
-					</label>
-				</li>
-				<li className={s.data_item}>
-					<label>
-						Corp
-						<input type="text" name="frame" placeholder={frame} />
-					</label>
-				</li>
-				<li className={s.data_item}>
-					<label>
-						Street
-						<input type="text" name="street" placeholder={street} />
-					</label>
-				</li>
-				<li className={s.data_item}>
-					<label>
-						House
-						<input type="text" name="house" placeholder={house} />
-					</label>
-					{/* </li>
-				<li className={s.data_item}> */}
-					<label>
-						appartment
-						<input type="text" name="app" placeholder={app} />
-					</label>
-				</li>
-				<li className={s.data_item}>
-					<label>
-						Next delivery date
-						<input type="date" name="date" placeholder={date} />
-					</label>
-				</li>street
-				<li className={s.data_item}>
-					<label>
-						Delivery amount
-						<input type="text" name="shipping" placeholder={shipping ? `${shipping} &#36;` : 'free'} />
-					</label>
-				</li>street
-			</ul>
-			<Button
-				text='next'
-				content='checkout'
-			/>
-		</form>
+		<>
+			<h2 className={s.delivery_title}>
+				Choose the delivery option that suits you:
+			</h2>
+			<form className={s.checkout_form} onSubmit={saveData}>
+
+				<ul className={s.radio_buttons}>
+					<li className={`${s.radio_item} ${s[delivery_type === 'courier' ? 'active' : ''] || ''}`}>
+						<label>
+							<input
+								type="radio"
+								value="courier"
+								name="delivery"
+								checked={delivery_type === 'courier'}
+								onChange={radioChange} />
+							Courier delivery
+						</label>
+					</li>
+					<li className={`${s.radio_item} ${s[delivery_type === 'pickup' ? 'active' : ''] || ''}`}>
+						<label>
+							<input
+								type="radio"
+								value="pickup"
+								name="delivery"
+								checked={delivery_type === 'pickup'}
+								onChange={radioChange} />
+							Pickup
+						</label>
+					</li>
+				</ul>
+
+				{delivery_type === "courier" ?
+					<TabCourier /> :
+					<TabPickup />}
+
+				<Button
+					text='next'
+					content='checkout'
+				/>
+			</form>
+		</>
 	)
 }

@@ -1,35 +1,100 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import { Button } from '../../../UI';
+import { payments, radio_orders } from '../../../data/data';
 import s from './TabPayment.module.css'
+import { payment_data } from '../../../store/reducers/orderSlice';
 
-export const TabPayment = ({ activeTab, setActiveTab }) => {
+export const TabPayment = () => {
+	// const order = { ...useSelector(store => store.order) }
+	// console.log("🚀 ~ file: TabPayment.jsx:6 ~ TabPayment ~ order:", order)
 
-	// const { last_name, first_name, phone, email, } = { ...useSelector(store => store.order) };
+	const [payment_type, setPaymentType] = useState('receiving');
+	const [receiving_type, setReceivingType] = useState('cash');
+
+	const dispatch = useDispatch()
+	const paymentChange = (e) => {
+		setPaymentType(e.target.value)
+	}
+	const receivingChange = (e) => {
+		setReceivingType(e.target.value)
+	}
 
 	const saveData = (e) => {
 		e.preventDefault();
-		// const { first_name, last_name, phone, email } = e.target
-		const obj = {
-			// first_name: first_name?.value,
-			// last_name: last_name?.value,
-			// phone: phone?.value,
-			// email: email?.value
-		}
+		const { payment, cash_bank, bank } = e.target;
 
-		// dispatch(customer_data(userData));
+		const obj = {
+			method: payment.value,
+			type: payment.value === "receiving" ? cash_bank.value : bank.value
+		}
+		dispatch(payment_data(obj));
 	}
 
 	return (
-		<form className={s.checkout_form} onSubmit={saveData}>
-			<h2 className={s.delivery_title}>
+		<>
+			<h2 className={s.payment_title}>
 				Choose the payment option that suits you:
 			</h2>
-			<Button
-				text='next'
-				content='confirmOrder'
-			/>
-			<p>
-				By&nbsp;clicking on&nbsp;the button you agree to&nbsp;the processing of&nbsp;your personal data
-			</p>
-		</form>
+
+			<form className={s.checkout_form} onSubmit={saveData}>
+				<ul className={s.radio_buttons}>
+					{payments.map(elem =>
+						<li className={`${s.radio_item} ${s[payment_type === elem.type ? 'active' : ''] || ''}`}
+							key={elem.id}>
+							<label>
+								<input
+									type="radio"
+									value={elem.type}
+									name="payment"
+									checked={payment_type === elem.type}
+									onChange={paymentChange} />
+								{elem.title}
+							</label>
+						</li>)}
+				</ul>
+
+				<ul className={s.order_buttons}>
+					<>
+						{radio_orders.map(elem =>
+							<li className={`${s.radio_item} ${s[receiving_type === elem.type ? 'active' : ''] || ''} ${s[payment_type === 'online' ? 'disabled' : ''] || ''}`}
+								key={elem.id}>
+								<label>
+									<input
+										type="radio"
+										value={elem.type}
+										name="cash_bank"
+										checked={receiving_type === elem.type}
+										disabled={payment_type === 'online'}
+										onChange={receivingChange}
+									/>
+									{elem.title}
+								</label>
+							</li>
+						)}
+						<li className={`${s.radio_item} ${s['active']} ${s[payment_type === 'receiving' ? 'disabled' : ''] || ''}`}>
+							<label>
+								<input
+									type="radio"
+									value="card"
+									name="bank"
+									checked={payment_type === 'online'}
+								/>
+								bank card
+							</label>
+						</li>
+					</>
+				</ul>
+
+
+				< Button
+					text='next'
+					content='confirmOrder'
+				/>
+				<p className={s.order_description}>
+					By&nbsp;clicking on&nbsp;the button you agree to&nbsp;the processing of&nbsp;your personal data
+				</p>
+			</form>
+		</>
 	)
 }

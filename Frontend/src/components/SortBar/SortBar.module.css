@@ -1,0 +1,36 @@
+.sort_bar {
+	margin-top: 24px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.layout {
+	display: flex;
+	gap: 8px;
+	text-align: right;
+}
+
+.layout p {
+	margin-top: 5px;
+	font-weight: bold;
+}
+
+.layout_icon {
+	font-size: 22px;
+	cursor: pointer;
+	color: #DEDBDB;
+}
+
+.layout_icon_active {
+	color: #212526;
+	font-size: 22px;
+	cursor: pointer;
+}
+
+@media (max-width: 480px) {
+	.sort_bar {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+}
