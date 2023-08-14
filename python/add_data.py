@@ -204,6 +204,14 @@ def product():
             body.append({
                 "title": title,
                 "brand": brand_value,
+                "characteristicDto": {
+                    "type": "type",
+                    "assignment": "assignment",
+                    "typeOfWork": "typeOfWork",
+                    "basis": "basis",
+                    "glossGrade": "glossGrade",
+                    "weight": "1 kg"
+                },
                 "price": str(price),
                 "discountPrice": str(discount_price),
                 "description": description,

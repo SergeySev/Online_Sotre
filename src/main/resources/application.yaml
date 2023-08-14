@@ -7,8 +7,8 @@ server:
 spring:
   data:
     mongodb:
-#      uri: mongodb://mongo:27017/fb_project
-      uri: mongodb://localhost:27017/fb_project
+      uri: mongodb://mongo:27017/fb_project
+#      uri: mongodb://localhost:27017/fb_project
       database: fb_project
   main:
     banner-mode: off

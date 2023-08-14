@@ -63,6 +63,8 @@ public class Product {
     @DBRef(lazy = true)
     private Brand brand;
 
+    private Characteristic characteristic;
+
     private String mainImageLink;
 
     private List<String> productImagesLinks;
@@ -79,7 +81,8 @@ public class Product {
                    String mainImageLink,
                    boolean isHit,
                    Integer inStock,
-                   MadeCountry madeCountry) {
+                   MadeCountry madeCountry,
+                   Characteristic characteristic) {
         this.title = title;
         this.price = price.setScale(2, RoundingMode.HALF_UP);
         this.discountPrice = discountPrice.setScale(2, RoundingMode.HALF_UP);
@@ -95,6 +98,7 @@ public class Product {
         this.inStock = inStock;
         this.mainImageLink = mainImageLink;
         this.madeCountry = madeCountry;
+        this.characteristic = characteristic;
     }
 
     @Override

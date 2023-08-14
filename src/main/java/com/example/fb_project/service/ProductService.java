@@ -2,13 +2,16 @@ package com.example.fb_project.service;
 
 import com.example.fb_project.dto.ProductDto;
 import com.example.fb_project.entity.Brand;
+import com.example.fb_project.entity.Characteristic;
 import com.example.fb_project.entity.Product;
 import com.example.fb_project.entity.SubCategory;
 import com.example.fb_project.entity.enums.Color;
 import com.example.fb_project.entity.enums.DeliveryType;
 import com.example.fb_project.entity.enums.MadeCountry;
+import com.example.fb_project.mapper.CharacteristicMapper;
 import com.example.fb_project.mapper.ProductMapper;
 import com.example.fb_project.repository.BrandRepository;
+import com.example.fb_project.repository.CharacteristicRepository;
 import com.example.fb_project.repository.ProductRepository;
 import com.example.fb_project.repository.SubCategoryRepository;
 import jakarta.transaction.Transactional;
@@ -38,6 +41,10 @@ public class ProductService {
 
     private final SubCategoryRepository subCategoryRepository;
 
+    private final CharacteristicRepository characteristicRepository;
+
+    private final CharacteristicMapper characteristicMapper;
+
     private final MongoTemplate mongoTemplate;
 
     @Transactional
@@ -55,6 +62,16 @@ public class ProductService {
                 findByTitle(productDto.getSubCategoryTitle()).
                 orElseThrow(() -> new IllegalQueryOperationException("Sub category not found"));
 
+        Characteristic characteristic = new Characteristic();
+        characteristic.setType(productDto.getCharacteristicDto().getType());
+        characteristic.setAssignment(productDto.getCharacteristicDto().getAssignment());
+        characteristic.setTypeOfWork(productDto.getCharacteristicDto().getTypeOfWork());
+        characteristic.setBasis(productDto.getCharacteristicDto().getBasis());
+        characteristic.setGlossGrade(productDto.getCharacteristicDto().getGlossGrade());
+        characteristic.setWeight(productDto.getCharacteristicDto().getWeight());
+
+
+
         Product product = new Product(productDto.getTitle(),
                 productDto.getPrice(),
                 productDto.getDiscountPrice(),
@@ -67,7 +84,8 @@ public class ProductService {
                 productDto.getMainImageLink(),
                 productDto.getIsHit(),
                 productDto.getInStock(),
-                MadeCountry.valueOf(productDto.getMadeCountry().toUpperCase()));
+                MadeCountry.valueOf(productDto.getMadeCountry().toUpperCase()),
+                characteristic);
 
         product.getProductImagesLinks().add(productDto.getMainImageLink());
         List<String> imagesFromDto = productDto.getProductImagesLinks();
@@ -79,6 +97,7 @@ public class ProductService {
         brand.getProducts().add(product);
         subCategory.getProducts().add(product);
 
+        characteristicRepository.save(characteristic);
         productRepository.save(product);
         brandRepository.save(brand);
         subCategoryRepository.save(subCategory);
@@ -90,7 +109,11 @@ public class ProductService {
         Product product = productRepository.
                 findById(new ObjectId(id)).
                 orElseThrow(() -> new IllegalArgumentException("Product with id: " + id + " not found"));
-        return productMapper.toDto(product);
+        ProductDto productDto = productMapper.toDto(product);
+
+        Characteristic characteristic = product.getCharacteristic();
+        productDto.setCharacteristicDto(characteristicMapper.toDto(characteristic));
+        return productDto;
     }
 
     public Page<ProductDto> getAllProductsBySubCategory(Pageable pageable, String productCategoryTitle) {
