@@ -1,20 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { courier_inputs, user_inputs } from '../../data/data'
 import { Button, InputOrder } from '../../UI';
 import { FormPasswordChange } from '../';
+import { useNavigate } from 'react-router-dom';
 import s from './PrivateInfo.module.css'
 
 export function PrivateInfo() {
+	const navigate = useNavigate()
+	const { isAuth, surname, name, tel, mail } = useAuth();
 
-	const { surname, name, phone, email } = useAuth();
-
+	useEffect(() => {
+		if (!isAuth) {
+			navigate('/OnlineStore')
+		}
+	}, [isAuth])
 
 	const [values, setValues] = useState({
-		surname: surname ?? '',
-		name: name ?? '',
-		phone: phone ?? '',
-		email: email ?? ''
+		last_name: surname ?? '',
+		first_name: name ?? '',
+		phone: tel ?? '',
+		email: mail ?? ''
 	});
 
 	const onChange = (e) => {
@@ -23,7 +29,6 @@ export function PrivateInfo() {
 
 	const submit = (e) => {
 		e.preventDefault();
-		console.log("🚀 ~ file: PrivateInfo.jsx:25 ~ submit ~ e:", e.target)
 	}
 
 
