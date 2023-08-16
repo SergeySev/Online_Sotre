@@ -35,7 +35,7 @@ build/
 ### project ###
 /node_modules
 /mongo-data
-/python
+/python/
 /Dockerfile
 /backend/
 /docker-compose.yaml  
