@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 const userSlice = createSlice({
 	name: 'user',
 	initialState: {
-		id: '',
+		//id: '',
 		token: '',
 		surname: '',
 		name: '',
@@ -15,20 +15,20 @@ const userSlice = createSlice({
 	reducers: {
 		set_user(state, action) {
 			// console.log("🚀 ~ file: userSlice.js:17 ~ setUser ~ action:", action.payload)
-			state.id = action.payload.id
-			state.surname = action.payload.surname
-			state.name = action.payload.name
+			//state.id = action.payload.id
+			state.surname = action.payload.lastName
+			state.name = action.payload.firstName
 			state.email = action.payload.email
-			state.birthday = action.payload.birthday
-			state.phone = action.payload.phone
-			state.token = action.payload.token
+			state.birthday = action.payload.birthDate
+			state.phone = action.payload.phoneNumber
+			state.token = action.payload.email
 		},
 		sign_auth_user(state, action) {
-			// console.log("🚀 ~ file: userSlice.js:25 ~ sign_auth_user ~ action:", action.payload)
+			 console.log("🚀 ~ file: userSlice.js:25 ~ sign_auth_user ~ action:", action.payload)
 			return { ...state, token: action.payload }
 		},
-		remove_user(state) {
-			return { ...state, token: '' }
+		remove_user() {
+			return {}
 		}
 	}
 })

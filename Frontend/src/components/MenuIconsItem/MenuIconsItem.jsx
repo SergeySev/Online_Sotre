@@ -21,8 +21,6 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 	})
 
 	const handleClick = () => {
-		//context.setBurgerActive(false);
-		//if (!count) {
 		switch (title) {
 			case 'phone':
 				context.setBurgerActive(false);
@@ -36,7 +34,6 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 				else {
 					context.setBurgerActive(false);
 				}
-				//contextPopUp.setTitle('favorite');
 				break;
 			case 'comparison':
 				if (!count) {
@@ -45,7 +42,6 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 				else {
 					context.setBurgerActive(false);
 				}
-				//contextPopUp.setTitle('comparison');
 				break;
 			case 'avatar':
 				context.setBurgerActive(false);
@@ -64,11 +60,9 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 				else {
 					context.setBurgerActive(false);
 				}
-				//contextPopUp.setTitle('cart');
 				break;
 			default:
 				break;
-			//}
 		}
 	}
 
@@ -92,18 +86,6 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 				autoClose={1000}
 				closeOnClick
 			/>
-			{/*<PopUpContainer
-				popup_active={popup_active}
-				setPopupActive={setPopupActive}
-				content={
-					< PopUpContent
-						active={popup_active}
-						setActive={setPopupActive}
-						popup={title === "avatar" ?
-							(isAuth ? 'profile' : 'sign') :
-							"phone"} />
-				}
-			/>*/}
 		</>
 	)
 }

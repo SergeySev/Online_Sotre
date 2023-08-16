@@ -3,9 +3,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Input } from '../../UI'
 import { sign_in } from '../../data/data';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useAuth } from '../hooks/useAuth';
-import { sign_auth_user } from '../../store/reducers/userSlice';
+import { set_user } from '../../store/reducers/userSlice';
+import { sign_in_user } from '../../requests/requests';
 import s from './SignForm.module.css'
 
 export function SignForm({ setActiveWindow, setActive }) {
@@ -17,7 +16,6 @@ export function SignForm({ setActiveWindow, setActive }) {
 
 	const [isError, setIsError] = useState(false);
 
-	// const { isAuth, token } = useAuth()
 	const dispatch = useDispatch()
 
 	const onChange = (e) => {
@@ -29,24 +27,17 @@ export function SignForm({ setActiveWindow, setActive }) {
 		setActiveWindow('error')
 	}
 
-	function sign_new_user(email, password) {
-		const auth = getAuth();
-		signInWithEmailAndPassword(auth, email, password)
-			.then(({ user }) => {
-				dispatch(sign_auth_user(user.accessToken))
-				setActive(false)
-				setIsError(false);
-			})
-			.catch((error) => {
-				setIsError(true);
-			});
-	};
-
-	const sendHandler = (e) => {
+	const sendHandler = async (e) => {
 		e.preventDefault();
 		const { email, password } = e.target
-		// sign_in_user(email.value, password.value)
-		sign_new_user(email.value, password.value)
+		const responswData = await sign_in_user(email.value, password.value);
+		if(!responswData.email){
+			setIsError(true);
+		} else {
+			dispatch(set_user(responswData))
+			setIsError(false);
+			setActive(false);
+		}
 	}
 
 	return (

@@ -5,7 +5,7 @@ import { SignForm, RegisterForm, CallRequest, CallRequestAlert, WrongAuthenticat
 import s from './PopUpContent.module.css'
 
 export function PopUpContent({ setActive, popup }) {
-	console.log("🚀 ~ file: PopUpContent.jsx:8 ~ PopUpContent ~ popup:", popup)
+	//console.log("🚀 ~ file: PopUpContent.jsx:8 ~ PopUpContent ~ popup:", popup)
 
 	const [activeWindow, setActiveWindow] = useState(popup)
 
