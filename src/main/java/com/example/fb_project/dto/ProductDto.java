@@ -17,6 +17,8 @@ public class ProductDto {
 
     private String brand;
 
+    private CharacteristicDto characteristicDto;
+
     private BigDecimal price;
 
     private BigDecimal discountPrice;

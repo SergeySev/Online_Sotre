@@ -63,12 +63,23 @@ public class ClientController {
     @Operation(summary = "Get all Client by Page")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful loaded"),
-            @ApiResponse(responseCode = "500", description = "If client don't exist in the Data Base"),
+            @ApiResponse(responseCode = "500", description = "If clients don't exist in the Data Base"),
     })
     @GetMapping(path = "/get_clients")
-    public Page<ClientDto> getClient(@RequestParam(defaultValue = "1") int page,
-                                     @RequestParam(defaultValue = "30") int size) {
+    public Page<ClientDto> getClients(@RequestParam(defaultValue = "1") int page,
+                                      @RequestParam(defaultValue = "30") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return clientService.getClientsByPage(pageable);
+    }
+
+    @Operation(summary = "Get Client")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
+    })
+    @PostMapping(path = "/get_client")
+    public ClientDto getClient(@RequestParam String password,
+                               @RequestParam String email) {
+        return clientService.getClient(password, email);
     }
 }
