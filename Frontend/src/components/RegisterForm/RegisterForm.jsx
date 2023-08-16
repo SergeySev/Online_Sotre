@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Input, Button } from '../../UI/';
 import { useDispatch } from 'react-redux';
 import { registrations } from '../../data/data';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import s from './RegisterForm.module.css';
 import { set_user } from '../../store/reducers/userSlice';
+import { register_user } from '../../requests/requests';
+import s from './RegisterForm.module.css';
 
 export function RegisterForm({ setActiveWindow, setActive }) {
 
@@ -31,49 +31,24 @@ export function RegisterForm({ setActiveWindow, setActive }) {
 
 	const dispatch = useDispatch();
 
-	function register_new_user(user) {
-		const { surname, name, birthday, email, phone, password } = user;
-		const auth = getAuth();
-		createUserWithEmailAndPassword(auth, email, password)
-			// createUserWithEmailAndPassword(auth, surname, name, birthday, email, phone, password)
-			.then(({ user }) => {
-				// console.log("🚀 ~ file: RegisterForm.jsx:40 ~ .then ~ user:", user)
-				dispatch(set_user({
-					id: user.uid,
-					surname,
-					name,
-					phone,
-					birthday,
-					email: user.email,
-					token: user.accessToken
-				}))
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				console.log("🚀 ~ file: RegisterForm.jsx:50 ~ register_new_user ~ errorCode:", errorCode)
-				console.log("🚀 ~ file: RegisterForm.jsx:52 ~ register_new_user ~ errorMessage:", errorMessage)
-
-			});
-		setActive(false);
-	}
-
-	const sendHandler = (e) => {
+	const sendHandler = async (e) => {
 		e.preventDefault();
 
 		const { surname, name, email, phone, birthday, password } = e.target
 
 		const newUser = {
-			surname: surname.value,
-			name: name.value,
+			id: Date.now(),
+			firstName: name.value,
+			lastName: surname.value,
+			phoneNumber: phone.value,
 			email: email.value,
-			phone: phone.value,
-			birthday: birthday.value,
-			password: password.value
+			password: password.value,
+			birthDate: new Date(birthday.value).toISOString().replace(/\.000Z$/, ".951Z")
 		}
-		// register_user(newUser);
-		register_new_user(newUser);
 
+		const responswData = await register_user(newUser);
+		dispatch(set_user(responswData))
+		setActive(false);
 	}
 
 	return (
