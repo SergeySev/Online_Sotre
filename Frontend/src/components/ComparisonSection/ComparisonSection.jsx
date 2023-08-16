@@ -5,6 +5,7 @@ import useWindow from "../hooks/useWindow";
 import { IoIosArrowUp, IoIosArrowBack, IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
 import { ComparisonProduct } from "../";
 import s from './ComparisonSection.module.css'
+import { characteristicDto_list } from "../../data/data";
 
 const SLIDE_WIDTH = 220;
 const REST_PART = 376;
@@ -21,6 +22,7 @@ export function ComparisonSection() {
 	}
 	//получаем массив сохраненных продуктов
 	const comparison_products = useSelector(state => state.comparison.comparison_list);
+
 	// создаем массив названий категорий
 	const products_title = [... new Set(comparison_products.map(item => item.mainCategoryTitle))];
 
@@ -28,6 +30,13 @@ export function ComparisonSection() {
 	const [activeCategory, setActiveCategory] = useState(products_title[0]);
 	// получаем массив продуктов активной категории
 	const active_ctegory_products = comparison_products.filter(product => activeCategory === product.mainCategoryTitle);
+
+	// получаем массив с характеристиками продуктов активной категории
+	//const products_characteristics = active_ctegory_products.map(product=> product.characteristicDto);
+	const products_characteristics = characteristicDto_list
+	// получаем ключи - название характеристик
+	const characteristics_keys = Object.keys(products_characteristics[0])
+	console.log("🚀 ~ file: ComparisonSection.jsx:39 ~ ComparisonSection ~ characteristics_key:", characteristics_keys)
 
 	// устанавливаем первый продукт активной категории активным
 	const [offset, setOffset] = useState(0);
@@ -114,9 +123,68 @@ export function ComparisonSection() {
 						<IoIosArrowUp className={s.arrow} />
 					</div>
 
-					<table className={s.table}>
-						{ }
-					</table>
+					<div className={s.slider_block}
+						style={{
+							gap: "0"
+						}}>
+						<ul
+							style={{
+								width: "100%",
+							}}
+						>
+							{characteristics_keys.map((character, index) =>
+								<li key={index}
+						
+								>
+									<p
+										style={{
+											padding: "15px 18px 15px 0",
+											borderBottom: "1px solid var(--black)",
+										}}
+									>{character}</p>
+								</li>)}
+						</ul>
+
+						<div
+							style={{
+								maxWidth: `${sliderWidtn}px`,
+								flexShrink: "0"
+							}}
+							className={s.img_slider}>
+							<ul
+								className={s.img_list}
+								style={{
+									transform: `translateX(${offset}px)`,
+									gap: "0"
+								}}>
+								{
+									active_ctegory_products.map(product =>
+										<li className={s.table_item} key={product.id}>
+											<ul
+												style={{
+													borderRight: "1px solid var(--black)",
+												}}>
+												{characteristics_keys.map((character, index) =>
+													<li key={index}
+														style={{
+															width: "218px",
+															textAlign: "center"
+														}}
+													>
+														<p
+															style={{
+																padding: "15px 18px",
+																borderBottom: "1px solid var(--black)"
+															}}
+														>{character}</p>
+													</li>)}
+											</ul>
+										</li>)
+								}
+							</ul>
+						</div>
+
+					</div>
 
 					<div className={s.content_bottom}>
 						<h2 className={s.subtitle_bottom}>Additional characteristics</h2>

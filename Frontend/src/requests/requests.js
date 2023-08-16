@@ -6,6 +6,7 @@ import { product_offers } from "../store/reducers/offersSlice";
 import { get_filter_data } from "../store/reducers/filterSlice";
 import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
 import { aside_product_offers } from "../store/reducers/asideOffersSlice";
+import { toggle_comparison } from "../store/reducers/comparisonSlice";
 
 const base_url = "http://localhost:8080/api/v1";
 
@@ -190,6 +191,26 @@ export const fetch_filter_data = () => {
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_filter_data([]));
+		}
+	};
+};
+
+
+export const fetch_comparison_product = (product_id) => {
+	return function (dispatch) {
+		try {
+			fetch(`${base_url}/product/getProductById?id=${product_id}`)
+				.then((res) => res.json())
+				.then((data) => {
+					console.log("🚀 ~ file: requests.js:204 ~ .then ~ data:", data)
+					dispatch(toggle_comparison(data))})
+				.catch(() => {
+					console.error("Failed to fetch data from the server. Setting empty categories.");
+					dispatch(toggle_comparison({}));
+				})
+		} catch (error) {
+			console.error("fetch error: ", error);
+			dispatch(toggle_comparison({}));
 		}
 	};
 };

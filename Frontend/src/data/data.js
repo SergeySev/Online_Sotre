@@ -3,10 +3,32 @@ import avatar from './assets/avatar.png'
 import instagram from './assets/instagram.png'
 import vk from './assets/vk.png'
 import facebook from './assets/fb.png'
+import { v4 as uuidv4 } from 'uuid';
+
+
+export const characteristicDto_list = [
+	{
+		"type": "string",
+    "assignment": "string",
+    "typeOfWork": "string",
+    "basis": "string",
+    "glossGrade": "string",
+    "weight": "string"
+	},
+	{
+		"type": "string",
+    "assignment": "string",
+    "typeOfWork": "string",
+    "basis": "string",
+    "glossGrade": "string",
+    "weight": "string"
+	},
+
+]
 
 export const update_password = [
 	{
-		id: 1,
+		id: uuidv4(),
 		name: "old_password",
 		type: "password",
 		error_message: "Password must be equal your current password",
@@ -14,7 +36,7 @@ export const update_password = [
 		// required: true
 	},
 	{
-		id: 2,
+		id: uuidv4(),
 		name: "new_password",
 		type: "password",
 		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
@@ -23,7 +45,7 @@ export const update_password = [
 		// required: true
 	},
 	{
-		id: 3,
+		id: uuidv4(),
 		name: "confirm_password",
 		type: "password",
 		error_message: "Password must equal the New Password field",
@@ -34,7 +56,7 @@ export const update_password = [
 
 export const call_request = [
 	{
-		id: 1,
+		id: uuidv4(),
 		name: "name",
 		type: "text",
 		placeholder: '',
@@ -44,7 +66,7 @@ export const call_request = [
 		required: true
 	},
 	{
-		id: 2,
+		id: uuidv4(),
 		name: "phone",
 		type: "tel",
 		placeholder: '+49',
@@ -57,7 +79,7 @@ export const call_request = [
 
 export const sign_in = [
 	{
-		id: 1,
+		id: uuidv4(),
 		name: "email",
 		type: "email",
 		placeholder: '',
@@ -67,7 +89,7 @@ export const sign_in = [
 		required: true
 	},
 	{
-		id: 2,
+		id: uuidv4(),
 		name: "password",
 		type: "password",
 		placeholder: '',
@@ -80,7 +102,7 @@ export const sign_in = [
 
 export const registrations = [
 	{
-		id: 1,
+		id: uuidv4(),
 		name: "surname",
 		type: "text",
 		placeholder: '',
@@ -90,7 +112,7 @@ export const registrations = [
 		required: true
 	},
 	{
-		id: 2,
+		id: uuidv4(),
 		name: "name",
 		type: "text",
 		placeholder: '',
@@ -100,7 +122,7 @@ export const registrations = [
 		required: true
 	},
 	{
-		id: 3,
+		id: uuidv4(),
 		name: "phone",
 		type: "tel",
 		placeholder: '+49',
@@ -110,7 +132,7 @@ export const registrations = [
 		required: true
 	},
 	{
-		id: 4,
+		id: uuidv4(),
 		name: "email",
 		type: "email",
 		placeholder: '',
@@ -120,7 +142,7 @@ export const registrations = [
 		required: true
 	},
 	{
-		id: 5,
+		id: uuidv4(),
 		name: "birthday",
 		type: "date",
 		placeholder: '',
@@ -129,7 +151,7 @@ export const registrations = [
 		required: true
 	},
 	{
-		id: 6,
+		id: uuidv4(),
 		name: "password",
 		type: "password",
 		placeholder: '',
@@ -139,7 +161,7 @@ export const registrations = [
 		required: true
 	},
 	{
-		id: 7,
+		id: uuidv4(),
 		name: "confirm_password",
 		type: "password",
 		placeholder: '',
@@ -150,11 +172,11 @@ export const registrations = [
 ]
 
 export const radio_orders = [
-	{ id: 1, title: 'in cash', type: 'cash' },
-	{ id: 2, title: 'bank card', type: 'card' }
+	{ id: uuidv4(), title: 'in cash', type: 'cash' },
+	{ id: uuidv4(), title: 'bank card', type: 'card' }
 ]
 
-export const payments = [{ id: 1, title: 'Payment upon receipt', type: 'receiving' }, { id: 2, title: 'Online payment', type: 'online' }]
+export const payments = [{ id:uuidv4(), title: 'Payment upon receipt', type: 'receiving' }, { id: uuidv4(), title: 'Online payment', type: 'online' }]
 
 export const addresses = [
 	"Berlin, Alexanderplatz 1",
@@ -163,7 +185,7 @@ export const addresses = [
 
 export const courier_inputs = [
 	{
-		id: 1,
+		id: uuidv4(),
 		name: "city",
 		type: "text",
 		// placeholder: 'city',
@@ -173,7 +195,7 @@ export const courier_inputs = [
 		required: true
 	},
 	{
-		id: 2,
+		id: uuidv4(),
 		name: "post",
 		type: "text",
 		// placeholder: 'code',
@@ -183,7 +205,7 @@ export const courier_inputs = [
 		required: true
 	},
 	{
-		id: 3,
+		id: uuidv4(),
 		name: "street",
 		type: "text",
 		// placeholder: 'street',
@@ -193,7 +215,7 @@ export const courier_inputs = [
 		required: true
 	},
 	{
-		id: 4,
+		id: uuidv4(),
 		name: "house",
 		type: "text",
 		// placeholder: 'house',
@@ -203,14 +225,14 @@ export const courier_inputs = [
 		required: true
 	},
 	{
-		id: 5,
+		id: uuidv4(),
 		name: "app",
 		type: "text",
 		// placeholder: 'appartment',
 		label: "appartment",
 	},
 	{
-		id: 6,
+		id: uuidv4(),
 		name: "date",
 		type: "text",
 		label: "Next delivery date",
@@ -218,7 +240,7 @@ export const courier_inputs = [
 		disabled: true
 	},
 	{
-		id: 7,
+		id: uuidv4(),
 		name: "shipping",
 		type: "text",
 		label: "Delivery amount",
@@ -229,7 +251,7 @@ export const courier_inputs = [
 
 export const user_inputs = [
 	{
-		id: 1,
+		id: uuidv4(),
 		name: "first_name",
 		type: "text",
 		error_message: "First name should be 2-16 characters",
@@ -238,7 +260,7 @@ export const user_inputs = [
 		required: true
 	},
 	{
-		id: 2,
+		id: uuidv4(),
 		name: "last_name",
 		type: "text",
 		error_message: "Last name should be 2-16 characters",
@@ -247,7 +269,7 @@ export const user_inputs = [
 		required: true
 	},
 	{
-		id: 3,
+		id: uuidv4(),
 		name: "phone",
 		type: "tel",
 		// placeholder: 'Enter your phone number',
@@ -257,7 +279,7 @@ export const user_inputs = [
 		required: true
 	},
 	{
-		id: 4,
+		id: uuidv4(),
 		name: "email",
 		type: "email",
 		// placeholder: 'Enter your email',
@@ -269,38 +291,38 @@ export const user_inputs = [
 ]
 
 export const tabs = [
-	{ id: 1, title: "Customer data" },
-	{ id: 2, title: "Delivery" },
-	{ id: 3, title: "Payment" }]
+	{ id: uuidv4(), title: "Customer data" },
+	{ id: uuidv4(), title: "Delivery" },
+	{ id: uuidv4(), title: "Payment" }]
 
 export const top_menu_items = [
 	{
-		id: 1,
+		id: uuidv4(),
 		title: 'phone',
 		image: '',
 		icon: <FiPhoneIncoming />,
 	},
 	{
-		id: 2,
+		id: uuidv4(),
 		title: 'favorite',
 		image: '',
 		icon: <FiHeart />,
 		link: '/favorite'
 	},
 	{
-		id: 3,
+		id: uuidv4(),
 		title: 'comparison',
 		image: '',
 		icon: <FiBarChart2 />,
 		link: '/comparison'
 	},
 	{
-		id: 4,
+		id: uuidv4(),
 		title: 'avatar',
 		image: avatar,
 	},
 	{
-		id: 5,
+		id: uuidv4(),
 		title: 'cart',
 		image: '',
 		icon: <FiShoppingCart />,

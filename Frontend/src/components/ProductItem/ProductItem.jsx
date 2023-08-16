@@ -6,8 +6,16 @@ import { toggle_comparison } from '../../store/reducers/comparisonSlice'
 import { FiHeart, FiBarChart2 } from 'react-icons/fi';
 import { NewSign, ToggleCartBtn } from '../'
 import s from './ProductItem.module.css'
+import { fetch_comparison_product } from '../../requests/requests'
 
 export function ProductItem({ product }) {
+	const [img_index, setImg_index] = useState(0)
+	const [activeImg, setActiveImg] = useState(true);
+	const dispatch = useDispatch();
+
+	const favorite_id_list = useSelector(store => store.favorite.favorite_list).map(el => el.id)
+	const comparison_id_list = useSelector(store => store.comparison.comparison_list).map(el => el.id)
+	
 	let tag = ''
 	if (product.isNew) {
 		tag = 'NEW'
@@ -19,17 +27,11 @@ export function ProductItem({ product }) {
 		tag = 'PROMO'
 	}
 
-	const dispatch = useDispatch();
-	const favorite_id_list = useSelector(store => store.favorite.favorite_list).map(el => el.id)
-	const comparison_id_list = useSelector(store => store.comparison.comparison_list).map(el => el.id)
-
 	const { ref, inView } = useInView({
 		threshold: 0.1,
 		triggerOnce: true,
 	});
 
-	const [img_index, setImg_index] = useState(0)
-	const [activeImg, setActiveImg] = useState(true);
 	const change_product_img = (image_index) => {
 		setImg_index(image_index);
 		setActiveImg(true)
@@ -44,7 +46,7 @@ export function ProductItem({ product }) {
 				<div className={s.add_to}>
 					<FiBarChart2
 						className={`${s.bars} ${s[comparison_id_list.includes(product.id) ? "active" : ""] || ''}`}
-						onClick={() => dispatch(toggle_comparison(product))} />
+						onClick={() => dispatch(()=>dispatch(fetch_comparison_product(product.id)))} />
 					<FiHeart
 						className={`${s.heart} ${s[favorite_id_list.includes(product.id) ? "active" : ""] || ''}`}
 						onClick={() => dispatch(toggle_favorite(product))} />
