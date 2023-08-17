@@ -84,7 +84,7 @@ public class ClientController {
         return clientService.getClient(password, email);
     }
 
-    @Operation(summary = "Get Client")
+    @Operation(summary = "Update Client")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful loaded"),
             @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
@@ -92,5 +92,15 @@ public class ClientController {
     @PutMapping (path = "/update_client")
     public ClientDto updateClient(@RequestBody ClientUpdateDto clientUpdateDto) {
         return clientService.updateClient(clientUpdateDto);
+    }
+
+    @Operation(summary = "Add purchase")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
+    })
+    @PutMapping (path = "/add_purchase")
+    public ClientDto updateClient(@RequestParam String productId, String clientId) {
+        return clientService.addPurchase(productId, clientId);
     }
 }

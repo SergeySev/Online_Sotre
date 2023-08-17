@@ -9,6 +9,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -31,6 +33,7 @@ public class Clients {
     private LocalDateTime updatedAt;
     private LocalDateTime birthDate;
     private String address;
+    private List<Product> purchases = new ArrayList<>();
 
     public Clients(String first_name,
                    String last_name,
