@@ -75,12 +75,16 @@
 	color: var(--gray);
 }
 
-.slider_block {
+.comparison_image,
+.comparison_cahacters {
 	margin-top: 18px;
 	padding-right: 20px;
 	display: flex;
 	align-items: start;
 	justify-content: space-between;
+}
+
+.comparison_image {
 	gap: 18px;
 }
 
@@ -92,6 +96,16 @@
 	cursor: pointer;
 }
 
+.comparison_titles {
+	width: 100%;
+}
+
+.comparison_title_item {
+	padding: 15px 18px 15px 0;
+	border-bottom: 1px solid var(--black);
+}
+
+/*
 .img_slider {
 	width: 100%;
 	overflow: hidden;
@@ -102,7 +116,7 @@
 	align-items: center;
 	gap: 20px;
 	transition: transform var(--transition);
-}
+}*/
 
 .content_block {
 	margin-top: 24px;
@@ -111,7 +125,7 @@
 	gap: 20px;
 }
 
-.content_block>div {
+.characters_accordeon {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

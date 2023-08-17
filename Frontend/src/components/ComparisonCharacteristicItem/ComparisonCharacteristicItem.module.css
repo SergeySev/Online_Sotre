@@ -1,3 +1,9 @@
-.table_item{
+.comparison_item{
+	width: 220px;
+	text-align: center;
+}
 
+.comparison_value{
+	padding: 15px 18px;
+	border-bottom: 1px solid var(--black);
 }

@@ -1,20 +1,13 @@
 import s from './ComparisonCharacteristicItem.module.css'
 
 export function ComparisonCharacteristicItem({ character }) {
+	//console.log("🚀 ~ file: ComparisonCharacteristicItem.jsx:4 ~ ComparisonCharacteristicItem ~ character:", character)
 
 	return (
-		<li
-		style={{
-			width: "218px",
-			textAlign: "center"
-		}}
-	>
-		<p
-			style={{
-				padding: "15px 18px",
-				borderBottom: "1px solid var(--black)"
-			}}
-		>{character? character: `-`}</p>
-	</li>
+		<li className={s.comparison_item}>
+			<p className={s.comparison_value}>
+				{character ? character : `-`}
+			</p>
+		</li>
 	)
 }

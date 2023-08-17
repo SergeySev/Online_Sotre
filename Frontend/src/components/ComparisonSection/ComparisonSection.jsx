@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useWindow from "../hooks/useWindow";
 import { IoIosArrowUp, IoIosArrowBack, IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
-import { ComparisonCharacteristicItem, ComparisonCharacteristicList, ComparisonProduct } from "../";
+import { ComparisonCharacteristicList, ComparisonProduct, ComparisonSlider } from "../";
 import s from './ComparisonSection.module.css'
 
 const SLIDE_WIDTH = 220;
@@ -12,7 +12,8 @@ const REST_PART = 376;
 export function ComparisonSection() {
 
 	const window = useWindow()
-	const sliderWidtn = window.windowWidth - REST_PART;
+	const sliderWidth = window.windowWidth - REST_PART;
+	//console.log("🚀 ~ file: ComparisonSection.jsx:16 ~ ComparisonSection ~ sliderWidth:", sliderWidth)
 
 	const navigate = useNavigate();
 	const total_amount = useSelector(store => store.comparison.total_amount)
@@ -28,22 +29,23 @@ export function ComparisonSection() {
 	// устанавливаем первый заголовок как активный
 	const [activeCategory, setActiveCategory] = useState(products_title[0]);
 	// получаем массив продуктов активной категории
+	//const active_ctegory_products = useSelector(state => state.comparison.comparison_list);
+
 	const active_ctegory_products = comparison_products.filter(product => activeCategory === product.mainCategoryTitle);
 	//console.log("🚀 ~ file: ComparisonSection.jsx:33 ~ ComparisonSection ~ active_ctegory_products:", active_ctegory_products)
 
 	// получаем массив с характеристиками продуктов активной категории
 	const products_characteristics = active_ctegory_products.map(product => product.characteristicDto);
+	const characteristics_entries = active_ctegory_products.map(product => Object.entries(product.characteristicDto));
 	//console.log("🚀 ~ file: ComparisonSection.jsx:36 ~ ComparisonSection ~ products_characteristics:", products_characteristics)
-	const caracter_list = products_characteristics.map(caracters=> Object.values(caracters))
-	//console.log("🚀 ~ file: ComparisonSection.jsx:38 ~ ComparisonSection ~ caracter_list:", caracter_list)
 
-	// получаем ключи - название характеристик
+	// получаем массив с заголовками характеристик продуктов активной категории
 	const characteristics_keys = Object.keys(products_characteristics[0])
 
+	const caracter_list = products_characteristics.map(caracters => Object.values(caracters))
 
 	// устанавливаем первый продукт активной категории активным
 	const [offset, setOffset] = useState(0);
-
 
 	useEffect(() => {
 		setActiveCategory(products_title[0]);
@@ -55,8 +57,8 @@ export function ComparisonSection() {
 
 
 	const handleRight = () => {
-		const arrayLength = SLIDE_WIDTH * (active_ctegory_products.length - 1) + offset
-		if (arrayLength > sliderWidtn) {
+		const arrayLength = SLIDE_WIDTH * (active_ctegory_products.length) + offset
+		if (arrayLength > sliderWidth) {
 			setOffset(currentOffset => {
 				const newOffset = currentOffset - SLIDE_WIDTH
 				const maxOffset = -(SLIDE_WIDTH * (active_ctegory_products.length))
@@ -96,17 +98,17 @@ export function ComparisonSection() {
 						<IoIosArrowBack />
 					</span>
 					<span
-						className={s.pagination_item}
-						//className={`${s.pagination_item} ${s[offset === 0 ? "unavailable" : ''] || ''}`}
+						className={`${s.pagination_item} ${s[Math.abs(offset) >= sliderWidth ? "unavailable" : ''] || ''}`}
 						onClick={handleRight}
 					>
 						<IoIosArrowForward />
 					</span>
 				</div>
-				<div className={s.slider_block}>
+
+				{/*<div className={s.slider_block}>
 					<button className={s.diff_btn}>show only differences</button>
 					<div
-						style={{ maxWidth: `${sliderWidtn}px` }}
+						style={{ maxWidth: `${sliderWidth}px` }}
 						className={s.img_slider}>
 						<ul
 							className={s.img_list}
@@ -119,58 +121,54 @@ export function ComparisonSection() {
 							)}
 						</ul>
 					</div>
+				</div>*/}
+				<div className={s.comparison_image}>
+					<button className={s.diff_btn}>show only differences</button>
+					<ComparisonSlider products={active_ctegory_products} offset={offset} content='images' />
 				</div>
+
 				<div className={s.content_block}>
-					<div className={s.content_top}>
+					<div className={s.characters_accordeon}>
 						<h2 className={s.subtitle_top}>Main characteristics</h2>
 						<IoIosArrowUp className={s.arrow} />
 					</div>
 
-					<div className={s.slider_block}
-						style={{
-							gap: "0"
-						}}>
-						<ul
-							style={{
-								width: "100%",
-							}}
-						>
+					<div className={s.comparison_cahacters}>
+						<ul className={s.comparison_titles}>
 							{characteristics_keys.map((character, index) =>
-								<li key={index}
-
-								>
-									<p
-										style={{
-											padding: "15px 18px 15px 0",
-											borderBottom: "1px solid var(--black)",
-										}}
-									>{character}</p>
+								<li key={index}>
+									<p className={s.comparison_title_item}>
+										{character}
+									</p>
 								</li>)}
 						</ul>
 
-						<div
+						{/*<div
 							style={{
-								maxWidth: `${sliderWidtn}px`,
+								maxWidth: `${sliderWidth}px`,
 								flexShrink: "0"
 							}}
-							className={s.img_slider}>
+							className={s.slider}>
 							<ul
-								className={s.img_list}
+								className={s.slider_list}
 								style={{
 									transform: `translateX(${offset}px)`,
 									gap: "0"
 								}}>
 								{
-									caracter_list.map((characters, index) => 
+									//characteristics_list.map((characters, index) =>
+									caracter_list.map((characters, index) =>
 										<ComparisonCharacteristicList key={index} characters={characters} />
 									)
-								}
-							</ul>
-						</div>
+								}*/}
+						<ComparisonSlider products={caracter_list} offset={offset} />
 
+						{/*</ul>
+						</div>*/}
 					</div>
 
-					<div className={s.content_bottom}>
+
+					<div className={s.characters_accordeon}>
 						<h2 className={s.subtitle_bottom}>Additional characteristics</h2>
 						<IoIosArrowDown className={s.arrow} />
 					</div>
