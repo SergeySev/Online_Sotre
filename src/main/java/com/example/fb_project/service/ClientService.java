@@ -33,9 +33,8 @@ public class ClientService {
         checkEmail(client);
 
         boolean checkClientEmail = clientRepository.findByEmail(client.getEmail()).isEmpty();
-        boolean checkClientPhone = clientRepository.findByPhoneNumber(client.getPhoneNumber()).isEmpty();
-        if (!checkClientPhone || !checkClientEmail)
-            throw new IllegalQueryOperationException("The Client has already been added");
+        if (!checkClientEmail)
+            throw new IllegalQueryOperationException("The Client with this email already exists");
 
         Clients registerClient = new Clients(
                 client.getFirstName(),
