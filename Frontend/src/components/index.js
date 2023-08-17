@@ -72,6 +72,7 @@ export { FormPasswordChange } from "./FormPasswordChange/FormPasswordChange";
 export { BurgerAside } from "./BurgerAside/BurgerAside";
 
 export { ComparisonSection } from "./ComparisonSection/ComparisonSection";
+export { ComparisonSlider } from "./ComparisonSlider/ComparisonSlider";
 export { ComparisonProduct } from "./ComparisonProduct/ComparisonProduct";
 export { ComparisonCharacteristicList } from "./ComparisonCharacteristicList/ComparisonCharacteristicList";
 export { ComparisonCharacteristicItem } from "./ComparisonCharacteristicItem/ComparisonCharacteristicItem";

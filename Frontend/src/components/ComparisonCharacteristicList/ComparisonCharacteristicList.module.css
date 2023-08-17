@@ -1,0 +1,6 @@
+.product_characters{
+	border-right: 1px solid var(--black);
+}
+.product_characters:last-child{
+	border:none;
+}
