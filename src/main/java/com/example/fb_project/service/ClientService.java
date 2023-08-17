@@ -2,11 +2,13 @@ package com.example.fb_project.service;
 
 import com.example.fb_project.dto.ClientDto;
 import com.example.fb_project.dto.ClientRegisterDto;
+import com.example.fb_project.dto.ClientUpdateDto;
 import com.example.fb_project.entity.Clients;
 import com.example.fb_project.mapper.ClientMapperDto;
 import com.example.fb_project.repository.ClientRepository;
 import com.example.fb_project.security.CheckEmail;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.hibernate.query.IllegalQueryOperationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,7 +44,8 @@ public class ClientService {
                 client.getPhoneNumber(),
                 client.getEmail(),
                 bCryptPasswordEncoder.encode(client.getPassword()),
-                client.getBirthDate());
+                client.getBirthDate(),
+                client.getAddress());
         clientRepository.save(registerClient);
         return clientMapperDto.toDto(registerClient);
     }
@@ -93,5 +96,17 @@ public class ClientService {
         } else {
             throw new IllegalArgumentException("Invalid credentials");
         }
+    }
+
+    public ClientDto updateClient(ClientUpdateDto clientUpdateDto) {
+        Clients client = clientRepository.
+                findById(new ObjectId(clientUpdateDto.getId())).
+                orElseThrow(() -> new IllegalArgumentException("Client not found"));
+
+        client.setPassword(bCryptPasswordEncoder.encode(clientUpdateDto.getPassword()));
+        client.setPhoneNumber(clientUpdateDto.getPhone());
+        client.setAddress(clientUpdateDto.getAddress());
+
+        return clientMapperDto.toDto(client);
     }
 }
