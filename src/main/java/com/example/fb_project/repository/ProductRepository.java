@@ -1,5 +1,6 @@
 package com.example.fb_project.repository;
 
+import com.example.fb_project.entity.Brand;
 import com.example.fb_project.entity.Product;
 import com.example.fb_project.entity.SubCategory;
 import org.bson.types.ObjectId;
@@ -32,4 +33,6 @@ public interface ProductRepository extends MongoRepository<Product, ObjectId> {
     List<Product> findOneMostExpensiveProduct(Pageable pageable);
 
     Optional<Product> findAnyBySubCategory(SubCategory subCategory);
+
+    Page<Product> findAllByBrand(Pageable pageable, Brand brand);
 }

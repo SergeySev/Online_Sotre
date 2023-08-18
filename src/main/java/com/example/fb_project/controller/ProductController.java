@@ -104,6 +104,19 @@ public class ProductController {
         return productService.getAllProductsHit(pageable);
     }
 
+    @Operation(summary = "Get products by brand title")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "Brandor Products not found in the Data Base"),
+    })
+    @GetMapping(path = "/getProductsByBrand")
+    public Page<ProductDto> getAllProductsByBrand(@RequestParam(defaultValue = "1") int page,
+                                                  @RequestParam(defaultValue = "30") int size,
+                                                  @RequestParam String brandTitle) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+        return productService.getAllProductByBrand(pageable, brandTitle);
+    }
+
     @Operation(summary = "Get products by filter")
     @ApiResponse(responseCode = "200", description = "Successful loaded")
     @GetMapping(path = "/byFilter")
