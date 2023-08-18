@@ -3,21 +3,21 @@ import { ComparisonProduct } from '../ComparisonProduct/ComparisonProduct';
 import useWindow from '../hooks/useWindow';
 import s from './ComparisonSlider.module.css'
 
-const SLIDE_WIDTH = 220;
 const REST_PART = 376;
 
 export function ComparisonSlider({ products, offset, content }) {
-//console.log("🚀 ~ file: ComparisonSlider.jsx:10 ~ ComparisonSlider ~ products:", products)
 
 	const window = useWindow()
-	const sliderWidtn = window.windowWidth - REST_PART;
+	//const sliderWidtn = window.windowWidth - REST_PART;
+	const current_width = window.windowWidth - REST_PART
+	const sliderWidtn = window.windowWidth > 860 ? `${current_width}px`: `100%`;
+	//const sliderWidtn = current_width;
 
+	//console.log("🚀 ~ file: ComparisonSlider.jsx:14 ~ ComparisonSlider ~ sliderWidtn:", sliderWidtn)
 	return (
-		//<div className={`${s.slider_block } ${s[content? content : ''] || ''}`}>
-		//	<button className={s.diff_btn}>show only differences</button>
 			<div
-				style={{ maxWidth: `${sliderWidtn}px` }}
-				className={s.slider}>
+				style={{ maxWidth: {sliderWidtn}}}
+					className={s.slider}>
 				<ul
 					className={`${s.slider_list } ${s[content? content : ''] || ''}`}
 					style={{
@@ -33,6 +33,5 @@ export function ComparisonSlider({ products, offset, content }) {
 					}
 				</ul>
 			</div>
-		//</div>
 	)
 }

@@ -58,7 +58,7 @@ export function ComparisonSection() {
 
 	const handleRight = () => {
 		const arrayLength = SLIDE_WIDTH * (active_ctegory_products.length) + offset
-		if (arrayLength > sliderWidth) {
+	if (arrayLength > sliderWidth) {
 			setOffset(currentOffset => {
 				const newOffset = currentOffset - SLIDE_WIDTH
 				const maxOffset = -(SLIDE_WIDTH * (active_ctegory_products.length))
@@ -78,50 +78,33 @@ export function ComparisonSection() {
 			<div className={s.comparison_top}>
 				<h1 className='title' style={{ marginTop: "0" }}>Product comparison</h1>
 			</div>
+
 			<ul className={s.subcaregories_list}>
 				{products_title.map(category =>
 					<li
 						className={`${s.subcaregories_item} ${s[activeCategory === category ? 'active' : ''] || ''}`}
 						key={category}
-						onClick={() => setActiveCategory(category)}
-					>
+						onClick={() => setActiveCategory(category)}>
 						{category}
 					</li>)}
 			</ul>
+
 			<div className={s.comparison_content}>
 
 				<div className={s.pagination_list}>
-					<span
+					<button
 						className={`${s.pagination_item} ${s[offset === 0 ? "unavailable" : ''] || ''}`}
-						onClick={handleLeft}
-					>
+						onClick={handleLeft}>
 						<IoIosArrowBack />
-					</span>
-					<span
+					</button>
+					<button
 						className={`${s.pagination_item} ${s[Math.abs(offset) >= sliderWidth ? "unavailable" : ''] || ''}`}
 						onClick={handleRight}
 					>
 						<IoIosArrowForward />
-					</span>
+					</button>
 				</div>
 
-				{/*<div className={s.slider_block}>
-					<button className={s.diff_btn}>show only differences</button>
-					<div
-						style={{ maxWidth: `${sliderWidth}px` }}
-						className={s.img_slider}>
-						<ul
-							className={s.img_list}
-							style={{
-								transform: `translateX(${offset}px)`
-							}}
-						>
-							{active_ctegory_products.map(product =>
-								<ComparisonProduct key={product.id} product={product} />
-							)}
-						</ul>
-					</div>
-				</div>*/}
 				<div className={s.comparison_image}>
 					<button className={s.diff_btn}>show only differences</button>
 					<ComparisonSlider products={active_ctegory_products} offset={offset} content='images' />
@@ -142,29 +125,7 @@ export function ComparisonSection() {
 									</p>
 								</li>)}
 						</ul>
-
-						{/*<div
-							style={{
-								maxWidth: `${sliderWidth}px`,
-								flexShrink: "0"
-							}}
-							className={s.slider}>
-							<ul
-								className={s.slider_list}
-								style={{
-									transform: `translateX(${offset}px)`,
-									gap: "0"
-								}}>
-								{
-									//characteristics_list.map((characters, index) =>
-									caracter_list.map((characters, index) =>
-										<ComparisonCharacteristicList key={index} characters={characters} />
-									)
-								}*/}
-						<ComparisonSlider products={caracter_list} offset={offset} />
-
-						{/*</ul>
-						</div>*/}
+						<ComparisonSlider products={caracter_list} offset={offset}/>
 					</div>
 
 

@@ -1,9 +1,10 @@
-.comparison_item{
-	width: 220px;
+.comparison_item {
 	text-align: center;
 }
 
-.comparison_value{
-	padding: 15px 18px;
+.comparison_value {
+	width: 219px;
+	padding: 15px 0;
 	border-bottom: 1px solid var(--black);
 }
+
