@@ -40,6 +40,84 @@ made_country = ["GERMANY", "USA", "POLAND"]
 
 delivery_type = ["STANDARD", "EXPRESS", "NEXT_DAY", "SAME_DAY"]
 
+chara_type = [
+    "Concrete structure",
+    "Steel frame",
+    "Wooden framework",
+    "Masonry",
+    "Glass facade",
+    "Prefabricated panels",
+    "Brickwork",
+    "Roofing system",
+    "Foundation",
+    "Structural element"
+]
+
+chara_assignment = [
+    "Residential building",
+    "Commercial complex",
+    "Industrial facility",
+    "Infrastructure project",
+    "Public institution",
+    "Office space",
+    "Renovation project",
+    "Highway construction",
+    "Bridge construction",
+    "Utility installation"
+]
+
+chara_typeOfWork = [
+    "Excavation",
+    "Concrete pouring",
+    "Welding",
+    "Carpentry",
+    "Electrical installation",
+    "Plumbing",
+    "Roof installation",
+    "Finishing work",
+    "Painting",
+    "Landscaping"
+]
+
+chara_basis = [
+    "Architectural design",
+    "Structural engineering",
+    "Environmental impact",
+    "Budget constraints",
+    "Local regulations",
+    "Material availability",
+    "Energy efficiency",
+    "Safety standards",
+    "Aesthetic considerations",
+    "Client preferences"
+]
+
+chara_glossGrade = [
+    "Matte",
+    "Satin",
+    "Semi-gloss",
+    "High-gloss",
+    "Textured",
+    "Reflective",
+    "Eggshell",
+    "Pearlescent",
+    "Metallic",
+    "Glazed"
+]
+
+chara_weight = [
+    "1 kg",
+    "500 grams",
+    "2 kg",
+    "750 grams",
+    "1.5 kg",
+    "3 kg",
+    "2.5 kg",
+    "4 kg",
+    "3.5 kg",
+    "5 kg"
+]
+
 
 def logging(message):
     symbol = "=" * 20
@@ -149,7 +227,7 @@ def offers():
     body = []
     offers_titles = ['New products', "Discounts products", "Hot sales"]
     offers_description = ["Let's check", "Get in time", "Customer choice"]
-    links = ['https://i.imgur.com/K0Xjpco.png', 'https://i.imgur.com/wVq0rrJ.png', 'https://i.imgur.com/Ja6V5gf.jpg']
+    links = ['https://i.imgur.com/9TVPpZZ.jpg', 'https://i.imgur.com/ObC2HRt.jpg', 'https://i.imgur.com/pvJ7ihU.jpg']
 
     for i in range(3):
         body.append({
@@ -205,12 +283,12 @@ def product():
                 "title": title,
                 "brand": brand_value,
                 "characteristicDto": {
-                    "type": "type",
-                    "assignment": "assignment",
-                    "typeOfWork": "typeOfWork",
-                    "basis": "basis",
-                    "glossGrade": "glossGrade",
-                    "weight": "1 kg"
+                    "type": random.choice(chara_type),
+                    "assignment": random.choice(chara_assignment),
+                    "typeOfWork": random.choice(chara_typeOfWork),
+                    "basis": random.choice(chara_basis),
+                    "glossGrade": random.choice(chara_glossGrade),
+                    "weight": random.choice(chara_weight)
                 },
                 "price": str(price),
                 "discountPrice": str(discount_price),
@@ -225,31 +303,29 @@ def product():
                 "inStock": str(in_stock),
                 "isHit": str(is_hit)
             })
-        send_request(body, url)
+            send_request(body, url)
 
+    def main():
+        url_update = 'http://localhost:8080/change_log/update'
+        url_is_update = 'http://localhost:8080/change_log/is_update'
+        is_started = False
+        while not is_started:
+            try:
+                response = requests.get(url_is_update)
+            except (ConnectionRefusedError, requests.exceptions.ConnectionError):
+                logging("Failed to connect, try again")
+                time.sleep(4)
+                continue
+            if 'null' in response.text or response.text == "false":
+                logging("Started filling the database")
+                brand()
+                main_category()
+                sub_category()
+                offers()
+                product()
+                requests.post(url_update)
+            print("\n\n================\n__PYTHON__: The database has been successfully filled\n================")
+            is_started = True
 
-def main():
-    url_update = 'http://localhost:8080/change_log/update'
-    url_is_update = 'http://localhost:8080/change_log/is_update'
-    is_started = False
-    while not is_started:
-        try:
-            response = requests.get(url_is_update)
-        except (ConnectionRefusedError, requests.exceptions.ConnectionError):
-            logging("Failed to connect, try again")
-            time.sleep(4)
-            continue
-        if 'null' in response.text or response.text == "false":
-            logging("Started filling the database")
-            brand()
-            main_category()
-            sub_category()
-            offers()
-            product()
-            requests.post(url_update)
-        print("\n\n================\n__PYTHON__: The database has been successfully filled\n================")
-        is_started = True
-
-
-if __name__ == "__main__":
-    main()
+    if __name__ == "__main__":
+        main()
