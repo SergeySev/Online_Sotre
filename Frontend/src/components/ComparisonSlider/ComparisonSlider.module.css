@@ -26,10 +26,6 @@
 	overflow: hidden;
 }
 
-.slider.characters {
-	/*flex-shrink: 0;*/
-}
-
 .slider_list {
 	display: flex;
 	align-items: center;
@@ -38,4 +34,14 @@
 
 .slider_list.images {
 	gap: 20px;
+}
+
+@media (max-width: 860px) {
+	.slider.characters {
+		overflow: visible;
+	}
+
+	.slider_list.characters{
+flex-direction: column;
+	}
 }

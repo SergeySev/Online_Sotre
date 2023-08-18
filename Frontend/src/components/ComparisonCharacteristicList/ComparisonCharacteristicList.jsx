@@ -2,6 +2,7 @@ import { ComparisonCharacteristicItem } from '../'
 import s from './ComparisonCharacteristicList.module.css'
 
 export function ComparisonCharacteristicList({ characters }) {
+console.log("🚀 ~ file: ComparisonCharacteristicList.jsx:5 ~ ComparisonCharacteristicList ~ characters:", characters)
 
 	return (
 		<li className={s.product_characters}>

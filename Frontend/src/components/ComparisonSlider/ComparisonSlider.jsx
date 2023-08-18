@@ -17,11 +17,11 @@ export function ComparisonSlider({ products, offset, content }) {
 	return (
 			<div
 				style={{ maxWidth: {sliderWidtn}}}
-					className={s.slider}>
+					className={`${s.slider } ${s[content? content : ''] || ''}`}>
 				<ul
 					className={`${s.slider_list } ${s[content? content : ''] || ''}`}
 					style={{
-						transform: `translateX(${offset}px)`
+						transform: `translateX(${window.windowWidth <= 860 && content === 'characters'? 0 :offset }px)`
 					}}
 				>
 					{content === "images" ?
