@@ -80,7 +80,7 @@
   justify-content: center;
   align-items: center;
 }
-.analyze_title {
+.section_title {
   font-size: 20px;
   font-family: var(--font_prosto);
   margin-bottom: 12px;
@@ -88,4 +88,31 @@
 
 .analyze_list {
   max-width: 960px;
+}
+
+.statistic_wrapper {
+  max-width: 830px;
+}
+.statistic_text {
+  margin-bottom: 10px;
+}
+
+.statistic_table {
+  margin-top: 48px;
+  background-color: var(--white);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 10px 20px;
+  border-bottom: 2px solid var(--gray);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.head {
+  font-weight: 600;
 }
