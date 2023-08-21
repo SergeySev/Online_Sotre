@@ -116,3 +116,29 @@
 .head {
   font-weight: 600;
 }
+.bottom_wrapper {
+  display: flex;
+  gap: 0;
+}
+.bottom_left {
+  padding-top: 136px;
+  width: 55%;
+}
+.bottom_left img {
+  width: 100%;
+}
+.bottom_right {
+  background-color: var(--orange);
+  color: var(--white);
+  width: 45%;
+}
+.bottom_right_text_block {
+  max-width: 475px;
+  padding-top: 80px;
+  padding-left: 80px;
+  font-size: 16px;
+  line-height: 24px;
+}
+.bottom_right_text_block p {
+  margin-bottom: 10px;
+}

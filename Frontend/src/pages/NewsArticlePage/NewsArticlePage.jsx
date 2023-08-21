@@ -217,8 +217,26 @@ export default function NewsArticlePage() {
       </section>
       <section className={s.bottom}>
         <div className={s.bottom_wrapper}>
-          <div className={s.bottom_left}></div>
-          <div className={s.bottom_right}></div>
+          <div className={s.bottom_left}>
+            <img src={require("./assets/article-bottom.png")} alt="" />
+          </div>
+          <div className={s.bottom_right}>
+            <div className={s.bottom_right_text_block}>
+              <p className={s.bottom_right_text}>
+                “Several factors could have influenced the growth in demand in the
+                category of instruments. In 2021, housing commissioning in Russia
+                increased by almost 30%, which led to an increase in the number of
+                repairs in new apartments. Also this year, the Russians admitted
+                that they began to save on repairs and, if possible, carry them
+                out on their own.
+              </p>
+              <p className={s.bottom_right_text}>
+                In this regard, many of them needed their own tool”, - comments
+                the head of the press service of Instruments.ru Sergey Denisenko
+              </p>
+            </div>
+
+          </div>
         </div>
       </section>
     </div>
