@@ -11,6 +11,9 @@
 .top_banner {
   margin-top: 40px;
 }
+.top_banner img {
+  width: 100%;
+}
 
 .pre_text {
   margin-top: 48px;
@@ -92,6 +95,10 @@
 
 .statistic_wrapper {
   max-width: 830px;
+}
+
+.statistic_wrapper h2 {
+  margin-top: 60px;
 }
 .statistic_text {
   margin-bottom: 10px;

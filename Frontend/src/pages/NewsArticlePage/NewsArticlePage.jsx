@@ -2,7 +2,6 @@ import React from "react";
 import s from "./NewsArticlePage.module.css";
 import { Breadcrumbs } from "../../components";
 import { useParams } from "react-router-dom";
-import { news_list } from "../../data/data";
 
 export default function NewsArticlePage() {
   const article_id = useParams().article;
