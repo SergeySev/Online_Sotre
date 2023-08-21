@@ -77,15 +77,15 @@ export default function NewsArticlePage() {
                 <p>
                   The online hypermarket of goods for home, summer cottage,
                   construction and repair analyzed the demand for battery, hand
-                  and power tools in October 2021 and compared these figures with
-                  the same period in 2020. This autumn, Russians bought goods in
-                  this category more often by 38%.
+                  and power tools in October 2021 and compared these figures
+                  with the same period in 2020. This autumn, Russians bought
+                  goods in this category more often by 38%.
                 </p>
                 <p>
                   “Several factors could have influenced the growth in demand in
                   the category of instruments. In 2021, housing commissioning in
-                  Russia increased by almost 30%, which led to an increase in the
-                  number of repairs in new apartments. Also this year, the
+                  Russia increased by almost 30%, which led to an increase in
+                  the number of repairs in new apartments. Also this year, the
                   Russians admitted that they began to save on repairs and, if
                   possible, carry them out on their own. In this regard, many of
                   them needed their own tool”, - comments the head of the press
@@ -97,7 +97,44 @@ export default function NewsArticlePage() {
           </div>
         </div>
       </section>
-      <section className={s.analyze}></section>
+      <section className={s.analyze}>
+        <div className="container">
+          <div className={s.analyze_wrapper}>
+            <h2 className={s.analyze_title}>
+              Online hypermarket analyzed the demand:
+            </h2>
+            <ul className={s.analyze_list}>
+              <li className={s.analyze_list_item}>
+                — A completed and signed application for state registration of the
+                termination of activities of individuals as an individual
+                entrepreneur - form No. R26001 .
+              </li>
+              <li className={s.analyze_list_item}>
+                — Document confirming the payment of state duty in the amount of
+                160 ₽;
+              </li>
+              <li className={s.analyze_list_item}>
+                — A document confirming the provision of information to the
+                territorial body of the PFR .
+              </li>
+              <li className={s.analyze_list_item}>
+                — A completed and signed application for state registration of the
+                termination of activities of individuals as an individual
+                entrepreneur - form No. R26001 .
+              </li>
+              <li className={s.analyze_list_item}>
+                — Document confirming the payment of state duty in the amount of
+                160 ₽;
+              </li>
+              <li className={s.analyze_list_item}>
+                — A document confirming the provision of information to the
+                territorial body of the PFR
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
     </div>
   );
 }
