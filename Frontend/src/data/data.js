@@ -636,25 +636,25 @@ export const novelties_list = [
 export const news_list = [
 	{
 		id: 1,
-		title: 'News title',
+		title: 'Demand for household tools grew by 38% in a year',
 		image: 'news1.png',
 		date: '12th of January 2023'
 	},
 	{
 		id: 2,
-		title: 'News title',
+		title: 'Demand for household tools grew by 38% in a year',
 		image: 'news2.png',
 		date: '12th of January 2023'
 	},
 	{
 		id: 3,
-		title: 'News title',
+		title: 'Demand for household tools grew by 38% in a year',
 		image: 'news2.png',
 		date: '12th of January 2023'
 	},
 	{
 		id: 4,
-		title: 'News title',
+		title: 'Demand for household tools grew by 38% in a year',
 		image: 'news1.png',
 		date: '12th of January 2023'
 	},

@@ -7,10 +7,11 @@ import { get_filter_data } from "../store/reducers/filterSlice";
 import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
 import { aside_product_offers } from "../store/reducers/asideOffersSlice";
 import { toggle_comparison } from "../store/reducers/comparisonSlice";
+import { get_brand_products } from "../store/reducers/brandItemSlice";
 
 const base_url = "http://localhost:8080/api/v1";
 
-export const sign_in_user = ( async (email, password) => {
+export const sign_in_user = (async (email, password) => {
 	try {
 		const response = await fetch(`${base_url}/client/get_client?password=${password}&email=${email}`, {
 			method: 'POST',
@@ -24,22 +25,22 @@ export const sign_in_user = ( async (email, password) => {
 	} catch (error) {
 		console.error("fetch error: ", error);
 	}
-	});
-	
-	export const register_user = ( async (user) => {
-			try {
-				const response = await fetch(`${base_url}/client/registration`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(user)
-			})
-				const responseData = await response.json();
-				return responseData;
-		} catch (error) {
-			console.error("fetch error: ", error);
-		}
+});
+
+export const register_user = (async (user) => {
+	try {
+		const response = await fetch(`${base_url}/client/registration`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(user)
+		})
+		const responseData = await response.json();
+		return responseData;
+	} catch (error) {
+		console.error("fetch error: ", error);
+	}
 });
 
 export const fetch_main_categories = () => {
@@ -90,6 +91,21 @@ export const fetch_brands = () => {
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_brands([]));
+		}
+	};
+};
+
+
+
+export const fetch_brand_products = (brand) => {
+	return function (dispatch) {
+		try {
+			fetch(`${base_url}/product/getProductsByBrand?page=1&size=30&brandTitle=${brand}`)
+				.then((res) => res.json())
+				.then((data) => dispatch(get_brand_products(data)))
+		} catch (error) {
+			console.error("fetch error: ", error);
+			dispatch(get_brand_products([]));
 		}
 	};
 };
@@ -203,7 +219,8 @@ export const fetch_comparison_product = (product_id) => {
 				.then((res) => res.json())
 				.then((data) => {
 					console.log("🚀 ~ file: requests.js:204 ~ .then ~ data:", data)
-					dispatch(toggle_comparison(data))})
+					dispatch(toggle_comparison(data))
+				})
 				.catch(() => {
 					console.error("Failed to fetch data from the server. Setting empty categories.");
 					dispatch(toggle_comparison({}));

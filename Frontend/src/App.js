@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import { BurgerContext } from './context/burgerContext';
 import { PopUpContext } from './context/popUpContext';
 import { Header, Footer, PopUpContainer, PopUpContent } from './components';
-import { CartPage, BrandsPage, CheckoutPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, NotFoundPage, SubCategoryPage, UserProfilePage } from './pages';
+import { CartPage, BrandsPage, BrandItemPage, CheckoutPage, ComparisonPage, FavoriteProductsPage, HomePage, MainCategoriesPage, NotFoundPage, SubCategoryPage, UserProfilePage } from './pages';
 import './App.css';
+import NewsArticlePage from './pages/NewsArticlePage/NewsArticlePage';
 
 function App() {
 	const [burgerActive, setBurgerActive] = useState(false);
@@ -68,6 +69,8 @@ function App() {
 						<Route path='/comparison' element={<ComparisonPage />} />
 						<Route path='/cart' element={<CartPage />} />
 						<Route path='/brands' element={<BrandsPage />} />
+						<Route path='/brands/:brand' element={<BrandItemPage />} />
+						<Route path='/news/:article' element={<NewsArticlePage />} />
 						<Route path='/checkout' element={<CheckoutPage />} />
 						<Route path='/user' element={<UserProfilePage />} />
 						<Route path="*" element={<NotFoundPage />} />
