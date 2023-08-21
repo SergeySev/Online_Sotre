@@ -45,6 +45,59 @@ export default function NewsArticlePage() {
           </p>
         </div>
       </section>
+      <section>
+        <div className="container">
+          <div className={s.main_text}>
+            <div className={s.main_text_left}>
+              <div className={s.left_block}>
+                <p>
+                  “Several factors could have influenced the growth in demand in
+                  the category of instruments. In 2021, housing commissioning in
+                  Russia increased by almost 30%, which led to an increase in
+                  the number of repairs in new apartments. Also this year, the
+                  Russians admitted that they began to save on repairs and, if
+                  possible, carry them out on their own.
+                </p>
+                <p>
+                  In this regard, many of them needed their own tool”, -
+                  comments the head of the press service of Instruments.ru
+                  Sergey Denisenko
+                </p>
+              </div>
+              <p className={s.left_block_bottom}>
+                The online hypermarket of goods for the home, cottage,
+                construction and repair analyzed the demand for battery, hand
+                and power tools in October 2021 and compared these figures with
+                the same period in 2020. This autumn, Russians bought goods in
+                this category more often by 38%.
+              </p>
+            </div>
+            <div className={s.main_text_right}>
+              <div className={s.main_text_right_block}>
+                <p>
+                  The online hypermarket of goods for home, summer cottage,
+                  construction and repair analyzed the demand for battery, hand
+                  and power tools in October 2021 and compared these figures with
+                  the same period in 2020. This autumn, Russians bought goods in
+                  this category more often by 38%.
+                </p>
+                <p>
+                  “Several factors could have influenced the growth in demand in
+                  the category of instruments. In 2021, housing commissioning in
+                  Russia increased by almost 30%, which led to an increase in the
+                  number of repairs in new apartments. Also this year, the
+                  Russians admitted that they began to save on repairs and, if
+                  possible, carry them out on their own. In this regard, many of
+                  them needed their own tool”, - comments the head of the press
+                  service of Instruments.ru Sergey Denisenko
+                </p>
+              </div>
+              <img src={require("./assets/article-middle.png")} alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className={s.analyze}></section>
     </div>
   );
 }
