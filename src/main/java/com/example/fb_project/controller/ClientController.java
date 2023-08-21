@@ -2,6 +2,7 @@ package com.example.fb_project.controller;
 
 import com.example.fb_project.dto.ClientDto;
 import com.example.fb_project.dto.ClientRegisterDto;
+import com.example.fb_project.dto.ClientUpdateDto;
 import com.example.fb_project.service.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -68,7 +69,7 @@ public class ClientController {
     @GetMapping(path = "/get_clients")
     public Page<ClientDto> getClients(@RequestParam(defaultValue = "1") int page,
                                       @RequestParam(defaultValue = "30") int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         return clientService.getClientsByPage(pageable);
     }
 
@@ -81,5 +82,25 @@ public class ClientController {
     public ClientDto getClient(@RequestParam String password,
                                @RequestParam String email) {
         return clientService.getClient(password, email);
+    }
+
+    @Operation(summary = "Update Client")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
+    })
+    @PutMapping (path = "/update_client")
+    public ClientDto updateClient(@RequestBody ClientUpdateDto clientUpdateDto) {
+        return clientService.updateClient(clientUpdateDto);
+    }
+
+    @Operation(summary = "Add purchase")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
+    })
+    @PutMapping (path = "/add_purchase")
+    public ClientDto updateClient(@RequestParam String productId, String clientId) {
+        return clientService.addPurchase(productId, clientId);
     }
 }

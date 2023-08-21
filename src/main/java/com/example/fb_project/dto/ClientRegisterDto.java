@@ -16,4 +16,5 @@ public class ClientRegisterDto {
     private String email;
     private String password;
     private LocalDateTime birthDate;
+    private String address;
 }

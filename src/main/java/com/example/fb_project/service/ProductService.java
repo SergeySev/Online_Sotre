@@ -71,7 +71,6 @@ public class ProductService {
         characteristic.setWeight(productDto.getCharacteristicDto().getWeight());
 
 
-
         Product product = new Product(productDto.getTitle(),
                 productDto.getPrice(),
                 productDto.getDiscountPrice(),
@@ -147,6 +146,18 @@ public class ProductService {
     public Page<ProductDto> getAllProductsHit(Pageable pageable) {
         Page<Product> products = productRepository.findAllByIsHit(pageable, true);
         if (products.isEmpty()) throw new IllegalQueryOperationException("Product not found");
+        return products.map(productMapper::toDto);
+    }
+
+    public Page<ProductDto> getAllProductByBrand(Pageable pageable, String brandTitle) {
+        Brand brand = brandRepository.
+                findByTitle(brandTitle).
+                orElseThrow(() -> new IllegalArgumentException("Brand with title " + brandTitle + " not found"));
+        Page<Product> products = productRepository.findAllByBrand(pageable, brand);
+
+        if (products.isEmpty()) {
+            throw new IllegalArgumentException("Product with brand title " + brandTitle + " not found");
+        }
         return products.map(productMapper::toDto);
     }
 

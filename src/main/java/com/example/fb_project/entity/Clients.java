@@ -9,6 +9,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -30,13 +32,16 @@ public class Clients {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime birthDate;
+    private String address;
+    private List<Product> purchases = new ArrayList<>();
 
     public Clients(String first_name,
                    String last_name,
                    String phone_number,
                    String email,
                    String password,
-                   LocalDateTime birthDate) {
+                   LocalDateTime birthDate,
+                   String address) {
         this.firstName = first_name;
         this.lastName = last_name;
         this.phoneNumber = phone_number;
@@ -45,6 +50,7 @@ public class Clients {
         this.isBlocked = false;
         this.createdAt = LocalDateTime.now();
         this.birthDate = birthDate;
+        this.address = address;
     }
 
     @Override
@@ -59,7 +65,6 @@ public class Clients {
     public int hashCode() {
         return Objects.hash(phoneNumber, email);
     }
-    //Address (foreign_key),
     //Bucket_list (foreign_key),
     //Favourite_product (foreign_key),
     //Shopping_list (foreign_key) (only back-end)
