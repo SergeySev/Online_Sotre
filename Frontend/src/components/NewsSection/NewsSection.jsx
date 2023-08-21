@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { Button } from '../../UI'
 import { news_list } from '../../data/data'
 import s from './NewsSection.module.css';
@@ -18,8 +19,8 @@ export function NewsSection({ content }) {
 					<div className={s.news_block}>
 						{news_list.map(elem => (
 							<div className={s.news_item} key={elem.id}>
-								<img src={require('./assets/' + elem.image)} />
-								<h2 className={s.news_title}>{elem.title}</h2>
+								<NavLink to={`/news/${elem.id}`}><img src={require('./assets/' + elem.image)} /></NavLink>
+								<NavLink to={`/news/${elem.id}`}><h2 className={s.news_title}>{elem.title}</h2></NavLink>
 								<p className={s.date}>{elem.date}</p>
 							</div>
 						))}

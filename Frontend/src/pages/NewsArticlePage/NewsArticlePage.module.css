@@ -1,0 +1,22 @@
+.article_wrapper{
+    background-color: #F2F5F7;
+}
+
+.article_title{
+    font-size: 30px;
+    margin-top: 32px;
+    font-family: var(--font_prosto);
+}
+
+.top_banner{
+    margin-top: 40px;
+}
+
+.pre_text{
+    margin-top: 48px;
+}
+.pre_text_paragraph{
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 24px;
+}
