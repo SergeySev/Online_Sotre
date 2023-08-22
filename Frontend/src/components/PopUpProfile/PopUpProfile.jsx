@@ -5,7 +5,7 @@ import { remove_user } from '../../store/reducers/userSlice';
 import s from './PopUpProfile.module.css'
 
 export function PopUpProfile({ setActive }) {
-	const { surname, name, email } = useAuth()
+	const { surname, name, mail } = useAuth()
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate();
@@ -24,12 +24,10 @@ export function PopUpProfile({ setActive }) {
 
 	return (
 		<div className={s.popup_profile}>
-			<h2>User:
-				<span>{name} {surname}</span>
-				<span>{email}</span>
-			</h2>
-			<p onClick={handleNavigate}>Manage yor personal account</p>
-			<p onClick={handleOutAuth}>Log out</p>
+				<span className={s.profile_fullname}>{name} {surname}</span>
+				<span className={s.profile_email}>{mail}</span>
+			<p className={s.profile} onClick={handleNavigate}>Manage yor personal account</p>
+			<p className={s.logout} onClick={handleOutAuth}>Log out</p>
 		</div>
 	)
 }

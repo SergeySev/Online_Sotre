@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { courier_inputs } from '../../../data/data';
-import { CalendarCustom, PopUpContainer } from '../../';
+import { CalendarCustom, PopUpContainer, useAuth } from '../../';
 import { InputOrder } from '../../../UI';
 import s from './TabCourier.module.css'
 
 export function TabCourier() {
+
+	const isAuth = useAuth();
+	//console.log("🚀 ~ file: TabCourier.jsx:11 ~ TabCourier ~ isAuth:", isAuth)
 
 	const delivery = { ...useSelector(store => store.order.delivery) }
 	const { date, shipping } = { ...delivery[0] };
@@ -13,11 +16,11 @@ export function TabCourier() {
 	const [popup_active, setPopupActive] = useState(false);
 
 	const [values, setValues] = useState({
-		city: city ? city : '',
-		post_code: post_code ? post_code : '',
-		street: street ? street : '',
-		house: house ? house : '',
-		app: app ? app : '',
+		city: city ? city : isAuth.city,
+		post_code: post_code ? post_code : isAuth.postcode,
+		street: street ? street : isAuth.street,
+		house: house ? house : isAuth.house,
+		app: app ? app : isAuth.appartment,
 		date: date ? date : printDayFromMillisec(Date.now()),
 		shipping: shipping ? +shipping : "free",
 	});

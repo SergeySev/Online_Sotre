@@ -43,10 +43,6 @@ export function ComparisonSection() {
 		comparison_store.comparison_table.filter(
 			(elem) => elem.category_title === activeCategory
 		);
-	console.log(
-		"🚀 ~ file: ComparisonSection.jsx:33 ~ active_category_characteristics:",
-		active_category_characteristics
-	);
 
 	const main_characteristics = active_category_characteristics.map(
 		(elem) => elem.characters.main_characters

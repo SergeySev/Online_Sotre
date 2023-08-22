@@ -4,18 +4,32 @@
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	font-weight: 600;
+	font-weight: 500;
 }
 
-.popup_profile h2 {
+.profile_fullname {
+	font-weight: 700;
 	font-size: 20px;
 }
 
-.popup_profile p {
+.profile {
+	margin-top: 10px;
 	cursor: pointer;
 	transition: color var(--transition);
 }
 
-.popup_profile p:hover {
+.logout{
 	color: var(--orange);
+	cursor: pointer;
+	transition: color var(--transition);
+}
+
+@media (min-width: 762px) {
+	.profile:hover {
+		color: var(--orange);
+	}
+
+	.logout:hover{
+		color: var(--red);
+	}
 }
