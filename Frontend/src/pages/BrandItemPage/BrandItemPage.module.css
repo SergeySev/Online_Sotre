@@ -1,9 +1,24 @@
 .brand_page {
-	background-color: var(--background);
+  background-color: var(--background);
 }
 
 .page_title {
-	font-size: 48px;
-	font-weight: bold;
-	margin: 32px 0;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 32px 0;
+}
+.brand_description {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+.brand_description img {
+  width: 310px;
+}
+.brand_subtitle {
+  font-size: 30px;
+  line-height: 32px;
+  font-family: var(--font_prosto);
+  margin-bottom: 32px;
 }

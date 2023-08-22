@@ -35,9 +35,9 @@ public class BrandController {
             @ApiResponse(responseCode = "500", description = "Brands don't exist in the Data Base"),
     })
     @GetMapping(path = "/all")
-    public Page<BrandDto> getBrand(@RequestParam(defaultValue = "0") int page,
+    public Page<BrandDto> getBrand(@RequestParam(defaultValue = "1") int page,
                                    @RequestParam(defaultValue = "30") int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page -1, size);
         return brandService.getBrands(pageable);
     }
 

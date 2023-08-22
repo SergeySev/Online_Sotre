@@ -1,6 +1,9 @@
 import { get_brands } from "../store/reducers/brandSlice";
 import { get_categories } from "../store/reducers/categoriesSlice";
-import { get_filtered_subcategory_products, get_subcategory_products } from "../store/reducers/categoryProductsSlice";
+import {
+	get_filtered_subcategory_products,
+	get_subcategory_products,
+} from "../store/reducers/categoryProductsSlice";
 import { get_subcategories_by_main } from "../store/reducers/subCategoriesSlice";
 import { product_offers } from "../store/reducers/offersSlice";
 import { get_filter_data } from "../store/reducers/filterSlice";
@@ -11,37 +14,40 @@ import { get_brand_products } from "../store/reducers/brandItemSlice";
 
 const base_url = "http://localhost:8080/api/v1";
 
-export const sign_in_user = (async (email, password) => {
+export const sign_in_user = async (email, password) => {
 	try {
-		const response = await fetch(`${base_url}/client/get_client?password=${password}&email=${email}`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			//body: JSON.stringify(email, password)
-		})
+		const response = await fetch(
+			`${base_url}/client/get_client?password=${password}&email=${email}`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				//body: JSON.stringify(email, password)
+			}
+		);
 		const responseData = await response.json();
 		return responseData;
 	} catch (error) {
 		console.error("fetch error: ", error);
 	}
-});
+};
 
-export const register_user = (async (user) => {
+export const register_user = async (user) => {
 	try {
 		const response = await fetch(`${base_url}/client/registration`, {
-			method: 'POST',
+			method: "POST",
 			headers: {
-				'Content-Type': 'application/json',
+				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(user)
-		})
+			body: JSON.stringify(user),
+		});
 		const responseData = await response.json();
 		return responseData;
 	} catch (error) {
 		console.error("fetch error: ", error);
 	}
-});
+};
 
 export const fetch_main_categories = () => {
 	return function (dispatch) {
@@ -50,14 +56,15 @@ export const fetch_main_categories = () => {
 				.then((res) => res.json())
 				.then((data) => dispatch(get_categories(data)))
 				.catch(() => {
-					console.error("Failed to fetch data from the server. Setting empty categories.");
+					console.error(
+						"Failed to fetch data from the server. Setting empty categories."
+					);
 					dispatch(get_categories([]));
-				})
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_categories([]));
 		}
-
 	};
 };
 
@@ -68,9 +75,11 @@ export const fetch_sub_categories_by_main = (id) => {
 				.then((res) => res.json())
 				.then((data) => dispatch(get_subcategories_by_main(data)))
 				.catch(() => {
-					console.error("Failed to fetch data from the server. Setting empty categories.");
+					console.error(
+						"Failed to fetch data from the server. Setting empty categories."
+					);
 					dispatch(get_subcategories_by_main([]));
-				})
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_subcategories_by_main([]));
@@ -85,9 +94,11 @@ export const fetch_brands = () => {
 				.then((res) => res.json())
 				.then((data) => dispatch(get_brands(data)))
 				.catch(() => {
-					console.error("Failed to fetch data from the server. Setting empty categories.");
+					console.error(
+						"Failed to fetch data from the server. Setting empty categories."
+					);
 					dispatch(get_brands([]));
-				})
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_brands([]));
@@ -95,14 +106,16 @@ export const fetch_brands = () => {
 	};
 };
 
-
+// http://localhost:8080/api/v1/product/byFilterWithBrand?page=1&size=30&brandTitle=Sniezka&priceFrom=0&priceTo=500
 
 export const fetch_brand_products = (brand) => {
 	return function (dispatch) {
 		try {
-			fetch(`${base_url}/product/getProductsByBrand?page=1&size=30&brandTitle=${brand}`)
+			fetch(
+				`${base_url}/product/byFilterWithBrand?page=1&size=30&brandTitle=${brand}&priceFrom=0&priceTo=500`
+			)
 				.then((res) => res.json())
-				.then((data) => dispatch(get_brand_products(data)))
+				.then((data) => dispatch(get_brand_products(data)));
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_brand_products([]));
@@ -117,9 +130,11 @@ export const fetch_subcategory_products = (id) => {
 				.then((res) => res.json())
 				.then((data) => dispatch(get_subcategory_products(data)))
 				.catch(() => {
-					console.error("Failed to fetch data from the server. Setting empty categories.");
+					console.error(
+						"Failed to fetch data from the server. Setting empty categories."
+					);
 					dispatch(get_subcategory_products([]));
-				})
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_subcategory_products([]));
@@ -135,7 +150,7 @@ export const fetch_filtered_subcategory_products = (requestUrl) => {
 				.then((data) => dispatch(get_filtered_subcategory_products(data)))
 				.catch(() => {
 					dispatch(get_filtered_subcategory_products([]));
-				})
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_subcategory_products([]));
@@ -150,9 +165,11 @@ export const fetch_get_subcategory_by_title = (title) => {
 				.then((res) => res.json())
 				.then((data) => dispatch(get_subcategory_by_title(data)))
 				.catch(() => {
-					console.error("Failed to fetch data from the server. Setting empty categories.");
+					console.error(
+						"Failed to fetch data from the server. Setting empty categories."
+					);
 					dispatch(get_subcategory_by_title({}));
-				})
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_subcategory_by_title({}));
@@ -167,9 +184,11 @@ export const fetch_offers_products = (tag) => {
 				.then((resp) => resp.json())
 				.then((data) => dispatch(product_offers(data)))
 				.catch(() => {
-					console.error("Failed to fetch data from the server. Setting empty categories.");
+					console.error(
+						"Failed to fetch data from the server. Setting empty categories."
+					);
 					dispatch(product_offers([]));
-				})
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(product_offers([]));
@@ -184,9 +203,11 @@ export const fetch_aside_offers = () => {
 				.then((resp) => resp.json())
 				.then((data) => dispatch(aside_product_offers(data)))
 				.catch(() => {
-					console.error("Failed to fetch data from the server. Setting empty categories.");
+					console.error(
+						"Failed to fetch data from the server. Setting empty categories."
+					);
 					dispatch(aside_product_offers([]));
-				})
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(aside_product_offers([]));
@@ -201,9 +222,11 @@ export const fetch_filter_data = () => {
 				.then((res) => res.json())
 				.then((data) => dispatch(get_filter_data(data)))
 				.catch(() => {
-					console.error("Failed to fetch data from the server. Setting empty categories.");
+					console.error(
+						"Failed to fetch data from the server. Setting empty categories."
+					);
 					dispatch(get_filter_data([]));
-				})
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(get_filter_data([]));
@@ -211,18 +234,21 @@ export const fetch_filter_data = () => {
 	};
 };
 
-
 export const fetch_comparison_product = (product_id) => {
 	return function (dispatch) {
 		try {
 			fetch(`${base_url}/product/getProductById?id=${product_id}`)
 				.then((res) => res.json())
 				.then((data) => {
-					dispatch(toggle_comparison(data))})
-				.catch(() => {
-					console.error("Failed to fetch data from the server. Setting empty categories.");
-					dispatch(toggle_comparison({}));
+					console.log("🚀 ~ file: requests.js:204 ~ .then ~ data:", data);
+					dispatch(toggle_comparison(data));
 				})
+				.catch(() => {
+					console.error(
+						"Failed to fetch data from the server. Setting empty categories."
+					);
+					dispatch(toggle_comparison({}));
+				});
 		} catch (error) {
 			console.error("fetch error: ", error);
 			dispatch(toggle_comparison({}));

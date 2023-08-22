@@ -117,25 +117,47 @@ public class ProductController {
         return productService.getAllProductByBrand(pageable, brandTitle);
     }
 
-    @Operation(summary = "Get products by filter")
+    @Operation(summary = "Get products by filter with Sub Category")
     @ApiResponse(responseCode = "200", description = "Successful loaded")
-    @GetMapping(path = "/byFilter")
-    public Document getAllProductsByFilter(@RequestParam(defaultValue = "1") int page,
-                                           @RequestParam(defaultValue = "30") int size,
-                                           @RequestParam(defaultValue = "") String subCategoryId,
-                                           @RequestParam(defaultValue = "") String subCategoryTitle,
-                                           @RequestParam(defaultValue = "0") String priceFrom,
-                                           @RequestParam(defaultValue = "500") String priceTo,
-                                           @RequestParam(defaultValue = "") List<String> brandTitles,
-                                           @RequestParam(defaultValue = "") List<String> madeCountries,
-                                           @RequestParam(defaultValue = "") List<String> colours,
-                                           @RequestParam(defaultValue = "") List<String> deliveryTypes) {
+    @GetMapping(path = "/byFilterWithSubCategory")
+    public Document getAllProductsByFilterWithSubCategory(@RequestParam(defaultValue = "1") int page,
+                                                          @RequestParam(defaultValue = "30") int size,
+                                                          @RequestParam(defaultValue = "") String subCategoryId,
+                                                          @RequestParam(defaultValue = "") String subCategoryTitle,
+                                                          @RequestParam(defaultValue = "0") String priceFrom,
+                                                          @RequestParam(defaultValue = "500") String priceTo,
+                                                          @RequestParam(defaultValue = "") List<String> brandTitles,
+                                                          @RequestParam(defaultValue = "") List<String> madeCountries,
+                                                          @RequestParam(defaultValue = "") List<String> colours,
+                                                          @RequestParam(defaultValue = "") List<String> deliveryTypes) {
         Pageable pageable = PageRequest.of(page - 1, size);
-        return productService.getAllByFilter(subCategoryId,
+        return productService.getAllByFilterWithSubCategory(subCategoryId,
                 subCategoryTitle,
                 priceFrom,
                 priceTo,
                 brandTitles,
+                madeCountries,
+                colours,
+                deliveryTypes,
+                pageable
+        );
+    }
+
+    @Operation(summary = "Get products by filter with Brand")
+    @ApiResponse(responseCode = "200", description = "Successful loaded")
+    @GetMapping(path = "/byFilterWithBrand")
+    public Document getAllProductsByFilterWithBrand(@RequestParam(defaultValue = "1") int page,
+                                                    @RequestParam(defaultValue = "30") int size,
+                                                    @RequestParam(defaultValue = "") String brandTitle,
+                                                    @RequestParam(defaultValue = "0") String priceFrom,
+                                                    @RequestParam(defaultValue = "500") String priceTo,
+                                                    @RequestParam(defaultValue = "") List<String> madeCountries,
+                                                    @RequestParam(defaultValue = "") List<String> colours,
+                                                    @RequestParam(defaultValue = "") List<String> deliveryTypes) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+        return productService.getAllByFilterWithBrand(brandTitle,
+                priceFrom,
+                priceTo,
                 madeCountries,
                 colours,
                 deliveryTypes,
