@@ -71,6 +71,10 @@
 	gap: 10px;
 }
 
+.pagination_item {
+	transition: background-color var(--transition);
+}
+
 .pagination_item.unavailable svg {
 	color: var(--gray);
 }
@@ -89,34 +93,25 @@
 }
 
 .diff_btn {
+	position: relative;
+	min-width: 170px;
+	text-align: left;
 	flex-shrink: 0;
 	font-weight: 500;
 	color: var(--black);
-	transition: color var(--transition);
 	cursor: pointer;
+	transition: color var(--transition);
 }
 
 .comparison_titles {
-	width: 100%;
+	min-width: 188px;
+	text-align: left;
 }
 
 .comparison_title_item {
 	padding: 15px 18px 15px 0;
 	border-bottom: 1px solid var(--black);
 }
-
-/*
-.img_slider {
-	width: 100%;
-	overflow: hidden;
-}
-
-.img_list {
-	display: flex;
-	align-items: center;
-	gap: 20px;
-	transition: transform var(--transition);
-}*/
 
 .content_block {
 	margin-top: 24px;
@@ -132,6 +127,16 @@
 	gap: 50px;
 }
 
+.characters_arrow_btn{
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	transition: background-color var(--transition);
+}
+
 .arrow {
 	width: 24px;
 	height: auto;
@@ -140,10 +145,50 @@
 	transition: color var(--transition);
 }
 
+.characters_list{
+	display:flex;
+	flex-direction: column;
+	gap:20px;
+}
 
+.characters_item{
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--smoky);
+}
 
+.character_key{
+	font-weight: 700;
+	text-transform: capitalize;
+}
+
+.values_list{
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	gap:15px;
+}
+
+.values_item{}
+
+.product_title{
+	color: var(--smoky);
+}
+
+.character_value{
+	margin-top: 10px;
+	font-weight: 500;
+	text-align: center;
+}
 
 @media (min-width: 762px) {
+	.pagination_item:focus {
+		background-color: var(--gray);
+	}
+
+	.pagination_item:focus.unavailable {
+		background-color: var(--white);
+	}
+
 	.pagination_item:hover svg {
 		color: var(--orange);
 	}
@@ -157,8 +202,40 @@
 		color: var(--white);
 	}
 
+	.diff_btn:focus {
+		text-shadow: 0 0 5px var(--black);
+	}
+
 	.arrow:hover,
 	.diff_btn:hover {
 		color: var(--orange);
 	}
+
+	.diff_btn:active {
+		top: 1px;
+	}
+	.characters_arrow_btn:focus {
+	background-color: var(--gray);
+	}
+
+}
+
+@media (max-width: 860px) {
+	.comparison_image {
+		flex-direction: column-reverse;
+	}
+
+	.comparison_image,
+	.comparison_cahacters {
+		padding-right: 0;
+	}
+
+	.comparison_titles {
+		display: none;
+	}
+
+	.characters_accordeon {
+		margin-top: 25px;
+	}
+
 }

@@ -4,3 +4,9 @@
 .product_characters:last-child{
 	border:none;
 }
+
+@media (max-width: 860px) {
+	.product_characters{
+		border: none;
+	}
+}

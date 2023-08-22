@@ -1,9 +1,26 @@
-.comparison_item{
-	width: 220px;
-	text-align: center;
+.comparison_item {
+
 }
 
-.comparison_value{
-	padding: 15px 18px;
+.comparison_item:nth-child(2) {
+
+}
+
+.comparison_value {
+	max-width: 219px;
+	padding: 15px 10px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	border-bottom: 1px solid var(--black);
+}
+
+
+@media (max-width: 860px) {
+	.comparison_value {
+		width: 100%;
+		padding: 15px 10px;
+		border-bottom: 1px solid var(--black);
+	}
 }

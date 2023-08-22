@@ -8,7 +8,7 @@ import s from './PrivateInfo.module.css'
 
 export function PrivateInfo() {
 	const navigate = useNavigate()
-	const { isAuth, surname, name, tel, mail } = useAuth();
+	const { isAuth, surname, name, tel, mail, city, postcode, street, house, appartment } = useAuth();
 
 	useEffect(() => {
 		if (!isAuth) {
@@ -20,7 +20,12 @@ export function PrivateInfo() {
 		last_name: surname ?? '',
 		first_name: name ?? '',
 		phone: tel ?? '',
-		email: mail ?? ''
+		email: mail ?? '',
+		city:city ?? '', 
+		postcode:postcode ?? '', 
+		street:street ?? '', 
+		house:house ?? '', 
+		appartment:appartment ?? ''
 	});
 
 	const onChange = (e) => {
