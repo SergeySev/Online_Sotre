@@ -41,7 +41,7 @@ export function BrandItemPage() {
 				<h2 className={s.brand_subtitle}>{brand_title} products in our store</h2>
 				<div className={s.products_wrapper}>
 					<div className={s.products_list}>
-						{/* <ProductsList products={brand_products} /> */}
+						<ProductsList products={brand_products} />
 					</div>
 				</div>
 			</div>
