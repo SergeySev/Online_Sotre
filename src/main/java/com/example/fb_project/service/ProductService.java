@@ -8,6 +8,7 @@ import com.example.fb_project.entity.SubCategory;
 import com.example.fb_project.entity.enums.Color;
 import com.example.fb_project.entity.enums.DeliveryType;
 import com.example.fb_project.entity.enums.MadeCountry;
+import com.example.fb_project.mapper.BrandMapper;
 import com.example.fb_project.mapper.CharacteristicMapper;
 import com.example.fb_project.mapper.ProductMapper;
 import com.example.fb_project.repository.BrandRepository;
@@ -44,6 +45,8 @@ public class ProductService {
     private final CharacteristicRepository characteristicRepository;
 
     private final CharacteristicMapper characteristicMapper;
+
+    private final BrandMapper brandMapper;
 
     private final MongoTemplate mongoTemplate;
 
@@ -161,15 +164,15 @@ public class ProductService {
         return products.map(productMapper::toDto);
     }
 
-    public Document getAllByFilter(String subCategoryId,
-                                   String subCategoryTitle,
-                                   String priceFrom,
-                                   String priceTo,
-                                   List<String> brandTitle,
-                                   List<String> madeCountries,
-                                   List<String> colours,
-                                   List<String> deliveryTypes,
-                                   Pageable pageable
+    public Document getAllByFilterWithSubCategory(String subCategoryId,
+                                                  String subCategoryTitle,
+                                                  String priceFrom,
+                                                  String priceTo,
+                                                  List<String> brandTitle,
+                                                  List<String> madeCountries,
+                                                  List<String> colours,
+                                                  List<String> deliveryTypes,
+                                                  Pageable pageable
     ) {
         Criteria criteria = new Criteria();
 
@@ -228,6 +231,69 @@ public class ProductService {
 
         int page = pageable.getPageNumber() + 1;
 
+        document.put("content", productsDto);
+        document.put("totalPages", totalPages);
+        document.put("totalElement", totalElement);
+        document.put("elementOnPage", productsDto.size());
+        document.put("pageNumber", page);
+        document.put("lastPage", totalPages == page);
+        document.put("firstPage", page == 1);
+
+        return document;
+    }
+
+    public Document getAllByFilterWithBrand(String brandTitle,
+                                            String priceFrom,
+                                            String priceTo,
+                                            List<String> madeCountries,
+                                            List<String> colours,
+                                            List<String> deliveryTypes,
+                                            Pageable pageable
+    ) {
+        Criteria criteria = new Criteria();
+
+        Brand brand = brandRepository.
+                findByTitle(brandTitle).
+                orElseThrow(() -> new IllegalArgumentException("Brand not found"));
+
+        criteria.and("brand").in(brand);
+
+        Integer priceFromInInteger = Integer.valueOf(priceFrom);
+        Integer priceToInInteger = Integer.valueOf(priceTo);
+
+
+        if (!priceFrom.isEmpty() && !priceTo.isEmpty()) {
+            criteria.and("price").gte(priceFromInInteger).lte(priceToInInteger);
+        }
+
+        if (!madeCountries.isEmpty()) {
+            criteria.and("madeCountry").in(madeCountries.stream().map(String::toUpperCase).collect(Collectors.toList()));
+        }
+
+        if (!colours.isEmpty()) {
+            criteria.and("colour").in(colours.stream().map(String::toUpperCase).collect(Collectors.toList()));
+        }
+
+        if (!deliveryTypes.isEmpty()) {
+            criteria.and("deliveryType").in(deliveryTypes.stream().map(String::toUpperCase).collect(Collectors.toList()));
+        }
+
+        Query totalCountQuery = Query.query(criteria);
+        long totalElement = mongoTemplate.count(totalCountQuery, Product.class);
+
+        Query query = Query.query(criteria).with(pageable);
+
+        int totalPages = (int) Math.ceil((double) totalElement / pageable.getPageSize());
+
+        List<Product> products = mongoTemplate.find(query, Product.class);
+
+        List<ProductDto> productsDto = products.stream().map(productMapper::toDto).toList();
+
+        Document document = new Document();
+
+        int page = pageable.getPageNumber() + 1;
+
+        document.put("brand", brandMapper.toDto(brand));
         document.put("content", productsDto);
         document.put("totalPages", totalPages);
         document.put("totalElement", totalElement);
