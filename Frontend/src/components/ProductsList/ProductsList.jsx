@@ -15,6 +15,8 @@ export function ProductsList({ products, content, pagination_content }) {
 	const products_list = products.slice(firstElem, lastElem)
 	const countElem = Math.ceil(products.length / countProductsPage)
 
+	console.log(products_list);
+
 
 	useEffect(() => {
 		if (Math.ceil(products.length / countProductsPage) < currentPage) {
