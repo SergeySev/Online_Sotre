@@ -1,5 +1,6 @@
 package com.example.fb_project.controller;
 
+import com.example.fb_project.dto.ClientAuthorisationDto;
 import com.example.fb_project.dto.ClientDto;
 import com.example.fb_project.dto.ClientRegisterDto;
 import com.example.fb_project.dto.ClientUpdateDto;
@@ -73,15 +74,34 @@ public class ClientController {
         return clientService.getClientsByPage(pageable);
     }
 
-    @Operation(summary = "Get Client")
+    @Operation(summary = "Log In")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful loaded"),
             @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
     })
-    @PostMapping(path = "/get_client")
-    public ClientDto getClient(@RequestParam String password,
-                               @RequestParam String email) {
-        return clientService.getClient(password, email);
+    @PostMapping(path = "/logIn")
+    public ClientDto logIn(@RequestBody ClientAuthorisationDto clientAuthorisationDto) {
+        return clientService.authorisation(clientAuthorisationDto);
+    }
+
+    @Operation(summary = "Log Out")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
+    })
+    @GetMapping(path = "/logOut")
+    public ClientDto LogOut(@RequestParam String clientId) {
+        return clientService.logOut(clientId);
+    }
+
+    @Operation(summary = "Check token")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded. This method except only token"),
+            @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
+    })
+    @PostMapping(path = "/check_token")
+    public ClientDto LogOut(@RequestBody ClientDto clientDto) {
+        return clientService.checkToken(clientDto.getToken());
     }
 
     @Operation(summary = "Update Client")
@@ -92,6 +112,16 @@ public class ClientController {
     @PutMapping (path = "/update_client")
     public ClientDto updateClient(@RequestBody ClientUpdateDto clientUpdateDto) {
         return clientService.updateClient(clientUpdateDto);
+    }
+
+    @Operation(summary = "Update Clients Password")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
+    })
+    @PutMapping (path = "/update_clients_password")
+    public ClientDto updateClientsPassword(@RequestBody ClientUpdateDto clientUpdateDto) {
+        return clientService.updateClientsPassword(clientUpdateDto);
     }
 
     @Operation(summary = "Add purchase")

@@ -1,5 +1,6 @@
 package com.example.fb_project.dto;
 
+import com.example.fb_project.entity.Address;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
@@ -20,6 +21,7 @@ public class ClientDto {
     private String email;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     private LocalDateTime birthDate;
-    private String address;
+    private Address address;
     private List<ProductDto> purchases = new ArrayList<>();
+    private String token;
 }

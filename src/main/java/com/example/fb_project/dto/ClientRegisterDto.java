@@ -1,5 +1,6 @@
 package com.example.fb_project.dto;
 
+import com.example.fb_project.entity.Address;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -16,5 +17,5 @@ public class ClientRegisterDto {
     private String email;
     private String password;
     private LocalDateTime birthDate;
-    private String address;
+    private Address address;
 }
