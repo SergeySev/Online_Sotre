@@ -38,5 +38,10 @@ export function useAuth() {
 		street: street,
 		house: house,
 		appartment: appartment,
+		city: city,
+		postcode: postcode,
+		street: street,
+		house: house,
+		appartment: appartment,
 	};
 }

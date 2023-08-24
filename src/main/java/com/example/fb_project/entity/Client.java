@@ -18,7 +18,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @ToString
 @Document(collection = "clients")
-public class Clients {
+public class Client {
 
     @Id
     private ObjectId id;
@@ -32,16 +32,18 @@ public class Clients {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime birthDate;
-    private String address;
+    private Address address;
     private List<Product> purchases = new ArrayList<>();
 
-    public Clients(String first_name,
-                   String last_name,
-                   String phone_number,
-                   String email,
-                   String password,
-                   LocalDateTime birthDate,
-                   String address) {
+    private String token;
+
+    public Client(String first_name,
+                  String last_name,
+                  String phone_number,
+                  String email,
+                  String password,
+                  LocalDateTime birthDate,
+                  Address address) {
         this.firstName = first_name;
         this.lastName = last_name;
         this.phoneNumber = phone_number;
@@ -57,8 +59,8 @@ public class Clients {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Clients clients = (Clients) o;
-        return phoneNumber.equals(clients.phoneNumber) && email.equals(clients.email);
+        Client client = (Client) o;
+        return phoneNumber.equals(client.phoneNumber) && email.equals(client.email);
     }
 
     @Override

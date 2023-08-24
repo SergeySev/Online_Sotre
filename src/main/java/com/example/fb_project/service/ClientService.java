@@ -1,9 +1,10 @@
 package com.example.fb_project.service;
 
+import com.example.fb_project.dto.ClientAuthorisationDto;
 import com.example.fb_project.dto.ClientDto;
 import com.example.fb_project.dto.ClientRegisterDto;
 import com.example.fb_project.dto.ClientUpdateDto;
-import com.example.fb_project.entity.Clients;
+import com.example.fb_project.entity.Client;
 import com.example.fb_project.entity.Product;
 import com.example.fb_project.mapper.ClientMapperDto;
 import com.example.fb_project.mapper.ProductMapper;
@@ -18,7 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +46,7 @@ public class ClientService {
         if (!checkClientEmail)
             throw new IllegalQueryOperationException("The Client with this email already exists");
 
-        Clients registerClient = new Clients(
+        Client registerClient = new Client(
                 client.getFirstName(),
                 client.getLastName(),
                 client.getPhoneNumber(),
@@ -53,6 +54,8 @@ public class ClientService {
                 bCryptPasswordEncoder.encode(client.getPassword()),
                 client.getBirthDate(),
                 client.getAddress());
+
+        registerClient.setToken(UUID.randomUUID().toString());
         clientRepository.save(registerClient);
         return clientMapperDto.toDto(registerClient);
     }
@@ -88,33 +91,81 @@ public class ClientService {
     }
 
     public Page<ClientDto> getClientsByPage(Pageable pageable) {
-        Page<Clients> clients = clientRepository.findAll(pageable);
+        Page<Client> clients = clientRepository.findAll(pageable);
         if (clients.isEmpty())
             throw new IllegalQueryOperationException("Clients don't exist in the Data Base");
         return clients.map(clientMapperDto::toDto);
     }
 
-    public ClientDto getClient(String password, String email) {
-        Clients client = clientRepository.findByEmail(email)
+    public ClientDto authorisation(ClientAuthorisationDto clientAuthorisationDto) {
+        Client client = clientRepository.findByEmail(clientAuthorisationDto.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Client not found"));
 
-        if (bCryptPasswordEncoder.matches(password, client.getPassword())) {
-            ClientDto clientDto = clientMapperDto.toDto(client);
-            clientDto.setPurchases(productMapper.toDtoList(client.getPurchases()));
-            return clientDto;
+        if (bCryptPasswordEncoder.matches(clientAuthorisationDto.getPassword(), client.getPassword())) {
+            client.setToken(UUID.randomUUID().toString());
+
+            return setClientsPurchases(client);
         } else {
             throw new IllegalArgumentException("Invalid credentials");
         }
     }
 
+    private ClientDto setClientsPurchases(Client client) {
+        ClientDto clientDto = clientMapperDto.toDto(client);
+        clientDto.setPurchases(productMapper.toDtoList(client.getPurchases()));
+        return clientDto;
+    }
+
+    public ClientDto logOut(String clientId) {
+        Client client = clientRepository.findById(new ObjectId(clientId))
+                .orElseThrow(() -> new IllegalArgumentException("Client not found"));
+
+        client.setToken("");
+        return setClientsPurchases(client);
+    }
+
+    public ClientDto checkToken(String token) {
+        Client client = clientRepository.
+                findByToken(token).
+                orElseThrow(() -> new IllegalArgumentException("Client not found"));
+
+        return setClientsPurchases(client);
+    }
+
     public ClientDto updateClient(ClientUpdateDto clientUpdateDto) {
-        Clients client = clientRepository.
+        Client client = clientRepository.
                 findById(new ObjectId(clientUpdateDto.getId())).
                 orElseThrow(() -> new IllegalArgumentException("Client not found"));
 
-        client.setPassword(bCryptPasswordEncoder.encode(clientUpdateDto.getPassword()));
-        client.setPhoneNumber(clientUpdateDto.getPhone());
-        client.setAddress(clientUpdateDto.getAddress());
+        if (!client.getFirstName().isEmpty()) {
+            client.setFirstName(clientUpdateDto.getFirstName());
+        }
+
+        if (!client.getLastName().isEmpty()) {
+            client.setLastName(clientUpdateDto.getLastName());
+        }
+
+        if (!client.getPhoneNumber().isEmpty()) {
+            client.setPhoneNumber(clientUpdateDto.getPhoneNumber());
+        }
+
+        if (client.getBirthDate() != null) {
+            client.setBirthDate(clientUpdateDto.getBirthDate());
+        }
+        if (client.getAddress() != null) {
+            client.setAddress(clientUpdateDto.getAddress());
+        }
+
+        clientRepository.save(client);
+        return clientMapperDto.toDto(client);
+    }
+
+    public ClientDto updateClientsPassword(ClientUpdateDto clientUpdateDto) {
+        Client client = clientRepository.
+                findById(new ObjectId(clientUpdateDto.getId())).
+                orElseThrow(() -> new IllegalArgumentException("Client not found"));
+
+        client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
 
         clientRepository.save(client);
         return clientMapperDto.toDto(client);
@@ -125,7 +176,7 @@ public class ClientService {
                 findById(new ObjectId(productId)).
                 orElseThrow(() -> new IllegalArgumentException("The Product not found"));
 
-        Clients client = clientRepository.
+        Client client = clientRepository.
                 findById(new ObjectId(clientId)).
                 orElseThrow(() -> new IllegalArgumentException("The Client not found"));
 
