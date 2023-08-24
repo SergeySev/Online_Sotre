@@ -103,7 +103,7 @@ public class ClientService {
 
         if (bCryptPasswordEncoder.matches(clientAuthorisationDto.getPassword(), client.getPassword())) {
             client.setToken(UUID.randomUUID().toString());
-
+            clientRepository.save(client);
             return setClientsPurchases(client);
         } else {
             throw new IllegalArgumentException("Invalid credentials");
