@@ -15,22 +15,32 @@ import { logout_user, set_user } from "../store/reducers/userSlice";
 
 const base_url = "http://localhost:8080/api/v1";
 
-export const fetch_check_token = (token) => {
-	return function (dispatch) {
-		try {
-			fetch(`${base_url}/client/check_token`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(token),
-			})
-				.then((res) => res.json())
-				.then((data) => dispatch(set_user(data)));
-		} catch (error) {
-			console.error("fetch error: ", error);
-		}
-	};
+export const fetch_check_token = async (token) => {
+	//return function (dispatch) {
+	try {
+		// fetch(`${base_url}/client/check_token`, {
+		//	method: "POST",
+		//	headers: {
+		//		"Content-Type": "application/json",
+		//	},
+		//	body: JSON.stringify(token),
+		//})
+		//	.then((res) => res.json())
+		//	.then((data) => {dispatch(set_user(data))});
+
+		const response = await fetch(`${base_url}/client/check_token`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(token),
+		});
+		const responseData = await response.json();
+		return responseData;
+	} catch (error) {
+		console.error("fetch error: ", error);
+	}
+	//};
 };
 
 export const fetch_user_logout = (user_id) => {

@@ -5,13 +5,13 @@ const updateSessionStorage = (token) => {
 	sessionStorage.setItem("user_token", token);
 };
 
-const sessionStorageData = sessionStorage.getItem("user_token");
+//const sessionStorageData = sessionStorage.getItem("user_token");
 
 const userSlice = createSlice({
 	name: "user",
 	initialState: {
-		token: sessionStorageData || "",
 		id: "",
+		token: "",
 		surname: "",
 		name: "",
 		email: "",
@@ -26,10 +26,10 @@ const userSlice = createSlice({
 	},
 	reducers: {
 		set_user(state, action) {
-			console.log(
-				"🚀 ~ file: userSlice.js:29 ~ set_user ~ action:",
-				action.payload
-			);
+			//console.log(
+			//	"🚀 ~ file: userSlice.js:29 ~ set_user ~ action:",
+			//	action.payload
+			//);
 
 			state.id = action.payload.id || "";
 			state.surname = action.payload.lastName || "";
