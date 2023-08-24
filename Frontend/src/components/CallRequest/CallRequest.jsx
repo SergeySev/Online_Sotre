@@ -1,15 +1,14 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Button, Input } from '../../UI'
-import { call_request } from '../../data/data';
-import s from './CallRequest.module.css'
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Button, Input } from "../../UI";
+import { call_request } from "../../data/data";
+import s from "./CallRequest.module.css";
 
 export function CallRequest({ setActiveWindow }) {
-
 	const [values, setValues] = useState({
-		name: '',
-		phone: '',
-		message: '',
+		name: "",
+		phone: "",
+		message: "",
 	});
 
 	// const dispatch = useDispatch();
@@ -24,29 +23,28 @@ export function CallRequest({ setActiveWindow }) {
 		const newRequest = {
 			name: name.value,
 			phone: phone.value,
-			message: message.value
-		}
-		console.log("🚀 ~ file: CallRequest.jsx:29 ~ sendHandler ~ newRequest:", newRequest)
-		setActiveWindow('alert')
-	}
+			message: message.value,
+		};
+		//console.log("🚀 ~ file: CallRequest.jsx:29 ~ sendHandler ~ newRequest:", newRequest)
+		setActiveWindow("alert");
+	};
 
 	return (
 		<form
 			className={s.form}
 			onClick={(e) => e.stopPropagation(e)}
-			onSubmit={sendHandler}>
+			onSubmit={sendHandler}
+		>
 			<h2 className={s.form_title}>Request a call</h2>
 			<ul className={s.form_inner}>
-
-				{call_request.map(input =>
+				{call_request.map((input) => (
 					<Input
 						key={input.id}
 						{...input}
 						value={values[input.name]}
 						onChange={onChange}
 					/>
-				)
-				}
+				))}
 				<li className={s.item}>
 					<label className={s.label}>
 						Comments
@@ -59,12 +57,11 @@ export function CallRequest({ setActiveWindow }) {
 					</label>
 				</li>
 			</ul>
-			<Button
-				text='Send'
-				content="register" />
+			<Button text="Send" content="register" />
 			<p className={s.form_agreement}>
-				Clicking on the button you agree to the <span>processing of your personal data</span>
+				Clicking on the button you agree to the{" "}
+				<span>processing of your personal data</span>
 			</p>
 		</form>
-	)
+	);
 }
