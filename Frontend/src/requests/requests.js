@@ -11,8 +11,54 @@ import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
 import { aside_product_offers } from "../store/reducers/asideOffersSlice";
 import { toggle_comparison } from "../store/reducers/comparisonSlice";
 import { get_brand_products } from "../store/reducers/brandItemSlice";
+import { set_user } from "../store/reducers/userSlice";
 
 const base_url = "http://localhost:8080/api/v1";
+
+export const fetch_update_user = async (updated_user) => {
+	console.log("🚀 ~ file: requests.js:19 ~ updated_user:", updated_user);
+	//return async (dispatch) => {
+	try {
+		const response = await fetch(`${base_url}/client/update_client`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(updated_user),
+		});
+		const responseData = await response.json();
+		console.log(
+			"🚀 ~ file: requests.js:30 ~ //return ~ responseData:",
+			responseData
+		);
+		return responseData;
+		//.then((response) => response.json())
+		//.then((data) => {
+		//	console.log(data);
+		//	dispatch(set_user(data));
+		//});
+	} catch (error) {
+		console.error("fetch error: ", error);
+	}
+	//};
+};
+
+export const fetch_update_password = async (new_password) => {
+	try {
+		const response = await fetch(`${base_url}/client/update_clients_password`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			//body: JSON.stringify( { password: new_password }),
+			body: { password: new_password },
+		});
+		const responseData = await response.json();
+		return responseData;
+	} catch (error) {
+		console.error("fetch error: ", error);
+	}
+};
 
 export const fetch_check_token = async (token) => {
 	try {
