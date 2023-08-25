@@ -53,6 +53,7 @@ export { CalendarCustom } from "./CalendarCustom/CalendarCustom";
 export { PopUpContainer } from "./PopUpContainer/PopUpContainer";
 export { PopUp } from "./PopUp/PopUp";
 export { PopUpProfile } from "./PopUpProfile/PopUpProfile";
+export { PopUpOrder } from "./PopUpOrder/PopUpOrder";
 
 export { PopUpContent } from "./PopUpContent/PopUpContent";
 export { RegisterForm } from "./RegisterForm/RegisterForm";
@@ -76,5 +77,3 @@ export { ComparisonSlider } from "./ComparisonSlider/ComparisonSlider";
 export { ComparisonProduct } from "./ComparisonProduct/ComparisonProduct";
 export { ComparisonCharacteristicList } from "./ComparisonCharacteristicList/ComparisonCharacteristicList";
 export { ComparisonCharacteristicItem } from "./ComparisonCharacteristicItem/ComparisonCharacteristicItem";
-
-
