@@ -1,4 +1,4 @@
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,16 +6,28 @@ import { useAuth } from "../";
 import { BurgerContext } from "../../context/burgerContext";
 import { PopUpContext } from "../../context/popUpContext";
 import s from "./MenuIconsItem.module.css";
+import { useDispatch } from "react-redux";
+import { fetch_check_token } from "../../requests/requests";
+import { set_user } from "../../store/reducers/userSlice";
 
 export function MenuIconsItem({ image, title, icon, count, link }) {
 	const context = useContext(BurgerContext);
 	const contextPopUp = useContext(PopUpContext);
+	const dispatch = useDispatch();
 
 	const { isAuth } = useAuth();
-	//console.log(
-	//	"🚀 ~ file: MenuIconsItem.jsx:15 ~ MenuIconsItem ~ isAuth:",
-	//	isAuth
-	//);
+
+	useEffect(() => {
+		if (!isAuth && title === "avatar") {
+			const saved_token = sessionStorage.getItem("user_token");
+			if (!!saved_token) checkToken(saved_token);
+		}
+	}, []);
+
+	const checkToken = async (token) => {
+		const resp = await fetch_check_token({ token });
+		dispatch(set_user(resp));
+	};
 
 	const showToast = useCallback((message) => {
 		toast(message, {

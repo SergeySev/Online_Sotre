@@ -1,11 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import userEvent from "@testing-library/user-event";
 
 const updateSessionStorage = (token) => {
 	sessionStorage.setItem("user_token", token);
 };
-
-//const sessionStorageData = sessionStorage.getItem("user_token");
 
 const userSlice = createSlice({
 	name: "user",
@@ -26,10 +23,10 @@ const userSlice = createSlice({
 	},
 	reducers: {
 		set_user(state, action) {
-			//console.log(
-			//	"🚀 ~ file: userSlice.js:29 ~ set_user ~ action:",
-			//	action.payload
-			//);
+			console.log(
+				"🚀 ~ file: userSlice.js:29 ~ set_user ~ action:",
+				action.payload
+			);
 
 			state.id = action.payload.id || "";
 			state.surname = action.payload.lastName || "";
@@ -46,16 +43,8 @@ const userSlice = createSlice({
 			state.purchases = action.payload.purchases || [];
 			updateSessionStorage(state.token);
 		},
-		//sign_auth_user(state, action) {
-		//	console.log("🚀 ~ file: userSlice.js:25 ~ sign_auth_user ~ action:", action.payload)
-		//	return { ...state, token: action.payload }
-		//},
-		logout_user(state, action) {
-			console.log("🚀 ~ file: userSlice.js:50 ~ logout_user ~ state:", state);
-			console.log(
-				"🚀 ~ file: userSlice.js:50 ~ logout_user ~ action:",
-				action.payload
-			);
+
+		logout_user() {
 			updateSessionStorage("");
 			return {};
 		},

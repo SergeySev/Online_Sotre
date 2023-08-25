@@ -3,9 +3,10 @@ import { useAuth } from "../hooks/useAuth";
 import { useDispatch } from "react-redux";
 import s from "./PopUpProfile.module.css";
 import { fetch_user_logout } from "../../requests/requests";
+import { logout_user } from "../../store/reducers/userSlice";
 
 export function PopUpProfile({ setActive }) {
-	const { surname, name, mail } = useAuth();
+	const { id, surname, name, mail } = useAuth();
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -16,7 +17,8 @@ export function PopUpProfile({ setActive }) {
 	};
 
 	const handleOutAuth = () => {
-		dispatch(fetch_user_logout());
+		fetch_user_logout(id);
+		dispatch(logout_user());
 		setActive(false);
 		navigate("/Online_Store");
 	};
