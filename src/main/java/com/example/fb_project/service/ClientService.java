@@ -121,6 +121,7 @@ public class ClientService {
                 .orElseThrow(() -> new IllegalArgumentException("Client not found"));
 
         client.setToken("");
+        clientRepository.save(client);
         return setClientsPurchases(client);
     }
 
