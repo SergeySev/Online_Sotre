@@ -7,7 +7,7 @@ import s from './SubCategoryPage.module.css'
 
 export function SubCategoryPage() {
 
-	const [isAssideOpen, setIsAssideOpen] = useState(false);
+	const [isAsideOpen, setIsAsideOpen] = useState(false);
 
 	const dispatch = useDispatch()
 
@@ -32,7 +32,7 @@ export function SubCategoryPage() {
 	}
 
 	return (
-		<section className={`${s.subcategory_section} ${s[isAssideOpen ? "open" : ''] || ''}`}>
+		<section className={`${s.subcategory_section} ${s[isAsideOpen ? "open" : ''] || ''}`}>
 			<div className='container'>
 				<Breadcrumbs items={breadcrumbsItems} />
 				<h1 className='title'>{subcategory_title}</h1>
@@ -40,10 +40,10 @@ export function SubCategoryPage() {
 					<aside className={s.aside_container}>
 						<BurgerAside
 							content='aside'
-							isAssideOpen={isAssideOpen}
-							setIsAssideOpen={setIsAssideOpen}
+							isAsideOpen={isAsideOpen}
+							setIsAsideOpen={setIsAsideOpen}
 						/>
-						<div className={`${s.aside_content} ${s[isAssideOpen ? "open" : ''] || ''}`}>
+						<div className={`${s.aside_content} ${s[isAsideOpen ? "open" : ''] || ''}`}>
 							<MainCategoriesAside categories={categories} changeProductList={changeProductList} />
 							<FilterAside subcategory_title={subcategory_title} />
 							<OffersAside />

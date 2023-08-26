@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { set_brand_data, set_color_data, set_country_data, set_delivery_data, set_price_data } from '../../../store/reducers/requestBodySlice'
 import FilterPriceRange from '../../FilterPriceRange/FilterPriceRange'
 import s from './FilterAsideElem.module.css'
-import { fetch_filtered_subcategory_products } from '../../../requests/requests'
 
-
-
-export function FilterAsideElem({ title, data, subcategory_title, setRequest_url }) {
+export function FilterAsideElem({ title, data, subcategory_title, setRequest_url, location }) {
 	const base_filter_url = 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30';
 
 	const subcategory_string = `&subCategoryTitle=${subcategory_title}`;
@@ -17,7 +14,7 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 	let color_string = '';
 	let delivery_string = '';
 
-
+	console.log(data);
 
 	const [activeFilter, setActiveFilter] = useState(false)
 
@@ -44,7 +41,9 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 		}
 
 		if (title === 'Brands') {
-			dispatch(set_brand_data(elem))
+			if (!location) {
+				dispatch(set_brand_data(elem))
+			}
 		}
 
 		if (title === 'Delivery Type') {
@@ -99,7 +98,6 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 			}
 		}
 		setRequest_url(base_filter_url + subcategory_string + brands_string + country_string + color_string + price_range_string);
-		// request_url = base_filter_url + subcategory_string + brands_string + country_string + color_string + delivery_string;
 
 	}, [requestBody])
 
@@ -109,11 +107,14 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 			<div className={!activeFilter ? s.collapse : s.collapse_open}>
 				<form className={s.tab_form}>
 					{title !== 'Price' ? data.map((elem, index) => {
+
 						return <label key={index}>
 							<input type={'checkbox'} name={elem} className={s.filter_checkbox} onChange={(e) => handleChange(title, elem)} />
 							<span className={s.checkmark}></span>
 							{elem}
 						</label>
+
+
 					})
 						: <FilterPriceRange min={data[0]} max={data[1]} setRequestBody={setRequestBody} />
 					}
@@ -123,3 +124,4 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 		</li>
 	)
 }
+

@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import { Breadcrumbs, ProductsList } from '../../components';
+import { Breadcrumbs, BurgerAside, FilterAside, OffersAside, ProductsList } from '../../components';
 import s from './BrandItemPage.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetch_brand_products } from '../../requests/requests';
 
 
@@ -24,6 +24,10 @@ export function BrandItemPage() {
 	];
 
 	const dispatch = useDispatch()
+	const [isAssideOpen, setIsAssideOpen] = useState(false);
+	const subcategory_title = useSelector(store => store.category_products.category_title)
+	const location = 'brand'
+
 
 	useEffect(() => {
 		dispatch(fetch_brand_products(brand_title))
@@ -42,6 +46,17 @@ export function BrandItemPage() {
 				</div>
 				<h2 className={s.brand_subtitle}>{brand_title} products in our store</h2>
 				<div className={s.products_wrapper}>
+					<aside className={s.aside_container}>
+						<BurgerAside
+							content='aside'
+							isAssideOpen={isAssideOpen}
+							setIsAssideOpen={setIsAssideOpen}
+						/>
+						<div className={`${s.aside_content} ${s[isAssideOpen ? "open" : ''] || ''}`}>
+							<FilterAside subcategory_title={subcategory_title} location={location} />
+							<OffersAside />
+						</div>
+					</aside>
 					<div className={s.products_list}>
 						<ProductsList products={brand_products} />
 					</div>
