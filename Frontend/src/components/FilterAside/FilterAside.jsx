@@ -4,16 +4,18 @@ import { fetch_filter_data, fetch_filtered_subcategory_products } from '../../re
 import s from './FilterAside.module.css'
 import { FilterAsideElem } from './FilterAsideElem/FilterAsideElem';
 
-export function FilterAside({ subcategory_title, location }) {
+export function FilterAside({ subcategory_title, brand }) {
+
 	const [request_url, setRequest_url] = useState('')
 
 	const dispatch = useDispatch()
 
 	useEffect(() => dispatch(fetch_filter_data()), [dispatch])
+
 	const filter_data = useSelector(store => store.filter_data)
 
 	useEffect(() => {
-		if (request_url !== 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle=') {
+		if (request_url !== 'http://localhost:8080/api/v1/product/byFilterWithSubCategory?page=1&size=30&subCategoryTitle=') {
 			dispatch(fetch_filtered_subcategory_products(request_url))
 		}
 	}, [request_url])
@@ -27,7 +29,7 @@ export function FilterAside({ subcategory_title, location }) {
 				if (elem === 'Price') {
 					data = filter_data['Price']
 				} else if (elem === 'Brands') {
-					if (!location) {
+					if (!brand) {
 						data = filter_data['Brands']
 					}
 				} else if (elem === 'Color') {
@@ -37,7 +39,7 @@ export function FilterAside({ subcategory_title, location }) {
 				} else if (elem === 'Made Country') {
 					data = filter_data['Made Country']
 				}
-				if (!location) {
+				if (!brand) {
 					return <FilterAsideElem
 						key={index}
 						title={elem}
@@ -52,6 +54,7 @@ export function FilterAside({ subcategory_title, location }) {
 						data={data}
 						subcategory_title={subcategory_title}
 						setRequest_url={setRequest_url}
+						brand={brand}
 					/>
 				}
 

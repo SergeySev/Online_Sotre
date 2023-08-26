@@ -53,7 +53,7 @@ export function BrandItemPage() {
 							setIsAssideOpen={setIsAssideOpen}
 						/>
 						<div className={`${s.aside_content} ${s[isAssideOpen ? "open" : ''] || ''}`}>
-							<FilterAside subcategory_title={subcategory_title} location={location} />
+							<FilterAside subcategory_title={subcategory_title} brand={brand_title} />
 							<OffersAside />
 						</div>
 					</aside>
