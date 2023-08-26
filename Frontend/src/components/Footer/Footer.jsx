@@ -1,13 +1,20 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { main_menu_list } from '../../data/data'
 import { Logo, SocialIconList } from '../'
 import s from './Footer.module.css'
+import { useEffect } from 'react'
+import { fetch_main_categories } from '../../requests/requests'
 
 
 export function Footer() {
 
+	const dispatch = useDispatch()
 	const catalog_list = useSelector(store => store.categories)
+
+	useEffect(() => {
+		dispatch(fetch_main_categories())
+	}, [])
 
 	return (
 		<footer className={s.footer}>
