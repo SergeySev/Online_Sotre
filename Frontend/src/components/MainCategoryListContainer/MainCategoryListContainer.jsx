@@ -11,12 +11,11 @@ export function MainCategoryListContainer({ ident }) {
 	id = id ? id : ident
 
 	const dispatch = useDispatch()
+	const subcategories = useSelector(store => store.subcategories)
 
 	useEffect(() => {
 		if (id) dispatch(fetch_sub_categories_by_main(id))
 	}, [id])
-
-	const subcategories = useSelector(store => store.subcategories)
 
 	return (
 		<ProductsList products={subcategories} content={id} pagination_content='subcategories' />

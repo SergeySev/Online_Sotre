@@ -8,30 +8,27 @@ const REST_PART = 376;
 export function ComparisonSlider({ products, offset, content }) {
 
 	const window = useWindow()
-	//const sliderWidtn = window.windowWidth - REST_PART;
 	const current_width = window.windowWidth - REST_PART
-	const sliderWidtn = window.windowWidth > 860 ? `${current_width}px`: `100%`;
-	//const sliderWidtn = current_width;
+	const sliderWidtn = window.windowWidth > 860 ? `${current_width}px` : `100%`;
 
-	//console.log("🚀 ~ file: ComparisonSlider.jsx:14 ~ ComparisonSlider ~ sliderWidtn:", sliderWidtn)
 	return (
-			<div
-				style={{ maxWidth: {sliderWidtn}}}
-					className={`${s.slider } ${s[content? content : ''] || ''}`}>
-				<ul
-					className={`${s.slider_list } ${s[content? content : ''] || ''}`}
-					style={{
-						transform: `translateX(${window.windowWidth <= 860 && content === 'characters'? 0 :offset }px)`
-					}}
-				>
-					{content === "images" ?
-							products.map((product, index) => 
+		<div
+			style={{ maxWidth: { sliderWidtn } }}
+			className={`${s.slider} ${s[content ? content : ''] || ''}`}>
+			<ul
+				className={`${s.slider_list} ${s[content ? content : ''] || ''}`}
+				style={{
+					transform: `translateX(${window.windowWidth <= 860 && content === 'characters' ? 0 : offset}px)`
+				}}
+			>
+				{content === "images" ?
+					products.map((product, index) =>
 						<ComparisonProduct key={index} product={product} />)
-						:
-							products.map((product, index) => 
+					:
+					products.map((product, index) =>
 						<ComparisonCharacteristicList key={index} characters={product} />)
-					}
-				</ul>
-			</div>
+				}
+			</ul>
+		</div>
 	)
 }

@@ -5,12 +5,12 @@ import s from './CartItem.module.css'
 import { useDispatch } from 'react-redux';
 
 export function CartItem(product) {
+
 	const { mainImageLink, title, subCategoryTitle, discountPrice, price, cart_amount, mainCategoryId, subCategoryId } = product;
-	// const { mainImageLink, title, subCategory, discountPrice, price, cart_amount } = product;
 	const dispatch = useDispatch()
 	const total_summ = ((discountPrice ? discountPrice : price) * cart_amount).toFixed(2);
 
-	const remoove_from = (count) => {
+	const remove_from = (count) => {
 		const data = {
 			product,
 			count
@@ -41,7 +41,7 @@ export function CartItem(product) {
 			<div className={s.quantity_wrapper}>
 				<button
 					className={s.btn}
-					onClick={() => remoove_from(1)}
+					onClick={() => remove_from(1)}
 				>-</button>
 				<span>{cart_amount}</span>
 				<button
@@ -55,7 +55,7 @@ export function CartItem(product) {
 			</div>
 			<AiOutlineClose
 				className={s.close_btn}
-				onClick={() => remoove_from(cart_amount)}
+				onClick={() => remove_from(cart_amount)}
 			/>
 		</li>
 	)

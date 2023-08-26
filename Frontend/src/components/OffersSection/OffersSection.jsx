@@ -39,7 +39,6 @@ export function OffersSection() {
 	}
 
 	const dispatch = useDispatch();
-
 	const { active_tag, nav_list } = useSelector(store => store.navigation);
 	const offers = useSelector(store => store.offers);
 

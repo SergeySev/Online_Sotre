@@ -7,12 +7,10 @@ import { FilterAsideElem } from './FilterAsideElem/FilterAsideElem';
 export function FilterAside({ subcategory_title, brand }) {
 
 	const [request_url, setRequest_url] = useState('')
-
+	const filter_data = useSelector(store => store.filter_data)
 	const dispatch = useDispatch()
 
 	useEffect(() => dispatch(fetch_filter_data()), [dispatch])
-
-	const filter_data = useSelector(store => store.filter_data)
 
 	useEffect(() => {
 		if (request_url !== 'http://localhost:8080/api/v1/product/byFilterWithSubCategory?page=1&size=30&subCategoryTitle=') {
@@ -22,11 +20,8 @@ export function FilterAside({ subcategory_title, brand }) {
 				console.log(request_url);
 				dispatch(fetch_filtered_brand_products(request_url))
 			}
-
 		}
 	}, [request_url])
-
-
 
 	return (
 		<ul className={s.aside_wrapper}>
@@ -63,7 +58,6 @@ export function FilterAside({ subcategory_title, brand }) {
 						brand={brand}
 					/>
 				}
-
 			}
 			)}
 		</ul>

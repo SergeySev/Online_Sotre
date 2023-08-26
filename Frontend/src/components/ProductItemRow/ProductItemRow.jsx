@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import s from './ProductItemRow.module.css'
 import { FiHeart, FiBarChart2 } from 'react-icons/fi';
 import { ToggleCartBtn } from '../ToggleCartBtn/ToggleCartBtn';
 import { NewSign } from '../NewSign/NewSign';
 import { useDispatch, useSelector } from 'react-redux';
-import { useInView } from 'react-intersection-observer';
 import { toggle_favorite } from '../../store/reducers/favoriteSlice';
 import { toggle_comparison } from '../../store/reducers/comparisonSlice';
 
 export default function ProductItemRow({ product }) {
 
     const { id, mainImageLink, title, description, discountPrice, price, inStock } = product;
-
     const dispatch = useDispatch();
     const favorite_id_list = useSelector(store => store.favorite.favorite_list).map(el => el.id)
     const comparison_id_list = useSelector(store => store.comparison.comparison_list).map(el => el.id)
 
-    let tag = ''
+    let tag = '';
+
     if (product.isNew) {
         tag = 'NEW'
     }
@@ -26,9 +25,9 @@ export default function ProductItemRow({ product }) {
     if (product.discountPrice) {
         tag = 'PROMO'
     }
+
     return (
         <div className={s.product_item_row}>
-
             <div className={s.tag}><NewSign tag={tag} /></div>
             <div className={s.add_to}>
                 <FiBarChart2

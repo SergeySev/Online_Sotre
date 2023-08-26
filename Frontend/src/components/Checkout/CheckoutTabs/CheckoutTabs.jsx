@@ -3,6 +3,7 @@ import { CheckoutTitleList, TabData, TabDelivery, TabPayment } from '../';
 import s from './CheckoutTabs.module.css'
 
 export function CheckoutTabs() {
+
 	let [activeTab, setActiveTab] = useState(1);
 
 	const error = () => {

@@ -1,17 +1,15 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Button, Input } from "../../UI";
 import { call_request } from "../../data/data";
 import s from "./CallRequest.module.css";
 
 export function CallRequest({ setActiveWindow }) {
+
 	const [values, setValues] = useState({
 		name: "",
 		phone: "",
 		message: "",
 	});
-
-	// const dispatch = useDispatch();
 
 	const onChange = (e) => {
 		setValues({ ...values, [e.target.name]: e.target.value });
@@ -25,7 +23,6 @@ export function CallRequest({ setActiveWindow }) {
 			phone: phone.value,
 			message: message.value,
 		};
-		//console.log("🚀 ~ file: CallRequest.jsx:29 ~ sendHandler ~ newRequest:", newRequest)
 		setActiveWindow("alert");
 	};
 

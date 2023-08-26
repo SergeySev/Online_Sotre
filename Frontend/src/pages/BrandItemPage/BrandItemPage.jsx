@@ -13,21 +13,16 @@ export function BrandItemPage() {
 	const brand_products = useSelector(store => store.brand_item.brand_product_list)
 	const brand_description = useSelector(store => store.brand_item.brand_description)
 	const brand_image = useSelector(store => store.brand_item.brand_image)
-	// console.log(brand_products);
-	// console.log(brand_description);
-	// console.log(brand_image);
+	const dispatch = useDispatch()
+	const [isAssideOpen, setIsAssideOpen] = useState(false);
+	const subcategory_title = useSelector(store => store.category_products.category_title)
+	const location = 'brand'
 
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Brands /', link: '/brands' },
 		{ text: `${brand_title}`, link: `/${brand_title}` },
 	];
-
-	const dispatch = useDispatch()
-	const [isAssideOpen, setIsAssideOpen] = useState(false);
-	const subcategory_title = useSelector(store => store.category_products.category_title)
-	const location = 'brand'
-
 
 	useEffect(() => {
 		dispatch(fetch_brand_products(brand_title))

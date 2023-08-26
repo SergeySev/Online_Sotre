@@ -3,6 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import s from './BurgerAside.module.css'
 
 export function BurgerAside({ isAssideOpen, setIsAssideOpen, content }) {
+
 	return (
 		<div
 			className={`

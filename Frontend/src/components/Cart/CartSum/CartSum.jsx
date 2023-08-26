@@ -4,6 +4,7 @@ import s from './CartSum.module.css'
 export function CartSum() {
 
 	const total_summ = useSelector(store => store.cart.total_summ);
+
 	return (
 		<div className={s.total}>
 			<p className={s.total_text}>Total sum</p>

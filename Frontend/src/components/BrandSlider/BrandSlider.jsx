@@ -11,12 +11,7 @@ import { NavLink } from 'react-router-dom';
 export function BrandSlider() {
 
 	const dispatch = useDispatch()
-	useEffect(() => {
-		dispatch(fetch_brands())
-	}, [])
-
 	const brands = useSelector(store => store.brands)
-
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -51,6 +46,8 @@ export function BrandSlider() {
 			}
 		]
 	}
+
+	useEffect(() => dispatch(fetch_brands()), [])
 
 	return (
 		<section className={s.brand_slider}>

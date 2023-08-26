@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import s from './PrivateInfo.module.css'
 
 export function PrivateInfo() {
+
 	const navigate = useNavigate()
 	const { isAuth, surname, name, tel, mail, city, postcode, street, house, appartment } = useAuth();
 
@@ -21,11 +22,11 @@ export function PrivateInfo() {
 		first_name: name ?? '',
 		phone: tel ?? '',
 		email: mail ?? '',
-		city:city ?? '', 
-		postcode:postcode ?? '', 
-		street:street ?? '', 
-		house:house ?? '', 
-		appartment:appartment ?? ''
+		city: city ?? '',
+		postcode: postcode ?? '',
+		street: street ?? '',
+		house: house ?? '',
+		appartment: appartment ?? ''
 	});
 
 	const onChange = (e) => {
@@ -35,7 +36,6 @@ export function PrivateInfo() {
 	const submit = (e) => {
 		e.preventDefault();
 	}
-
 
 	return (
 		<>

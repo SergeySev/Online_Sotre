@@ -6,8 +6,8 @@ import { TabCourier, TabPickup } from '../';
 import s from './TabDelivery.module.css'
 
 export function TabDelivery({ activeTab, setActiveTab }) {
-	const [delivery_type, setDeliverytype] = useState('courier');
 
+	const [delivery_type, setDeliverytype] = useState('courier');
 	const dispatch = useDispatch();
 
 	const radioChange = (e) => {

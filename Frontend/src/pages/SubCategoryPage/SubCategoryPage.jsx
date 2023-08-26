@@ -8,7 +8,6 @@ import s from './SubCategoryPage.module.css'
 export function SubCategoryPage() {
 
 	const [isAsideOpen, setIsAsideOpen] = useState(false);
-
 	const dispatch = useDispatch()
 
 	let id = useParams();

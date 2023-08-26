@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useContext, useState } from "react";
 import { Button } from "../../../UI";
 import { payments, radio_orders } from "../../../data/data";
@@ -9,18 +9,17 @@ import { clean_cart } from "../../../store/reducers/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 export const TabPayment = () => {
-	// const order = { ...useSelector(store => store.order) }
-	// console.log("🚀 ~ file: TabPayment.jsx:6 ~ TabPayment ~ order:", order)
+
 	const contextPopUp = useContext(PopUpContext);
 	const navigate = useNavigate();
-
 	const [payment_type, setPaymentType] = useState("receiving");
 	const [receiving_type, setReceivingType] = useState("cash");
-
 	const dispatch = useDispatch();
+
 	const paymentChange = (e) => {
 		setPaymentType(e.target.value);
 	};
+
 	const receivingChange = (e) => {
 		setReceivingType(e.target.value);
 	};
@@ -50,9 +49,8 @@ export const TabPayment = () => {
 				<ul className={s.radio_buttons}>
 					{payments.map((elem) => (
 						<li
-							className={`${s.radio_item} ${
-								s[payment_type === elem.type ? "active" : ""] || ""
-							}`}
+							className={`${s.radio_item} ${s[payment_type === elem.type ? "active" : ""] || ""
+								}`}
 							key={elem.id}
 						>
 							<label>
@@ -73,9 +71,8 @@ export const TabPayment = () => {
 					<>
 						{radio_orders.map((elem) => (
 							<li
-								className={`${s.radio_item} ${
-									s[receiving_type === elem.type ? "active" : ""] || ""
-								} ${s[payment_type === "online" ? "disabled" : ""] || ""}`}
+								className={`${s.radio_item} ${s[receiving_type === elem.type ? "active" : ""] || ""
+									} ${s[payment_type === "online" ? "disabled" : ""] || ""}`}
 								key={elem.id}
 							>
 								<label>
@@ -92,9 +89,8 @@ export const TabPayment = () => {
 							</li>
 						))}
 						<li
-							className={`${s.radio_item} ${s["active"]} ${
-								s[payment_type === "receiving" ? "disabled" : ""] || ""
-							}`}
+							className={`${s.radio_item} ${s["active"]} ${s[payment_type === "receiving" ? "disabled" : ""] || ""
+								}`}
 						>
 							<label>
 								<input

@@ -36,7 +36,6 @@ export function Banner() {
 				</div>
 
 			</div>
-
 		</section>
 	)
 }

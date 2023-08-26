@@ -8,12 +8,11 @@ export function SortSelect({ content }) {
 
 	const [active, setActive] = useState(false)
 	const refSelect = useRef();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		refSelect.value = sort_select_values[0].value;
 	}, [content]);
-
-	const dispatch = useDispatch();
 
 	const toogleActive = (e) => {
 		setActive(!active)

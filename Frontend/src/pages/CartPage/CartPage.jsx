@@ -6,12 +6,12 @@ import s from './CartPage.module.css'
 
 export function CartPage() {
 
+	const products_list = useSelector(store => store.cart.cart_list)
+
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Shopping cart', link: '/cart' },
 	];
-
-	const products_list = useSelector(store => store.cart.cart_list)
 
 	return (
 		<section className={s.cart_page}>

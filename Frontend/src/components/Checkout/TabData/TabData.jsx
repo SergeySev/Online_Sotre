@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { SubmitHandler } from "react-hook-form"
 import { Button, InputOrder } from '../../../UI';
 import { customer_data } from '../../../store/reducers/orderSlice';
 import { user_inputs } from '../../../data/data';
@@ -8,8 +7,8 @@ import s from './TabData.module.css'
 import { useAuth } from '../../hooks/useAuth';
 
 export function TabData({ activeTab, setActiveTab }) {
-	const { first_name, last_name, phone, email } = { ...useSelector(store => store.order) };
 
+	const { first_name, last_name, phone, email } = { ...useSelector(store => store.order) };
 	const { isAuth, mail, surname, name, tel } = useAuth()
 
 	const [values, setValues] = useState({
@@ -35,7 +34,6 @@ export function TabData({ activeTab, setActiveTab }) {
 			phone: phone?.value,
 			email: email?.value,
 		}
-
 		if (activeTab < 3) {
 			setActiveTab(++activeTab)
 		}

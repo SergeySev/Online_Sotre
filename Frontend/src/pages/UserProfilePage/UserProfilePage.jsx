@@ -4,13 +4,14 @@ import { Breadcrumbs, OffersAside, UserOrdersHistory, PrivateInfo, CatalogBurger
 import s from './UserProfilePage.module.css'
 
 export function UserProfilePage() {
+
+	const [isAssideOpen, setIsAssideOpen] = useState(false);
+	const [user_content, setUserContent] = useState('data');
+
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Personal Profile', link: '/user' },
 	];
-
-	const [isAssideOpen, setIsAssideOpen] = useState(false);
-	const [user_content, setUserContent] = useState('data');
 
 	const handleClick = (arg) => {
 		setUserContent(arg);
