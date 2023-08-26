@@ -7,7 +7,7 @@ export default function NewsArticlePage() {
   const breadcrumbsItems = [
     { text: "Home /", link: "/Online_Store" },
     { text: "News /", link: "#" },
-    { text: "Demand for household tools grew by 38% in a year", link: "#" },
+    { text: "Demand for household ...", link: "#" },
   ];
   return (
     <div className={s.article_wrapper}>
