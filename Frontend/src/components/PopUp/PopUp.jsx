@@ -3,6 +3,7 @@ import './popup.css'
 import s from './PopUp.module.css'
 
 export const PopUp = forwardRef(
+
 	({ content, ...other }, ref) => {
 
 		useEffect(() => {

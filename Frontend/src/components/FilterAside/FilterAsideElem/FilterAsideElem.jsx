@@ -16,14 +16,12 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 	let delivery_string = '';
 
 	const [activeFilter, setActiveFilter] = useState(false)
-
 	const dispatch = useDispatch()
+	const requestBody = useSelector(state => state.requestBody)
 
 	const changeActive = () => {
 		setActiveFilter(!activeFilter)
 	}
-
-	const requestBody = useSelector(state => state.requestBody)
 
 	const setRequestBody = (title, elem) => {
 
@@ -59,7 +57,6 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 			if (key === 'priceRange') {
 				if (requestBody.priceRange.length !== 0) {
 					price_range_string = `&priceFrom=${requestBody.priceRange[0]}&priceTo=${Math.ceil(requestBody.priceRange[1])}`
-					// console.log(price_range_string)
 				}
 			}
 
@@ -67,7 +64,6 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 				if (requestBody.brands.length !== 0) {
 					for (let i = 0; i < requestBody.brands.length; i++) {
 						brands_string += `&brandTitles=${requestBody.brands[i]}`
-						// console.log(brands_string)
 					}
 				}
 			}
@@ -75,7 +71,6 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 				if (requestBody.country.length !== 0) {
 					for (let i = 0; i < requestBody.country.length; i++) {
 						country_string += `&madeCountries=${requestBody.country[i]}`
-						// console.log(country_string)
 					}
 				}
 			}
@@ -83,7 +78,6 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 				if (requestBody.color.length !== 0) {
 					for (let i = 0; i < requestBody.color.length; i++) {
 						color_string += `&colours=${requestBody.color[i]}`
-						// console.log(color_string)
 					}
 				}
 			}
@@ -91,7 +85,6 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 				if (requestBody.delivery.length !== 0) {
 					for (let i = 0; i < requestBody.delivery.length; i++) {
 						delivery_string += `&deliveryTypes=${requestBody.delivery[i]}`
-						// console.log(delivery_string)
 					}
 				}
 			}
@@ -111,19 +104,15 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 			<div className={!activeFilter ? s.collapse : s.collapse_open}>
 				<form className={s.tab_form}>
 					{title !== 'Price' ? data.map((elem, index) => {
-
 						return <label key={index}>
 							<input type={'checkbox'} name={elem} className={s.filter_checkbox} onChange={(e) => handleChange(title, elem)} />
 							<span className={s.checkmark}></span>
 							{elem}
 						</label>
-
-
 					})
 						: <FilterPriceRange min={data[0]} max={data[1]} setRequestBody={setRequestBody} />
 					}
 				</form>
-
 			</div>
 		</li>
 	)

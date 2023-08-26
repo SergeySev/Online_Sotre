@@ -8,8 +8,6 @@ import s from './TabCourier.module.css'
 export function TabCourier() {
 
 	const isAuth = useAuth();
-	//console.log("🚀 ~ file: TabCourier.jsx:11 ~ TabCourier ~ isAuth:", isAuth)
-
 	const delivery = { ...useSelector(store => store.order.delivery) }
 	const { date, shipping } = { ...delivery[0] };
 	const { city, street, house, post_code, app } = delivery[0]?.address;
@@ -25,11 +23,6 @@ export function TabCourier() {
 		shipping: shipping ? +shipping : "free",
 	});
 
-	function printDayFromMillisec(millisec) {
-		const date_local = new Date(millisec);
-		return `${date_local.getDate()}.${date_local.getMonth() + 1}.${date_local.getFullYear()}`;
-	}
-
 	const setCalendarValue = (date) => {
 		const day_format = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
 		setPopupActive(false);
@@ -43,6 +36,11 @@ export function TabCourier() {
 	const setDeliveryShipping = (delivery_date) => {
 		const sec_now = Date.now();
 		return (delivery_date - sec_now < 1000 * 60 * 60 * 24 * 3) ? 50 : 30
+	}
+
+	function printDayFromMillisec(millisec) {
+		const date_local = new Date(millisec);
+		return `${date_local.getDate()}.${date_local.getMonth() + 1}.${date_local.getFullYear()}`;
 	}
 
 	return (

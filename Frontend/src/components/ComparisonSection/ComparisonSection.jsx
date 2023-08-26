@@ -8,11 +8,7 @@ import {
 	IoIosArrowForward,
 	IoIosArrowDown,
 } from "react-icons/io";
-import {
-	ComparisonCharacteristicList,
-	ComparisonProduct,
-	ComparisonSlider,
-} from "../";
+import { ComparisonSlider } from "../";
 import s from "./ComparisonSection.module.css";
 
 const SLIDE_WIDTH = 220;
@@ -21,24 +17,23 @@ const REST_PART = 376;
 export function ComparisonSection() {
 	const window = useWindow();
 	const sliderWidth = window.windowWidth - REST_PART;
-
 	const navigate = useNavigate();
 	const total_amount = useSelector((store) => store.comparison.total_amount);
-	if (!total_amount) {
-		navigate("/Online_Store/#home");
-	}
-
 	const comparison_store = useSelector((state) => state.comparison);
 	const comparison_list = comparison_store.comparison_list;
 	const categories_titles = comparison_store.categories_titles;
-
 	const [offset, setOffset] = useState(0);
 	const [activeCategory, setActiveCategory] = useState(categories_titles[0]);
 	const [isCharacteristicCommon, setCharacteristicCommon] = useState(false);
 
+	if (!total_amount) {
+		navigate("/Online_Store/#home");
+	}
+
 	const active_ctegory_products = comparison_list.filter(
 		(product) => activeCategory === product.mainCategoryTitle
 	);
+
 	const active_category_characteristics =
 		comparison_store.comparison_table.filter(
 			(elem) => elem.category_title === activeCategory
@@ -47,15 +42,19 @@ export function ComparisonSection() {
 	const main_characteristics = active_category_characteristics.map(
 		(elem) => elem.characters.main_characters
 	);
+
 	const common_characteristics = active_category_characteristics.map(
 		(elem) => elem.characters.all_characters
 	);
 
 	const main_characteristics_keys = Object.keys(main_characteristics[0]);
+
 	const main_characteristics_values = main_characteristics.map((elem) =>
 		Object.values(elem)
 	);
+
 	const common_characteristics_keys = Object.keys(common_characteristics[0]);
+
 	const common_characteristics_values = common_characteristics.map((elem) =>
 		Object.values(elem)
 	);
@@ -82,6 +81,7 @@ export function ComparisonSection() {
 	const showLess = () => {
 		setCharacteristicCommon(true);
 	};
+
 	const showMore = () => {
 		setCharacteristicCommon(false);
 	};
@@ -97,9 +97,8 @@ export function ComparisonSection() {
 			<ul className={s.subcaregories_list}>
 				{categories_titles.map((category) => (
 					<li
-						className={`${s.subcaregories_item} ${
-							s[activeCategory === category ? "active" : ""] || ""
-						}`}
+						className={`${s.subcaregories_item} ${s[activeCategory === category ? "active" : ""] || ""
+							}`}
 						key={category}
 						onClick={() => setActiveCategory(category)}
 					>
@@ -111,17 +110,15 @@ export function ComparisonSection() {
 			<div className={s.comparison_content}>
 				<div className={s.pagination_list}>
 					<button
-						className={`${s.pagination_item} ${
-							s[offset === 0 ? "unavailable" : ""] || ""
-						}`}
+						className={`${s.pagination_item} ${s[offset === 0 ? "unavailable" : ""] || ""
+							}`}
 						onClick={handleLeft}
 					>
 						<IoIosArrowBack />
 					</button>
 					<button
-						className={`${s.pagination_item} ${
-							s[Math.abs(offset) >= sliderWidth ? "unavailable" : ""] || ""
-						}`}
+						className={`${s.pagination_item} ${s[Math.abs(offset) >= sliderWidth ? "unavailable" : ""] || ""
+							}`}
 						onClick={handleRight}
 					>
 						<IoIosArrowForward />
@@ -169,9 +166,9 @@ export function ComparisonSection() {
 										<ul className={s.values_list}>
 											{active_category_characteristics.map(
 												(character, index) => (
-													<li 
-													className={s.values_item}
-													key={index}>
+													<li
+														className={s.values_item}
+														key={index}>
 														<h4 className={s.product_title}>
 															{character.product_title}
 														</h4>

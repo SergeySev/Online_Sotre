@@ -7,12 +7,11 @@ import s from './MainCategoriesListGallery.module.css'
 export function MainCategoriesListGallery() {
 
 	const dispatch = useDispatch()
+	const categories = useSelector(store => store.categories)
+
 	useEffect(() => {
 		dispatch(fetch_main_categories())
 	}, [])
-
-	const categories = useSelector(store => store.categories)
-	// console.log("MainCategoriesListGallery: ", categories);
 
 	return (
 		<section className={s.main_categories}>

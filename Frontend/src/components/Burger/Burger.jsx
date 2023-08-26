@@ -4,8 +4,8 @@ import { AiOutlineClose } from 'react-icons/ai';
 import s from './Burger.module.css'
 
 export function Burger() {
+
 	const { burgerActive, setBurgerActive } = useContext(BurgerContext);
-	//console.log("🚀 ~ file: Burger.jsx:8 ~ Burger ~ burgerActive:", burgerActive)
 
 	return (
 		<div

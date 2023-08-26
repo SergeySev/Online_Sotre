@@ -7,6 +7,7 @@ export function PopUpContainer({ popup_active, setPopupActive, content }) {
 	const nodeRef = useRef(null);
 
 	return (
+
 		<CSSTransition
 			in={popup_active}
 			nodeRef={nodeRef}

@@ -8,6 +8,8 @@ import s from './RegisterForm.module.css';
 
 export function RegisterForm({ setActiveWindow, setActive }) {
 
+	const dispatch = useDispatch();
+
 	const [values, setValues] = useState({
 		surname: '',
 		name: '',
@@ -29,12 +31,10 @@ export function RegisterForm({ setActiveWindow, setActive }) {
 		setValues({ ...values, [e.target.name]: e.target.value });
 	};
 
-	const dispatch = useDispatch();
+
 
 	const sendHandler = async (e) => {
 		e.preventDefault();
-
-		const { surname, name, email, phone, birthday, password } = e.target
 
 		const newUser = {
 			id: Date.now(),

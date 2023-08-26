@@ -6,16 +6,15 @@ import s from './FavoriteProductsPage.module.css'
 import { useNavigate } from 'react-router-dom';
 
 export function FavoriteProductsPage() {
-	// console.log("FavoriteProductsPage reload");
+
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const products_list = useSelector(store => store.favorite.favorite_list);
+
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Favorites', link: '/favorite' },
 	];
-
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const products_list = useSelector(store => store.favorite.favorite_list);
 
 	useEffect(() => {
 		dispatch(sort_by_new());

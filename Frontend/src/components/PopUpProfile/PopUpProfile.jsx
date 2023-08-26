@@ -6,8 +6,8 @@ import { fetch_user_logout } from "../../requests/requests";
 import { logout_user } from "../../store/reducers/userSlice";
 
 export function PopUpProfile({ setActive }) {
-	const { id, surname, name, mail } = useAuth();
 
+	const { id, surname, name, mail } = useAuth();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 

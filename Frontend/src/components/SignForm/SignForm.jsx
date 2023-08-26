@@ -7,14 +7,14 @@ import { sign_in_user } from "../../requests/requests";
 import s from "./SignForm.module.css";
 
 export function SignForm({ setActiveWindow, setActive }) {
+
+	const [isError, setIsError] = useState(false);
+	const dispatch = useDispatch();
+
 	const [values, setValues] = useState({
 		email: "",
 		password: "",
 	});
-
-	const [isError, setIsError] = useState(false);
-
-	const dispatch = useDispatch();
 
 	const onChange = (e) => {
 		setValues({ ...values, [e.target.name]: e.target.value });

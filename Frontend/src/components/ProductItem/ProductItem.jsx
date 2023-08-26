@@ -8,11 +8,11 @@ import s from "./ProductItem.module.css";
 import { fetch_comparison_product } from "../../requests/requests";
 
 export function ProductItem({ product }) {
+
 	const [img_index, setImg_index] = useState(0);
 	const [activeImg, setActiveImg] = useState(true);
 	const dispatch = useDispatch();
-
-	//console.log(product);
+	const bar_list = [0, 1, 2, 3];
 
 	const favorite_id_list = useSelector(
 		(store) => store.favorite.favorite_list
@@ -22,6 +22,7 @@ export function ProductItem({ product }) {
 	).map((el) => el.id);
 
 	let tag = "";
+
 	if (product.isNew) {
 		tag = "NEW";
 	}
@@ -42,8 +43,6 @@ export function ProductItem({ product }) {
 		setActiveImg(true);
 	};
 
-	const bar_list = [0, 1, 2, 3];
-
 	return (
 		<li className={s.product_item}>
 			<div className={s.top_signs}>
@@ -52,17 +51,15 @@ export function ProductItem({ product }) {
 				</div>
 				<div className={s.add_to}>
 					<FiBarChart2
-						className={`${s.bars} ${
-							s[comparison_id_list.includes(product.id) ? "active" : ""] || ""
-						}`}
+						className={`${s.bars} ${s[comparison_id_list.includes(product.id) ? "active" : ""] || ""
+							}`}
 						onClick={() =>
 							dispatch(() => dispatch(fetch_comparison_product(product.id)))
 						}
 					/>
 					<FiHeart
-						className={`${s.heart} ${
-							s[favorite_id_list.includes(product.id) ? "active" : ""] || ""
-						}`}
+						className={`${s.heart} ${s[favorite_id_list.includes(product.id) ? "active" : ""] || ""
+							}`}
 						onClick={() => dispatch(toggle_favorite(product))}
 					/>
 				</div>
@@ -86,9 +83,8 @@ export function ProductItem({ product }) {
 						onClick={() => change_product_img(elem)}
 					>
 						<div
-							className={`${s.bar_item} ${
-								s[activeImg && img_index === elem ? "active" : ""] || ""
-							} `}
+							className={`${s.bar_item} ${s[activeImg && img_index === elem ? "active" : ""] || ""
+								} `}
 						></div>
 					</li>
 				))}

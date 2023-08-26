@@ -6,6 +6,7 @@ import s from './CatalogBurger.module.css'
 
 
 export function CatalogBurger({ isBlocked }) {
+
 	const context = useContext(BurgerContext);
 
 	return (

@@ -6,7 +6,9 @@ import { ToggleCartBtn } from '../'
 import s from './ComparisonProduct.module.css'
 
 export function ComparisonProduct({ product }) {
+
 	const dispatch = useDispatch();
+
 	return (
 		<li className={s.product_item}>
 			<FontAwesomeIcon icon={faXmark} onClick={() => dispatch(toggle_comparison(product))} className={s.close} />

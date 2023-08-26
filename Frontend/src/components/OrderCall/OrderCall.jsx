@@ -3,11 +3,14 @@ import s from './OrderCall.module.css'
 import { PopUpContext } from '../../context/popUpContext';
 
 export function OrderCall({ isBlocked }) {
+
 	const contextPopUp = useContext(PopUpContext);
+
 	const handleClick = () => {
 		contextPopUp.setTitle('phone');
 		contextPopUp.setPopupActive(true);
 	}
+
 	return (
 		<div className={`${s.call_context} ${s[isBlocked] || ''}`}
 			onClick={handleClick}

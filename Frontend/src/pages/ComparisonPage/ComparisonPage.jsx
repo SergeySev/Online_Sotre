@@ -2,6 +2,7 @@ import { NewsSection, Breadcrumbs, ComparisonSection } from "../../components";
 import s from './ComparisonPage.module.css'
 
 export function ComparisonPage() {
+
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Comparison Page', link: '/comparison' },

@@ -8,6 +8,7 @@ import s from './BrandsPage.module.css'
 export function BrandsPage() {
 
 	const dispatch = useDispatch()
+	const brands = useSelector(store => store.brands)
 
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/Online_Store' },
@@ -17,8 +18,6 @@ export function BrandsPage() {
 	useEffect(() => {
 		dispatch(fetch_brands())
 	}, [])
-
-	const brands = useSelector(store => store.brands)
 
 	return (
 		<div className={s.brand_page}>

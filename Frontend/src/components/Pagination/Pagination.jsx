@@ -14,6 +14,7 @@ export function Pagination({ setCurrentPage, countElem, currentPage, pagination_
 			setCurrentPage(currentPage - 1)
 		}
 	}
+
 	const increment_cur_page = () => {
 		if (currentPage < countElem) {
 			setCurrentPage(currentPage + 1)
