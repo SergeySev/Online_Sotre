@@ -33,3 +33,18 @@
   font-family: var(--font_prosto);
   margin-bottom: 32px;
 }
+.products_wrapper {
+  display: flex;
+}
+
+.aside_container {
+  margin-top: 24px;
+  max-width: 310px;
+}
+
+.aside_content {
+  margin-top: 24px;
+  position: relative;
+  z-index: 30;
+  transition: transform var(--transition);
+}
