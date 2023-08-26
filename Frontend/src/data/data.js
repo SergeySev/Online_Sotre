@@ -29,6 +29,8 @@ export const characteristicDto_list = [
 	},
 ];
 
+//  =====================================================
+
 export const update_password = [
 	{
 		id: uuidv4(),
@@ -59,6 +61,8 @@ export const update_password = [
 	},
 ];
 
+//  =====================================================
+
 export const call_request = [
 	{
 		id: uuidv4(),
@@ -82,6 +86,8 @@ export const call_request = [
 	},
 ];
 
+//  =====================================================
+
 export const sign_in = [
 	{
 		id: uuidv4(),
@@ -90,7 +96,8 @@ export const sign_in = [
 		placeholder: "",
 		error_message: "It should be a valid email address!",
 		label: "Email",
-		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+		//pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
 		required: true,
 	},
 	{
@@ -107,20 +114,12 @@ export const sign_in = [
 	},
 ];
 
+//  =====================================================
+
 export const registrations = [
 	{
 		id: uuidv4(),
-		name: "surname",
-		type: "text",
-		placeholder: "",
-		error_message: "Field should be 2-16 characters",
-		label: "Surname",
-		pattern: "^[A-Za-z0-9]{2,16}$",
-		required: true,
-	},
-	{
-		id: uuidv4(),
-		name: "name",
+		name: "firstName",
 		type: "text",
 		placeholder: "",
 		error_message: "Field should be 2-16 characters",
@@ -130,7 +129,18 @@ export const registrations = [
 	},
 	{
 		id: uuidv4(),
-		name: "phone",
+		name: "lastName",
+		type: "text",
+		placeholder: "",
+		error_message: "Field should be 2-16 characters",
+		label: "Surname",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true,
+	},
+
+	{
+		id: uuidv4(),
+		name: "phoneNumber",
 		type: "tel",
 		placeholder: "+49",
 		error_message: "Phone number should be in format +99 999...",
@@ -145,12 +155,13 @@ export const registrations = [
 		placeholder: "",
 		error_message: "It should be a valid email address!",
 		label: "Email",
-		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+		//pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
 		required: true,
 	},
 	{
 		id: uuidv4(),
-		name: "birthday",
+		name: "birthDate",
 		type: "date",
 		placeholder: "",
 		error_message: "Enter your date of birth",
@@ -180,21 +191,29 @@ export const registrations = [
 	},
 ];
 
+//  =====================================================
+
 export const radio_orders = [
 	{ id: uuidv4(), title: "in cash", type: "cash" },
 	{ id: uuidv4(), title: "bank card", type: "card" },
 ];
+
+//  =====================================================
 
 export const payments = [
 	{ id: uuidv4(), title: "Payment upon receipt", type: "receiving" },
 	{ id: uuidv4(), title: "Online payment", type: "online" },
 ];
 
+//  =====================================================
+
 export const addresses = [
 	"Berlin, Alexanderplatz 1",
 	"Munich, Marienplatz 3",
 	"New York, 5th Avenue 1",
 ];
+
+//  =====================================================
 
 export const courier_inputs = [
 	{
@@ -209,12 +228,12 @@ export const courier_inputs = [
 	},
 	{
 		id: uuidv4(),
-		name: "post",
+		name: "postCode",
 		type: "text",
 		// placeholder: 'code',
 		error_message: "Field should has not be empty",
 		label: "Post code",
-		pattern: "^[0-9]{1,}$",
+		pattern: "/^[a-z]+[0-9_/s,.-]+$/i",
 		required: true,
 	},
 	{
@@ -229,7 +248,7 @@ export const courier_inputs = [
 	},
 	{
 		id: uuidv4(),
-		name: "house",
+		name: "houseNumber",
 		type: "text",
 		// placeholder: 'house',
 		error_message: "Field should has not be empty",
@@ -239,7 +258,7 @@ export const courier_inputs = [
 	},
 	{
 		id: uuidv4(),
-		name: "app",
+		name: "apartmentNumber",
 		type: "text",
 		// placeholder: 'appartment',
 		label: "appartment",
@@ -262,10 +281,12 @@ export const courier_inputs = [
 	},
 ];
 
+//  =====================================================
+
 export const user_inputs = [
 	{
 		id: uuidv4(),
-		name: "first_name",
+		name: "firstName",
 		type: "text",
 		error_message: "First name should be 2-16 characters",
 		label: "First name",
@@ -274,7 +295,7 @@ export const user_inputs = [
 	},
 	{
 		id: uuidv4(),
-		name: "last_name",
+		name: "lastName",
 		type: "text",
 		error_message: "Last name should be 2-16 characters",
 		label: "Last name",
@@ -283,7 +304,7 @@ export const user_inputs = [
 	},
 	{
 		id: uuidv4(),
-		name: "phone",
+		name: "phoneNumber",
 		type: "tel",
 		// placeholder: 'Enter your phone number',
 		error_message: "Phone number should be in format +99 999...",
@@ -298,16 +319,21 @@ export const user_inputs = [
 		// placeholder: 'Enter your email',
 		error_message: "It should be a valid email address!",
 		label: "Email",
-		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+		//pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
 		required: true,
 	},
 ];
 
+//  =====================================================
+
 export const tabs = [
-	{ id: uuidv4(), title: "Customer data" },
-	{ id: uuidv4(), title: "Delivery" },
-	{ id: uuidv4(), title: "Payment" },
+	{ id: 1, title: "Customer data" },
+	{ id: 2, title: "Delivery" },
+	{ id: 3, title: "Payment" },
 ];
+
+//  =====================================================
 
 export const top_menu_items = [
 	{
@@ -414,41 +440,6 @@ export const menu_list = [
 
 // ====================================================
 
-// export const catalog_list = [
-//   {
-//     id: 1,
-//     title: 'Painting supplies',
-//     link: '#'
-//   },
-//   {
-//     id: 2,
-//     title: 'Electrical equipment',
-//     link: '#'
-//   },
-//   {
-//     id: 3,
-//     title: 'Overalls',
-//     link: '#'
-//   },
-//   {
-//     id: 4,
-//     title: 'For home and cottage',
-//     link: '#'
-//   },
-//   {
-//     id: 5,
-//     title: 'Season',
-//     link: '#'
-//   },
-//   {
-//     id: 6,
-//     title: 'Tools',
-//     link: '#'
-//   },
-// ]
-
-//===============================================
-
 export const main_menu_list = [
 	{
 		id: 1,
@@ -553,31 +544,6 @@ export const social_icons = [
 	},
 ];
 
-// =====================================================
-
-// export const offers_menu = [
-// 	{
-// 		id: 1,
-// 		title: 'Novelties',
-// 		tag: 'novelties',
-// 		// link: '#',
-// 		active: true
-// 	},
-// 	{
-// 		id: 2,
-// 		title: 'Promotions',
-// 		tag: 'promo',
-// 		// link: '#',
-// 		active: false
-// 	},
-// 	{
-// 		id: 3,
-// 		title: 'Sale hits',
-// 		tag: 'hit',
-// 		// link: '#',
-// 		active: false
-// 	}
-// ]
 //  =====================================================
 
 export const novelties_list = [

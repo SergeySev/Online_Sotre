@@ -1,22 +1,35 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { SubmitHandler } from "react-hook-form"
-import { Button, InputOrder } from '../../../UI';
-import { customer_data } from '../../../store/reducers/orderSlice';
-import { user_inputs } from '../../../data/data';
-import s from './TabData.module.css'
-import { useAuth } from '../../hooks/useAuth';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SubmitHandler } from "react-hook-form";
+import { Button, InputOrder } from "../../../UI";
+import { customer_data } from "../../../store/reducers/orderSlice";
+import { user_inputs } from "../../../data/data";
+import s from "./TabData.module.css";
+import { useAuth } from "../../hooks/useAuth";
 
 export function TabData({ activeTab, setActiveTab }) {
-	const { first_name, last_name, phone, email } = { ...useSelector(store => store.order) };
+	const { first_name, last_name, phone, e_mail } = {
+		...useSelector((store) => store.order),
+	};
 
-	const { isAuth, mail, surname, name, tel } = useAuth()
+	const { email, lastName, firstName, phoneNumber } = useAuth();
 
 	const [values, setValues] = useState({
-		first_name: first_name ? first_name : surname,
-		last_name: last_name ? last_name : name,
-		phone: phone ? phone : tel,
-		email: email ? email : mail
+		firstName: first_name || firstName,
+		lastName: last_name || lastName,
+		phoneNumber: phone || phoneNumber,
+		email: e_mail || email,
+	});
+
+	useEffect(() => {
+		if (!values.firstName) {
+			setValues({
+				firstName: first_name || firstName,
+				lastName: last_name || lastName,
+				phoneNumber: phone || phoneNumber,
+				email: e_mail || email,
+			});
+		}
 	});
 
 	const dispatch = useDispatch();
@@ -27,35 +40,34 @@ export function TabData({ activeTab, setActiveTab }) {
 
 	const saveData = (event) => {
 		event.preventDefault();
-		const { first_name, last_name, phone, email } = event.target
+		const { firstName, lastName, phoneNumber, email } = event.target;
 
 		const obj = {
-			first_name: first_name?.value,
-			last_name: last_name?.value,
-			phone: phone?.value,
+			firstName: firstName?.value,
+			lastName: lastName?.value,
+			phoneNumber: phoneNumber?.value,
 			email: email?.value,
-		}
+		};
 
 		if (activeTab < 3) {
-			setActiveTab(++activeTab)
+			setActiveTab(++activeTab);
 		}
 		dispatch(customer_data(obj));
-	}
+	};
 
 	return (
 		<form className={s.checkout_form} onSubmit={saveData}>
 			<ul className={s.data_list}>
-				{user_inputs.map(input =>
+				{user_inputs.map((input) => (
 					<InputOrder
 						key={input.id}
 						{...input}
 						value={values[input.name]}
-						onChange={onChange} />)}
+						onChange={onChange}
+					/>
+				))}
 			</ul>
-			<Button
-				text='next'
-				content='checkout'
-			/>
+			<Button text="next" content="checkout" />
 		</form>
-	)
+	);
 }

@@ -9,14 +9,12 @@ import { clean_cart } from "../../../store/reducers/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 export const TabPayment = () => {
-	// const order = { ...useSelector(store => store.order) }
-	// console.log("🚀 ~ file: TabPayment.jsx:6 ~ TabPayment ~ order:", order)
 	const contextPopUp = useContext(PopUpContext);
-	const navigate = useNavigate();
 
 	const [payment_type, setPaymentType] = useState("receiving");
 	const [receiving_type, setReceivingType] = useState("cash");
 
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const paymentChange = (e) => {
 		setPaymentType(e.target.value);
@@ -36,7 +34,7 @@ export const TabPayment = () => {
 		dispatch(payment_data(obj));
 		contextPopUp.setTitle("order");
 		contextPopUp.setPopupActive(true);
-		dispatch(clean_cart());
+		//dispatch(clean_cart());
 		navigate("/Online_Store");
 	};
 
@@ -102,7 +100,7 @@ export const TabPayment = () => {
 									value="card"
 									name="bank"
 									checked={payment_type === "online"}
-									defaultChecked
+									readOnly
 								/>
 								bank card
 							</label>

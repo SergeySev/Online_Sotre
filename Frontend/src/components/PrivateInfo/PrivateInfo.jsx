@@ -6,7 +6,7 @@ import { FormPasswordChange } from "../";
 import { useNavigate } from "react-router-dom";
 import { fetch_update_user } from "../../requests/requests";
 import { useDispatch } from "react-redux";
-import { set_user } from "../../store/reducers/userSlice";
+import { set_user, update_user } from "../../store/reducers/userSlice";
 import s from "./PrivateInfo.module.css";
 
 export function PrivateInfo() {
@@ -15,34 +15,51 @@ export function PrivateInfo() {
 	const {
 		isAuth,
 		id,
-		surname,
-		name,
-		tel,
-		mail,
+		firstName,
+		lastName,
+		email,
+		phoneNumber,
+		birthDate,
 		city,
-		postcode,
+		postCode,
 		street,
-		house,
-		appartment,
-		birthday,
+		houseNumber,
+		apartmentNumber,
 	} = useAuth();
+	//console.log("🚀 ~ file: PrivateInfo.jsx:29 ~ PrivateInfo ~ isAuth:", isAuth);
 
-	useEffect(() => {
-		if (!isAuth) {
-			navigate("/OnlineStore");
-		}
-	}, [isAuth]);
+	//useEffect(() => {
+	//	if (!isAuth) {
+	//		navigate("/OnlineStore");
+	//	}
+	//}, [isAuth]);
 
 	const [values, setValues] = useState({
-		last_name: surname ?? "",
-		first_name: name ?? "",
-		phone: tel ?? "",
-		email: mail ?? "",
+		firstName: firstName ?? "",
+		lastName: lastName ?? "",
+		email: email ?? "",
+		phoneNumber: phoneNumber ?? "",
 		city: city ?? "",
-		postcode: postcode ?? "",
+		postCode: postCode ?? "",
 		street: street ?? "",
-		house: house ?? "",
-		appartment: appartment ?? "",
+		houseNumber: houseNumber ?? "",
+		apartmentNumber: apartmentNumber ?? "",
+	});
+
+	useEffect(() => {
+		if (!values.firstName) {
+			setValues({
+				firstName: firstName ?? "",
+				lastName: lastName ?? "",
+				email: email ?? "",
+				phoneNumber: phoneNumber ?? "",
+				city: city ?? "",
+				postCode: postCode ?? "",
+				street: street ?? "",
+				houseNumber: houseNumber ?? "",
+				apartmentNumber: apartmentNumber ?? "",
+			});
+		}
 	});
 
 	const onChange = (e) => {
@@ -51,33 +68,53 @@ export function PrivateInfo() {
 
 	const submit = (e) => {
 		e.preventDefault();
-		const [surname, name, tel, city, postcode, street, house, appartment] =
-			e.target;
+		//console.log("🚀 ~ file: PrivateInfo.jsx:53 ~ submit ~ e:", e.target);
+		const {
+			firstName,
+			lastName,
+			phoneNumber,
+			city,
+			postCode,
+			street,
+			houseNumber,
+			apartmentNumber,
+		} = e.target;
 
-		const inputDate = birthday;
-		const parts = inputDate.split(".");
-		const formattedDate = new Date(
-			`${parts[2]}-${parts[1]}-${parts[0]}T00:00:00.000Z`
-		).toISOString();
+		//const inputDate = birthday;
+		//const parts = inputDate.split(".");
+		//const formattedDate = new Date(
+		//	`${parts[2]}-${parts[1]}-${parts[0]}T00:00:00.000Z`
+		//).toISOString();
 
 		const newData = {
 			id,
-			lastName: surname.value ?? "",
-			firstName: name.value ?? "",
-			phoneNumber: tel.value ?? "",
-			email: mail,
-			birthDate: formattedDate,
+			firstName: firstName.value ?? "",
+			lastName: lastName.value ?? "",
+			phoneNumber: phoneNumber.value ?? "",
+			//email: mail,
+			//birthDate: birthday,
 			address: {
+				country: "n/d",
 				city: city.value ?? "",
 				street: street.value ?? "",
-				houseNumber: house.value ?? "",
-				apartmentNumber: appartment.value ?? "",
-				postCode: postcode.value ?? "",
+				houseNumber: houseNumber.value ?? "",
+				apartmentNumber: apartmentNumber.value ?? "",
+				postCode: postCode.value ?? "",
 			},
 		};
+		//console.log("🚀 ~ file: PrivateInfo.jsx:88 ~ submit ~ newData:", newData);
 
-		fetch_update_user(newData);
-		//dispatch(set_user(response));
+		//fetch_update_user(newData);
+		const resultPromise = fetch_update_user(newData);
+		resultPromise
+			.then((responseData) => {
+				console.log("Response from server:", responseData);
+				dispatch(set_user(responseData));
+			})
+			.catch((error) => {
+				console.error("An error occurred:", error);
+			});
+		//console.log("🚀 ~ file: PrivateInfo.jsx:80 ~ submit ~ response:", response);
 	};
 
 	return (

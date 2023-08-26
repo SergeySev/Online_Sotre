@@ -76,8 +76,6 @@ const cartSlice = createSlice({
 			updateLocalStorage(state.cart_list, state.total_amount, state.total_summ);
 		},
 		clean_cart(state) {
-			console.log("🚀 ~ file: cartSlice.js:79 ~ clean_cart ~ state:", state);
-
 			updateLocalStorage(
 				(state.cart_list = []),
 				(state.total_amount = 0),

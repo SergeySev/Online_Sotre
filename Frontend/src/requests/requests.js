@@ -15,9 +15,25 @@ import { set_user } from "../store/reducers/userSlice";
 
 const base_url = "http://localhost:8080/api/v1";
 
+export const fetch_add_order = async (newOrder) => {
+	console.log(
+		"🚀 ~ file: requests.js:19 ~ const fetch_add_order= ~ newOrder:",
+		newOrder
+	);
+	try {
+		const response = await fetch(`${base_url}/client/add_purchase`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(newOrder),
+		});
+	} catch (error) {
+		console.error("fetch error: ", error);
+	}
+};
+
 export const fetch_update_user = async (updated_user) => {
-	console.log("🚀 ~ file: requests.js:19 ~ updated_user:", updated_user);
-	//return async (dispatch) => {
 	try {
 		const response = await fetch(`${base_url}/client/update_client`, {
 			method: "PUT",
@@ -27,20 +43,10 @@ export const fetch_update_user = async (updated_user) => {
 			body: JSON.stringify(updated_user),
 		});
 		const responseData = await response.json();
-		console.log(
-			"🚀 ~ file: requests.js:30 ~ //return ~ responseData:",
-			responseData
-		);
 		return responseData;
-		//.then((response) => response.json())
-		//.then((data) => {
-		//	console.log(data);
-		//	dispatch(set_user(data));
-		//});
 	} catch (error) {
 		console.error("fetch error: ", error);
 	}
-	//};
 };
 
 export const fetch_update_password = async (new_password) => {
