@@ -1,30 +1,35 @@
-import { FiPhoneIncoming, FiHeart, FiBarChart2, FiShoppingCart } from 'react-icons/fi';
-import avatar from './assets/avatar.png'
-import instagram from './assets/instagram.png'
-import vk from './assets/vk.png'
-import facebook from './assets/fb.png'
-import { v4 as uuidv4 } from 'uuid';
-
+import {
+	FiPhoneIncoming,
+	FiHeart,
+	FiBarChart2,
+	FiShoppingCart,
+} from "react-icons/fi";
+import avatar from "./assets/avatar.png";
+import instagram from "./assets/instagram.png";
+import vk from "./assets/vk.png";
+import facebook from "./assets/fb.png";
+import { v4 as uuidv4 } from "uuid";
 
 export const characteristicDto_list = [
 	{
-		"type": "string",
-    "assignment": "string",
-    "typeOfWork": "string",
-    "basis": "string",
-    "glossGrade": "string",
-    "weight": "string"
+		type: "string",
+		assignment: "string",
+		typeOfWork: "string",
+		basis: "string",
+		glossGrade: "string",
+		weight: "string",
 	},
 	{
-		"type": "string",
-    "assignment": "string",
-    "typeOfWork": "string",
-    "basis": "string",
-    "glossGrade": "string",
-    "weight": "string"
+		type: "string",
+		assignment: "string",
+		typeOfWork: "string",
+		basis: "string",
+		glossGrade: "string",
+		weight: "string",
 	},
+];
 
-]
+//  =====================================================
 
 export const update_password = [
 	{
@@ -33,16 +38,18 @@ export const update_password = [
 		type: "password",
 		error_message: "Password must be equal your current password",
 		label: "Old Password",
-		// required: true
+		required: true,
 	},
 	{
 		id: uuidv4(),
 		name: "new_password",
 		type: "password",
-		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+		error_message:
+			"Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
 		label: "New Password",
-		pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
-		// required: true
+		pattern:
+			"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+		required: true,
 	},
 	{
 		id: uuidv4(),
@@ -50,138 +57,163 @@ export const update_password = [
 		type: "password",
 		error_message: "Password must equal the New Password field",
 		label: "Confirm new password",
-		// required: true
-	}
-]
+		required: true,
+	},
+];
+
+//  =====================================================
 
 export const call_request = [
 	{
 		id: uuidv4(),
 		name: "name",
 		type: "text",
-		placeholder: '',
+		placeholder: "",
 		error_message: "Field should be 2-16 characters",
 		label: "Name",
 		pattern: "^[A-Za-z0-9]{2,16}$",
-		required: true
+		required: true,
 	},
 	{
 		id: uuidv4(),
 		name: "phone",
 		type: "tel",
-		placeholder: '+49',
+		placeholder: "+49",
 		error_message: "Phone number should be in format +99 999...",
 		label: "Pnone",
 		pattern: "^[+]{1}[0-9]{5,13}$",
-		required: true
+		required: true,
 	},
-]
+];
+
+//  =====================================================
 
 export const sign_in = [
 	{
 		id: uuidv4(),
 		name: "email",
 		type: "email",
-		placeholder: '',
+		placeholder: "",
 		error_message: "It should be a valid email address!",
 		label: "Email",
-		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
-		required: true
+		//pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+		required: true,
 	},
 	{
 		id: uuidv4(),
 		name: "password",
 		type: "password",
-		placeholder: '',
-		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+		placeholder: "",
+		error_message:
+			"Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
 		label: "Password",
-		pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
-		required: true
+		pattern:
+			"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+		required: true,
 	},
-]
+];
+
+//  =====================================================
 
 export const registrations = [
 	{
 		id: uuidv4(),
-		name: "surname",
+		name: "firstName",
 		type: "text",
-		placeholder: '',
-		error_message: "Field should be 2-16 characters",
-		label: "Surname",
-		pattern: "^[A-Za-z0-9]{2,16}$",
-		required: true
-	},
-	{
-		id: uuidv4(),
-		name: "name",
-		type: "text",
-		placeholder: '',
+		placeholder: "",
 		error_message: "Field should be 2-16 characters",
 		label: "Name",
 		pattern: "^[A-Za-z0-9]{2,16}$",
-		required: true
+		required: true,
 	},
 	{
 		id: uuidv4(),
-		name: "phone",
+		name: "lastName",
+		type: "text",
+		placeholder: "",
+		error_message: "Field should be 2-16 characters",
+		label: "Surname",
+		pattern: "^[A-Za-z0-9]{2,16}$",
+		required: true,
+	},
+
+	{
+		id: uuidv4(),
+		name: "phoneNumber",
 		type: "tel",
-		placeholder: '+49',
+		placeholder: "+49",
 		error_message: "Phone number should be in format +99 999...",
 		label: "Pnone",
 		pattern: "^[+]{1}[0-9]{5,13}$",
-		required: true
+		required: true,
 	},
 	{
 		id: uuidv4(),
 		name: "email",
 		type: "email",
-		placeholder: '',
+		placeholder: "",
 		error_message: "It should be a valid email address!",
 		label: "Email",
-		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
-		required: true
+		//pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+		required: true,
 	},
 	{
 		id: uuidv4(),
-		name: "birthday",
+		name: "birthDate",
 		type: "date",
-		placeholder: '',
+		placeholder: "",
 		error_message: "Enter your date of birth",
 		label: "Birthday",
-		required: true
+		required: true,
 	},
 	{
 		id: uuidv4(),
 		name: "password",
 		type: "password",
-		placeholder: '',
-		error_message: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+		placeholder: "",
+		error_message:
+			"Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
 		label: "Password",
-		pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
-		required: true
+		pattern:
+			"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+		required: true,
 	},
 	{
 		id: uuidv4(),
 		name: "confirm_password",
 		type: "password",
-		placeholder: '',
+		placeholder: "",
 		error_message: "This must equal the password field",
 		label: "Confirm password",
-		required: true
-	}
-]
+		required: true,
+	},
+];
+
+//  =====================================================
 
 export const radio_orders = [
-	{ id: uuidv4(), title: 'in cash', type: 'cash' },
-	{ id: uuidv4(), title: 'bank card', type: 'card' }
-]
+	{ id: uuidv4(), title: "in cash", type: "cash" },
+	{ id: uuidv4(), title: "bank card", type: "card" },
+];
 
-export const payments = [{ id:uuidv4(), title: 'Payment upon receipt', type: 'receiving' }, { id: uuidv4(), title: 'Online payment', type: 'online' }]
+//  =====================================================
+
+export const payments = [
+	{ id: uuidv4(), title: "Payment upon receipt", type: "receiving" },
+	{ id: uuidv4(), title: "Online payment", type: "online" },
+];
+
+//  =====================================================
 
 export const addresses = [
 	"Berlin, Alexanderplatz 1",
 	"Munich, Marienplatz 3",
-	"New York, 5th Avenue 1"]
+	"New York, 5th Avenue 1",
+];
+
+//  =====================================================
 
 export const courier_inputs = [
 	{
@@ -191,18 +223,18 @@ export const courier_inputs = [
 		// placeholder: 'city',
 		error_message: "Field should has not be empty",
 		label: "City",
-		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
-		required: true
+		pattern: "/^[a-z]+[0-9_/s,.-]+$/i",
+		required: true,
 	},
 	{
 		id: uuidv4(),
-		name: "post",
+		name: "postCode",
 		type: "text",
 		// placeholder: 'code',
 		error_message: "Field should has not be empty",
 		label: "Post code",
-		pattern: "^[0-9]{1,}$",
-		required: true
+		pattern: "/^[a-z]+[0-9_/s,.-]+$/i",
+		required: true,
 	},
 	{
 		id: uuidv4(),
@@ -211,22 +243,22 @@ export const courier_inputs = [
 		// placeholder: 'street',
 		error_message: "Field should has not be empty",
 		label: "Street",
-		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
-		required: true
+		pattern: "/^[a-z]+[0-9_/s,.-]+$/i",
+		required: true,
 	},
 	{
 		id: uuidv4(),
-		name: "house",
+		name: "houseNumber",
 		type: "text",
 		// placeholder: 'house',
 		error_message: "Field should has not be empty",
 		label: "House",
-		pattern: "/^[a-z]+[0-9_\/\s,.-]+$/i",
-		required: true
+		pattern: "/^[a-z]+[0-9_/s,.-]+$/i",
+		required: true,
 	},
 	{
 		id: uuidv4(),
-		name: "app",
+		name: "apartmentNumber",
 		type: "text",
 		// placeholder: 'appartment',
 		label: "appartment",
@@ -237,46 +269,48 @@ export const courier_inputs = [
 		type: "text",
 		label: "Next delivery date",
 		isCalendar: true,
-		disabled: true
+		disabled: true,
 	},
 	{
 		id: uuidv4(),
 		name: "shipping",
 		type: "text",
 		label: "Delivery amount",
-		placeholder: 'free',
-		disabled: true
+		placeholder: "free",
+		disabled: true,
 	},
-]
+];
+
+//  =====================================================
 
 export const user_inputs = [
 	{
 		id: uuidv4(),
-		name: "first_name",
+		name: "firstName",
 		type: "text",
 		error_message: "First name should be 2-16 characters",
 		label: "First name",
 		pattern: "^[A-Za-z0-9]{2,16}$",
-		required: true
+		required: true,
 	},
 	{
 		id: uuidv4(),
-		name: "last_name",
+		name: "lastName",
 		type: "text",
 		error_message: "Last name should be 2-16 characters",
 		label: "Last name",
 		pattern: "^[A-Za-z0-9]{2,16}$",
-		required: true
+		required: true,
 	},
 	{
 		id: uuidv4(),
-		name: "phone",
+		name: "phoneNumber",
 		type: "tel",
 		// placeholder: 'Enter your phone number',
 		error_message: "Phone number should be in format +99 999...",
 		label: "Pnone number",
 		pattern: "^[+]{1}[0-9]{5,13}$",
-		required: true
+		required: true,
 	},
 	{
 		id: uuidv4(),
@@ -285,377 +319,321 @@ export const user_inputs = [
 		// placeholder: 'Enter your email',
 		error_message: "It should be a valid email address!",
 		label: "Email",
-		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
-		required: true
-	}
-]
+		//pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+		pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+		required: true,
+	},
+];
+
+//  =====================================================
 
 export const tabs = [
-	{ id: uuidv4(), title: "Customer data" },
-	{ id: uuidv4(), title: "Delivery" },
-	{ id: uuidv4(), title: "Payment" }]
+	{ id: 1, title: "Customer data" },
+	{ id: 2, title: "Delivery" },
+	{ id: 3, title: "Payment" },
+];
+
+//  =====================================================
 
 export const top_menu_items = [
 	{
 		id: uuidv4(),
-		title: 'phone',
-		image: '',
+		title: "phone",
+		image: "",
 		icon: <FiPhoneIncoming />,
 	},
 	{
 		id: uuidv4(),
-		title: 'favorite',
-		image: '',
+		title: "favorite",
+		image: "",
 		icon: <FiHeart />,
-		link: '/favorite'
+		link: "/favorite",
 	},
 	{
 		id: uuidv4(),
-		title: 'comparison',
-		image: '',
+		title: "comparison",
+		image: "",
 		icon: <FiBarChart2 />,
-		link: '/comparison'
+		link: "/comparison",
 	},
 	{
 		id: uuidv4(),
-		title: 'avatar',
+		title: "avatar",
 		image: avatar,
 	},
 	{
 		id: uuidv4(),
-		title: 'cart',
-		image: '',
+		title: "cart",
+		image: "",
 		icon: <FiShoppingCart />,
-		link: '/cart'
+		link: "/cart",
 	},
-]
+];
 // ====================================================
 
 export const sort_select_values = [
 	{
 		id: 1,
-		value: 'New first',
-		data: 'new'
+		value: "New first",
+		data: "new",
 	},
 	{
 		id: 2,
-		value: 'Popular first',
-		data: 'hits'
+		value: "Popular first",
+		data: "hits",
 	},
 	{
 		id: 3,
-		value: 'Discount first',
-		data: 'promo'
+		value: "Discount first",
+		data: "promo",
 	},
 	{
 		id: 4,
-		value: 'Ascending price',
-		data: 'asc'
+		value: "Ascending price",
+		data: "asc",
 	},
 	{
 		id: 5,
-		value: 'Descending price',
-		data: 'desc'
+		value: "Descending price",
+		data: "desc",
 	},
 	{
 		id: 6,
-		value: 'From A to Z',
-		data: 'fromA'
+		value: "From A to Z",
+		data: "fromA",
 	},
 	{
 		id: 7,
-		value: 'From Z to A',
-		data: 'fromZ'
+		value: "From Z to A",
+		data: "fromZ",
 	},
-]
-
+];
 
 // ====================================================
 
 export const menu_list = [
 	{
 		id: 1,
-		title: 'About company',
-		tag: 'novelties',
-		link: '#about'
+		title: "About company",
+		tag: "novelties",
+		link: "#about",
 	},
 	{
 		id: 2,
-		title: 'Promotions',
-		tag: 'promo',
-		link: '#novelties'
+		title: "Promotions",
+		tag: "promo",
+		link: "#novelties",
 	},
 	{
 		id: 3,
-		title: 'Season hits',
-		tag: 'hit',
-		link: '#novelties'
+		title: "Season hits",
+		tag: "hit",
+		link: "#novelties",
 	},
 	{
 		id: 4,
-		title: 'Novelties',
-		tag: 'novelties',
-		link: '#novelties'
+		title: "Novelties",
+		tag: "novelties",
+		link: "#novelties",
 	},
-]
+];
 
 // ====================================================
-
-// export const catalog_list = [
-//   {
-//     id: 1,
-//     title: 'Painting supplies',
-//     link: '#'
-//   },
-//   {
-//     id: 2,
-//     title: 'Electrical equipment',
-//     link: '#'
-//   },
-//   {
-//     id: 3,
-//     title: 'Overalls',
-//     link: '#'
-//   },
-//   {
-//     id: 4,
-//     title: 'For home and cottage',
-//     link: '#'
-//   },
-//   {
-//     id: 5,
-//     title: 'Season',
-//     link: '#'
-//   },
-//   {
-//     id: 6,
-//     title: 'Tools',
-//     link: '#'
-//   },
-// ]
-
-//===============================================
 
 export const main_menu_list = [
 	{
 		id: 1,
-		title: 'About company',
-		link: '#'
+		title: "About company",
+		link: "#",
 	},
 	{
 		id: 2,
-		title: 'Contacts',
-		link: '#'
+		title: "Contacts",
+		link: "#",
 	},
 	{
 		id: 3,
-		title: 'Novelties',
-		link: '#'
+		title: "Novelties",
+		link: "#",
 	},
 	{
 		id: 4,
-		title: 'Season hits',
-		link: '#'
+		title: "Season hits",
+		link: "#",
 	},
 	{
 		id: 5,
-		title: 'Sales',
-		link: '#'
+		title: "Sales",
+		link: "#",
 	},
-]
+];
 
 // ==========================================================
 
 export const brands = [
 	{
 		id: 1,
-		title: 'truper',
-		image: 'truper.png',
-		link: '#'
+		title: "truper",
+		image: "truper.png",
+		link: "#",
 	},
 	{
 		id: 2,
-		title: 'centro',
-		image: 'centro.png',
-		link: '#'
+		title: "centro",
+		image: "centro.png",
+		link: "#",
 	},
 	{
 		id: 3,
-		title: 'finland',
-		image: 'finland.png',
-		link: '#'
+		title: "finland",
+		image: "finland.png",
+		link: "#",
 	},
 	{
 		id: 4,
-		title: 'kapro',
-		image: 'kapro.png',
-		link: '#'
+		title: "kapro",
+		image: "kapro.png",
+		link: "#",
 	},
 	{
 		id: 5,
-		title: 'ceresit',
-		image: 'ceresit.png',
-		link: '#'
+		title: "ceresit",
+		image: "ceresit.png",
+		link: "#",
 	},
 	{
 		id: 6,
-		title: 'sniezka',
-		image: 'sniezka.png',
-		link: '#'
+		title: "sniezka",
+		image: "sniezka.png",
+		link: "#",
 	},
 	{
 		id: 7,
-		title: 'pfizer',
-		image: 'pfizer.png',
-		link: '#'
+		title: "pfizer",
+		image: "pfizer.png",
+		link: "#",
 	},
 	{
 		id: 8,
-		title: 'farbitex',
-		image: 'farbitex.png',
-		link: '#'
-	}
-]
+		title: "farbitex",
+		image: "farbitex.png",
+		link: "#",
+	},
+];
 
 // ===================================================
-
 
 export const social_icons = [
 	{
 		id: 1,
-		title: 'instagram',
+		title: "instagram",
 		image: instagram,
-		link: '#'
+		link: "#",
 	},
 	{
 		id: 2,
-		title: 'vk',
+		title: "vk",
 		image: vk,
-		link: '#'
+		link: "#",
 	},
 	{
 		id: 3,
-		title: 'facebook',
+		title: "facebook",
 		image: facebook,
-		link: '#'
-	}
-]
+		link: "#",
+	},
+];
 
-// =====================================================
-
-// export const offers_menu = [
-// 	{
-// 		id: 1,
-// 		title: 'Novelties',
-// 		tag: 'novelties',
-// 		// link: '#',
-// 		active: true
-// 	},
-// 	{
-// 		id: 2,
-// 		title: 'Promotions',
-// 		tag: 'promo',
-// 		// link: '#',
-// 		active: false
-// 	},
-// 	{
-// 		id: 3,
-// 		title: 'Sale hits',
-// 		tag: 'hit',
-// 		// link: '#',
-// 		active: false
-// 	}
-// ]
 //  =====================================================
 
 export const novelties_list = [
 	{
 		id: 1,
-		title: 'Screwdriver bit',
-		tag: 'new',
+		title: "Screwdriver bit",
+		tag: "new",
 		price: 720,
 		discount_price: 500,
 		in_stock: true,
-		image: 'bit.png',
-		link: '#'
+		image: "bit.png",
+		link: "#",
 	},
 	{
 		id: 2,
-		title: 'Garden pitchfork',
-		tag: 'new',
+		title: "Garden pitchfork",
+		tag: "new",
 		price: 720,
 		discount_price: 500,
 		in_stock: true,
-		image: 'pitchfork.png',
-		link: '#'
+		image: "pitchfork.png",
+		link: "#",
 	},
 	{
 		id: 3,
-		title: 'Metal scissors',
-		tag: 'new',
+		title: "Metal scissors",
+		tag: "new",
 		price: 720,
 		discount_price: 500,
 		in_stock: true,
-		image: 'metal_scissors.png',
-		link: '#'
+		image: "metal_scissors.png",
+		link: "#",
 	},
 	{
 		id: 4,
-		title: 'Snow shovel',
-		tag: 'new',
+		title: "Snow shovel",
+		tag: "new",
 		price: 720,
 		discount_price: 500,
 		in_stock: true,
-		image: 'snow_shovel.png',
-		link: '#'
+		image: "snow_shovel.png",
+		link: "#",
 	},
 	{
 		id: 5,
-		title: 'Screwdriver',
-		tag: 'new',
+		title: "Screwdriver",
+		tag: "new",
 		price: 720,
 		discount_price: 500,
 		in_stock: true,
-		image: 'screwdriver.png',
-		link: '#'
+		image: "screwdriver.png",
+		link: "#",
 	},
 	{
 		id: 6,
-		title: 'Some kind of bullshit',
-		tag: 'new',
+		title: "Some kind of bullshit",
+		tag: "new",
 		price: 720,
 		discount_price: 500,
 		in_stock: true,
-		image: 'bullshit.png',
-		link: '#'
-	}
-]
+		image: "bullshit.png",
+		link: "#",
+	},
+];
 
 // ============================================================
 
 export const news_list = [
 	{
 		id: 1,
-		title: 'Demand for household tools grew by 38% in a year',
-		image: 'news1.png',
-		date: '12th of January 2023'
+		title: "Demand for household tools grew by 38% in a year",
+		image: "news1.png",
+		date: "12th of January 2023",
 	},
 	{
 		id: 2,
-		title: 'Demand for household tools grew by 38% in a year',
-		image: 'news2.png',
-		date: '12th of January 2023'
+		title: "Demand for household tools grew by 38% in a year",
+		image: "news2.png",
+		date: "12th of January 2023",
 	},
 	{
 		id: 3,
-		title: 'Demand for household tools grew by 38% in a year',
-		image: 'news2.png',
-		date: '12th of January 2023'
+		title: "Demand for household tools grew by 38% in a year",
+		image: "news2.png",
+		date: "12th of January 2023",
 	},
 	{
 		id: 4,
-		title: 'Demand for household tools grew by 38% in a year',
-		image: 'news1.png',
-		date: '12th of January 2023'
+		title: "Demand for household tools grew by 38% in a year",
+		image: "news1.png",
+		date: "12th of January 2023",
 	},
-]
+];

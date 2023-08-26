@@ -8,39 +8,39 @@ const userSlice = createSlice({
 	name: "user",
 	initialState: {
 		id: "",
-		token: "",
-		surname: "",
-		name: "",
+		firstName: "",
+		lastName: "",
 		email: "",
-		phone: "",
-		birthday: "",
+		phoneNumber: "",
+		birthDate: "",
 		city: "",
-		postcode: "",
+		postCode: "",
 		street: "",
-		house: "",
-		appartment: "",
+		houseNumber: "",
+		apartmentNumber: "",
 		purchases: [],
+		token: "",
 	},
 	reducers: {
 		set_user(state, action) {
-			console.log(
-				"🚀 ~ file: userSlice.js:29 ~ set_user ~ action:",
-				action.payload
-			);
+			//console.log(
+			//	"🚀 ~ file: userSlice.js:29 ~ set_user ~ action:",
+			//	action.payload
+			//);
 
 			state.id = action.payload.id || "";
-			state.surname = action.payload.lastName || "";
-			state.name = action.payload.firstName || "";
+			state.firstName = action.payload.firstName || "";
+			state.lastName = action.payload.lastName || "";
 			state.email = action.payload.email || "";
-			state.birthday = action.payload.birthDate || "";
-			state.phone = action.payload.phoneNumber || "";
-			state.token = action.payload.token || "";
+			state.phoneNumber = action.payload.phoneNumber || "";
+			state.birthDate = action.payload.birthDate || "";
 			state.city = action.payload.address?.city || "";
-			state.postcode = action.payload.address?.postCode || "";
+			state.postCode = action.payload.address?.postCode || "";
 			state.street = action.payload.address?.street || "";
-			state.house = action.payload.address?.houseNumber || "";
-			state.appartment = action.payload.address?.apartmentNumber || "";
+			state.houseNumber = action.payload.address?.houseNumber || "";
+			state.apartmentNumber = action.payload.address?.apartmentNumber || "";
 			state.purchases = action.payload.purchases || [];
+			state.token = action.payload.token || "";
 			updateSessionStorage(state.token);
 		},
 
@@ -48,8 +48,15 @@ const userSlice = createSlice({
 			updateSessionStorage("");
 			return {};
 		},
+
+		update_user(state, action) {
+			console.log(
+				"🚀 ~ file: userSlice.js:29 ~ set_user ~ action:",
+				action.payload
+			);
+		},
 	},
 });
 
 export default userSlice.reducer;
-export const { set_user, logout_user } = userSlice.actions;
+export const { set_user, logout_user, update_user } = userSlice.actions;

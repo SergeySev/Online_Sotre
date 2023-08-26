@@ -7,6 +7,12 @@
 	font-weight: 500;
 }
 
+.popup_grate {
+	display: flex;
+	align-items: center;
+	gap: 25px;
+}
+
 .profile_fullname {
 	font-weight: 700;
 	font-size: 20px;
@@ -18,7 +24,8 @@
 	transition: color var(--transition);
 }
 
-.logout{
+.logout {
+	margin-top: 20px;
 	color: var(--orange);
 	cursor: pointer;
 	transition: color var(--transition);
@@ -29,7 +36,7 @@
 		color: var(--orange);
 	}
 
-	.logout:hover{
+	.logout:hover {
 		color: var(--red);
 	}
 }

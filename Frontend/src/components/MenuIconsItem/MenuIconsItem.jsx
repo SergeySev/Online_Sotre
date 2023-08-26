@@ -17,17 +17,17 @@ export function MenuIconsItem({ image, title, icon, count, link }) {
 	const dispatch = useDispatch();
 	const { isAuth } = useAuth();
 
-	useEffect(() => {
-		if (!isAuth && title === "avatar") {
-			const saved_token = sessionStorage.getItem("user_token");
-			if (!!saved_token) checkToken(saved_token);
-		}
-	}, []);
+	//useEffect(() => {
+	//	if (!isAuth && title === "avatar") {
+	//		const saved_token = sessionStorage.getItem("user_token");
+	//		if (!!saved_token) checkToken(saved_token);
+	//	}
+	//}, []);
 
-	const checkToken = async (token) => {
-		const resp = await fetch_check_token({ token });
-		dispatch(set_user(resp));
-	};
+	//const checkToken = async (token) => {
+	//	const resp = await fetch_check_token({ token });
+	//	dispatch(set_user(resp));
+	//};
 
 	const showToast = useCallback((message) => {
 		toast(message, {

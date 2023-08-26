@@ -9,11 +9,12 @@ import { clean_cart } from "../../../store/reducers/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 export const TabPayment = () => {
-
 	const contextPopUp = useContext(PopUpContext);
-	const navigate = useNavigate();
+
 	const [payment_type, setPaymentType] = useState("receiving");
 	const [receiving_type, setReceivingType] = useState("cash");
+
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const paymentChange = (e) => {
@@ -35,7 +36,7 @@ export const TabPayment = () => {
 		dispatch(payment_data(obj));
 		contextPopUp.setTitle("order");
 		contextPopUp.setPopupActive(true);
-		dispatch(clean_cart());
+		//dispatch(clean_cart());
 		navigate("/Online_Store");
 	};
 
@@ -49,8 +50,9 @@ export const TabPayment = () => {
 				<ul className={s.radio_buttons}>
 					{payments.map((elem) => (
 						<li
-							className={`${s.radio_item} ${s[payment_type === elem.type ? "active" : ""] || ""
-								}`}
+							className={`${s.radio_item} ${
+								s[payment_type === elem.type ? "active" : ""] || ""
+							}`}
 							key={elem.id}
 						>
 							<label>
@@ -71,8 +73,9 @@ export const TabPayment = () => {
 					<>
 						{radio_orders.map((elem) => (
 							<li
-								className={`${s.radio_item} ${s[receiving_type === elem.type ? "active" : ""] || ""
-									} ${s[payment_type === "online" ? "disabled" : ""] || ""}`}
+								className={`${s.radio_item} ${
+									s[receiving_type === elem.type ? "active" : ""] || ""
+								} ${s[payment_type === "online" ? "disabled" : ""] || ""}`}
 								key={elem.id}
 							>
 								<label>
@@ -89,8 +92,9 @@ export const TabPayment = () => {
 							</li>
 						))}
 						<li
-							className={`${s.radio_item} ${s["active"]} ${s[payment_type === "receiving" ? "disabled" : ""] || ""
-								}`}
+							className={`${s.radio_item} ${s["active"]} ${
+								s[payment_type === "receiving" ? "disabled" : ""] || ""
+							}`}
 						>
 							<label>
 								<input
@@ -98,7 +102,7 @@ export const TabPayment = () => {
 									value="card"
 									name="bank"
 									checked={payment_type === "online"}
-									defaultChecked
+									readOnly
 								/>
 								bank card
 							</label>
