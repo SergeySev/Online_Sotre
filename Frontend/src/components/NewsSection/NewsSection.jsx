@@ -4,6 +4,7 @@ import { news_list } from '../../data/data'
 import s from './NewsSection.module.css';
 
 export function NewsSection({ content }) {
+
 	return (
 		<section className={`${s.news_section} ${s[content ? content : ''] || ''}`}>
 			<div className='container'>
