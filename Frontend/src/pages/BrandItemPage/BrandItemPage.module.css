@@ -13,8 +13,19 @@
   margin-bottom: 32px;
 }
 
-.brand_description img {
+.brand_image_wrapper {
   width: 310px;
+  height: 160px;
+  background-color: var(--white);
+  border-radius: 5px;
+  padding: 40px 55px;
+}
+
+.brand_image_wrapper img {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .brand_subtitle {
   font-size: 30px;

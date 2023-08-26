@@ -57,7 +57,7 @@ export function BrandSlider() {
 			<div className='container'>
 				<NavLink to={'/brands'}><h2 className={s.slider_title}>Our Brands</h2></NavLink>
 				<Slider {...settings}>
-					{brands.map(elem => <BrandSliderItem {...elem} key={elem.id} />)}
+					{brands.map(elem => <NavLink to={`/brands/${elem.title}`} key={elem.id}><BrandSliderItem {...elem} key={elem.id} /></NavLink>)}
 				</Slider>
 			</div>
 		</section>
