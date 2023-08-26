@@ -1,6 +1,7 @@
 import s from './WrongAuthentication.module.css'
 
 export function WrongAuthentication({ setActiveWindow, setActive }) {
+
 	return (
 		<div className={s.content}>
 			<h3 className={s.title}>

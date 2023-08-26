@@ -6,24 +6,21 @@ import ProductItemRow from "../ProductItemRow/ProductItemRow";
 import usePortraite from "../hooks/usePortraite";
 
 export function ProductsList({ products, content, pagination_content }) {
+
 	const [currentPage, setCurrentPage] = useState(1);
 	const [countProductsPage, setCountProductsPage] = useState(20);
 	const [layout, setLayout] = useState(false);
-
 	const lastElem = currentPage * countProductsPage;
 	const firstElem = lastElem - countProductsPage;
 	const products_list = products.slice(firstElem, lastElem);
 	const countElem = Math.ceil(products.length / countProductsPage);
-
-	//console.log(products_list);
+	const isPortrait = usePortraite();
 
 	useEffect(() => {
 		if (Math.ceil(products.length / countProductsPage) < currentPage) {
 			setCurrentPage(1);
 		}
 	}, [products, currentPage]);
-
-	const isPortrait = usePortraite();
 
 	useEffect(() => {
 		if (isPortrait) setLayout(false);

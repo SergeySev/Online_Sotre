@@ -9,7 +9,6 @@ const brandItemSlice = createSlice({
   },
   reducers: {
     get_brand_products(state, action) {
-      console.log(action.payload);
       return action.payload.content
         ? {
             brand_product_list: action.payload.content,

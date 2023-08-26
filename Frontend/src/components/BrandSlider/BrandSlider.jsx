@@ -11,12 +11,7 @@ import { NavLink } from 'react-router-dom';
 export function BrandSlider() {
 
 	const dispatch = useDispatch()
-	useEffect(() => {
-		dispatch(fetch_brands())
-	}, [])
-
 	const brands = useSelector(store => store.brands)
-
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -52,12 +47,14 @@ export function BrandSlider() {
 		]
 	}
 
+	useEffect(() => dispatch(fetch_brands()), [])
+
 	return (
 		<section className={s.brand_slider}>
 			<div className='container'>
 				<NavLink to={'/brands'}><h2 className={s.slider_title}>Our Brands</h2></NavLink>
 				<Slider {...settings}>
-					{brands.map(elem => <BrandSliderItem {...elem} key={elem.id} />)}
+					{brands.map(elem => <NavLink to={`/brands/${elem.title}`} key={elem.id}><BrandSliderItem {...elem} key={elem.id} /></NavLink>)}
 				</Slider>
 			</div>
 		</section>

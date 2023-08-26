@@ -9,7 +9,7 @@ import s from './ToggleCartBtn.module.css'
 export function ToggleCartBtn({ product, bottom, content }) {
 
 	const [isActive, setActive] = useState(false);
-
+	const image = isActive ? (content === "comparison" ? checked_cart_colored : checked_cart) : cart;
 	const dispatch = useDispatch();
 
 	const toggleHand = () => {
@@ -25,8 +25,6 @@ export function ToggleCartBtn({ product, bottom, content }) {
 			dispatch(add_to_cart(product))
 		}
 	}
-
-	const image = isActive ? (content === "comparison" ? checked_cart_colored : checked_cart) : cart;
 
 	return (
 		<button

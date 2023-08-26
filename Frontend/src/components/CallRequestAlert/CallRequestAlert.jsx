@@ -3,6 +3,7 @@ import { Button } from '../../UI'
 import s from './CallRequestAlert.module.css'
 
 export function CallRequestAlert({ setActive }) {
+
 	return (
 		<div className={s.content}>
 			<h3 className={s.title}>

@@ -6,14 +6,15 @@ import { Breadcrumbs, MainCategoryListContainer } from '../../components'
 import s from './MainCategoriesPage.module.css'
 
 export function MainCategoriesPage() {
-	const breadcrumbsItems = [
-		{ text: 'Home /', link: '/Online_Store' },
-		{ text: 'Catalog', link: '/catalog' },
-	];
 
 	const dispatch = useDispatch()
 	const categories = useSelector(state => state.categories)
 	const id = categories[0]?.id;
+
+	const breadcrumbsItems = [
+		{ text: 'Home /', link: '/Online_Store' },
+		{ text: 'Catalog', link: '/catalog' },
+	];
 
 	useEffect(() => dispatch(fetch_main_categories()), [])
 

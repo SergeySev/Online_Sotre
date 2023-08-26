@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useContext, useState } from "react";
 import { Button } from "../../../UI";
 import { payments, radio_orders } from "../../../data/data";
@@ -16,9 +16,11 @@ export const TabPayment = () => {
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+
 	const paymentChange = (e) => {
 		setPaymentType(e.target.value);
 	};
+
 	const receivingChange = (e) => {
 		setReceivingType(e.target.value);
 	};

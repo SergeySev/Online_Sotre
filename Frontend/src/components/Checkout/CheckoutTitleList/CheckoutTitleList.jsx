@@ -2,7 +2,6 @@ import { tabs } from '../../../data/data'
 import s from './CheckoutTitleList.module.css'
 
 export function CheckoutTitleList({ activeTab, setActiveTab, error }) {
-	// console.log("🚀 ~ file: CheckoutTitleList.jsx:5 ~ CheckoutTitleList ~ activeTab:", activeTab)
 
 	return (
 		<ul className={s.title_list}>

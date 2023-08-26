@@ -10,7 +10,6 @@ export function TabPickup() {
 	return (
 		<>
 			<h3 className={s.tab_title}>Choose a delivery point</h3>
-
 			<select
 				className={s.select}
 				name="address">
@@ -18,6 +17,7 @@ export function TabPickup() {
 					{elem}
 				</option>)}
 			</select>
+
 			<IoIosArrowDown className={s.arrow} />
 
 			<div className={s.pickup_content}>

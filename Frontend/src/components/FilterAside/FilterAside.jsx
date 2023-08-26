@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetch_filter_data, fetch_filtered_subcategory_products } from '../../requests/requests';
+import { fetch_filter_data, fetch_filtered_brand_products, fetch_filtered_subcategory_products } from '../../requests/requests';
 import s from './FilterAside.module.css'
 import { FilterAsideElem } from './FilterAsideElem/FilterAsideElem';
 
-export function FilterAside({ subcategory_title }) {
-	const [request_url, setRequest_url] = useState('')
-	// const [request_url, setRequest_url] = useState('http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle=')
+export function FilterAside({ subcategory_title, brand }) {
 
+	const [request_url, setRequest_url] = useState('')
+	const filter_data = useSelector(store => store.filter_data)
 	const dispatch = useDispatch()
 
 	useEffect(() => dispatch(fetch_filter_data()), [dispatch])
-	const filter_data = useSelector(store => store.filter_data)
-	// const requestBody = useSelector(state => state.requestBody)
 
 	useEffect(() => {
-		if (request_url !== 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30&subCategoryTitle=') {
-			dispatch(fetch_filtered_subcategory_products(request_url))
+		if (request_url !== 'http://localhost:8080/api/v1/product/byFilterWithSubCategory?page=1&size=30&subCategoryTitle=') {
+			if (!brand) {
+				dispatch(fetch_filtered_subcategory_products(request_url))
+			} else {
+				dispatch(fetch_filtered_brand_products(request_url))
+			}
 		}
 	}, [request_url])
-
-
 
 	return (
 		<ul className={s.aside_wrapper}>
@@ -29,7 +29,9 @@ export function FilterAside({ subcategory_title }) {
 				if (elem === 'Price') {
 					data = filter_data['Price']
 				} else if (elem === 'Brands') {
-					data = filter_data['Brands']
+					if (!brand) {
+						data = filter_data['Brands']
+					}
 				} else if (elem === 'Color') {
 					data = filter_data['Color']
 				} else if (elem === 'Delivery Type') {
@@ -37,13 +39,24 @@ export function FilterAside({ subcategory_title }) {
 				} else if (elem === 'Made Country') {
 					data = filter_data['Made Country']
 				}
-				return <FilterAsideElem
-					key={index}
-					title={elem}
-					data={data}
-					subcategory_title={subcategory_title}
-					setRequest_url={setRequest_url}
-				/>
+				if (!brand) {
+					return <FilterAsideElem
+						key={index}
+						title={elem}
+						data={data}
+						subcategory_title={subcategory_title}
+						setRequest_url={setRequest_url}
+					/>
+				} else if (elem !== 'Brands') {
+					return <FilterAsideElem
+						key={index}
+						title={elem}
+						data={data}
+						subcategory_title={subcategory_title}
+						setRequest_url={setRequest_url}
+						brand={brand}
+					/>
+				}
 			}
 			)}
 		</ul>

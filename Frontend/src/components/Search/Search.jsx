@@ -2,6 +2,7 @@ import search from './assets/search.png'
 import s from './Search.module.css'
 
 export function Search({ isBlocked }) {
+
 	return (
 		<div className={`${s.input_wrapper} ${s[isBlocked]}`} >
 			<input

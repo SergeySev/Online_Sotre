@@ -2,6 +2,7 @@ import { Breadcrumbs, CheckoutTabs, CheckoutOrder } from '../../components';
 import s from './CheckoutPage.module.css'
 
 export function CheckoutPage() {
+
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/Online_Store' },
 		{ text: 'Checkout', link: '/checkout' },

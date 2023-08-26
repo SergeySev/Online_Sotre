@@ -1,16 +1,13 @@
 import React from "react";
 import s from "./NewsArticlePage.module.css";
 import { Breadcrumbs } from "../../components";
-import { useParams } from "react-router-dom";
 
 export default function NewsArticlePage() {
-  const article_id = useParams().article;
-  console.log(article_id);
 
   const breadcrumbsItems = [
     { text: "Home /", link: "/Online_Store" },
     { text: "News /", link: "#" },
-    { text: "Demand for household tools grew by 38% in a year", link: "#" },
+    { text: "Demand for household ...", link: "#" },
   ];
   return (
     <div className={s.article_wrapper}>

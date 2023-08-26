@@ -3,6 +3,7 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb'
 import s from './Breadcrumbs.module.css'
 
 export function Breadcrumbs({ items }) {
+
 	return (
 		<ul className={s.breadcrumbs_list}>
 			{items.map((item, index) => (

@@ -3,6 +3,7 @@ import s from './CheckoutOrder.module.css'
 import { useEffect } from 'react'
 
 export function CheckoutOrder() {
+
 	const cart_summ = useSelector(store => store.cart.total_summ)
 	const amount = useSelector(store => store.cart.total_amount)
 	const discount = -(cart_summ * .07).toFixed(2)

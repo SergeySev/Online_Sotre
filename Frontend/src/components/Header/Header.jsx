@@ -6,7 +6,6 @@ export function Header() {
 	return (
 		<>
 			<header className={s.header} id="home">
-
 				<div className="container">
 					<HeaderTop />
 					<HeaderBottom />
