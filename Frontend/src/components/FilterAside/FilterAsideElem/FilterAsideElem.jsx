@@ -4,8 +4,8 @@ import { set_brand_data, set_color_data, set_country_data, set_delivery_data, se
 import FilterPriceRange from '../../FilterPriceRange/FilterPriceRange'
 import s from './FilterAsideElem.module.css'
 
-export function FilterAsideElem({ title, data, subcategory_title, setRequest_url, location }) {
-	const base_filter_url = 'http://localhost:8080/api/v1/product/byFilter?page=1&size=30';
+export function FilterAsideElem({ title, data, subcategory_title, setRequest_url, brand }) {
+	const base_filter_url = 'http://localhost:8080/api/v1/product/byFilterWithSubCategory?page=1&size=30';
 
 	const subcategory_string = `&subCategoryTitle=${subcategory_title}`;
 	let price_range_string = [];
@@ -13,8 +13,6 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 	let country_string = '';
 	let color_string = '';
 	let delivery_string = '';
-
-	console.log(data);
 
 	const [activeFilter, setActiveFilter] = useState(false)
 
@@ -97,7 +95,12 @@ export function FilterAsideElem({ title, data, subcategory_title, setRequest_url
 				}
 			}
 		}
-		setRequest_url(base_filter_url + subcategory_string + brands_string + country_string + color_string + price_range_string);
+		if (!brand) {
+			setRequest_url(base_filter_url + subcategory_string + brands_string + country_string + color_string + price_range_string);
+		} else {
+			setRequest_url(base_filter_url + brands_string + country_string + color_string + price_range_string);
+		}
+
 
 	}, [requestBody])
 
