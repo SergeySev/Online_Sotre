@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetch_filter_data, fetch_filtered_subcategory_products } from '../../requests/requests';
+import { fetch_filter_data, fetch_filtered_brand_products, fetch_filtered_subcategory_products } from '../../requests/requests';
 import s from './FilterAside.module.css'
 import { FilterAsideElem } from './FilterAsideElem/FilterAsideElem';
 
@@ -16,7 +16,13 @@ export function FilterAside({ subcategory_title, brand }) {
 
 	useEffect(() => {
 		if (request_url !== 'http://localhost:8080/api/v1/product/byFilterWithSubCategory?page=1&size=30&subCategoryTitle=') {
-			dispatch(fetch_filtered_subcategory_products(request_url))
+			if (!brand) {
+				dispatch(fetch_filtered_subcategory_products(request_url))
+			} else {
+				console.log(request_url);
+				dispatch(fetch_filtered_brand_products(request_url))
+			}
+
 		}
 	}, [request_url])
 

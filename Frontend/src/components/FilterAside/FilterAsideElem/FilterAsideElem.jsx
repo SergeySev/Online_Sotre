@@ -5,7 +5,8 @@ import FilterPriceRange from '../../FilterPriceRange/FilterPriceRange'
 import s from './FilterAsideElem.module.css'
 
 export function FilterAsideElem({ title, data, subcategory_title, setRequest_url, brand }) {
-	const base_filter_url = 'http://localhost:8080/api/v1/product/byFilterWithSubCategory?page=1&size=30';
+	const base_filter_url = !brand ? 'http://localhost:8080/api/v1/product/byFilterWithSubCategory?page=1&size=30'
+		: `http://localhost:8080/api/v1/product/byFilterWithBrand?page=1&size=30&brandTitle=${brand}`;
 
 	const subcategory_string = `&subCategoryTitle=${subcategory_title}`;
 	let price_range_string = [];
