@@ -35,7 +35,9 @@ export function BrandItemPage() {
 				<Breadcrumbs items={breadcrumbsItems} className={s.breadcrumbs} />
 				<h1 className={s.page_title}>{brand_title}</h1>
 				<div className={s.brand_description}>
-					<img src={brand_image} alt={brand_title} />
+					<div className={s.brand_image_wrapper}>
+						<img src={brand_image} alt={brand_title} />
+					</div>
 					<p>{brand_description}</p>
 				</div>
 				<h2 className={s.brand_subtitle}>{brand_title} products in our store</h2>
