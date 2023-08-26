@@ -3,6 +3,7 @@ import s from './NotFoundPage.module.css'
 import { Button } from '../../UI'
 
 export function NotFoundPage() {
+
 	return (
 		<section className={s.notfound_page}>
 			<div className={s.notfound_content}>
