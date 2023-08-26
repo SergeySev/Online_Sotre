@@ -16,7 +16,7 @@ export function BrandItemPage() {
 	const dispatch = useDispatch()
 	const [isAssideOpen, setIsAssideOpen] = useState(false);
 	const subcategory_title = useSelector(store => store.category_products.category_title)
-	const location = 'brand'
+	const [isAsideOpen, setIsAsideOpen] = useState(false);
 
 	const breadcrumbsItems = [
 		{ text: 'Home /', link: '/Online_Store' },
@@ -29,34 +29,36 @@ export function BrandItemPage() {
 	}, [])
 
 	return (
-		<div className={s.brand_page}>
-			<div className='container'>
-				<Breadcrumbs items={breadcrumbsItems} className={s.breadcrumbs} />
-				<h1 className={s.page_title}>{brand_title}</h1>
-				<div className={s.brand_description}>
-					<div className={s.brand_image_wrapper}>
-						<img src={brand_image} alt={brand_title} />
-					</div>
-					<p>{brand_description}</p>
-				</div>
-				<h2 className={s.brand_subtitle}>{brand_title} products in our store</h2>
-				<div className={s.products_wrapper}>
-					<aside className={s.aside_container}>
-						<BurgerAside
-							content='aside'
-							isAssideOpen={isAssideOpen}
-							setIsAssideOpen={setIsAssideOpen}
-						/>
-						<div className={`${s.aside_content} ${s[isAssideOpen ? "open" : ''] || ''}`}>
-							<FilterAside subcategory_title={subcategory_title} brand={brand_title} />
-							<OffersAside />
+		<section className={`${s.subcategory_section} ${s[isAsideOpen ? "open" : ''] || ''}`}>
+			<div className={s.brand_page}>
+				<div className='container'>
+					<Breadcrumbs items={breadcrumbsItems} className={s.breadcrumbs} />
+					<h1 className={s.page_title}>{brand_title}</h1>
+					<div className={s.brand_description}>
+						<div className={s.brand_image_wrapper}>
+							<img src={brand_image} alt={brand_title} />
 						</div>
-					</aside>
-					<div className={s.products_list}>
-						<ProductsList products={brand_products} />
+						<p>{brand_description}</p>
+					</div>
+					<h2 className={s.brand_subtitle}>{brand_title} products in our store</h2>
+					<div className={s.page_container}>
+						<aside className={s.aside_container}>
+							<BurgerAside
+								content='aside'
+								isAsideOpen={isAsideOpen}
+								setIsAsideOpen={setIsAsideOpen}
+							/>
+							<div className={`${s.aside_content} ${s[isAsideOpen ? "open" : ''] || ''}`}>
+								<FilterAside subcategory_title={subcategory_title} brand={brand_title} />
+								<OffersAside />
+							</div>
+						</aside>
+						<div className={s.products_list}>
+							<ProductsList products={brand_products} />
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }

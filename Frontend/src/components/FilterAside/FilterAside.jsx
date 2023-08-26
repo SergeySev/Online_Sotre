@@ -17,7 +17,6 @@ export function FilterAside({ subcategory_title, brand }) {
 			if (!brand) {
 				dispatch(fetch_filtered_subcategory_products(request_url))
 			} else {
-				console.log(request_url);
 				dispatch(fetch_filtered_brand_products(request_url))
 			}
 		}
