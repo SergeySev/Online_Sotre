@@ -2,13 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BurgerContext } from "./context/burgerContext";
 import { PopUpContext } from "./context/popUpContext";
-import {
-	Header,
-	Footer,
-	PopUpContainer,
-	PopUpContent,
-	useAuth,
-} from "./components";
+import { Header, Footer, PopUpContainer, PopUpContent } from "./components";
 import {
 	CartPage,
 	BrandsPage,
@@ -34,11 +28,8 @@ function App() {
 	const [title, setTitle] = useState("");
 	const dispatch = useDispatch();
 
-	//const { isAuth } = useAuth();
-
 	useEffect(() => {
 		const saved_token = sessionStorage.getItem("user_token");
-		//console.log("🚀 ~ file: App.js:19 ~ useEffect ~ saved_token:", saved_token);
 		if (saved_token) checkToken(saved_token);
 	}, []);
 

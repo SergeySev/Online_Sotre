@@ -1,38 +1,29 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { courier_inputs, user_inputs } from "../../data/data";
 import { Button, InputOrder } from "../../UI";
 import { FormPasswordChange } from "../";
-import { useNavigate } from "react-router-dom";
 import { fetch_update_user } from "../../requests/requests";
 import { useDispatch } from "react-redux";
-import { set_user, update_user } from "../../store/reducers/userSlice";
+import { set_user } from "../../store/reducers/userSlice";
+import { PopUpContext } from "../../context/popUpContext";
 import s from "./PrivateInfo.module.css";
 
 export function PrivateInfo() {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
+	const contextPopUp = useContext(PopUpContext);
 	const {
-		isAuth,
 		id,
 		firstName,
 		lastName,
 		email,
 		phoneNumber,
-		birthDate,
 		city,
 		postCode,
 		street,
 		houseNumber,
 		apartmentNumber,
 	} = useAuth();
-	//console.log("🚀 ~ file: PrivateInfo.jsx:29 ~ PrivateInfo ~ isAuth:", isAuth);
-
-	//useEffect(() => {
-	//	if (!isAuth) {
-	//		navigate("/OnlineStore");
-	//	}
-	//}, [isAuth]);
 
 	const [values, setValues] = useState({
 		firstName: firstName ?? "",
@@ -68,7 +59,6 @@ export function PrivateInfo() {
 
 	const submit = (e) => {
 		e.preventDefault();
-		//console.log("🚀 ~ file: PrivateInfo.jsx:53 ~ submit ~ e:", e.target);
 		const {
 			firstName,
 			lastName,
@@ -80,19 +70,11 @@ export function PrivateInfo() {
 			apartmentNumber,
 		} = e.target;
 
-		//const inputDate = birthday;
-		//const parts = inputDate.split(".");
-		//const formattedDate = new Date(
-		//	`${parts[2]}-${parts[1]}-${parts[0]}T00:00:00.000Z`
-		//).toISOString();
-
 		const newData = {
 			id,
 			firstName: firstName.value ?? "",
 			lastName: lastName.value ?? "",
 			phoneNumber: phoneNumber.value ?? "",
-			//email: mail,
-			//birthDate: birthday,
 			address: {
 				country: "n/d",
 				city: city.value ?? "",
@@ -102,19 +84,18 @@ export function PrivateInfo() {
 				postCode: postCode.value ?? "",
 			},
 		};
-		//console.log("🚀 ~ file: PrivateInfo.jsx:88 ~ submit ~ newData:", newData);
 
-		//fetch_update_user(newData);
 		const resultPromise = fetch_update_user(newData);
 		resultPromise
 			.then((responseData) => {
 				console.log("Response from server:", responseData);
 				dispatch(set_user(responseData));
+				contextPopUp.setTitle("user_data");
+				contextPopUp.setPopupActive(true);
 			})
 			.catch((error) => {
 				console.error("An error occurred:", error);
 			});
-		//console.log("🚀 ~ file: PrivateInfo.jsx:80 ~ submit ~ response:", response);
 	};
 
 	return (

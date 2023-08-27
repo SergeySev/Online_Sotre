@@ -4,9 +4,8 @@ import { Button } from "../../../UI";
 import { payments, radio_orders } from "../../../data/data";
 import { payment_data } from "../../../store/reducers/orderSlice";
 import { PopUpContext } from "../../../context/popUpContext";
-import s from "./TabPayment.module.css";
-import { clean_cart } from "../../../store/reducers/cartSlice";
 import { useNavigate } from "react-router-dom";
+import s from "./TabPayment.module.css";
 
 export const TabPayment = () => {
 	const contextPopUp = useContext(PopUpContext);
@@ -36,7 +35,6 @@ export const TabPayment = () => {
 		dispatch(payment_data(obj));
 		contextPopUp.setTitle("order");
 		contextPopUp.setPopupActive(true);
-		//dispatch(clean_cart());
 		navigate("/Online_Store");
 	};
 

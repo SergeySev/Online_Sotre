@@ -4,7 +4,6 @@ import { call_request } from "../../data/data";
 import s from "./CallRequest.module.css";
 
 export function CallRequest({ setActiveWindow }) {
-
 	const [values, setValues] = useState({
 		name: "",
 		phone: "",
@@ -17,12 +16,12 @@ export function CallRequest({ setActiveWindow }) {
 
 	const sendHandler = (e) => {
 		e.preventDefault();
-		const { name, phone, message } = e.target;
-		const newRequest = {
-			name: name.value,
-			phone: phone.value,
-			message: message.value,
-		};
+		//const { name, phone, message } = e.target;
+		//const newRequest = {
+		//	name: name.value,
+		//	phone: phone.value,
+		//	message: message.value,
+		//};
 		setActiveWindow("alert");
 	};
 

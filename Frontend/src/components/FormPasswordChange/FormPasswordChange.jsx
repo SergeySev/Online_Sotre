@@ -1,17 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Button, Input } from "../../UI";
 import { update_password } from "../../data/data";
-import s from "./FormPasswordChange.module.css";
 import { fetch_update_password } from "../../requests/requests";
 import { useDispatch } from "react-redux";
+import { set_user } from "../../store/reducers/userSlice";
+import { useAuth } from "../hooks/useAuth";
+import { PopUpContext } from "../../context/popUpContext";
+import s from "./FormPasswordChange.module.css";
 
 export function FormPasswordChange() {
+	const { id } = useAuth();
 	const [values, setValues] = useState({
 		old_password: "",
 		new_password: "",
 		confirm_password: "",
 	});
-
+	const contextPopUp = useContext(PopUpContext);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -35,10 +39,18 @@ export function FormPasswordChange() {
 
 	const submit = (e) => {
 		e.preventDefault();
-		const new_password = e.target.new_password.value;
+		const password = e.target.new_password.value;
 
-		const response = fetch_update_password(new_password);
-		dispatch(set_user(response));
+		const resultPromise = fetch_update_password({ id, password });
+		resultPromise
+			.then((responseData) => {
+				dispatch(set_user(responseData));
+				contextPopUp.setTitle("password");
+				contextPopUp.setPopupActive(true);
+			})
+			.catch((error) => {
+				console.error("An error occurred:", error);
+			});
 	};
 
 	return (
