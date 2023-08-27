@@ -8,11 +8,11 @@ import {
 	CallRequestAlert,
 	PopUpProfile,
 	PopUpOrder,
+	PopUpMessage,
 } from "..";
 import s from "./PopUpContent.module.css";
 
 export function PopUpContent({ setActive, popup }) {
-
 	const [activeWindow, setActiveWindow] = useState(popup);
 
 	const content = () => {
@@ -43,9 +43,19 @@ export function PopUpContent({ setActive, popup }) {
 			case "order":
 				field = <PopUpOrder setActive={setActive} />;
 				break;
-			// case 'error':
-			// 	field = <WrongAuthentication setActiveWindow={setActiveWindow} setActive={setActive} />
-			// 	break;
+			case "password":
+				field = (
+					<PopUpMessage
+						setActive={setActive}
+						message="Your password was changed"
+					/>
+				);
+				break;
+			case "user_data":
+				field = (
+					<PopUpMessage setActive={setActive} message="Your data was changed" />
+				);
+				break;
 			default:
 				break;
 		}

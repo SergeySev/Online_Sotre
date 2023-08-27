@@ -54,11 +54,11 @@ export { PopUpContainer } from "./PopUpContainer/PopUpContainer";
 export { PopUp } from "./PopUp/PopUp";
 export { PopUpProfile } from "./PopUpProfile/PopUpProfile";
 export { PopUpOrder } from "./PopUpOrder/PopUpOrder";
+export { PopUpMessage } from "./PopUpMessage/PopUpMessage";
 
 export { PopUpContent } from "./PopUpContent/PopUpContent";
 export { RegisterForm } from "./RegisterForm/RegisterForm";
 export { SignForm } from "./SignForm/SignForm";
-// export { WrongAuthentication } from "./WrongAuthentication/WrongAuthentication";
 
 export { CallRequest } from "./CallRequest/CallRequest";
 export { CallRequestAlert } from "./CallRequestAlert/CallRequestAlert";

@@ -7,7 +7,6 @@ import { clean_cart } from "../../store/reducers/cartSlice";
 import { useEffect } from "react";
 
 export function PopUpOrder() {
-	//const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const { id } = useAuth();
