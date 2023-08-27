@@ -33,7 +33,7 @@ public class Client {
     private LocalDateTime updatedAt;
     private LocalDateTime birthDate;
     private Address address;
-    private List<Product> purchases = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     private String token;
 

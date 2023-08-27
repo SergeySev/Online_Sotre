@@ -1,12 +1,11 @@
 package com.example.fb_project.service;
 
-import com.example.fb_project.dto.ClientAuthorisationDto;
-import com.example.fb_project.dto.ClientDto;
-import com.example.fb_project.dto.ClientRegisterDto;
-import com.example.fb_project.dto.ClientUpdateDto;
+import com.example.fb_project.dto.*;
 import com.example.fb_project.entity.Client;
+import com.example.fb_project.entity.Order;
 import com.example.fb_project.entity.Product;
 import com.example.fb_project.mapper.ClientMapperDto;
+import com.example.fb_project.mapper.OrderMapper;
 import com.example.fb_project.mapper.ProductMapper;
 import com.example.fb_project.repository.ClientRepository;
 import com.example.fb_project.repository.ProductRepository;
@@ -19,6 +18,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -27,6 +28,7 @@ public class ClientService {
     private final ClientRepository clientRepository;
     private final CheckEmail checkEmail;
     private final ClientMapperDto clientMapperDto;
+    private final OrderMapper orderMapper;
     private final ProductMapper productMapper;
     private final ProductRepository productRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -55,6 +57,7 @@ public class ClientService {
                 client.getBirthDate(),
                 client.getAddress());
 
+        System.out.println("PASSWORD AFTER REGISTRY: " + registerClient.getPassword());
         registerClient.setToken(UUID.randomUUID().toString());
         clientRepository.save(registerClient);
         return clientMapperDto.toDto(registerClient);
@@ -101,9 +104,14 @@ public class ClientService {
         Client client = clientRepository.findByEmail(clientAuthorisationDto.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Client not found"));
 
+        System.out.println("PASSWORD WITH LOGIN REGISTRY client: " + client.getPassword());
+        System.out.println("PASSWORD WITH LOGIN REGISTRY request: " + clientAuthorisationDto.getPassword());
+        System.out.println("PASSWORD WITH LOGIN REGISTRY request: " + bCryptPasswordEncoder.encode(clientAuthorisationDto.getPassword()));
         if (bCryptPasswordEncoder.matches(clientAuthorisationDto.getPassword(), client.getPassword())) {
             client.setToken(UUID.randomUUID().toString());
             clientRepository.save(client);
+
+
             return setClientsPurchases(client);
         } else {
             throw new IllegalArgumentException("Invalid credentials");
@@ -112,7 +120,13 @@ public class ClientService {
 
     private ClientDto setClientsPurchases(Client client) {
         ClientDto clientDto = clientMapperDto.toDto(client);
-        clientDto.setPurchases(productMapper.toDtoList(client.getPurchases()));
+        List<OrderDto> orderDtos = new ArrayList<>();
+        for (Order order : client.getOrders()) {
+            OrderDto orderDto = orderMapper.toDto(order);
+            orderDto.setProducts(productMapper.toDtoList(order.getProducts()));
+            orderDtos.add(orderDto);
+        }
+        clientDto.setOrders(orderDtos);
         return clientDto;
     }
 
@@ -138,22 +152,22 @@ public class ClientService {
                 findById(new ObjectId(clientUpdateDto.getId())).
                 orElseThrow(() -> new IllegalArgumentException("Client not found"));
 
-        if (!client.getFirstName().isEmpty()) {
+        if (!clientUpdateDto.getFirstName().isEmpty()) {
             client.setFirstName(clientUpdateDto.getFirstName());
         }
 
-        if (!client.getLastName().isEmpty()) {
+        if (!clientUpdateDto.getLastName().isEmpty()) {
             client.setLastName(clientUpdateDto.getLastName());
         }
 
-        if (!client.getPhoneNumber().isEmpty()) {
+        if (!clientUpdateDto.getPhoneNumber().isEmpty()) {
             client.setPhoneNumber(clientUpdateDto.getPhoneNumber());
         }
 
-        if (client.getBirthDate() != null) {
+        if (clientUpdateDto.getBirthDate() != null) {
             client.setBirthDate(clientUpdateDto.getBirthDate());
         }
-        if (client.getAddress() != null) {
+        if (clientUpdateDto.getAddress() != null) {
             client.setAddress(clientUpdateDto.getAddress());
         }
 
@@ -166,22 +180,31 @@ public class ClientService {
                 findById(new ObjectId(clientUpdateDto.getId())).
                 orElseThrow(() -> new IllegalArgumentException("Client not found"));
 
-        client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
+        client.setPassword(bCryptPasswordEncoder.encode(clientUpdateDto.getPassword()));
+
+        System.out.println("PASSWORD AFTER UPDATE: " + client.getPassword());
+
 
         clientRepository.save(client);
         return clientMapperDto.toDto(client);
     }
 
-    public ClientDto addPurchase(String productId, String clientId) {
-        Product product = productRepository.
-                findById(new ObjectId(productId)).
-                orElseThrow(() -> new IllegalArgumentException("The Product not found"));
-
+    public ClientDto addPurchase(Order order, String clientId) {
         Client client = clientRepository.
                 findById(new ObjectId(clientId)).
                 orElseThrow(() -> new IllegalArgumentException("The Client not found"));
 
-        client.getPurchases().add(product);
+        List<Product> productsFromOrder = new ArrayList<>();
+        for (String productId : order.getProductsId()) {
+            Product product = productRepository.
+                    findById(new ObjectId(productId)).
+                    orElseThrow(() -> new IllegalArgumentException("The Product not found"));
+            productsFromOrder.add(product);
+        }
+
+        order.setProducts(productsFromOrder);
+
+        client.getOrders().add(order);
 
         clientRepository.save(client);
 

@@ -15,7 +15,7 @@ public class DataConfig {
     CommandLineRunner commandLineRunner(ChangeLogRepository changeLogRepository) {
 
         return args -> {
-            String version = "The app been already started. v 1.4";
+            String version = "The app been already started. v 1.5. Order in client.";
             if (changeLogRepository.findByIsStarted(true).isPresent())
                 System.out.println(version);
             else {

@@ -4,6 +4,7 @@ import com.example.fb_project.dto.ClientAuthorisationDto;
 import com.example.fb_project.dto.ClientDto;
 import com.example.fb_project.dto.ClientRegisterDto;
 import com.example.fb_project.dto.ClientUpdateDto;
+import com.example.fb_project.entity.Order;
 import com.example.fb_project.service.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -130,7 +131,7 @@ public class ClientController {
             @ApiResponse(responseCode = "500", description = "If client doesn't exist in the Data Base"),
     })
     @PutMapping (path = "/add_purchase")
-    public ClientDto updateClient(@RequestParam String productId, String clientId) {
-        return clientService.addPurchase(productId, clientId);
+    public ClientDto updateClient(@RequestBody Order order, @RequestParam String clientId) {
+        return clientService.addPurchase(order, clientId);
     }
 }
