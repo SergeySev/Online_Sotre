@@ -28,12 +28,12 @@ const userSlice = createSlice({
 			//	action.payload
 			//);
 
-			state.id = action.payload.id || "";
-			state.firstName = action.payload.firstName || "";
-			state.lastName = action.payload.lastName || "";
-			state.email = action.payload.email || "";
-			state.phoneNumber = action.payload.phoneNumber || "";
-			state.birthDate = action.payload.birthDate || "";
+			state.id = action.payload?.id || "";
+			state.firstName = action.payload?.firstName || "";
+			state.lastName = action.payload?.lastName || "";
+			state.email = action.payload?.email || "";
+			state.phoneNumber = action.payload?.phoneNumber || "";
+			state.birthDate = action.payload?.birthDate || "";
 			state.city = action.payload.address?.city || "";
 			state.postCode = action.payload.address?.postCode || "";
 			state.street = action.payload.address?.street || "";
