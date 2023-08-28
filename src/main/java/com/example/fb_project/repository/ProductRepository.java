@@ -35,4 +35,6 @@ public interface ProductRepository extends MongoRepository<Product, ObjectId> {
     Optional<Product> findAnyBySubCategory(SubCategory subCategory);
 
     Page<Product> findAllByBrand(Pageable pageable, Brand brand);
+
+    Page<Product> findByTitleContainingIgnoreCase(Pageable pageable, String title);
 }

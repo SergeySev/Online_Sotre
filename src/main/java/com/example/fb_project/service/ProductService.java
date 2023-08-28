@@ -305,4 +305,13 @@ public class ProductService {
         return document;
     }
 
+    public Page<ProductDto> getAllProductByTitle(Pageable pageable, String title) {
+        Page<Product> products = productRepository.findByTitleContainingIgnoreCase(pageable, title);
+
+        if (products.isEmpty()) {
+            throw new IllegalArgumentException("The products with title: " + title + " not found");
+        }
+        return products.map(productMapper::toDto);
+    }
+
 }

@@ -165,5 +165,18 @@ public class ProductController {
         );
     }
 
+    @Operation(summary = "Get products by brand title")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful loaded"),
+            @ApiResponse(responseCode = "500", description = "Brandor Products not found in the Data Base"),
+    })
+    @GetMapping(path = "/getProductsByTitle")
+    public Page<ProductDto> getProductsByTitle(@RequestParam(defaultValue = "1") int page,
+                                                  @RequestParam(defaultValue = "30") int size,
+                                                  @RequestParam String title) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+        return productService.getAllProductByTitle(pageable, title);
+    }
+
 
 }
