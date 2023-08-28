@@ -189,7 +189,7 @@ public class ClientService {
         return clientMapperDto.toDto(client);
     }
 
-    public ClientDto addPurchase(Order order, String clientId) {
+    public ClientDto addPurchase(OrderDto order, String clientId) {
         Client client = clientRepository.
                 findById(new ObjectId(clientId)).
                 orElseThrow(() -> new IllegalArgumentException("The Client not found"));
@@ -202,12 +202,17 @@ public class ClientService {
             productsFromOrder.add(product);
         }
 
-        order.setProducts(productsFromOrder);
+        Order orderToClient = new Order(
+                order.getProductsId(),
+                productsFromOrder,
+                order.getTotalSum(),
+                order.getDeliveryDate(),
+                order.getOrderDate());
 
-        client.getOrders().add(order);
+        client.getOrders().add(orderToClient);
 
         clientRepository.save(client);
 
-        return clientMapperDto.toDto(client);
+        return setClientsPurchases(client);
     }
 }
