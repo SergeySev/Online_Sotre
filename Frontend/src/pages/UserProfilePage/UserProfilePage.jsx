@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
 	Breadcrumbs,
 	OffersAside,
-	UserOrdersHistory,
+	UserOrdersList,
 	PrivateInfo,
 	BurgerAside,
 } from "../../components";
@@ -54,12 +54,12 @@ export function UserProfilePage() {
 							</ul>
 							<OffersAside />
 						</aside>
-						<div className={s.profile_content}>
-							{user_content === "data" ? (
-								<PrivateInfo />
-							) : (
-								<UserOrdersHistory />
-							)}
+						<div
+							className={`${s.profile_content} ${
+								s[user_content === "data" ? "" : "order"] || ""
+							}`}
+						>
+							{user_content === "data" ? <PrivateInfo /> : <UserOrdersList />}
 						</div>
 					</div>
 				</div>

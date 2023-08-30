@@ -32,7 +32,9 @@ export const TabPayment = () => {
 			method: payment.value,
 			type: payment.value === "receiving" ? cash_bank.value : bank.value,
 		};
+
 		dispatch(payment_data(obj));
+
 		contextPopUp.setTitle("order");
 		contextPopUp.setPopupActive(true);
 		navigate("/Online_Store");

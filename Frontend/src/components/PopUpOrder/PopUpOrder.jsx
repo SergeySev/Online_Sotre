@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import s from "./PopUpOrder.module.css";
 import { useAuth } from "../hooks/useAuth";
 import { fetch_add_order } from "../../requests/requests";
-import { useNavigate } from "react-router-dom";
 import { clean_cart } from "../../store/reducers/cartSlice";
 import { useEffect } from "react";
+import { set_user, update_orders } from "../../store/reducers/userSlice";
 
 export function PopUpOrder() {
 	const dispatch = useDispatch();
@@ -13,22 +13,31 @@ export function PopUpOrder() {
 	const deliveryDate = useSelector((store) => store.order.delivery[0].date);
 
 	const cart = useSelector((store) => store.cart);
-	const productsId = cart.cart_list.map((product) => product.id);
-	const totalSumm = cart.total_summ;
+	const productsId = cart.cart_list.reduce((acc, item) => {
+		for (let i = 0; i < item.cart_amount; i++) {
+			acc.push(item.id);
+		}
+		return acc;
+	}, []);
+	const totalSum = cart.total_summ;
 
 	useEffect(() => {
 		const newOrder = {
-			order: {
-				productsId,
-				totalSumm,
-				deliveryDate,
-				orderDate: new Date(),
-			},
-			userId: id,
+			productsId,
+			totalSum,
+			deliveryDate,
+			orderDate: new Date(),
 		};
-		fetch_add_order(newOrder);
+		//fetch_add_order(newOrder, id);
+		getOrders(newOrder);
 		dispatch(clean_cart());
 	}, []);
+
+	const getOrders = async (newOrder) => {
+		const resp = await fetch_add_order(newOrder, id);
+
+		dispatch(set_user(resp));
+	};
 
 	return (
 		<div className={s.message_content}>

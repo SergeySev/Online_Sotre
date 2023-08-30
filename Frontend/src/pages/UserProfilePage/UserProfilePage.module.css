@@ -44,6 +44,11 @@
 	background-color: var(--white);
 }
 
+.profile_content.order {
+
+	background-color: var(--background);
+}
+
 .tabs_container {
 	margin-bottom: 20px;
 	background-color: var(--coal);

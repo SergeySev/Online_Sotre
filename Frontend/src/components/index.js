@@ -66,7 +66,8 @@ export { CallRequestAlert } from "./CallRequestAlert/CallRequestAlert";
 export { useAuth } from "./hooks/useAuth";
 
 export { PrivateInfo } from "./PrivateInfo/PrivateInfo";
-export { UserOrdersHistory } from "./UserOrdersHistory/UserOrdersHistory";
+export { UserOrdersList } from "./UserOrdersList/UserOrdersList";
+export { UserOrderItem } from "./UserOrderItem/UserOrderItem";
 
 export { FormPasswordChange } from "./FormPasswordChange/FormPasswordChange";
 
