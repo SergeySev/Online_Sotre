@@ -11,23 +11,31 @@ import { get_subcategory_by_title } from "../store/reducers/subCategorySlice";
 import { aside_product_offers } from "../store/reducers/asideOffersSlice";
 import { toggle_comparison } from "../store/reducers/comparisonSlice";
 import { get_brand_products } from "../store/reducers/brandItemSlice";
-import { set_user } from "../store/reducers/userSlice";
 
 const base_url = "http://localhost:8080/api/v1";
 
-export const fetch_add_order = async (newOrder) => {
-	console.log(
-		"🚀 ~ file: requests.js:19 ~ const fetch_add_order= ~ newOrder:",
-		newOrder
-	);
+export const fetch_add_order = async (newOrder, userId) => {
+	//console.log(
+	//	"🚀 ~ file: requests.js:18 ~ constfetch_add_order= ~ userId:",
+	//	userId
+	//);
+	//console.log(
+	//	"🚀 ~ file: requests.js:18 ~ constfetch_add_order= ~ newOrder:",
+	//	newOrder
+	//);
 	try {
-		const response = await fetch(`${base_url}/client/add_purchase`, {
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(newOrder),
-		});
+		const response = await fetch(
+			`${base_url}/client/add_purchase?clientId=${userId}`,
+			{
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(newOrder),
+			}
+		);
+		const responseData = await response.json();
+		return responseData;
 	} catch (error) {
 		console.error("fetch error: ", error);
 	}
@@ -334,7 +342,6 @@ export const fetch_comparison_product = (product_id) => {
 			fetch(`${base_url}/product/getProductById?id=${product_id}`)
 				.then((res) => res.json())
 				.then((data) => {
-					console.log("🚀 ~ file: requests.js:204 ~ .then ~ data:", data);
 					dispatch(toggle_comparison(data));
 				})
 				.catch(() => {

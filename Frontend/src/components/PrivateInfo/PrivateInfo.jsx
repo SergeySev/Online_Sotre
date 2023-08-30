@@ -88,7 +88,7 @@ export function PrivateInfo() {
 		const resultPromise = fetch_update_user(newData);
 		resultPromise
 			.then((responseData) => {
-				console.log("Response from server:", responseData);
+				//console.log("Response from server:", responseData);
 				dispatch(set_user(responseData));
 				contextPopUp.setTitle("user_data");
 				contextPopUp.setPopupActive(true);

@@ -14,6 +14,7 @@ export function useAuth() {
 		houseNumber,
 		apartmentNumber,
 		purchases,
+		orders,
 		token,
 	} = useSelector((store) => store.user);
 
@@ -31,6 +32,7 @@ export function useAuth() {
 		houseNumber,
 		apartmentNumber,
 		purchases,
+		orders,
 		token,
 	};
 }

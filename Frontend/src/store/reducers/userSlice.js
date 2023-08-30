@@ -19,15 +19,11 @@ const userSlice = createSlice({
 		houseNumber: "",
 		apartmentNumber: "",
 		purchases: [],
+		orders: [],
 		token: "",
 	},
 	reducers: {
 		set_user(state, action) {
-			//console.log(
-			//	"🚀 ~ file: userSlice.js:29 ~ set_user ~ action:",
-			//	action.payload
-			//);
-
 			state.id = action.payload?.id || "";
 			state.firstName = action.payload?.firstName || "";
 			state.lastName = action.payload?.lastName || "";
@@ -40,6 +36,22 @@ const userSlice = createSlice({
 			state.houseNumber = action.payload.address?.houseNumber || "";
 			state.apartmentNumber = action.payload.address?.apartmentNumber || "";
 			state.purchases = action.payload.purchases || [];
+			state.orders =
+				action.payload.orders?.map((elem) => {
+					const uniqueProducts = [];
+					elem.products.forEach((el) => {
+						const existingProduct = uniqueProducts.find(
+							(product) => product.id === el.id
+						);
+						if (existingProduct) {
+							existingProduct.cart_amount += 1;
+						} else {
+							uniqueProducts.push({ ...el, cart_amount: 1 });
+						}
+					});
+					elem.products = uniqueProducts;
+					return elem;
+				}) || [];
 			state.token = action.payload.token || "";
 			updateSessionStorage(state.token);
 		},
@@ -48,15 +60,8 @@ const userSlice = createSlice({
 			updateSessionStorage("");
 			return {};
 		},
-
-		update_user(state, action) {
-			console.log(
-				"🚀 ~ file: userSlice.js:29 ~ set_user ~ action:",
-				action.payload
-			);
-		},
 	},
 });
 
 export default userSlice.reducer;
-export const { set_user, logout_user, update_user } = userSlice.actions;
+export const { set_user, logout_user } = userSlice.actions;
