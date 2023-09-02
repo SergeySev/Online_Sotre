@@ -214,14 +214,17 @@ export const fetch_brand_products = (brand) => {
 };
 
 export const fetch_searched_products = (keyword) => {
-  const items_per_page = 6;
   return function (dispatch) {
     try {
-      fetch(
-        `http://localhost:8080/api/v1/product/getProductsByTitle?page=1&size=${items_per_page}&title=${keyword}`
-      )
-        .then((res) => res.json())
-        .then((data) => dispatch(get_searched_products(data)));
+      if (keyword) {
+        fetch(
+          `${base_url}/product/getProductsByTitle?page=1&size=30&title=${keyword}`
+        )
+          .then((res) => res.json())
+          .then((data) => dispatch(get_searched_products(data)));
+      } else {
+        dispatch(get_searched_products([]));
+      }
     } catch (error) {
       console.error("fetch error: ", error);
       dispatch(get_searched_products([]));
@@ -264,12 +267,16 @@ export const fetch_subcategory_products = (id) => {
 export const fetch_filtered_subcategory_products = (requestUrl) => {
   return function (dispatch) {
     try {
-      fetch(requestUrl)
-        .then((res) => res.json())
-        .then((data) => dispatch(get_filtered_subcategory_products(data)))
-        .catch(() => {
-          dispatch(get_filtered_subcategory_products([]));
-        });
+      if (requestUrl) {
+        fetch(requestUrl)
+          .then((res) => res.json())
+          .then((data) => dispatch(get_filtered_subcategory_products(data)))
+          .catch(() => {
+            dispatch(get_filtered_subcategory_products([]));
+          });
+      } else {
+        dispatch(get_filtered_subcategory_products([]));
+      }
     } catch (error) {
       console.error("fetch error: ", error);
       dispatch(fetch_filtered_subcategory_products([]));
