@@ -42,6 +42,27 @@
   background-color: var(--orange);
 }
 
+.search_wrapper {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+}
+
+.search_container {
+  padding: 24px;
+  background-color: var(--white);
+  max-height: 480px;
+  overflow-y: scroll;
+}
+
+.search_showmore {
+  background-color: var(--dark-gray);
+  padding: 20px;
+  text-align: center;
+  border-radius: 0 0 5px 5px;
+}
+
 @media (max-width: 1360px) {
   .input_wrapper.scroll {
     display: none;

@@ -1,0 +1,25 @@
+.product_wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.product_image {
+  width: 60px;
+}
+.product_image img {
+  max-width: none;
+  width: 60px;
+  object-fit: contain;
+}
+.product_title {
+  font-size: 16px;
+  font-weight: 500;
+  width: 230px;
+}
+.product_price {
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}

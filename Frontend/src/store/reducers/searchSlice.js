@@ -5,7 +5,7 @@ const searchSlice = createSlice({
   initialState: [],
   reducers: {
     get_searched_products(state, action) {
-      console.log(action.payload);
+      console.log(action.payload.content);
       return action.payload.content ? [...action.payload.content] : [];
     },
   },
