@@ -223,11 +223,11 @@ export const fetch_searched_products = (keyword) => {
           .then((res) => res.json())
           .then((data) => dispatch(get_searched_products(data)));
       } else {
-        dispatch(get_searched_products([]));
+        dispatch(get_searched_products({}));
       }
     } catch (error) {
       console.error("fetch error: ", error);
-      dispatch(get_searched_products([]));
+      dispatch(get_searched_products({}));
     }
   };
 };
