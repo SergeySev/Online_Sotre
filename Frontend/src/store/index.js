@@ -15,26 +15,28 @@ import requestBodySlice from "./reducers/requestBodySlice";
 import asideOffersSlice from "./reducers/asideOffersSlice";
 import userSlice from "./reducers/userSlice";
 import brandItemSlice from "./reducers/brandItemSlice";
+import searchSlice from "./reducers/searchSlice";
 
 const rootReducer = combineReducers({
-	categories: categoriesSlice,
-	subcategories: subCategoriesSlice,
-	// subCategory: subCategorySlice,
-	brands: brandSlice,
-	brand_item: brandItemSlice,
-	category_products: categoryProductsSlice,
-	offers: offersSlice,
-	aside_offers: asideOffersSlice,
-	navigation: navSlice,
-	favorite: favoriteSlice,
-	comparison: comparisonSlice,
-	cart: cartSlice,
-	filter_data: filterSlice,
-	order: orderSlice,
-	requestBody: requestBodySlice,
-	user: userSlice
-})
+  categories: categoriesSlice,
+  subcategories: subCategoriesSlice,
+  // subCategory: subCategorySlice,
+  searched_products: searchSlice,
+  brands: brandSlice,
+  brand_item: brandItemSlice,
+  category_products: categoryProductsSlice,
+  offers: offersSlice,
+  aside_offers: asideOffersSlice,
+  navigation: navSlice,
+  favorite: favoriteSlice,
+  comparison: comparisonSlice,
+  cart: cartSlice,
+  filter_data: filterSlice,
+  order: orderSlice,
+  requestBody: requestBodySlice,
+  user: userSlice,
+});
 
 export const store = configureStore({
-	reducer: rootReducer
-})
+  reducer: rootReducer,
+});
