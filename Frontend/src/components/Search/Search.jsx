@@ -10,7 +10,9 @@ export function Search({ isBlocked }) {
 	const dispatch = useDispatch()
 	const [keyword, setKeyword] = useState('');
 
-	const searched_products = useSelector(store => store.searched_products)
+	const searched_products = useSelector(store => Object.keys(store.searched_products).length !== 0 ? store.searched_products.content : [])
+	const pages = useSelector(store => store.searched_products?.totalPages)
+	const elements = useSelector(store => store.searched_products?.totalElements)
 
 
 	const handleChange = (e) => {
@@ -18,13 +20,16 @@ export function Search({ isBlocked }) {
 	}
 
 	useEffect(() => {
-		console.log(keyword);
-		console.log(searched_products);
+
 		if (keyword.length >= 3) {
 			dispatch(fetch_searched_products(keyword))
 		} else {
 			dispatch(fetch_searched_products(''))
 		}
+		// console.log(keyword);
+		// console.log(searched_products);
+		// console.log("pages :", pages);
+		// console.log(" total :", elements);
 	}, [keyword])
 
 

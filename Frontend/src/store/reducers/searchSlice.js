@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const searchSlice = createSlice({
   name: "searched_products",
-  initialState: [],
+  initialState: {},
   reducers: {
     get_searched_products(state, action) {
-      console.log(action.payload.content);
-      return action.payload.content ? [...action.payload.content] : [];
+      console.log(action.payload);
+      return action.payload ? { ...action.payload } : { content: [] };
     },
   },
 });
