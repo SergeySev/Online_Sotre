@@ -213,12 +213,12 @@ export const fetch_brand_products = (brand) => {
   };
 };
 
-export const fetch_searched_products = (keyword) => {
+export const fetch_searched_products = (keyword, currentPage) => {
   return function (dispatch) {
     try {
       if (keyword) {
         fetch(
-          `${base_url}/product/getProductsByTitle?page=1&size=30&title=${keyword}`
+          `${base_url}/product/getProductsByTitle?page=${currentPage}&size=30&title=${keyword}`
         )
           .then((res) => res.json())
           .then((data) => dispatch(get_searched_products(data)));
