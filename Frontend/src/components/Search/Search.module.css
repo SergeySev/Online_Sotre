@@ -73,6 +73,13 @@
   text-align: center;
   border-radius: 0 0 5px 5px;
 }
+.search_showmore p {
+  transition: all var(--transition);
+}
+.search_showmore p:hover {
+  color: var(--orange);
+  cursor: pointer;
+}
 
 @media (max-width: 1360px) {
   .input_wrapper.scroll {

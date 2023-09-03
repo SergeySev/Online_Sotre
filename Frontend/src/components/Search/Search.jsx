@@ -9,29 +9,31 @@ export function Search({ isBlocked }) {
 
 	const dispatch = useDispatch()
 	const [keyword, setKeyword] = useState('');
+	let [currentPage, setCurrentPage] = useState(1);
 
 	const searched_products = useSelector(store => Object.keys(store.searched_products).length !== 0 ? store.searched_products.content : [])
 	const pages = useSelector(store => store.searched_products?.totalPages)
-	const elements = useSelector(store => store.searched_products?.totalElements)
-
 
 	const handleChange = (e) => {
 		setKeyword(e.target.value)
 	}
 
 	useEffect(() => {
-
 		if (keyword.length >= 3) {
-			dispatch(fetch_searched_products(keyword))
+			dispatch(fetch_searched_products(keyword, currentPage))
 		} else {
-			dispatch(fetch_searched_products(''))
+			dispatch(fetch_searched_products('', 1))
 		}
-		// console.log(keyword);
-		// console.log(searched_products);
-		// console.log("pages :", pages);
-		// console.log(" total :", elements);
 	}, [keyword])
 
+	const showMoreHandler = () => {
+		if (currentPage < pages) {
+			setCurrentPage(++currentPage)
+			console.log(currentPage);
+			console.log(searched_products);
+			dispatch(fetch_searched_products(keyword, currentPage))
+		}
+	}
 
 	return (
 		<form className={`${s.input_wrapper} ${s[isBlocked]}`} >
@@ -43,12 +45,15 @@ export function Search({ isBlocked }) {
 			<div className={s.search_icon}>
 				<img src={search} alt='search_icon' />
 			</div>
-			<div className={s.search_wrapper}>
+			{searched_products.length && <div className={s.search_wrapper}>
 				<div className={s.search_container}>
 					{searched_products.map(el => <SearchItem {...el} key={el.id} />)}
 				</div>
-				<div className={s.search_showmore}>Show more</div>
-			</div>
+				<div className={s.search_showmore}>
+					<p onClick={showMoreHandler}>Show more</p>
+					{/* <p style={keyword.length >= 3 ? { color: "white" } : { color: "lightgray" }}>Show more</p> */}
+				</div>
+			</div>}
 
 		</form>
 	)
