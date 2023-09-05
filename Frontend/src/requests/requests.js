@@ -12,6 +12,7 @@ import { aside_product_offers } from "../store/reducers/asideOffersSlice";
 import { toggle_comparison } from "../store/reducers/comparisonSlice";
 import { get_brand_products } from "../store/reducers/brandItemSlice";
 import { get_searched_products } from "../store/reducers/searchSlice";
+import { get_product_info } from "../store/reducers/productItemSlice";
 
 const base_url = "http://localhost:8080/api/v1";
 
@@ -196,8 +197,6 @@ export const fetch_brands = () => {
   };
 };
 
-// http://localhost:8080/api/v1/product/byFilterWithBrand?page=1&size=30&brandTitle=Sniezka&priceFrom=0&priceTo=500
-
 export const fetch_brand_products = (brand) => {
   return function (dispatch) {
     try {
@@ -377,6 +376,19 @@ export const fetch_comparison_product = (product_id) => {
     } catch (error) {
       console.error("fetch error: ", error);
       dispatch(toggle_comparison({}));
+    }
+  };
+};
+
+export const fetch_product_info = (id) => {
+  return function (dispatch) {
+    try {
+      fetch(`${base_url}/product/getProductById?id=${id}`)
+        .then((res) => res.json())
+        .then((data) => dispatch(get_product_info(data)));
+    } catch (error) {
+      console.error("fetch error: ", error);
+      dispatch(get_product_info({}));
     }
   };
 };
