@@ -5,6 +5,7 @@ import { fetch_searched_products } from '../../requests/requests';
 import { useEffect, useState } from 'react';
 import SearchItem from './SearchItem/SearchItem';
 import { clean_searched_products } from '../../store/reducers/searchSlice';
+import debounce from 'lodash.debounce';
 
 export function Search({ isBlocked }) {
 
@@ -15,9 +16,9 @@ export function Search({ isBlocked }) {
 	let searched_products = useSelector(store => Object.keys(store.searched_products).length !== 0 ? store.searched_products.content : [])
 	const pages = useSelector(store => store.searched_products?.totalPages)
 
-	const handleChange = (e) => {
+	const handleChange = debounce((e) => {
 		setKeyword(e.target.value)
-	}
+	}, 500)
 
 	useEffect(() => {
 		if (keyword.length >= 3) {
