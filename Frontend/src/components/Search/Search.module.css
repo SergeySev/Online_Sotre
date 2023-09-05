@@ -73,12 +73,17 @@
   text-align: center;
   border-radius: 0 0 5px 5px;
 }
-.search_showmore p {
+.search_para {
   transition: all var(--transition);
 }
-.search_showmore p:hover {
+.search_para:hover {
   color: var(--orange);
   cursor: pointer;
+}
+
+.search_para_disabled {
+  color: var(--smoky);
+  cursor: not-allowed;
 }
 
 @media (max-width: 1360px) {
