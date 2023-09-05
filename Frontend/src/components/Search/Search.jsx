@@ -17,11 +17,13 @@ export function Search({ isBlocked }) {
 	const pages = useSelector(store => store.searched_products?.totalPages)
 
 	const handleChange = debounce((e) => {
+		setCurrentPage(1)
 		setKeyword(e.target.value)
 	}, 500)
 
 	useEffect(() => {
-		if (keyword.length >= 3) {
+
+		if (keyword?.length >= 3) {
 			dispatch(fetch_searched_products(keyword, currentPage))
 		} else {
 			dispatch(clean_searched_products())
@@ -48,12 +50,12 @@ export function Search({ isBlocked }) {
 				<img src={search} alt='search_icon' />
 			</div>
 			{
-				searched_products.length && <div className={s.search_wrapper}>
+				searched_products?.length && <div className={s.search_wrapper}>
 					<div className={s.search_container}>
-						{searched_products.map(el => <SearchItem {...el} key={el.id} />)}
+						{searched_products.map((el, index) => <SearchItem {...el} key={index} />)}
 					</div>
 					<div className={s.search_showmore}>
-						<p onClick={showMoreHandler}>Show more</p>
+						<p className={pages === currentPage ? s.search_para_disabled : s.search_para} onClick={showMoreHandler}>Show more</p>
 						{/* <p style={keyword.length >= 3 ? { color: "white" } : { color: "lightgray" }}>Show more</p> */}
 					</div>
 				</div>
