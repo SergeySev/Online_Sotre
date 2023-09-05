@@ -33,8 +33,6 @@ export function Search({ isBlocked }) {
 	const showMoreHandler = () => {
 		if (currentPage < pages) {
 			setCurrentPage(++currentPage)
-			console.log(currentPage);
-			console.log(searched_products);
 			dispatch(fetch_searched_products(keyword, currentPage))
 		}
 	}
@@ -56,7 +54,6 @@ export function Search({ isBlocked }) {
 					</div>
 					<div className={s.search_showmore}>
 						<p className={pages === currentPage ? s.search_para_disabled : s.search_para} onClick={showMoreHandler}>Show more</p>
-						{/* <p style={keyword.length >= 3 ? { color: "white" } : { color: "lightgray" }}>Show more</p> */}
 					</div>
 				</div>
 

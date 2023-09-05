@@ -6,6 +6,7 @@ import { FiHeart, FiBarChart2 } from "react-icons/fi";
 import { NewSign, ToggleCartBtn } from "../";
 import s from "./ProductItem.module.css";
 import { fetch_comparison_product } from "../../requests/requests";
+import { NavLink } from "react-router-dom";
 
 export function ProductItem({ product }) {
 
@@ -66,11 +67,13 @@ export function ProductItem({ product }) {
 			</div>
 			<div ref={ref} className={s.img_wrapper}>
 				{inView ? (
-					<img
-						src={product.productImagesLinks[img_index]}
-						alt="product_image"
-						className={s.product_img}
-					/>
+					<NavLink to={`/product/${product.id}`}>
+						<img
+							src={product.productImagesLinks[img_index]}
+							alt="product_image"
+							className={s.product_img}
+						/>
+					</NavLink>
 				) : (
 					<div className="photo-card_skeleton"></div>
 				)}
@@ -89,7 +92,7 @@ export function ProductItem({ product }) {
 					</li>
 				))}
 			</ul>
-			<p className={s.product_title}>{product.title}</p>
+			<NavLink to={`/product/${product.id}`}><p className={s.product_title}>{product.title}</p></NavLink>
 			<div className={s.properties}>
 				<div className={s.price_box}>
 					<p className={s.discount_price}>
