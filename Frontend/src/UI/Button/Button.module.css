@@ -1,98 +1,104 @@
 .button {
-	position: relative;
-	padding: 15px 32px;
-	height: 50px;
-	text-transform: uppercase;
-	font-weight: 500;
-	line-height: 20px;
-	background-color: transparent;
-	color: var(--white);
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color var(--transition), color var(--transition);
+  position: relative;
+  padding: 15px 32px;
+  height: 50px;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 20px;
+  background-color: transparent;
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
 }
 
 .button.checkout,
 .button.about {
-	width: 230px;
-	background-color: var(--black);
+  width: 230px;
+  background-color: var(--black);
 }
 
 .button.confirmOrder,
 .button.checkout {
-	margin-top: 30px;
-	width: 310px;
+  margin-top: 30px;
+  width: 310px;
 }
 
 .button.confirmOrder {
-	background-color: var(--orange);
+  background-color: var(--orange);
 }
 
 .button.phone_alert,
 .button.news {
-	width: 250px;
-	background-color: var(--orange);
+  width: 250px;
+  background-color: var(--orange);
+}
+
+.button.add_to_cart {
+  width: 160px;
+  background-color: var(--orange);
+  white-space: nowrap;
+  font-weight: 500;
 }
 
 .button.phone_alert {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 .button.order {
-	width: 280px;
-	background-color: var(--orange);
+  width: 280px;
+  background-color: var(--orange);
 }
 
-
 .button.to_shop {
-	width: 264px;
-	background-color: transparent;
-	color: var(--black);
-	border: 1px solid var(--gray);
+  width: 264px;
+  background-color: transparent;
+  color: var(--black);
+  border: 1px solid var(--gray);
 }
 
 .button.profile {
-	width: 266px;
-	background-color: var(--gray);
-	color: var(--white);
+  width: 266px;
+  background-color: var(--gray);
+  color: var(--white);
 }
 
 .button.register {
-	margin-top: 16px;
-	width: 100%;
-	background-color: var(--black);
+  margin-top: 16px;
+  width: 100%;
+  background-color: var(--black);
 }
 
 @media (min-width: 762px) {
-	.button:active {
-		top: 1px;
-	}
+  .button:active {
+    top: 1px;
+  }
 
-	.button.profile:hover,
-	.button.register:hover,
-	.button.checkout:hover,
-	.button.about:hover {
-		background-color: var(--orange);
-	}
+  .button.profile:hover,
+  .button.register:hover,
+  .button.checkout:hover,
+  .button.about:hover {
+    background-color: var(--orange);
+  }
 
-	.button.confirmOrder:hover,
-	.button.order:hover,
-	.button.phone_alert:hover,
-	.button.news:hover {
-		background-color: var(--black);
-	}
+  .button.confirmOrder:hover,
+  .button.order:hover,
+  .button.phone_alert:hover,
+  .button.news:hover,
+  .button.add_to_cart:hover {
+    background-color: var(--black);
+  }
 
-	.button.to_shop:hover {
-		background-color: var(--orange);
-		color: var(--white);
-	}
+  .button.to_shop:hover {
+    background-color: var(--orange);
+    color: var(--white);
+  }
 }
 
 @media (max-width: 480px) {
-
-	.button.confirmOrder,
-	.button.checkout {
-		width: 100%;
-	}
+  .button.confirmOrder,
+  .button.checkout {
+    width: 100%;
+  }
 }

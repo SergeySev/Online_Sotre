@@ -20,8 +20,10 @@ export default function ProductItemPage() {
     console.log(info);
 
     return (
-        <div>
-            <ProductItemInfo product={info} />
+        <div className={s.page_wrapper}>
+            <div className='container'>
+                <ProductItemInfo product={info} />
+            </div>
         </div>
     )
 }
