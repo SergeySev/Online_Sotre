@@ -16,11 +16,13 @@ import asideOffersSlice from "./reducers/asideOffersSlice";
 import userSlice from "./reducers/userSlice";
 import brandItemSlice from "./reducers/brandItemSlice";
 import searchSlice from "./reducers/searchSlice";
+import productItemSlice from "./reducers/productItemSlice";
 
 const rootReducer = combineReducers({
   categories: categoriesSlice,
   subcategories: subCategoriesSlice,
   // subCategory: subCategorySlice,
+  productItem: productItemSlice,
   searched_products: searchSlice,
   brands: brandSlice,
   brand_item: brandItemSlice,
