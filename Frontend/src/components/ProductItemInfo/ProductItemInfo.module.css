@@ -6,6 +6,13 @@
   text-align: right;
 }
 
+.brand_img {
+  width: 120px;
+  height: 40px;
+  object-fit: cover;
+  margin-top: 12px;
+}
+
 .product_info_main {
   display: flex;
 }
@@ -102,4 +109,25 @@
 .rest_image:hover {
   box-shadow: rgba(240, 90, 0, 0.25) 0px 13px 27px -5px,
     rgba(240, 90, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.product_info_tabs {
+  padding: 40px 60px;
+  cursor: pointer;
+}
+
+.product_info_tab {
+  margin-right: 60px;
+  font-family: var(--font-prosto);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--smoky);
+}
+
+.product_info_tab_active {
+  margin-right: 60px;
+  font-family: var(--font-prosto);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--black);
 }
