@@ -2,41 +2,33 @@ import React, { useState } from 'react'
 import s from './ProductItemInfo.module.css'
 import { Button } from '../../UI';
 import { FiHeart, FiBarChart2 } from "react-icons/fi";
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveTab } from '../../store/reducers/infoTabsSlice';
 
 export default function ProductItemInfo({ product, brand_img }) {
 
-    const { brand, colour, title, mainCategoryTitle, madeCountry, description, price, discountPrice, inStock, mainImageLink, productImagesLinks } = product
+    const {
+        brand,
+        colour,
+        characteristicDto,
+        deliveryType,
+        title,
+        mainCategoryTitle,
+        madeCountry,
+        description,
+        price,
+        discountPrice,
+        inStock,
+        mainImageLink,
+        productImagesLinks
+    } = product
+    // const { assignment, basis, glossGrade, type, typeOfWork, weight } = characteristicDto
     const [main_img, setMainImg] = useState(mainImageLink)
-    let tabItems = [
-        {
-            tabname: 'Description',
-            isActive: true
-        },
-        {
-            tabname: 'Characteristics',
-            isActive: false
-        },
-        {
-            tabname: 'Delivery',
-            isActive: false
-        },
-        {
-            tabname: 'Feedback',
-            isActive: false
-        }]
+    const tabItems = useSelector(store => store.tabItems)
+    const dispatch = useDispatch()
 
     const clickHandler = (tab) => {
-        console.log(tab);
-        console.log(tabItems);
-        return tabItems = tabItems.map(elem => {
-            if (elem.tabname === tab) {
-                elem.isActive = true
-                return elem
-            } else {
-                elem.isActive = false
-                return elem
-            }
-        })
+        dispatch(setActiveTab(tab))
     }
 
 
@@ -74,9 +66,9 @@ export default function ProductItemInfo({ product, brand_img }) {
                     </div>
                 </div>
                 <div className={s.product_info_tabs}>
-                    {tabItems.map((elem, index) => <span className={elem.isActive ? s.product_info_tab_active : s.product_info_tab} key={index} onClick={() => clickHandler(elem.tabname)}>{elem.tabname}</span>)}
+                    {tabItems.tabList.map((elem, index) => <span className={elem.tabname === tabItems.activeTab ? s.product_info_tab_active : s.product_info_tab} key={index} onClick={() => clickHandler(elem.tabname)}>{elem.tabname}</span>)}
                 </div>
-                <div id="description" className={s.tab_description}>
+                {tabItems.activeTab === 'Description' && <div id="description" className={s.tab_description}>
                     <div className={s.description_row}>
                         <p className={s.description_title}>Brand:</p>
                         <span className={s.description_value}>{brand}</span>
@@ -97,16 +89,45 @@ export default function ProductItemInfo({ product, brand_img }) {
                         <p className={s.description_title}>Description:</p>
                         <span className={s.description_value}>{description}</span>
                     </div>
-                </div>
-                <div id="characteristics" className={s.tab_description}>
-
-                </div>
-                <div id="delivery" className={s.tab_description}>
-
-                </div>
-                <div id="feedback" className={s.tab_description}>
-
-                </div>
+                </div>}
+                {tabItems.activeTab === 'Characteristics' && <div id="characteristics" className={s.tab_description}>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Assignment:</p>
+                        <span className={s.description_value}>{characteristicDto?.assignment}</span>
+                    </div>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Basis:</p>
+                        <span className={s.description_value}>{characteristicDto?.basis}</span>
+                    </div>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>GlossGrade:</p>
+                        <span className={s.description_value}>{characteristicDto?.glossGrade}</span>
+                    </div>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Type:</p>
+                        <span className={s.description_value}>{characteristicDto?.type}</span>
+                    </div>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Type of work:</p>
+                        <span className={s.description_value}>{characteristicDto?.typeOfWork}</span>
+                    </div>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Weight:</p>
+                        <span className={s.description_value}>{characteristicDto?.weight}</span>
+                    </div>
+                </div>}
+                {tabItems.activeTab === 'Delivery' && <div id="delivery" className={s.tab_description}>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Delivery type:</p>
+                        <span className={s.description_value}>{deliveryType}</span>
+                    </div>
+                </div>}
+                {tabItems.activeTab === 'Feedback' && <div id="feedback" className={s.tab_description}>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Feedback:</p>
+                        <span className={s.description_value}>There is no feedback yet</span>
+                    </div>
+                </div>}
             </div>
         </div>
     )
