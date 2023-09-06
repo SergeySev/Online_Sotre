@@ -32,8 +32,10 @@
 
 .product_image {
   width: 360px;
+  height: 360px;
   margin-top: 28px;
   margin-bottom: 60px;
+  object-fit: contain;
 }
 .product_info_data {
   display: flex;
@@ -41,7 +43,7 @@
 }
 
 .product_info_title {
-  font-family: var(--font-prosto);
+  font-family: var(--font_prosto);
   font-size: 30px;
   font-weight: 400;
   margin-bottom: 20px;
@@ -69,7 +71,7 @@
 }
 
 .product_info_discount {
-  font-family: var(--font-prosto);
+  font-family: var(--font_prosto);
   font-size: 30px;
   font-weight: 400;
 }
@@ -118,7 +120,7 @@
 
 .product_info_tab {
   margin-right: 60px;
-  font-family: var(--font-prosto);
+  font-family: var(--font_prosto);
   font-size: 20px;
   font-weight: 400;
   color: var(--smoky);
@@ -126,8 +128,26 @@
 
 .product_info_tab_active {
   margin-right: 60px;
-  font-family: var(--font-prosto);
+  font-family: var(--font_prosto);
   font-size: 20px;
   font-weight: 500;
   color: var(--black);
+}
+
+.tab_description {
+  padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.description_row {
+  display: flex;
+  gap: 24px;
+}
+.description_title {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: var(--font_prosto);
 }
