@@ -5,8 +5,39 @@ import { FiHeart, FiBarChart2 } from "react-icons/fi";
 
 export default function ProductItemInfo({ product, brand_img }) {
 
-    const { brand, title, madeCountry, description, price, discountPrice, inStock, mainImageLink, productImagesLinks } = product
+    const { brand, colour, title, mainCategoryTitle, madeCountry, description, price, discountPrice, inStock, mainImageLink, productImagesLinks } = product
     const [main_img, setMainImg] = useState(mainImageLink)
+    let tabItems = [
+        {
+            tabname: 'Description',
+            isActive: true
+        },
+        {
+            tabname: 'Characteristics',
+            isActive: false
+        },
+        {
+            tabname: 'Delivery',
+            isActive: false
+        },
+        {
+            tabname: 'Feedback',
+            isActive: false
+        }]
+
+    const clickHandler = (tab) => {
+        console.log(tab);
+        console.log(tabItems);
+        return tabItems = tabItems.map(elem => {
+            if (elem.tabname === tab) {
+                elem.isActive = true
+                return elem
+            } else {
+                elem.isActive = false
+                return elem
+            }
+        })
+    }
 
 
     return (
@@ -43,10 +74,38 @@ export default function ProductItemInfo({ product, brand_img }) {
                     </div>
                 </div>
                 <div className={s.product_info_tabs}>
-                    <span className={s.product_info_tab_active}>Description</span>
-                    <span className={s.product_info_tab}>Characteristics</span>
-                    <span className={s.product_info_tab}>Delivery</span>
-                    <span className={s.product_info_tab}>Feedback</span>
+                    {tabItems.map((elem, index) => <span className={elem.isActive ? s.product_info_tab_active : s.product_info_tab} key={index} onClick={() => clickHandler(elem.tabname)}>{elem.tabname}</span>)}
+                </div>
+                <div id="description" className={s.tab_description}>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Brand:</p>
+                        <span className={s.description_value}>{brand}</span>
+                    </div>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Color:</p>
+                        <span className={s.description_value}>{colour}</span>
+                    </div>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Made Country:</p>
+                        <span className={s.description_value}>{madeCountry}</span>
+                    </div>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Main Category:</p>
+                        <span className={s.description_value}>{mainCategoryTitle}</span>
+                    </div>
+                    <div className={s.description_row}>
+                        <p className={s.description_title}>Description:</p>
+                        <span className={s.description_value}>{description}</span>
+                    </div>
+                </div>
+                <div id="characteristics" className={s.tab_description}>
+
+                </div>
+                <div id="delivery" className={s.tab_description}>
+
+                </div>
+                <div id="feedback" className={s.tab_description}>
+
                 </div>
             </div>
         </div>
