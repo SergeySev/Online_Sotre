@@ -10,19 +10,23 @@ export default function ProductItemPage() {
 
     const dispatch = useDispatch()
     const id = useParams().id
+    let brand_img = ''
 
     useEffect(() => {
         dispatch(fetch_product_info(id))
     }, [])
 
-    const info = useSelector(store => store.productItem)
+    const product = useSelector(store => store.productItem)
+    const brands = useSelector(store => store.brands)
 
-    console.log(info);
+    if (product) {
+        brand_img = (brands.filter(elem => elem.title === product?.brand))[0]?.brandImageLink;
+    }
 
     return (
         <div className={s.page_wrapper}>
             <div className='container'>
-                <ProductItemInfo product={info} />
+                <ProductItemInfo product={product} brand_img={brand_img} />
             </div>
         </div>
     )
