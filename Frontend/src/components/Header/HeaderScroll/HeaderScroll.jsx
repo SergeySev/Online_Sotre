@@ -1,8 +1,19 @@
-import { useEffect, useState } from 'react'
-import { Logo, MenuIconsList, CartSum, Burger, CatalogBurger, Search } from '../../'
-import s from './HeaderScroll.module.css'
+import { useEffect, useState } from "react";
+import {
+	Logo,
+	MenuIconsList,
+	CartSum,
+	Burger,
+	CatalogBurger,
+	Search,
+} from "../../";
+import s from "./HeaderScroll.module.css";
 
 export function HeaderScroll() {
+	//console.log(
+	//	"🚀 ~ file: HeaderScroll.jsx:6 ~ HeaderScroll ~ HeaderScroll:",
+	//	"HeaderScroll"
+	//);
 
 	const [isSticky, setIsSticky] = useState(false);
 
@@ -15,26 +26,34 @@ export function HeaderScroll() {
 				setIsSticky(false);
 			}
 		};
-		window.addEventListener('scroll', handleScroll);
+		window.addEventListener("scroll", handleScroll);
 		return () => {
-			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
 
 	return (
-		<div className={`fixed ${s.header_scroll} ${s[isSticky ? "fixed" : ''] || ''}`}>
+		<div
+			className={`fixed ${s.header_scroll} ${s[isSticky ? "fixed" : ""] || ""}`}
+		>
 			<div className={s.header_scroll_wrapper}>
 				<div className="container">
-					<div className={s.header_scroll_content} >
-						<Logo content="header" />
-						<CatalogBurger isBlocked='scroll' />
-						<Search isBlocked='scroll' />
-						<MenuIconsList />
-						<CartSum />
-						<Burger />
+					<div className={s.header_scroll_content}>
+						{isSticky ? (
+							<>
+								<Logo content="header" />
+								<CatalogBurger isBlocked="scroll" />
+								<Search isBlocked="scroll" />
+								<MenuIconsList />
+								<CartSum />
+								<Burger />
+							</>
+						) : (
+							""
+						)}
 					</div>
 				</div>
 			</div>
 		</div>
-	)
+	);
 }
